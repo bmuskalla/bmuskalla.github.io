@@ -1,1 +1,21 @@
-theme: jekyll-theme-modernist
+title: Benjamin Muskalla
+email: ""
+description: >-
+  Personal blog of Benjamin Muskalla, staff engineer at Tasktop Technologies.
+  Friendly troublemaker, open source enthusiast, former Eclipse Mylyn, Platform,
+  JDT, RAP committer and contributor.
+baseurl: ""
+url: "http://bmuskalla.github.io"
+twitter_username: bmuskalla
+github_username:  bmuskalla
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+disqus:
+  shortname: benny-github-blog
+
+google_analytics: UA-NNNNNNNN-N
