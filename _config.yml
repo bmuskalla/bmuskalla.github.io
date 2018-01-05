@@ -9,7 +9,6 @@ url: "http://bmuskalla.github.io"
 twitter_username: bmuskalla
 github_username:  bmuskalla
 
-# Build settings
 markdown: kramdown
 theme: minima
 plugins:
