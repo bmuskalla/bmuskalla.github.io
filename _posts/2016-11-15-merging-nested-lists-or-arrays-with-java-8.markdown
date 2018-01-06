@@ -66,4 +66,6 @@ List<TransformedItem> newItems = results.stream()
      .collect(toList());
 {% endhighlight %}
 
-Have fun with `#flatMap` and let me know in the comments about how you used `#flatMap` in your scenarios. A great explanation of how to compose streams and some concepts behind streams can be found in Martin Fowler [Collection Pipeline](http://martinfowler.com/articles/collection-pipeline/).
+Have fun with `#flatMap` and let me know in the comments about how you used `#flatMap` in your scenarios. A great explanation of how to compose streams and some concepts behind streams can be found in Martin Fowler [Collection Pipeline](http://martinfowler.com/articles/collection-pipeline/).[^footnote]
+
+[^footnote]: Originally published on [Tasktop Blog](https://www.tasktop.com/blog/merging-nested-lists-or-arrays-with-java-8/)

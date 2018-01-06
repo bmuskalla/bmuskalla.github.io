@@ -41,7 +41,7 @@ It seems to be defining some kind of version number. Let’s assume our project 
 
 [1]: https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants
 
-![http://imgs.xkcd.com/comics/int_pi.png](https://xkcd.com/1275/)
+![https://xkcd.com/1275/](http://imgs.xkcd.com/comics/int_pi.png)
 
 For the above example, the intention is not clear at all. While we can guess it’s a version string, we don’t know how it is supposed to be used. Is it so all API calls use the same version of the REST API? Or is it to determine whether we’re working with the v0 version which requires some special handling? If we now want to upgrade to v1 of the REST API, it’s not as easy as just changing the constant as other code might rely on this exact version. Without proper naming, people tend to reuse constants for different scenarios that actually require two different constructs (which might happen to have the same value for now). Assuming we had the two scenarios above, we slightly better way would be
 
@@ -96,4 +96,6 @@ This again goes back to treating every literal as a magic string. There is no ad
 
 ---------------
 
-Whenever you’re about to create a \*Constants class, take a step back, go for a walk, or grab a coffee with a fellow engineer. Try to explain why you want to create such a class and if that is really the right abstraction or if the next engineers on your component might be able to see the patterns easier with another abstraction. There are a lot topics we haven’t touched on yet. When should we actually use constants? What about literals with placeholders (I look at you [MessageFormat](https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html)). And are there any tools to detect unused constants? Let me know in the comments.
+Whenever you’re about to create a \*Constants class, take a step back, go for a walk, or grab a coffee with a fellow engineer. Try to explain why you want to create such a class and if that is really the right abstraction or if the next engineers on your component might be able to see the patterns easier with another abstraction. There are a lot topics we haven’t touched on yet. When should we actually use constants? What about literals with placeholders (I look at you [MessageFormat](https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html)). And are there any tools to detect unused constants? Let me know in the comments.[^footnote]
+
+[^footnote]: Originally published on [Tasktop Blog](https://www.tasktop.com/blog/where_to_put-constants/)
