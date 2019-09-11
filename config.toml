@@ -14,7 +14,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
   avatar = "profile.png"
-  author = "Chris Turner"
+  author = "Benjamin Muskalla"
   description = "Describe your website"
 
   # Custom assets can be linked with their paths relative to static/
@@ -32,17 +32,18 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 ## Main Menu
 [[menu.main]]
-  name = "blog"
+  name = "Blog"
   weight = 100
-  identifier = "blog"
+  identifier = "posts"
   url = "/blog/"
-[[menu.main]]
-  name = "projects"
-  identifier = "projects"
-  weight = 200
-  url = "/projects/"
-[[menu.main]]
-  name = "resume"
-  identifier = "resume"
-  weight = 300
-  url = "/resume/"
+#[[menu.main]]
+#  name = "projects"
+#  identifier = "projects"
+#  weight = 200
+#  url = "/projects/"
+#[[menu.main]]
+#  name = "resume"
+#  identifier = "resume"
+#  weight = 300
+#  url = "/resume/"
+#https://github.com/anirbanmu/hugo-sustain-vitae
