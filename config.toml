@@ -4,7 +4,7 @@ title = "Benjamin Muskalla"
 # Enable comments by entering your Disqus shortname
 disqusShortname = "benny-github-blog"
 # Enable Google Analytics by entering your tracking code
-googleAnalytics = ""
+googleAnalytics = "UA-147650474-1"
 theme = "hugo-sustain"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
@@ -22,13 +22,9 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   custom_js  = []
 
 [params.social]
-  Github        = "username"
-  Email         = "email@example.com"
-  Twitter       = "username"
-  LinkedIn      = "username"
-  Stackoverflow = "username"
-  Medium        = "username"
-  Telegram      = "username"
+  Github        = "bmuskalla"
+  Twitter       = "bmuskalla"
+  LinkedIn      = "benjaminmuskalla"
 
 ## Main Menu
 [[menu.main]]
@@ -36,6 +32,11 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   weight = 100
   identifier = "posts"
   url = "/blog/"
+#[[menu.main]]
+#  name = "articles"
+#  identifier = "articles"
+#  weight = 200
+#  url = "/articles/"
 #[[menu.main]]
 #  name = "projects"
 #  identifier = "projects"

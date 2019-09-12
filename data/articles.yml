@@ -1,0 +1,12 @@
+name: Articles
+source:
+  - icon: fab fa-php
+    description: Ei viderer tacimates pro, quem assum ea nam. Veritus omnesque eam te. Et natum mucius tamquam vel, ea dolorem volumus deterruisset nec. Graeci mentitum sea an, eu prima elaboraret est.
+
+  - icon: fa fa-cog
+    description: Essent putant indoctum sed in, reprimique persequeris neglegentur te quo. Nam rebum tractatos partiendo at, debet ubique oporteat ut his.
+
+  - magazine: PHPmagazine
+    date: 2007-01-01
+    icon: fas fa-book-reader
+    description: Book critique for "AJAX" by _Justin Gehtland_
