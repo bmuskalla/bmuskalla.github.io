@@ -22,7 +22,7 @@ posts = [
 ]
 
 postsTest = [
-    "https://eclipsesource.com/blogs/2009/03/13/tease-the-rap-committers/"
+    "https://eclipsesource.com/blogs/2010/05/13/using-equinox-security-in-rcp-and-rap/"
 ]
 
 def substringBetween(html, startMarker, endMarker)
@@ -37,19 +37,31 @@ def convertPost(posturl)
     path = URI(posturl).path.split('/')
     date = path[2] + "-" + path[3] + "-" + path[4]
     filename = date + "-" + path[5] + ".md"
-    contentHtml = substringBetween(posthtml, "Comments</a></div></div></div><p>", "<div class=\"qodef-post-info-bottom\">")
+    contentHtml = substringBetween(posthtml, "Comments</a></div></div></div>", "<div class=\"qodef-post-info-bottom\">")
     document = Kramdown::Document.new(contentHtml, :html_to_native => true)
     postcontent = document.to_kramdown
+    tags = posthtml.to_enum(:scan, /article:tag" content="([\w|\d|\s]+)"/).map {$1}
+    images = contentHtml.to_enum(:scan, /img.*?src="(.*?)"/).map {$1}
+
+    images.each do |img|
+        begin
+            open(img) do |image|
+                path = URI(img).path.split('/').last
+                File.open("../static/blog/es/" + path, "wb") do |file|
+                file.write(image.read)
+                end
+            end
+        rescue
+            puts "Failed to download " + img + " for " + posturl
+        end
+    end
+
     
     postString = <<-POST
 +++
 title = "#{title}"
 description = ""
-tags = [
-    "java",
-    "design",
-    "refactoring",
-]
+tags = #{tags.inspect}
 date = "#{date}"
 categories = [
     "Development"
@@ -65,6 +77,8 @@ POST
 end
 
 
-postsTest.each do |posturl|
+posts.each do |posturl|
+#postsTest.each do |posturl|
+    #puts "Converting " + posturl
     convertPost(posturl)
 end
