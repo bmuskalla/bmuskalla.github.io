@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Revamping Eclipse Examples?</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2010-04-14-revamping-eclipse-examples/">Revamping Eclipse Examples?</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          April 14, 2010
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            3 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">eclipseRT</span>
+            
+            <span class="label label-success">equinox</span>
+            
+            <span class="label label-success">p2</span>
+            
+            <span class="label label-success">pde</span>
+            
+            <span class="label label-success">Planet OSGi</span>
+            
+            <span class="label label-success">rap</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>Even though I’ve been involved in the Eclipse community for around 5
+years, I’m still amazed by the projects that are hosted under the
+Eclipse umbrella. As an “insider”, I have a pretty good overview of many
+projects and at least a rough picture of all the other cool stuff. While
+I love working with <a href="https://eclipse.org/rt/">EclipseRT</a> technologies like Equinox, RAP,
+EclipseLink, ECF or &lt;insert your project here&gt;, I always find
+myself in the same situation.  This stuff is awesome but do users really
+get the point of what’s possible? Learning a new technology is always
+hard, but if you want to develop enterprise-ready, scalable and vibrant
+platforms using Eclipse components, there are so many obstacles to
+overcome. You need to have at least a clue about OSGi/Equinox,
+Extensions and their corresponding Extension points (for each for your
+consumed modules) and many other things. I don’t want to say that
+Eclipse is too complicated (which is a topic for another post anyway),
+but what I would really like to see is a better way to get our future
+consumers up to speed. As <a href="https://en.wikipedia.org/wiki/Esther_Dyson">Esther Dyson</a> once said:</p>
+
+<blockquote>
+<p><em>A worker’s paradise is a consumer’s hell.</em></p>
+</blockquote>
+
+<p>With the <a href="https://www.eclipse.org/examples">Eclipse Examples</a> project we wanted to provide a few
+exemplary projects to show how to use different projects. In theory a
+nice idea, but practically I don’t see that this effort was very
+successful. Wayne and me discussed some ideas back in <a href="https://dev.eclipse.org/mhonarc/lists/examples-dev/msg00010.html">2008</a> but
+without a concrete outcome.  Thinking about this topic after EclipseCon,
+my current thought was to provide easy ways for our consumers to try out
+the bits and pieces of all the projects. What I constantly run into
+though, is that you need to do so many things  before you can get
+started, like setting up a target platform, making your examples depend
+on the right bundles, using the right extension points/services/etc,
+creating launch configurations. Many projects already helped themselves
+by providing examples using PDE <a href="https://help.eclipse.org/galileo/topic/org.eclipse.pde.doc.user/reference/extension-points/org_eclipse_pde_ui_templates.html">templates</a>. That’s the way I’d like
+to tell newcomers how to get started and would push this even a little
+further – the idea is to provide some infrastructure in the Examples
+project to help others setting up their examples. The projects just
+provide example bundles, maybe a target definition, a launch
+configuration and a cheatsheet or something. In the end, the user should
+be able to try out another Eclipse technology within 2 clicks: New
+Example &gt; That technology, run!</p>
+
+<p><img src="/blog/es/examples_wizard.png" alt="" title="examples_wizard" /></p>
+
+<p>Basically PDE already provides many of these things but it’s not yet at
+the point I would love to see it. It’s still too complex for consumers
+to create target platforms (I know what I’m talking about), create their
+launch configs and get started with the examples. While there are still
+<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=276000">some</a> <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=169340">hurdles</a> to jump, I think our users and consumers would
+thank us for getting them up to speed in seconds. It should even be
+interesting for non-OSGi related examples as other projects thought
+about <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=238144">something like this</a> for years. I don’t see a chance to have
+this ready for Helios, but I’m pretty confident that we could do
+something like this in the timeframe for the <a href="https://eclipsesource.com/blogs/2010/04/08/helios-1-name-vote-for-your-favorite/">I…</a> release train.
+Would other projects be interested in such an approach to distribute
+their examples? Please leave a comment on <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=309081">this bug</a> if you do so to
+collect ideas, wishes and requirements.<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2010/04/14/revamping-eclipse-examples/">EclipseSource Blog</a>
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 13, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/">Using Equinox Security in RCP and RAP</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 27, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 22, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/">Eclipse DemoCamp 2010 in Mannheim</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

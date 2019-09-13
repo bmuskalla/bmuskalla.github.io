@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Merging nested Lists or Arrays with Java 8</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/">Merging nested Lists or Arrays with Java 8</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          November 15, 2016
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            2 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">java</span>
+            
+            <span class="label label-success">stream</span>
+            
+            <span class="label label-success">flatmap</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>When accessing 3rd party APIs with pagination, we tend to see the same pattern
+over and over again. Usually, a response (represented as POJO) looks something
+like this:</p>
+
+<pre><code class="language-java">class Result {
+  public List&lt;Item&gt; getItems() {
+    ...
+  }
+}
+</code></pre>
+
+<p>Be it from a third party service or your own APIs, after retrieving all results
+of the API call, we end up with something like a <code>List&lt;Result&gt;</code>. Great. We don’t
+really care about the response itself, we’re actually interested in all the
+items of the responses. Let’s say we want all the items, filter some of them out
+and transform them into a <code>TransformedItem</code>. People usually start writing
+something like the following:</p>
+
+<pre><code class="language-java">List&lt;Result&gt; results = ...
+List&lt;TransformedItem&gt; newItems = results.stream()
+     .map(result -&gt; result.getItems())
+     .filter(item -&gt; item.isValid())
+     .map(TransformedItem::new)
+     .collect(toList());
+</code></pre>
+
+<p>Ooops, this doesn’t even compile. The problem is that the first map doesn’t
+return a <code>Stream&lt;Item&gt;</code> but actually a <code>Stream&lt;List&lt;Item&gt;&gt;</code>. In order to
+actually merge/flatten all those nested lists, you can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#flatMap-java.util.function.Function-">Stream#flatMap</a>.
+The difference is quite simple. <code>#map</code> allows you to transform an element in
+the stream into another element. On the other hand, <code>#flatMap</code> allows you to
+convert a single element to many (or no) elements.</p>
+
+<pre><code class="language-java">List&lt;Result&gt; results = ...
+List&lt;TransformedItem&gt; newItems = results.stream()
+     .map(result -&gt; result.getItems())
+     .flatMap(List::stream)
+     .map(TransformedItem::new)
+     .collect(toList());
+</code></pre>
+
+<p>Just in case you’re working with a 3rd party API that returns something ugly as <code>List&lt;Item[]&gt;</code>, you can use the same pattern, just choose the corresponding the flatMap function.</p>
+
+<pre><code class="language-java">class QueryResponse {
+  public Item[] getItems() {
+    ...
+  }
+}
+
+...
+
+List&lt;TransformedItem&gt; newItems = results.stream()
+     .map(result -&gt; result.getItems())
+     .flatMap(Arrays::stream)
+     .map(TransformedItem::new)
+     .collect(toList());
+</code></pre>
+
+<p>Have fun with <code>#flatMap</code> and let me know in the comments about how you used <code>#flatMap</code> in your scenarios. A great explanation of how to compose streams and some concepts behind streams can be found in Martin Fowler <a href="http://martinfowler.com/articles/collection-pipeline/">Collection Pipeline</a>.<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:footnote">Originally published on <a href="https://www.tasktop.com/blog/merging-nested-lists-or-arrays-with-java-8/">Tasktop Blog</a>
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 8, 2018
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2018-06-08-refactoring-towards-speed-reading/">Refactoring towards speed reading</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        October 6, 2016
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2016-10-06-wheretoputconstants/">WHERE_TO_PUT.CONSTANTS</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

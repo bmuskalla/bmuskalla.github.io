@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Drawing with RAP? Yup!</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2010-04-20-drawing-with-rap-yup/">Drawing with RAP? Yup!</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          April 20, 2010
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            2 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">canvas</span>
+            
+            <span class="label label-success">eclipseRT</span>
+            
+            <span class="label label-success">gef</span>
+            
+            <span class="label label-success">helios</span>
+            
+            <span class="label label-success">nebula</span>
+            
+            <span class="label label-success">new and noteworthy</span>
+            
+            <span class="label label-success">rap</span>
+            
+            <span class="label label-success">Single Sourcing</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>I have to admit, I’m a little nervous what happens with the <a href="https://www.eclipse.org/rap">RAP</a>
+community after this post. At least for me, the last days were pretty
+exciting. Some days ago, Ivan from the RAP team committed the initial
+support for a <a href="https://www.eclipse.org/articles/Article-SWT-graphics/SWT_graphics.html">GC</a> (GraphicsContext) for RAP. Currently restricted to
+the Canvas widget, the GC provides thousands of new use cases for RAP
+applications. The work by Ivan and Tim is just gorgeous and will help
+many developers to single-source their applications with even less
+exceptions. In case you want to try it out in this second without
+reading further, just fire up the RAP Examples demo and draw something
+yourself 🙂</p>
+
+<p><img src="/blog/es/rap_canvas_demo1.png" alt="RAP with Canvas" /></p>
+
+<p>Credits for the picture above goes to <a href="https://eclipsesource.com/blogs/author/hstaudacher/">Holger</a> with the aim to come
+up with a new RAP project logo 😉 After using the GC the first time in
+the Examples demo, I thought about other possibilities to test the new
+GC. My first thought: custom widgets? Tired of writing custom widgets in
+JavaScript? Get your Canvas and single-source your custom widget with
+RCP by writing an <a href="https://www.eclipse.org/articles/Article-Writing%20Your%20Own%20Widget/Writing%20Your%20Own%20Widget.htm">owner-draw widget</a>. But as it was late in the
+night, I decided to just reuse some existing owner-drawn widgets like
+those we can find in the <a href="https://www.eclipse.org/nebula">Nebula</a> project. After getting the
+<a href="https://www.eclipse.org/nebula/widgets/pshelf/pshelf.php">PShelf</a> widget from CVS, it was only a matter of seconds until I
+started my first RAP application using an owner-drawn Nebula widget:</p>
+
+<p><img src="/blog/es/rebula_pshelf.png" alt="Nebula PShelf on RAP" /></p>
+
+<p>And I think I know what most of you are currently thinking – Draw2D, GEF
+and GMF on RAP? To keep it and short and simple: No! While it may be
+possible to single source Draw2D with the exisiting Canvas, I’m pretty
+sure it will not scale. The way Draw2D is implemented will cause major
+performance problems with the browser-side Canvas widget. As I said, it
+may be possible but not really preferable. For supporting Draw2D the
+right technology on the client-side is there. Only on the server-side we
+would need APIs that entirely hide the GC. Thus we could directly
+translate from one vector-based technology to the other.</p>
+
+<p>I’m pretty excited to see how the community can profit from the new
+Canvas implementation. Want to try it out? Either get the current RAP
+runtime from <a href="https://eclipse.org/rap/">CVS</a> or wait some days until we can publish RAP M7
+(which has several other cool <a href="https://eclipse.org/rap/">new &amp; noteworthy</a>
+items).<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2010/04/20/drawing-with-rap-yup/">EclipseSource Blog</a>
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 13, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/">Using Equinox Security in RCP and RAP</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 27, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 22, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/">Eclipse DemoCamp 2010 in Mannheim</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

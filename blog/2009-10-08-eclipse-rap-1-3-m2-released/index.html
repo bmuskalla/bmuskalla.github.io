@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Eclipse RAP 1.3 M2 Released</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2009-10-08-eclipse-rap-1-3-m2-released/">Eclipse RAP 1.3 M2 Released</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          October 8, 2009
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            2 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">helios</span>
+            
+            <span class="label label-success">milestone</span>
+            
+            <span class="label label-success">new and noteworthy</span>
+            
+            <span class="label label-success">rap</span>
+            
+            <span class="label label-success">Single Sourcing</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>The RAP team is proud to announce the <a href="https://www.eclipse.org/rap/downloads/">second milestone</a> for the
+Helios release.</p>
+
+<p>As Holger already mentioned in <a href="https://eclipsesource.com/blogs/2009/09/02/new-fancy-rich-ajax-platform-rap-theme/">his blog post</a>, part of the milestone
+is a new design option for RAP applications. You can either use it as is
+or customize it depending on your needs.</p>
+
+<p><a href="https://eclipsesource.com/wp-content/uploads/2009/10/fancy.png"><img src="/blog/es/fancy-300x194.png" alt="RAP Fancy Design" /></a></p>
+
+<p>Together with the new fancy design, there is also a new Configuration
+dialog to enable and disable the view actions per stack. Additionally we
+added an effect called <a href="https://en.wikipedia.org/wiki/Lightbox_(JavaScript)">Lightbox</a> which occurs when the dialog is
+open.</p>
+
+<p>Another thing I’m pretty excited about – the help system. The RAP
+runtime doesn’t provide everything you need for the whole help system,
+we just provide the infrastructure to plug in any help system
+implementation you want. Depending on your needs you can either use a
+<a href="https://wiki.eclipse.org/RAP/FAQ#How_to_integrate_the_Eclipse_Help_System_in_a_RAP_application.3F">pretty simple implementation</a> or single-source the real help system
+implementation (org.eclipse.help.ui) yourself (great chance to get
+involved by the way).</p>
+
+<p>For those of you who are working a lot with tabular data, we now provide
+cell tooltips on the TableViewer if you use a CellLabelProvider. This
+enables you to provide tooltips on the fly for all of your table cells.</p>
+
+<p>Looking at this milestone in numbers, we fixed 100 bugs and resolved 36
+enhancements – this includes another 23 new APIs that are now available
+for you. We’re pretty excited about the Helios release and looking
+forward to the next milestone.</p>
+
+<p>Be sure to check out the whole <a href="https://eclipse.org/rap/">New &amp; Noteworthy</a> as there are
+much more details we added in M2!<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2009/10/08/eclipse-rap-1-3-m2-released/">EclipseSource Blog</a>
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 13, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/">Using Equinox Security in RCP and RAP</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 27, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 22, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/">Eclipse DemoCamp 2010 in Mannheim</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

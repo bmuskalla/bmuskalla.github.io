@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Eclipse RAP 1.3 M3 hits the road</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/">Eclipse RAP 1.3 M3 hits the road</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          November 16, 2009
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            2 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">eclipseRT</span>
+            
+            <span class="label label-success">helios</span>
+            
+            <span class="label label-success">milestone</span>
+            
+            <span class="label label-success">new and noteworthy</span>
+            
+            <span class="label label-success">rap</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>After another 6 weeks of working hard towards the <a href="https://wiki.eclipse.org/Helios">Helios</a> Release,
+we’re a step closer. RAP M3 for Eclipse 3.6 is out and can be
+<a href="https://eclipse.org/rap/downloads/">obtained</a> from the RAP project page. Besides another <a href="https://bugs.eclipse.org/bugs/buglist.cgi?query_format=advanced&amp;amp;short_desc_type=allwordssubstr&amp;amp;short_desc=&amp;amp;classification=RT&amp;amp;product=RAP&amp;amp;target_milestone=1.3+M3&amp;amp;long_desc_type=allwordssubstr&amp;amp;long_desc=&amp;amp;bug_file_loc_type=allwordssubstr&amp;amp;bug_file_loc=&amp;amp;status_whiteboard_type=allwordssubstr&amp;amp;status_whiteboard=&amp;amp;keywords_type=allwords&amp;amp;keywords=&amp;amp;bug_status=RESOLVED&amp;amp;bug_status=VERIFIED&amp;amp;bug_status=CLOSED&amp;amp;emailtype1=substring&amp;amp;email1=&amp;amp;emailtype2=substring&amp;amp;email2=&amp;amp;bugidtype=include&amp;amp;bug_id=&amp;amp;votes=&amp;amp;chfieldfrom=&amp;amp;chfieldto=Now&amp;amp;chfieldvalue=&amp;amp;cmdtype=doit&amp;amp;order=Reuse+same+sort+as+last+time&amp;amp;field0-0-0=noop&amp;amp;type0-0-0=noop&amp;amp;value0-0-0=">130
+bugfixes</a> and many <a href="https://eclipse.org/rap/">New and Noteworthy</a> features, here are my
+personal favorites of this milestone:</p>
+
+<p><strong>Non-shared SWT resources</strong></p>
+
+<p>Finally, we decided to provide constructors and a dispose mechanism for
+SWT resources like fonts, images, colors and cursors. While we still
+recommend to use the factory-based approach, this features helps a lot
+when single-sourcing applications that use the resource constructors in
+a verbose manner.</p>
+
+<p><a href="https://eclipsesource.com/wp-content/uploads/2009/11/color_ctor.png"><img src="/blog/es/color_ctor.png" alt="RWT Resource constructors" /></a>
+Yay, it compiles!</p>
+
+<p><strong>Browser History support</strong></p>
+
+<p>You now have the possibility to interact with the client-side browser
+history. This allows you to set “bookmarks” (eg. when switching tabs or
+processing a particular workflow) and the user can jump back and
+forward. Thanks again to Ralf Zahn from ARS who <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=283291">contributed</a> this
+feature.</p>
+
+<p><strong>Dispose events on session timeout</strong></p>
+
+<p>We also introduced new Listener support on the Display so you’re now
+able to listen for Dispose events of the Display which is triggered when
+the session terminates. This way you don’t need to rely on
+servlet-specific API but rather use the same mechanism as in SWT to
+clean up your session. In addition you can queue runnables via
+Display#disposeExec that are executed once the session dies.</p>
+
+<p>I hope you all enjoy the new milestone and give as feedback as fast as
+possible, API and feature freeze  is approaching 😉<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2009/11/16/eclipse-rap-1-3-m3-hits-the-road/">EclipseSource Blog</a>
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 13, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/">Using Equinox Security in RCP and RAP</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 27, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 22, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/">Eclipse DemoCamp 2010 in Mannheim</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

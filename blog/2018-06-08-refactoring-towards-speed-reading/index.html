@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Refactoring towards speed reading</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2018-06-08-refactoring-towards-speed-reading/">Refactoring towards speed reading</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          June 8, 2018
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            5 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">java</span>
+            
+            <span class="label label-success">design</span>
+            
+            <span class="label label-success">refactoring</span>
+            
+            <span class="label label-success">speedreading</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>When was the last time you were in the <a href="https://en.wikipedia.org/wiki/Flow_(psychology)">flow</a>
+while working through some code? Reading code or doing code reviews is an activity
+that we do often, yet we don’t often get into the zone doing it. Too many times, we
+have to slow down, check that last line again or try to figure out the structure of
+the code. Even though we all follow the same principles for clean code, there is
+always that gut feel which tells you that one style is better than the other. While
+not conclusive, a part of this is the way we structure code for readability.</p>
+
+<p><a href="https://unsplash.com/photos/FrGYMDjdg4U"><img src="https://images.unsplash.com/photo-1506782664677-3e16d3382641?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Photo by Fischer Twins on Unsplash" /></a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Speed_reading">Speed reading</a> is a technique many people
+have heard about. The casual reader usually reaches 150–200wpm
+(<a href="https://en.wikipedia.org/wiki/Words_per_minute">words per minute</a>) with a
+good comprehension rate. Auditory readers can read approximatly 400wpm while
+visual readers can reach up to 700wpm. Controversial world record holders in
+speed reading claim to reach up to 4200wpm. But don’t worry, we don’t need
+to set the new world record in speed reading to learn the basic concepts
+and apply them to another area: our code. We’ll look at 3 areas that are
+particular helpful when it comes to reading code: Skimming, meta guiding
+and visual fixation.</p>
+
+<p><img src="/blog/speedfactoring/sentence_400wpm.gif" alt="Simple sentence @ 400wpm" /></p>
+
+<p>So what makes speed reading that fast? One of the first steps is to
+suppress subvocalication. Subvocalization? Exactly. That voice in your head
+that just tried to properly articulate that word. And yes, you’re now aware of
+that voice again. But don’t worry, it will be gone soon :) Subvocalization
+is something that an adult should be able to learn with relative ease as a
+first step to seriously improve reading speed, not only for code.</p>
+
+<p>In this post, I’m not going into the details of learning to speed read as others
+do a way better job at that. Be it books, articles or software like
+<a href="https://www.spreeder.com/cx/">spreeder</a> or <a href="http://spritzinc.com/">spritz</a>.</p>
+
+<p>Lets get to our first example that we want to refactor to improve readability.
+Here is a simple function which takes 3 parameters.</p>
+
+<p><img src="/blog/speedfactoring/example_1.png" alt="" /></p>
+
+<p>I suspect it is not the first time for you reading code so I can safely
+assume that you didn’t even try to read it word by word. The first thing
+that happens when trying to read this code is that we try to skim over
+it and find the relevant bits of what is happening based our previous
+expierence. One likely way to read the code is to follow where and how the
+input parameters are used. Using
+<a href="https://en.wikipedia.org/wiki/Eye_movement_in_reading">eye tracking</a>, what
+was likely happening when you read the code is this eye movement:</p>
+
+<p><img src="/blog/speedfactoring/example_2.png" alt="Eye movement when tracking the parameter usage" /></p>
+
+<p>After locating name, we actually have to break our visual fixation and find
+the next parameter which requires us to look down and left. We can start
+with a very simple refactoring to help a bit with this:</p>
+
+<p><img src="/blog/speedfactoring/example_3.png" alt="" /></p>
+
+<p>Better. But we’re not there yet. Looking at the semantic meaning of the
+three lines of code here suggests that they’re in fact not too different.
+We do validate all three arguments, not just age as the method name suggests.
+While many people these days strive for clean code, the trigger to extract
+a method is usually the number of lines that can be extracted. By extracting
+methods for these cases even helps us to guide the eye, allowing future
+engineers to actually skim over the code and let them decide whether they
+need to stop here or actually go on depending on what they’re looking for.</p>
+
+<p>By the way, were you able to read the animated sentence in orange above?
+That was 400wpm. That is already very fast. The fact that we can rely on
+visual fixation to avoid additional eye movement helps us to keep up.
+If you’re not used to this reading speed, comprehension usually suffers
+when reading a longer text in that speed. You can usually try it with
+speed reading apps, <a href="https://chrome.google.com/webstore/detail/sprint-reader-speed-readi/kejhpkmainjkpiablnfdppneidnkhdif?hl=en">browser extensions</a> or this <a href="https://www.spreeder.com/bookmarklet.php">bookmarklet</a>
+if you’re curious.</p>
+
+<p>Meta guiding is another principle in speed reading that is commonly
+suggested when starting to learn speed reading. Instead of trying to
+read word by word in a book, you try to capture the whole line at once.
+Kids usually do that by using their finger to keep track of the word
+they’re reading. As adults, we usually stopped doing that at some point.
+But using a finger or another device helps us to keep moving forward
+and avoids jumping back a word or two. Funny enough, code itself can
+act as such a device as it has an inherit structure that we can
+leverage to guide our eye.</p>
+
+<p><img src="/blog/speedfactoring/example_4.png" alt="" /></p>
+
+<p>How many items are in the list? One, two, three, four! Five. Maybe more.
+Oops, missed that zeros argument, too?. The structure that should actually
+help us gets in our way. While we have allowed our “reader” to be guided
+by the alignment of the add methods, we totally misguided the eye and
+missed the constructor argument. Rewriting this to match the pattern
+of the other add calls allows the reader to follow the guide easily
+without missing any important information.</p>
+
+<p><img src="/blog/speedfactoring/example_5.png" alt="Help guiding the eye of your reader" /></p>
+
+<p>Now all the methods that actually add something to the list are in
+line and easy to spot without looking back and forth.</p>
+
+<p>What are your code snippets that you broke your flow of reading in
+the past? Because most of the time, parsing the code with our eyes
+is what we do. The trick is not to become a better parser or a better
+reader. The goal should be to write our code in a way that it helps
+guide the reader towards the important aspects of the code. A
+reader needs to be able to skim over the code, ignore the boilerplate
+that does not add to the semantic understanding and still have a
+high comprehension. But in the end, it goes a long way to write
+code that is not only readable but can actually be digested in a
+really fast manner.</p>
+
+<p>Next time you write some piece of code, see if you can actually speed read it.</p>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        November 15, 2016
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/">Merging nested Lists or Arrays with Java 8</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        October 6, 2016
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2016-10-06-wheretoputconstants/">WHERE_TO_PUT.CONSTANTS</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

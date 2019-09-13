@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Benjamin Muskalla</title>
+    <link>https://bmuskalla.github.io/blog/</link>
+    <description>Recent content in Blogs on Benjamin Muskalla</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 08 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bmuskalla.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Refactoring towards speed reading</title>
+      <link>https://bmuskalla.github.io/blog/2018-06-08-refactoring-towards-speed-reading/</link>
+      <pubDate>Fri, 08 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2018-06-08-refactoring-towards-speed-reading/</guid>
+      <description>When was the last time you were in the flow while working through some code? Reading code or doing code reviews is an activity that we do often, yet we don’t often get into the zone doing it. Too many times, we have to slow down, check that last line again or try to figure out the structure of the code. Even though we all follow the same principles for clean code, there is always that gut feel which tells you that one style is better than the other.</description>
+    </item>
+    
+    <item>
+      <title>Merging nested Lists or Arrays with Java 8</title>
+      <link>https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</link>
+      <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</guid>
+      <description>When accessing 3rd party APIs with pagination, we tend to see the same pattern over and over again. Usually, a response (represented as POJO) looks something like this:
+class Result { public List&amp;lt;Item&amp;gt; getItems() { ... } }  Be it from a third party service or your own APIs, after retrieving all results of the API call, we end up with something like a List&amp;lt;Result&amp;gt;. Great. We don’t really care about the response itself, we’re actually interested in all the items of the responses.</description>
+    </item>
+    
+    <item>
+      <title>WHERE_TO_PUT.CONSTANTS</title>
+      <link>https://bmuskalla.github.io/blog/2016-10-06-wheretoputconstants/</link>
+      <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2016-10-06-wheretoputconstants/</guid>
+      <description>When writing software, some conversations happen over and over again. Over the years, I’ve seen different solutions to the same problem that I’d like to share with you. One of those conversations go something like this, even though the answer might differ depending on the team or component.
+ Bob: Hey, I have some string literals here and I was told in the code review that I should extract those into constants.</description>
+    </item>
+    
+    <item>
+      <title>Using Equinox Security in RCP and RAP</title>
+      <link>https://bmuskalla.github.io/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</link>
+      <pubDate>Thu, 13 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</guid>
+      <description>I finally had the time to care about one of my outstanding tasks – provide a tutorial and example how to use Equinox Security. While the tutorial was initially targeted for RAP users, I also added a launch config and a target definition for RCP as the code is the same for both runtimes. The tutorial will provide some hints and pointers how to setup your login procedure, like shown below:</description>
+    </item>
+    
+    <item>
+      <title>Google Summer of Code 2010 is on!</title>
+      <link>https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/</link>
+      <pubDate>Tue, 27 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/</guid>
+      <description>Finally the voting process for this years Google Summer of Code is over and they announced the accepted students. I’m really happy that so many interesting proposals got trough and really looking forward to see the outcome of all the student projects.
+
+Here is the full list of the proposals that got accepted for 2010.
+Improve Eclipse Git integration
+Student: Dariusz Luksza
+Mentor(s): Matthias Sohn
+WAR deployment for RAP/Equinox based applications</description>
+    </item>
+    
+    <item>
+      <title>Sketch your UI</title>
+      <link>https://bmuskalla.github.io/blog/2010-04-26-sketch-your-ui/</link>
+      <pubDate>Mon, 26 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2010-04-26-sketch-your-ui/</guid>
+      <description>From time to time, I’m in the situation when I want to suggest a UI change or even try to come up with a completely new UI. While I love programming, it may be easier in these situations to just “sketch” the idea instead of really getting your feet wet. As many people asked me what I use for UI sketches, I thought I should share it with you – the tool is called WireframeSketcher.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse DemoCamp 2010 in Mannheim</title>
+      <link>https://bmuskalla.github.io/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</link>
+      <pubDate>Thu, 22 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</guid>
+      <description>Ever been to Mannheim? If not – this is your chance to visit this lovely city. For the Helios release, the guys behind the majug² (Mannheimer Java user Group) invite everybody to the Helios Democamp in June. And as Ian already found out: Yes, we love our DemoCamps! It’s always great to have technical discussions over a frosty beverage!
+At the moment, the attendee list is still pretty empty but save yourself a seat while it’s not booked out – they only have 100 seats available.</description>
+    </item>
+    
+    <item>
+      <title>Drawing with RAP? Yup!</title>
+      <link>https://bmuskalla.github.io/blog/2010-04-20-drawing-with-rap-yup/</link>
+      <pubDate>Tue, 20 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2010-04-20-drawing-with-rap-yup/</guid>
+      <description>I have to admit, I’m a little nervous what happens with the RAP community after this post. At least for me, the last days were pretty exciting. Some days ago, Ivan from the RAP team committed the initial support for a GC (GraphicsContext) for RAP. Currently restricted to the Canvas widget, the GC provides thousands of new use cases for RAP applications. The work by Ivan and Tim is just gorgeous and will help many developers to single-source their applications with even less exceptions.</description>
+    </item>
+    
+    <item>
+      <title>Revamping Eclipse Examples?</title>
+      <link>https://bmuskalla.github.io/blog/2010-04-14-revamping-eclipse-examples/</link>
+      <pubDate>Wed, 14 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2010-04-14-revamping-eclipse-examples/</guid>
+      <description>Even though I’ve been involved in the Eclipse community for around 5 years, I’m still amazed by the projects that are hosted under the Eclipse umbrella. As an “insider”, I have a pretty good overview of many projects and at least a rough picture of all the other cool stuff. While I love working with EclipseRT technologies like Equinox, RAP, EclipseLink, ECF or &amp;lt;insert your project here&amp;gt;, I always find myself in the same situation.</description>
+    </item>
+    
+    <item>
+      <title>EMF and RAP &amp; what a lovely pair</title>
+      <link>https://bmuskalla.github.io/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</link>
+      <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</guid>
+      <description>During the last weeks, Kenn and I worked together to support EMF generated editors running on RAP. I’m always mesmerized by how effective such synergies can be used when people from different teams work together for a bigger goal. Kudos to Kenn for his great work in EMF by refactoring the EMF UI bundles (namely o.e.emf.ui.common and o.e.emf.ui.edit) in order to single-source them. But what does that mean for the community?</description>
+    </item>
+    
+    <item>
+      <title>EclipseRT &amp; RAP around the world</title>
+      <link>https://bmuskalla.github.io/blog/2009-11-23-eclipsert-rap-around-the-world/</link>
+      <pubDate>Mon, 23 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-11-23-eclipsert-rap-around-the-world/</guid>
+      <description>We’re all looking forward to talk about EclipseRT, Equinox and RAP at the DemoCamps around the world. In case you want to catch us and talk about Eclipse and related topics, just join one of the DemoCamps near you. Besides many other interesting talks, we’ll mostly cover EclipseRT, RAP and p2.
+ Ottawa, ON, Canada – November 24 – Jeff McAffer (EclipseRT)
+ Braunschweig/Hanover, Germany – November 25 – Benjamin Muskalla (RAP) Stuttgart, Germany – November 26 – Jordi Boehme Lopez (p2)</description>
+    </item>
+    
+    <item>
+      <title>Eclipse RAP 1.3 M3 hits the road</title>
+      <link>https://bmuskalla.github.io/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</link>
+      <pubDate>Mon, 16 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</guid>
+      <description>After another 6 weeks of working hard towards the Helios Release, we’re a step closer. RAP M3 for Eclipse 3.6 is out and can be obtained from the RAP project page. Besides another 130 bugfixes and many New and Noteworthy features, here are my personal favorites of this milestone:
+Non-shared SWT resources
+Finally, we decided to provide constructors and a dispose mechanism for SWT resources like fonts, images, colors and cursors.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse RAP 1.3 M2 Released</title>
+      <link>https://bmuskalla.github.io/blog/2009-10-08-eclipse-rap-1-3-m2-released/</link>
+      <pubDate>Thu, 08 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-10-08-eclipse-rap-1-3-m2-released/</guid>
+      <description>The RAP team is proud to announce the second milestone for the Helios release.
+As Holger already mentioned in his blog post, part of the milestone is a new design option for RAP applications. You can either use it as is or customize it depending on your needs.
+
+Together with the new fancy design, there is also a new Configuration dialog to enable and disable the view actions per stack.</description>
+    </item>
+    
+    <item>
+      <title>Picasso paints the web with RAP</title>
+      <link>https://bmuskalla.github.io/blog/2009-09-11-picasso-paints-the-web/</link>
+      <pubDate>Fri, 11 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-09-11-picasso-paints-the-web/</guid>
+      <description>Whenever I’m working on UI stuff, something always goes terribly wrong 😉 Sometimes it’s only a margin or padding, other times it a composite that crosses my path. I was pretty happy that Chris Aniszczyk and Simon Archer hacked together Picasso, which helps you to identify some of these layout issues. As you may know, most of the time I work on the Rich Ajax Platform (RAP) and come across the same issues.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse e4 on the web</title>
+      <link>https://bmuskalla.github.io/blog/2009-08-25-e4-on-the-web/</link>
+      <pubDate>Tue, 25 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-08-25-e4-on-the-web/</guid>
+      <description>With e4 0.9 out in the wild, we should think again about the goals e4 tries to provide. One of them was to reduce the gap between Desktop and Web – not only speaking of reusing widgets but also to enable the platform handle multi-user scenarios. While the core e4 team concentrated on eliminating bad smells like singletons, the RAP team worked on better support for single sourcing applications in general.</description>
+    </item>
+    
+    <item>
+      <title>Integrating BIRT into RAP applications</title>
+      <link>https://bmuskalla.github.io/blog/2009-07-06-integrating-birt-into-rap-applications/</link>
+      <pubDate>Mon, 06 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-07-06-integrating-birt-into-rap-applications/</guid>
+      <description>Finally I had some time to write down some of my experiences with integrating the Business Intelligence Reporting Tools (BIRT) into a Rich Ajax Platform (RAP) application. I wrote it all down in a small tutorial that shows how you can integrate charts and reports seamlessly in your RAP application. Topics covered in the tutorial include how to setup the environment to let BIRT and RAP play well together.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse Galileo and RAP</title>
+      <link>https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/</link>
+      <pubDate>Fri, 03 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/</guid>
+      <description>As Galileo is out in the wild and we are all already working on Helios… I thought it would be handy to give a quick overview of the New and Noteworthy features the RAP team worked on for Galileo. Besides many, many bug fixes… we still found time to provide several new features. On top of the new features, we focused on making single sourcing even easier to do.</description>
+    </item>
+    
+    <item>
+      <title>Tease the RAP committers!</title>
+      <link>https://bmuskalla.github.io/blog/2009-03-13-tease-the-rap-committers/</link>
+      <pubDate>Fri, 13 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2009-03-13-tease-the-rap-committers/</guid>
+      <description>Ok, it’s getting tough. Only 9 days left before EclipseCon officially starts. All contributors and committers around me are already swarming around to get the demos and presentations ready – besides fixing bugs for the upcoming M6 build. But why is everybody so excited about EclipseCon? I think the numerous talks are only one side of the coin. Personally the way more interesting part is the come-together of all people you know from bug reports, mailing lists and newsgroups.</description>
+    </item>
+    
+  </channel>
+</rss>

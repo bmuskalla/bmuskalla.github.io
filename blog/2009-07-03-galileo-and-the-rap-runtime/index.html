@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Eclipse Galileo and RAP</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/">Eclipse Galileo and RAP</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          July 3, 2009
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            3 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">api</span>
+            
+            <span class="label label-success">galileo</span>
+            
+            <span class="label label-success">new and noteworthy</span>
+            
+            <span class="label label-success">performance</span>
+            
+            <span class="label label-success">rap</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
+
+<p>As Galileo is out in the wild and we are all already working on Helios…
+I thought it would be handy to give a quick overview of the <a href="https://eclipse.org/rap/">New and
+Noteworthy</a> features the RAP team worked on for Galileo. Besides
+many, many bug fixes… we still found time to provide several new
+features. On top of the new features, we focused on making single
+sourcing even easier to do.</p>
+
+<h4 id="new-look-and-feel">New Look and Feel</h4>
+
+<p><img src="/blog/es/rap_addressbook_business-300x258.png" alt="rap\_addressbook\_business" /></p>
+
+<p>This is one of the biggest features of RAP released as part of the
+train. As <a href="https://eclipsesource.com/blogs/2009/06/17/eclipse-galileo-feature-top-10-list-number-8/">Ian</a> already pointed out correctly:</p>
+
+<blockquote>
+<p><span style="font-family: arial, helvetica, sans-serif; line-height:
+normal; font-size: 12px; color: #4d4d4d;">One of the common complaints
+about RAP was that it doesn’t look like a <strong>web application</strong>.</span></p>
+</blockquote>
+
+<p>While this was true in the past, we worked really hard to provide the
+community a clean and easy way <a href="https://help.eclipse.org/galileo/index.jsp?topic=/org.eclipse.rap.help/help/html/advanced/look-and-feel.html">how to</a> customize the whole workbench
+styling.</p>
+
+<h4 id="cell-editors">Cell Editors</h4>
+
+<p>It’s finally done – RAP supports cell editors in the Table. As this was
+a really long-standing issue we’re more than happy to have it in 1.2.</p>
+
+<p><img src="/blog/es/celleditors-300x199.png" alt="Celleditors in
+RAP" title="Celleditors in RAP" /></p>
+
+<p>Ed, now it’s time to give the whole “<a href="https://ed-merks.blogspot.com/2008/01/emf-and-rap-go-great-together-too.html">generated EMF editor on RAP</a>”
+idea a new spin! For anybody interested in this story, please CC
+yourself on <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=213988">this bug</a>.</p>
+
+<h4 id="performance-amp-memory">Performance &amp; Memory</h4>
+
+<p>The RAP team really had a great time for this release – we just sat
+there and waited for the browsers to become even faster…as this was a
+really silly task we decided to do something:</p>
+
+<p><strong>Improvement of Session Startup Performance</strong></p>
+
+<p>First the creating of the startup page is less CPU intensive. Second the
+javascript library content is not embedded in the startup page anymore
+and will be delivered separately. As the library content doesn’t change
+after server start it can be zipped once and buffered. This reduces CPU
+usage significantly. The library is stored in the browser’s cache and
+need not to be reloaded on subsequent application visits.</p>
+
+<p><strong>Client-side memory improvements</strong></p>
+
+<p>Included is also a new version of the Javascript library <a href="https://qooxdoo.org">qooxdoo</a>.
+Thanks to the great support by the RAP
+community, most notably from Stefan Hansel who tracked down a number of
+significant memory leaks in qooxdoo and provided patches to the qooxdoo
+developers, this version now brings a major improvement in client memory
+consumption. With this qooxdoo version, the long-standing memory leakage
+problems of RAP especially in Internet Explorer are resolved. Thanks to
+everyone who helped making this possible!</p>
+
+<h4 id="new-api-amp-widgets">New API &amp; Widgets</h4>
+
+<p>With the idea of <a href="https://eclipse.org/rap/">single sourcing</a> in mind we concentrated on adding
+new API to allow even more reuse of existing SWT/RCP code. Besides many
+small things like Display#timerExec() we also tried to complete the set
+of widgets. With 8 (yes, eight) new widgets in this release, these two
+are my personal favorites and often requested by the community.</p>
+
+<h4 id="datetime">DateTime</h4>
+
+<p><img src="/blog/es/RAPDateTime.png" alt="RAPDateTime" title="RAPDateTime" /></p>
+
+<h4 id="formtext-forms">FormText (Forms)</h4>
+
+<p><img src="/blog/es/RAPFormText-300x148.png" alt="RAPFormText" title="RAPFormText" /></p>
+
+<h4 id="cursor-support">Cursor Support</h4>
+
+<p><img src="/blog/es/RAPCustomCursor.png" alt="RAPCustomCursor" title="RAPCustomCursor" /></p>
+
+<h4 id="summary">Summary</h4>
+
+<p>In case you’re not yet sure how “single sourcing” works – Ralf and
+Rüdiger would be happy to explain it to you step-by-step in their
+upcoming <a href="https://live.eclipse.org/node/718">webinar</a>.</p>
+
+<p>In summary, we’re quite happy with the current 1.2 release but are
+already looking forward to the Helios release train.</p>
+
+<p>If you have anything you want to see in 1.3, don’t hesitate and drop us
+a <a href="https://eclipse.org/rap/">note</a>.<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2009/07/03/galileo-and-the-rap-runtime/">EclipseSource Blog</a>
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 13, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/">Using Equinox Security in RCP and RAP</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 27, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 20, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-20-drawing-with-rap-yup/">Drawing with RAP? Yup!</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>
