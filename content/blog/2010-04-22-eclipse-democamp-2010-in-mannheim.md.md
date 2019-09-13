@@ -28,7 +28,9 @@ to see more demos of how people use Eclipse as IDE or runtime.
 [![](https://wiki.eclipse.org/images/8/89/Eclipse-camp.gif "DemoCamp")
 
 Hope to see you there for another great DemoCamp and ad-hoc
-Stammtisch!
+Stammtisch![^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2010/04/22/eclipse-democamp-2010-in-mannheim/)
 
 
 

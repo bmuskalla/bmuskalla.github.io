@@ -33,7 +33,9 @@ select and button and you can modify everything in the Properties View).
 As Eclipse commiter, you can get a [free licence][6] of the plugin or
 you can buy the plugin from the author if you want to use it
 commercially. Either way, give it a try the next time you want to mock a
-new UI prototype.
+new UI prototype.[^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2010/04/26/sketch-your-ui/)
 
 [1]: https://bugs.eclipse.org/bugs/show_bug.cgi?id=245308
 [2]: https://eclipsesource.com/blogs/2010/04/14/revamping-eclipse-examples/

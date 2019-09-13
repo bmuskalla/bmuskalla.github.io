@@ -49,7 +49,9 @@ I’m pretty excited to see how the community can profit from the new
 Canvas implementation. Want to try it out? Either get the current RAP
 runtime from [CVS][9] or wait some days until we can publish RAP M7
 (which has several other cool [new &amp; noteworthy][9]
-items).
+items).[^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2010/04/20/drawing-with-rap-yup/)
 
 
 

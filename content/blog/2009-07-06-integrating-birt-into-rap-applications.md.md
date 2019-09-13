@@ -21,7 +21,9 @@ together.
 
 Many thanks to BIRT committer, Virgil Dodson, to help with this
 tutorial- it was really great to get Eclipse committers from different
-projects working together!
+projects working together![^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2009/07/06/integrating-birt-into-rap-applications/)
 
 
 

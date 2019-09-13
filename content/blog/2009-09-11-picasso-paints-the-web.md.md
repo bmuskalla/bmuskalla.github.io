@@ -22,7 +22,9 @@ way to get it working for RAP.
 
 In case you’re struggling with these issues too –  and working on RAP
 applications, please add your vote to [bug 267975][5] so we can use
-Picasso on both runtimes.
+Picasso on both runtimes.[^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2009/09/11/picasso-paints-the-web/)
 
 
 

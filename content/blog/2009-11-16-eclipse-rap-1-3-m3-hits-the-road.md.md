@@ -45,7 +45,9 @@ clean up your session. In addition you can queue runnables via
 Display#disposeExec that are executed once the session dies.
 
 I hope you all enjoy the new milestone and give as feedback as fast as
-possible, API and feature freeze  is approaching 😉
+possible, API and feature freeze  is approaching 😉[^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2009/11/16/eclipse-rap-1-3-m3-hits-the-road/)
 
 
 

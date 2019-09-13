@@ -48,7 +48,7 @@ configuration and a cheatsheet or something. In the end, the user should
 be able to try out another Eclipse technology within 2 clicks: New
 Example &gt; That technology, run!
 
-![](https://eclipsesource.com/wp-content/uploads/2010/04/examples_wizard.png
+![](/blog/es/examples_wizard.png
 "examples_wizard")
 
 Basically PDE already provides many of these things but it’s not yet at
@@ -63,7 +63,9 @@ this ready for Helios, but I’m pretty confident that we could do
 something like this in the timeframe for the [I…][10] release train.
 Would other projects be interested in such an approach to distribute
 their examples? Please leave a comment on [this bug][11] if you do so to
-collect ideas, wishes and requirements.</div></div></div>
+collect ideas, wishes and requirements.[^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2010/04/14/revamping-eclipse-examples/)
 
 
 

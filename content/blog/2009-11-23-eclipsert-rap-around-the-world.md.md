@@ -31,7 +31,9 @@ Muskalla (EclipseRT)
 * [Hamburg][8], Germany – December 4 – Jochen Krause (RAP)
 
 I’m really looking forward to see you at the DemoCamps, as always it
-tends to be a lot of fun!</div></div></div>
+tends to be a lot of fun![^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2009/11/23/eclipsert-rap-around-the-world/)
 
 
 

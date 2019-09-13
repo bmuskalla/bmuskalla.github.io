@@ -23,12 +23,12 @@ active Subject. I made up this example to be as **simple** as possible
 to demonstrate the key concepts of Equinox Security, and not the ones
 from RAP/RCP.
 
-[![](https://eclipsesource.com/wp-content/uploads/2010/05/rapsec_subject.png)][3]
+[![](/blog/es/rapsec_subject.png)][3]
 
 As I said, you can either choose between RAP as runtime (above) or RCP
 (below).
 
-[![](https://eclipsesource.com/wp-content/uploads/2010/05/rcpsec_subject.png)][4]
+[![](/blog/es/rcpsec_subject.png)][4]
 
 In addition to the authentication mechanism, I wrote a pretty simple
 LoginModule to show how to connect your authentication process to an
@@ -37,7 +37,9 @@ alternative backend (eg. LDAP, Kerberos, …).
 As I put the [tutorial][5] into the Eclipse wiki, I [encourage][6]
 everyone to extend the tutorial with hints, tricks or ideas what you can
 do with Equinox Security. Hope the tutorial helps to get up to speed how
-to use secure your RCP/RAP applications.</div></div></div>
+to use secure your RCP/RAP applications.[^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2010/05/13/using-equinox-security-in-rcp-and-rap/)
 
 
 

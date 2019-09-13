@@ -41,7 +41,9 @@ for you. We’re pretty excited about the Helios release and looking
 forward to the next milestone.
 
 Be sure to check out the whole [New &amp; Noteworthy][6] as there are
-much more details we added in M2!
+much more details we added in M2![^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2009/10/08/eclipse-rap-1-3-m2-released/)
 
 
 

@@ -18,7 +18,7 @@ o.e.emf.ui.edit) in order to single-source them. But what does that mean
 for the community?
 
 
-![](https://eclipsesource.com/wp-content/uploads/2010/03/rapemf-e1269224344251.png
+![](/blog/es/rapemf-e1269224344251.png
 "rapemf")
 
 Go out, grab EMF &amp; RAP M6 from Helios, get your model ready, fire up
@@ -26,14 +26,16 @@ properties view and switch “Rich Ajax Platform” to true. Hit the magic
 “Generate All” button and you’re done – an EMF backed RAP application.
 
 
-![](https://eclipsesource.com/wp-content/uploads/2010/03/emfrapapp-300x210.png
+![](/blog/es/emfrapapp-300x210.png
 "emfrapapp")
 
 For the details, please refer to the [EMF/RAP integration][5] wiki page.
 
 In case you want to see what else is going on in the RAP space right
 now, I’ll be giving a [RAP 1.3 N&amp;N talk][6] tomorrow at EclipseCon.
-Hope to see you there!
+Hope to see you there![^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2010/03/22/emf-and-rap-what-a-lovely-pair/)
 
 
 [1]: https://kenn-hussey.blogspot.com/

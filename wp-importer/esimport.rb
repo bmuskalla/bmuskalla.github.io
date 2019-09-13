@@ -79,6 +79,5 @@ end
 
 posts.each do |posturl|
 #postsTest.each do |posturl|
-    #puts "Converting " + posturl
     convertPost(posturl)
 end

@@ -65,7 +65,9 @@ Congratulations to all the students and a big kudos to the organizers
 and mentors for their choice. As every year, it is pretty difficult to
 dismiss so many other good proposals but there were only 11 slots
 available this year for Eclipse. Looking forward to a great
-[summer][3]!
+[summer][3]![^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2010/04/27/google-summer-of-code-2010-is-on/)
 
 
 

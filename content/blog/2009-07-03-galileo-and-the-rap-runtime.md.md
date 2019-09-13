@@ -67,9 +67,8 @@ community, most notably from Stefan Hansel who tracked down a number of
 significant memory leaks in qooxdoo and provided patches to the qooxdoo
 developers, this version now brings a major improvement in client memory
 consumption. With this qooxdoo version, the long-standing memory leakage
-problems of RAP especially in Internet Explorer are resolved. <span
-style="line-height: 16px; font-size: 12px;">Thanks to everyone who
-helped making this possible!</span>
+problems of RAP especially in Internet Explorer are resolved. Thanks to
+everyone who helped making this possible!
 
 #### New API &amp; Widgets
 
@@ -104,7 +103,9 @@ In summary, we’re quite happy with the current 1.2 release but are
 already looking forward to the Helios release train.
 
 If you have anything you want to see in 1.3, don’t hesitate and drop us
-a [note][1].
+a [note][1].[^footnote]
+
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2009/07/03/galileo-and-the-rap-runtime/)
 
 [1]: https://eclipse.org/rap/
 [2]: https://eclipsesource.com/wp-content/uploads/2009/06/rap_addressbook_business.png

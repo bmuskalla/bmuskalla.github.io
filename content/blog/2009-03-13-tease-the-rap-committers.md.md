@@ -32,8 +32,9 @@ the chance to poke us for all the [bugs][7] we didn’t fix yet 😉 Or if
 you’re interested to see any of the long-standing feature requests to be
 added to the plan – no problem (at least if you have enough beer for the
 team)! We’re looking forward to some lively discussions – not just as
-part of the BoF!
+part of the BoF![^footnote]
 
+[^footnote]: Originally published on [EclipseSource Blog](https://eclipsesource.com/blogs/2009/03/13/tease-the-rap-committers/)
 
 
 [1]: https://wiki.eclipse.org/Galileo#Milestones_and_Release_Candidates
