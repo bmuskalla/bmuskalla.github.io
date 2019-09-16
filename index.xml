@@ -59,6 +59,15 @@ class Result { public List&amp;lt;Item&amp;gt; getItems() { ... } }  Be it from 
     </item>
     
     <item>
+      <title>Talks</title>
+      <link>https://bmuskalla.github.io/talks/</link>
+      <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
+      
+      <guid>https://bmuskalla.github.io/talks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Using Equinox Security in RCP and RAP</title>
       <link>https://bmuskalla.github.io/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</link>
       <pubDate>Thu, 13 May 2010 00:00:00 +0000</pubDate>
