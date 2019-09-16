@@ -50,11 +50,11 @@ class Result { public List&amp;lt;Item&amp;gt; getItems() { ... } }  Be it from 
     </item>
     
     <item>
-      <title>Projects</title>
-      <link>https://bmuskalla.github.io/projects/</link>
+      <title>opensource</title>
+      <link>https://bmuskalla.github.io/opensource/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://bmuskalla.github.io/projects/</guid>
+      <guid>https://bmuskalla.github.io/opensource/</guid>
       <description></description>
     </item>
     
