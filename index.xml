@@ -50,7 +50,7 @@ class Result { public List&amp;lt;Item&amp;gt; getItems() { ... } }  Be it from 
     </item>
     
     <item>
-      <title>opensource</title>
+      <title>Open Source</title>
       <link>https://bmuskalla.github.io/opensource/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
       
