@@ -7,7 +7,7 @@
     <meta name="author" content="Benjamin Muskalla" />
     <meta name="description" content="Describe your website">
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
-    <title>Google Summer of Code 2010 is on!</title>
+    <title>What the heck are logical models?</title>
     <meta name="generator" content="Hugo 0.58.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
@@ -76,103 +76,53 @@ if (!doNotTrack) {
       <div class="container">
         <div class="blog-post">
           <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+            <strong><a href="https://bmuskalla.github.io/blog/2011-09-07-logical-models/">What the heck are logical models?</a></strong>
           </h3>
         </div>
         <div class="blog-title">
           <h4>
-          April 27, 2010
+          September 7, 2011
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            2 min read
+            3 min read
           </h4>
           <h4>
             
-            <span class="label label-success">ecf</span>
+            <span class="label label-success">mylyn</span>
+            
+            <span class="label label-success">git</span>
             
             <span class="label label-success">egit</span>
             
             <span class="label label-success">emf</span>
-            
-            <span class="label label-success">equinox</span>
-            
-            <span class="label label-success">hudson</span>
-            
-            <span class="label label-success">mylyn</span>
-            
-            <span class="label label-success">rap</span>
-            
-            <span class="label label-success">restlet</span>
-            
-            <span class="label label-success">wave</span>
             
           </h4>
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              <p>Finally the voting process for this years Google Summer of Code is over
-and they <a href="https://google-opensource.blogspot.com/2010/04/this-years-google-summer-of-code.html">announced</a> the accepted students. I’m really happy that so
-many interesting proposals got trough and really looking forward to see
-the outcome of all the student projects.</p>
+              <p>Have you ever committed to the repository and got mail afterwards “Hey, this isn’t compiling!”? Likely you committed only some of the changes you made leaving out files required for a successful build. Let’s take a look at a simple example:</p>
 
-<p><a href="https://code.google.com/soc"><img src="/blog/es/gsoc2010.jpeg" alt="" /></a></p>
+<p><img src="/blog/tt/model.png" alt="emf ecore model" /></p>
 
-<p>Here is the full list of the proposals that got accepted for 2010.<br />
- <strong>Improve Eclipse Git integration</strong><br />
- Student: Dariusz Luksza<br />
- Mentor(s): Matthias Sohn</p>
+<p>In this model we have a class element <strong>Some Class</strong> in <em>my.ecore</em> which extends <strong>AnAbstractClass</strong> in <em>Your.ecore</em>. In this scenario, we essentially have a dependency from <em>My.ecore</em> to <em>Your.ecore</em>. For example, renaming the class <strong>AnAbstractClass</strong> in <em>Your.ecore</em> also forces an update of the superclass property in <em>My.ecore</em>. This means we need to handle this change atomically across both files. In Eclipse, this is a called a “Logical Model”.</p>
 
-<p><strong>WAR deployment for RAP/Equinox based applications</strong><br />
- Student: Holger Staudacher<br />
- Mentor(s): Ruediger Herrmann</p>
+<p>A logical model is not necessarily related to EMF but a general concept to represent related files. While we use EMF in this example, the same applies to resources given that there is a corresponding model provider (more on that later). In the past, using CVS or Git as your SCM of choice, committing only changes for one of these files resulted in a broken repository state. Fortunately the Eclipse Platform has had a solution build-in for exactly this problem for years. Being a platform though, Eclipse only provides the necessary hooks but not the actual implementations.</p>
 
-<p><strong>Theme editor for RAP</strong><br />
- Student: Benjamin Muskalla (IRC: benny`work)<br />
- Mentor(s): Ruediger Herrmann</p>
+<p>While the Eclipse CVS integration already supports Logical Models, the support in EGit is currently being reviewed for inclusion in the next major release. This means, whenever you’re working with files that are part of a logical model and you’re about to operate on these files, EGit will help you to include all relevant artifacts. Let’s say are about to commit My.ecore to your repository. This will trigger EGit to reach out to the associated model providers asking the question “I want to work on file X, which files are needed to have a consistent model?”. In the case of .ecore files, the corresponding model provider is <a href="http://www.eclipse.org/emf/compare/">EMF Compare</a> which answers the question and EGit shows a dialog to widen the scope of the commit operation:</p>
 
-<p><strong>Rich Editor For Wiki Markup</strong><br />
- Student: Harshana Eranga Martin<br />
- Mentor(s): David Green</p>
+<p><img src="/blog/tt/selection.png" alt="selection adjustment" /></p>
 
-<p><strong>index based model compare match engine</strong><br />
- Student: Stefan Leopold<br />
- Mentor(s): Cedric Brun</p>
+<p>This not only works when committing files to the repository but also when you replace or compare files with an older version.</p>
 
-<p><strong>Restlet integration with Equinox</strong><br />
- Student: Rajeev Sampath<br />
- Mentor(s): Bryan Hunt</p>
+<p><img src="/blog/tt/compare.png" alt="selection adjustment" /></p>
 
-<p><strong>C++ editor enhancements</strong><br />
- Student: Tomasz Wesolowski<br />
- Mentor(s): Alena Laskavaia</p>
-
-<p><strong>DNS-SD based wide-area ECF discovery provider</strong><br />
- Student: Markus Alexander Kuppe (IRC: lemmy)<br />
- Mentor(s): Scott Lewis</p>
-
-<p><strong>Hudson Integration for Mylyn</strong><br />
- Student: Markus Knittig<br />
- Mentor(s): Steffen Pingel</p>
-
-<p><strong>Google Wave ECF provider</strong><br />
- Student: Sebastian Schmidt (IRC: sebs)<br />
- Mentor(s): Mustafa Isik</p>
-
-<p><strong>Integrate GMF runtime with Mylyn task focused UI</strong><br />
- Student: Yongming Luo<br />
- Mentor(s): Mariot Chauvin</p>
-
-<p>Congratulations to all the students and a big kudos to the organizers
-and mentors for their choice. As every year, it is pretty difficult to
-dismiss so many other good proposals but there were only 11 slots
-available this year for Eclipse. Looking forward to a great
-<a href="https://wiki.eclipse.org/Google_Summer_of_Code_2010#Projects">summer</a>!<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<p>The features in EGit are only one side of the equation. We also need a tool that identifies the list of resources that are related to a given set of files. In the open source Eclipse ecosystem, EMF Compare is currently the only provider that handles the notation of logical models. With the support in CVS and EGit, I hope more plugins will contribute model providers to help users keep their repositories stable.<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
 <div class="footnotes">
 
 <hr />
 
 <ol>
-<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2010/04/27/google-summer-of-code-2010-is-on/">EclipseSource Blog</a>
+<li id="fn:footnote">Originally published on <a href="https://www.tasktop.com/blog/what-heck-are-logical-models/">Tasktop Blog</a>
  <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
 </ol>
 </div>
@@ -197,12 +147,12 @@ available this year for Eclipse. Looking forward to a great
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
                       <h6 style="text-align: right">
-                        September 7, 2011
+                        February 16, 2011
                       </h6>
                     </div>
                     <div class="col-sm-8 col-md-8 col-lg-8">
                       <h6 style="text-align: left">
-                        <strong><a href="/blog/2011-09-07-logical-models/">What the heck are logical models?</a></strong>
+                        <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
                       </h6>
                     </div>
                   </div>
@@ -210,12 +160,12 @@ available this year for Eclipse. Looking forward to a great
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
                       <h6 style="text-align: right">
-                        February 16, 2011
+                        April 27, 2010
                       </h6>
                     </div>
                     <div class="col-sm-8 col-md-8 col-lg-8">
                       <h6 style="text-align: left">
-                        <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
                       </h6>
                     </div>
                   </div>

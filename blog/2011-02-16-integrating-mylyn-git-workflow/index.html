@@ -7,7 +7,7 @@
     <meta name="author" content="Benjamin Muskalla" />
     <meta name="description" content="Describe your website">
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
-    <title>Google Summer of Code 2010 is on!</title>
+    <title>Integrating Mylyn into your Git workflow</title>
     <meta name="generator" content="Hugo 0.58.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
@@ -76,103 +76,53 @@ if (!doNotTrack) {
       <div class="container">
         <div class="blog-post">
           <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+            <strong><a href="https://bmuskalla.github.io/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
           </h3>
         </div>
         <div class="blog-title">
           <h4>
-          April 27, 2010
+          February 16, 2011
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            2 min read
+            3 min read
           </h4>
           <h4>
             
-            <span class="label label-success">ecf</span>
+            <span class="label label-success">mylyn</span>
+            
+            <span class="label label-success">git</span>
             
             <span class="label label-success">egit</span>
             
-            <span class="label label-success">emf</span>
-            
-            <span class="label label-success">equinox</span>
-            
-            <span class="label label-success">hudson</span>
-            
-            <span class="label label-success">mylyn</span>
-            
-            <span class="label label-success">rap</span>
-            
-            <span class="label label-success">restlet</span>
-            
-            <span class="label label-success">wave</span>
+            <span class="label label-success">tasktop</span>
             
           </h4>
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              <p>Finally the voting process for this years Google Summer of Code is over
-and they <a href="https://google-opensource.blogspot.com/2010/04/this-years-google-summer-of-code.html">announced</a> the accepted students. I’m really happy that so
-many interesting proposals got trough and really looking forward to see
-the outcome of all the student projects.</p>
+              <p>In January, most of the EGit committers met at the “EGit Summit” in Walldorf, Germany. We had a blast hanging out together, planning the future direction for EGit/JGit, and implementing new features.</p>
 
-<p><a href="https://code.google.com/soc"><img src="/blog/es/gsoc2010.jpeg" alt="" /></a></p>
+<p>Thanks again to the SAP team for hosting the event.</p>
 
-<p>Here is the full list of the proposals that got accepted for 2010.<br />
- <strong>Improve Eclipse Git integration</strong><br />
- Student: Dariusz Luksza<br />
- Mentor(s): Matthias Sohn</p>
+<p>As you can see on the whiteboard, there were numerous ideas suggested by the EGit committers who attended. We organized and prioritized the topics and then broke up into small teams. One user story that was commonly asked for was improved integration between EGit and Mylyn – Chris Aniszczyk (Red Hat), Manuel Doninger (Markant) and I (Tasktop) decided to form a team to make this improved integration real.</p>
 
-<p><strong>WAR deployment for RAP/Equinox based applications</strong><br />
- Student: Holger Staudacher<br />
- Mentor(s): Ruediger Herrmann</p>
+<p>“EGit Mylyn (Incubation)”, a new feature that came from our activities at the Summit, allows you to have a tighter integration between Mylyn and EGit. This feature is available from the current update site.</p>
 
-<p><strong>Theme editor for RAP</strong><br />
- Student: Benjamin Muskalla (IRC: benny`work)<br />
- Mentor(s): Ruediger Herrmann</p>
+<p>We were fortunate to have a starting point from Manuel and others, and as result, by the end of the first day of the Summit, initial support for pre-populating the commit message from the active task was completed. This means that if you’re activly working on a task, once you fire up the commit dialog, it is prefilled with the commit message for the activated task. See the screenshots below.</p>
 
-<p><strong>Rich Editor For Wiki Markup</strong><br />
- Student: Harshana Eranga Martin<br />
- Mentor(s): David Green</p>
+<p>The industry analysts like Forrester and Gartner have been emphasizing the importance of visibility and traceability in today’s modern development efforts. One great feature we were able to implement for achieving better traceability is support for linking between commits and tasks. With this feature, once a you fire up the History view of your git project, you’re able to open up the task corresponding to the commit with a single click. We implemented the same feature for the Git Synchronize view as well.</p>
 
-<p><strong>index based model compare match engine</strong><br />
- Student: Stefan Leopold<br />
- Mentor(s): Cedric Brun</p>
+<p>In the future, we want to work on an even tighter integration between EGit and Mylyn. One idea is per-task branching. This essentially means that if you activate a task, EGit automatically creates a “feature branch” for your task and later it will merge it back into the master branch for pushing upstream. Manuel already has a working prototype which will hopefully find its way into the EGit master soon. If you’re interested in this idea, take look at <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=309578">this task</a>.</p>
 
-<p><strong>Restlet integration with Equinox</strong><br />
- Student: Rajeev Sampath<br />
- Mentor(s): Bryan Hunt</p>
+<p>Besides the Mylyn integration, many other new features and fixes found their way into the 0.11 stream of EGit. You may want to check out the <a href="http://wiki.eclipse.org/EGit/New_and_Noteworthy/0.11">New &amp; Noteworthy</a>.</p>
 
-<p><strong>C++ editor enhancements</strong><br />
- Student: Tomasz Wesolowski<br />
- Mentor(s): Alena Laskavaia</p>
-
-<p><strong>DNS-SD based wide-area ECF discovery provider</strong><br />
- Student: Markus Alexander Kuppe (IRC: lemmy)<br />
- Mentor(s): Scott Lewis</p>
-
-<p><strong>Hudson Integration for Mylyn</strong><br />
- Student: Markus Knittig<br />
- Mentor(s): Steffen Pingel</p>
-
-<p><strong>Google Wave ECF provider</strong><br />
- Student: Sebastian Schmidt (IRC: sebs)<br />
- Mentor(s): Mustafa Isik</p>
-
-<p><strong>Integrate GMF runtime with Mylyn task focused UI</strong><br />
- Student: Yongming Luo<br />
- Mentor(s): Mariot Chauvin</p>
-
-<p>Congratulations to all the students and a big kudos to the organizers
-and mentors for their choice. As every year, it is pretty difficult to
-dismiss so many other good proposals but there were only 11 slots
-available this year for Eclipse. Looking forward to a great
-<a href="https://wiki.eclipse.org/Google_Summer_of_Code_2010#Projects">summer</a>!<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<p>If you have your own ideas for how EGit and Mylyn can work together more seamlessly, please comment on this post or <a href="https://bugs.eclipse.org/bugs/enter_bug.cgi?product=EGit&amp;rep_platform=All&amp;op_sys=All">open a new feature request</a> in the EGit Bugzilla component. We always are excited to get new committers as well as new contributors to EGit who can help us make it an even better project.<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
 <div class="footnotes">
 
 <hr />
 
 <ol>
-<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2010/04/27/google-summer-of-code-2010-is-on/">EclipseSource Blog</a>
+<li id="fn:footnote">Originally published on <a href="https://www.tasktop.com/blog/integrating-mylyn-your-git-workflow/">Tasktop Blog</a>
  <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
 </ol>
 </div>
@@ -210,12 +160,12 @@ available this year for Eclipse. Looking forward to a great
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
                       <h6 style="text-align: right">
-                        February 16, 2011
+                        April 27, 2010
                       </h6>
                     </div>
                     <div class="col-sm-8 col-md-8 col-lg-8">
                       <h6 style="text-align: left">
-                        <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
                       </h6>
                     </div>
                   </div>

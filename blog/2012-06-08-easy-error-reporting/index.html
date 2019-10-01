@@ -7,7 +7,7 @@
     <meta name="author" content="Benjamin Muskalla" />
     <meta name="description" content="Describe your website">
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
-    <title>Google Summer of Code 2010 is on!</title>
+    <title>Easy error reporting for your users</title>
     <meta name="generator" content="Hugo 0.58.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
@@ -76,103 +76,86 @@ if (!doNotTrack) {
       <div class="container">
         <div class="blog-post">
           <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+            <strong><a href="https://bmuskalla.github.io/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a></strong>
           </h3>
         </div>
         <div class="blog-title">
           <h4>
-          April 27, 2010
+          June 8, 2012
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            2 min read
+            3 min read
           </h4>
           <h4>
             
-            <span class="label label-success">ecf</span>
+            <span class="label label-success">mylyn</span>
+            
+            <span class="label label-success">git</span>
             
             <span class="label label-success">egit</span>
             
-            <span class="label label-success">emf</span>
-            
-            <span class="label label-success">equinox</span>
-            
-            <span class="label label-success">hudson</span>
-            
-            <span class="label label-success">mylyn</span>
-            
-            <span class="label label-success">rap</span>
-            
-            <span class="label label-success">restlet</span>
-            
-            <span class="label label-success">wave</span>
+            <span class="label label-success">bugs</span>
             
           </h4>
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              <p>Finally the voting process for this years Google Summer of Code is over
-and they <a href="https://google-opensource.blogspot.com/2010/04/this-years-google-summer-of-code.html">announced</a> the accepted students. I’m really happy that so
-many interesting proposals got trough and really looking forward to see
-the outcome of all the student projects.</p>
+              <p>While working on non-IDE products, one problem often approach us: If something goes wrong when a user is using the product, how do we actually get them to report the problems back to us? Searching for error logs on the harddrive and send them to support@<insert-your-name>? Actually a pretty brittle approach. From an Eclipse perspective, it’s pretty clear what to do: fire up the webbrowser, go to bugs.eclipse.org and enter a new bug report. But wait…isn’t that even more complicated? Depending on your audience, <strong>186</strong> bugzilla products with <strong>2564</strong> components offers a pretty good chance to file the bug against the wrong project.</p>
 
-<p><a href="https://code.google.com/soc"><img src="/blog/es/gsoc2010.jpeg" alt="" /></a></p>
+<p>If your user is unable to choose the right component, you actually did a pretty good job of seamlessly integrating your plugin into Eclipse 😉 Some time ago, Mylyn introduced a little feature to actually help users with this problem. Whenever they see an exception in the Error Log, you just right-click it and select “Report as Bug”. Depending on the stacktrace of the problem, it can automatically map the exception to the right product and component in Eclipse.</p>
 
-<p>Here is the full list of the proposals that got accepted for 2010.<br />
- <strong>Improve Eclipse Git integration</strong><br />
- Student: Dariusz Luksza<br />
- Mentor(s): Matthias Sohn</p>
+<p><img src="/blog/tt/Screenshot-Report-as-Bug-.png" alt="Report as Bug" /></p>
 
-<p><strong>WAR deployment for RAP/Equinox based applications</strong><br />
- Student: Holger Staudacher<br />
- Mentor(s): Ruediger Herrmann</p>
+<p>As Mylyn provides this as a generic mechanism every project can hook into, this is an easy way to help your users and contributors to provide feedback. All you need to do is to provide the right set of mappings from your package namespace to the corresponding Bugzilla attributes.</p>
 
-<p><strong>Theme editor for RAP</strong><br />
- Student: Benjamin Muskalla (IRC: benny`work)<br />
- Mentor(s): Ruediger Herrmann</p>
+<pre><code class="language-xml">&lt;extension point=&quot;org.eclipse.mylyn.tasks.bugs.support&quot;&gt;
+  &lt;product
+      featureId=&quot;org.eclipse.egit&quot; id=&quot;org.eclipse.egit&quot; providerId=&quot;org.eclipse&quot;/&gt;
 
-<p><strong>Rich Editor For Wiki Markup</strong><br />
- Student: Harshana Eranga Martin<br />
- Mentor(s): David Green</p>
+    &lt;mapping namespace=&quot;org.eclipse.egit.ui&quot; productId=&quot;org.eclipse.egit&quot;&gt;
+      &lt;property name=&quot;product&quot; value=&quot;EGit&quot;/&gt;
+      &lt;property name=&quot;component&quot; value=&quot;UI&quot;/&gt;
+    &lt;/mapping&gt;
 
-<p><strong>index based model compare match engine</strong><br />
- Student: Stefan Leopold<br />
- Mentor(s): Cedric Brun</p>
+    &lt;mapping namespace=&quot;org.eclipse.egit.core&quot; productId=&quot;org.eclipse.egit&quot;&gt;
+      &lt;property name=&quot;product&quot; value=&quot;EGit&quot;/&gt;
+      &lt;property name=&quot;component&quot; value=&quot;Core&quot;/&gt;
+    &lt;/mapping&gt;
 
-<p><strong>Restlet integration with Equinox</strong><br />
- Student: Rajeev Sampath<br />
- Mentor(s): Bryan Hunt</p>
+    &lt;mapping namespace=&quot;org.eclipse.egit.mylyn&quot; productId=&quot;org.eclipse.egit&quot;&gt;
+      &lt;property name=&quot;product&quot; value=&quot;EGit&quot;/&gt;
+      &lt;property name=&quot;component&quot; value=&quot;Mylyn&quot;/&gt;
+    &lt;/mapping&gt;
+&lt;/extension&gt; 
+</code></pre>
 
-<p><strong>C++ editor enhancements</strong><br />
- Student: Tomasz Wesolowski<br />
- Mentor(s): Alena Laskavaia</p>
+<p><img src="/blog/tt/new_task-300x293.png" alt="New Task" />
+As you can see in the example, we define two types of mapping. The first one is the product mapping. This essentially tells Mylyn to which task repository your project belongs. As we’re using EGit in this example, we’re using the task repository definition of the Eclipse.org Bugzilla instance (see below how to create your own repository provider definition). Once we have this definition in place, the mappings define the exact products and components the bugs should be filed against. If you look at the highlighted mapping above, we’re mapping all exceptions that occurred in the “org.eclipse.egit.core” java package namespace automatically to the EGit product and set the component to Core when the user is about to create a new task. Once you’ve done this, users will automatically get the right choice of options when opening a new Bugzilla bug.</p>
 
-<p><strong>DNS-SD based wide-area ECF discovery provider</strong><br />
- Student: Markus Alexander Kuppe (IRC: lemmy)<br />
- Mentor(s): Scott Lewis</p>
+<p>So you’re not an Eclipse.org project? No problem! The same works with other task repositoryes as well which is highly interesting for products based on Eclipse or if your plugin is using a bug tracker outside the Eclipse.org infrastructure (eg. GitHub).</p>
 
-<p><strong>Hudson Integration for Mylyn</strong><br />
- Student: Markus Knittig<br />
- Mentor(s): Steffen Pingel</p>
+<p>You can always define a new provider and point to the task repository you need and the connector to use. Below you see the extension for Eclipse.org which is contributed by Mylyn.</p>
 
-<p><strong>Google Wave ECF provider</strong><br />
- Student: Sebastian Schmidt (IRC: sebs)<br />
- Mentor(s): Mustafa Isik</p>
+<pre><code class="language-xml">&lt;provider categoryId=&quot;org.eclipse.mylyn.tasks.bugs.openSource&quot;
+                        description=&quot;Eclipse open source community bug tracker&quot;
+                        icon=&quot;icons/branding32/eclipse.png&quot;
+                        id=&quot;org.eclipse&quot; name=&quot;Eclipse.org&quot;
+                        url=&quot;http://eclipse.org/&quot; /&gt;
+                &lt;mapping namespace=&quot;org.eclipse&quot;&gt;
+                        &lt;repository kind=&quot;bugzilla&quot;
+                          url=&quot;https://bugs.eclipse.org/bugs&quot;&gt;
+                        &lt;/repository&gt;
+                &lt;/mapping&gt;
+&lt;/provider&gt;
+</code></pre>
 
-<p><strong>Integrate GMF runtime with Mylyn task focused UI</strong><br />
- Student: Yongming Luo<br />
- Mentor(s): Mariot Chauvin</p>
-
-<p>Congratulations to all the students and a big kudos to the organizers
-and mentors for their choice. As every year, it is pretty difficult to
-dismiss so many other good proposals but there were only 11 slots
-available this year for Eclipse. Looking forward to a great
-<a href="https://wiki.eclipse.org/Google_Summer_of_Code_2010#Projects">summer</a>!<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+<p>With this at hand, I’d love to hear how you encourage your community to contribute back in form of bug reports and feature enhancements?<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
 <div class="footnotes">
 
 <hr />
 
 <ol>
-<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2010/04/27/google-summer-of-code-2010-is-on/">EclipseSource Blog</a>
+<li id="fn:footnote">Originally published on <a href="https://www.tasktop.com/blog/easy-error-reporting-your-users/">Tasktop Blog</a>
  <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
 </ol>
 </div>
@@ -180,19 +163,6 @@ available this year for Eclipse. Looking forward to a great
               <hr>
               <div class="related-posts">
                 <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        June 8, 2012
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a></strong>
-                      </h6>
-                    </div>
-                  </div>
                 
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -216,6 +186,19 @@ available this year for Eclipse. Looking forward to a great
                     <div class="col-sm-8 col-md-8 col-lg-8">
                       <h6 style="text-align: left">
                         <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        April 27, 2010
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
                       </h6>
                     </div>
                   </div>
