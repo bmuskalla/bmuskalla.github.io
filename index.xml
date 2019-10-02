@@ -6,10 +6,20 @@
     <description>Recent content on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 08 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bmuskalla.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Log4j 2 - The Ghost in the logging framework</title>
+      <link>https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/</link>
+      <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/</guid>
+      <description>It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:
+Internally we use Log4j2 as our logging solution of choice (with the various off-the-shelf adapters to handle 3rd libraries with different log frameworks).</description>
+    </item>
     
     <item>
       <title>Refactoring towards speed reading</title>

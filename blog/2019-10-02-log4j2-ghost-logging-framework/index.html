@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    <meta name="description" content="Describe your website">
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Log4j 2 - The Ghost in the logging framework</title>
+    <meta name="generator" content="Hugo 0.58.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/articles/">ARTICLES</a></li>
+        
+        <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/talks/">TALKS</a></li>
+        
+        <li><a href="/vitae/">VITAE</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/">Log4j 2 - The Ghost in the logging framework</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          October 2, 2019
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            6 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">java</span>
+            
+            <span class="label label-success">logging</span>
+            
+            <span class="label label-success">yourkit</span>
+            
+            <span class="label label-success">performance</span>
+            
+            <span class="label label-success">strsubstitutor</span>
+            
+            <span class="label label-success">apache httpclient</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
+
+<p>It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:</p>
+
+<p>Internally we use <a href="https://logging.apache.org/log4j/2.x/">Log4j2</a> as our logging solution of choice (with the various off-the-shelf adapters to handle 3rd libraries with different log frameworks). An interesting aspect about our internal test infrastructure is that we do capture all trace logs during test runs (including http requests, headers, generated test data, etc) but only for the lifetime of a test run. If a test passes, we ignore the logs. If the test fails (or is a flake), we’ll actually send the log to the next appender that is configured (usually a <code>Console</code> or <code>RollingFileAppender</code>)<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
+
+<p>One test started failing rather consistently after we recently changed some of our logging infrastructure and configuration.</p>
+
+<p>That test was using one of our components to connect to a server, post some data, retrieve the data and assert the new data is present. In other words, it was doing some HTTP requests, parsed the data and asserted on that. This represents a rather boring yet important end-to-end test. We run a lot of similar tests against a myriad of server and even more versions of aforementioned. Under regular circumstances the test passed. The fun part started when running the test with trace logging enabled. Enabling trace logging, the tests started to fail pretty consistently &hellip; With a <code>NoHttpResponseException</code>&hellip;And always the same URI.</p>
+
+<p><img src="/blog/ghost-log4j/short-neck-reaction-guy.png" alt="What?" /></p>
+
+<p>After Holger briefly described the situation, it was pretty clear to me that my coding skills are still on vacation as this analysis made absolutely no sense. Even worse, one approach to “fix it” was to limit the size of the logs to a few kilobytes (don’t ask how we got to that point). That made the test pass and the HTTP request to succeed.</p>
+
+<p>At that point, it had to be something that is logged which is causing the problems. Maybe some encoding issue? Are we somehow hitting some edge case with certain unicode characters coming from the server?</p>
+
+<blockquote>
+<p>It wouldn’t be the first time this happens to us; years back, we had fun working with an API that stalled the server for 2-3 minutes if you used any unicode character in your requests - but that’s a story for another day.</p>
+</blockquote>
+
+<p>With the knowledge that it had something to do with how large the logs are, we started digging deeper. To better isolate the problem and reduce the number of things that could possibly contribute to this, we ran the tests again and piped all requests into separate files. This allowed us to try and replay the scenario to see if those requests (which were quite large) had anything specific to them.</p>
+
+<pre><code class="language-bash">$ du -sh *.log | sort
+2.0M	request-11.log
+2.0M	request-8.log
+384K	request-10.log
+384K	request-12.log
+384K	request-3.log
+384K	request-7.log
+496K	request-1.log
+496K	request-13.log
+496K	request-2.log
+496K	request-4.log
+496K	request-5.log
+496K	request-6.log
+496K	request-9.log
+</code></pre>
+
+<p>Interesting enough, we have some outliers here with 2MB for each response from the server. Taking a closer look reveals that these are mostly XML documents (or SOAP envelopes to be specific). While 2 megabytes is a lot of bandwidth, it’s not too uncommon for SOAP-based web services.</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+&lt;soapenv:Body&gt;
+&lt;queryWorkItemsResponse xmlns=&quot;&quot;&gt;
+&lt;ns4:queryWorkItemsReturn uri=&quot;subterra:data-service:objects:/default/ABC${WorkItem}ABC-22908&quot; unresolvable=&quot;false&quot;&gt;....
+</code></pre>
+
+<p>While digging into these things, we had one related observation. The tests in question, while usually taking some time to run, actually took a <em>lot</em> longer when running with trace logging enabled (and failed). It’s not that trace logging comes for free but Log4j2 (like most other logging frameworks noways) is designed to be extremely fast and even <a href="https://logging.apache.org/log4j/2.x/manual/garbagefree.html">garbage-free</a>.
+Just to put out suspicion to rest, let’s write a very simple test case. Take the responses that we just captured and log them (to simulate what we do in our real scenario).</p>
+
+<pre><code class="language-java">public class Reproducer {
+
+	private final Logger logger = LogManager.getLogger(Reproducer.class);
+
+	@Test
+	public void logCapturedServerResponse() throws Exception {
+		File logFile = ...;
+		String log = Files.toString(logFile, Charsets.UTF_8);
+		logger.trace(log);
+	}
+
+}
+</code></pre>
+
+<p>Using a 2MB http response file from above, this test runs for <strong>50s</strong> on a decent MacBook.</p>
+
+<p><img src="/blog/ghost-log4j/long-neck-reaction.jpg" alt="Whaaaaaat?" /></p>
+
+<p>Time to start <a href="https://www.yourkit.com">Yourkit</a> and figure out what exactly is taking us 50s to log a large string. Running the test using the profiler reveals something very interesting.</p>
+
+<p><a href="/blog/ghost-log4j/yourkit.png"><img src="/blog/ghost-log4j/yourkit.png" alt="Whaaaaaat?" /></a></p>
+
+<p>Log4j2 is performing <em>a lot</em> of string substitutions for the pattern layout used by the logs. That is&hellip;surprising. While we use a little bit of a more verbose format, it’s nothing too controversial.
+The pattern we use is <code>%c{3} - %m%n</code>.</p>
+
+<p>As stated on the <a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout">Layouts documentation</a></p>
+
+<ul>
+<li>%c - Outputs the name of the logger that published the logging event.</li>
+<li>%m - Outputs the application supplied message associated with the logging event.</li>
+<li>%n - Outputs the platform dependent line separator character or characters.</li>
+</ul>
+
+<blockquote>
+<p><strong>Caution</strong>: There are some placeholders that actually do require expensive operations (e.g. %M to log the method name of the callee) but none of the was used in this. See <a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#LocationInformation">Location information</a> to learn about those patterns.</p>
+</blockquote>
+
+<p>So we have established that our pattern for logging is quite trivial. We even tried using just <code>%m</code> with no resolution, the test still took about 1 minute to run. While digging into the offending <code>StrSubstitutor</code> class (which is just a fork of the commons-lang <code>StrSubstitutor</code>), there was an interesting bit that caught our eye in the JavaDoc.</p>
+
+<blockquote>
+<p>Variable replacement works in a recursive way. Thus, if a variable value contains a variable then that variable will also be replaced.</p>
+</blockquote>
+
+<p>Huh. Could it be that the responses from the server may actually contain something that log4j2 would recognize as a variable? A quick look at the response gives us the shocking answer. Not only once or twice but some of those SOAP responses contain more than 3000 occurrences of <code>${Project}</code> or <code>${WorkItem}</code>.</p>
+
+<pre><code class="language-xml">&lt;ns8:queryWorkItemsReturn uri=&quot;subterra:data-service:objects:/default/ABC${WorkItem}ABC-22904&quot; unresolvable=&quot;false&quot;&gt;
+</code></pre>
+
+<p>This provoked log4j2 to parse the 2MB responses and replace the “variables” which in turn led to the server closing the connection on us in between.</p>
+
+<p>To be honest, while you can argue about the format and use case, this API decided to use this format represent certain URIs. That Log4j2 is trying to actually interpret the placeholders in values passed in is the (at least to us) the surprising part.</p>
+
+<p>Good for us, log4j2 already provides a flag on the <code>%m</code> placeholder to disable recursive variable substitution. From their documentation:</p>
+
+<blockquote>
+<p>Outputs the application supplied message associated with the logging event.
+Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without using any lookups. Normally calling logger.info(&ldquo;Try ${date:YYYY-MM-dd}&ldquo;) would replace the date template ${date:YYYY-MM-dd} with an actual date. Using nolookups disables this feature and logs the message string untouched.</p>
+</blockquote>
+
+<p>Using the pattern <code>$m{nolookups}%n</code> now only takes half a second to trace log the message.</p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>Having recursive lookups enabled by default is an interesting choice as it may start to slow down your performance unnecessarily if you don’t make use of this feature. But more importantly, this is something to watch out for when it comes to <a href="https://www.owasp.org/index.php/Log_Injection">log forgery/log injection</a> depending on how you consume the log files. Let me know if you experienced similar behaviors and how you worked those out.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:footnote">Let me know in the comments if you’d like to see this being open-sourced.
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 8, 2018
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2018-06-08-refactoring-towards-speed-reading/">Refactoring towards speed reading</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        November 15, 2016
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/">Merging nested Lists or Arrays with Java 8</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        October 6, 2016
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2016-10-06-wheretoputconstants/">WHERE_TO_PUT.CONSTANTS</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

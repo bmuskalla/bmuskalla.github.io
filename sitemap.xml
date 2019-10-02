@@ -4,12 +4,17 @@
   
   <url>
     <loc>https://bmuskalla.github.io/</loc>
-    <lastmod>2018-06-08T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://bmuskalla.github.io/blog/</loc>
-    <lastmod>2018-06-08T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
