@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Benjamin Muskalla</title>
@@ -6,10 +6,20 @@
     <description>Recent content in Blogs on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 02 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bmuskalla.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Manually deleting a package from GitHub Package Registry</title>
+      <link>https://bmuskalla.github.io/blog/2019-11-01-delete-github-package/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2019-11-01-delete-github-package/</guid>
+      <description>You were so excited about the new Package Registry that you immediately added it to your build and published your first package. Unfortunately, it is the time when you realize you had a typo in the name or the group id of your package.
+Let&amp;rsquo;s quickly delete the package and publish again. But not with GitHub. While the documentation states that deleting packages may be possible, it&amp;rsquo;s not easily available. You can either go through GitHub Support or use the GraphQL API.</description>
+    </item>
     
     <item>
       <title>Log4j 2 - The Ghost in the logging framework</title>

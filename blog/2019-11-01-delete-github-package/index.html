@@ -7,7 +7,7 @@
     <meta name="author" content="Benjamin Muskalla" />
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
-    <title>Google Summer of Code 2010 is on!</title>
+    <title>Manually deleting a package from GitHub Package Registry</title>
     <meta name="generator" content="Hugo 0.59.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
@@ -76,149 +76,128 @@ if (!doNotTrack) {
       <div class="container">
         <div class="blog-post">
           <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
+            <strong><a href="https://bmuskalla.github.io/blog/2019-11-01-delete-github-package/">Manually deleting a package from GitHub Package Registry</a></strong>
           </h3>
         </div>
         <div class="blog-title">
           <h4>
-          April 27, 2010
+          November 1, 2019
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            2 min read
+            3 min read
           </h4>
           <h4>
             
-            <span class="label label-success">ecf</span>
+            <span class="label label-success">github</span>
             
-            <span class="label label-success">egit</span>
+            <span class="label label-success">graphql</span>
             
-            <span class="label label-success">emf</span>
-            
-            <span class="label label-success">equinox</span>
-            
-            <span class="label label-success">hudson</span>
-            
-            <span class="label label-success">mylyn</span>
-            
-            <span class="label label-success">rap</span>
-            
-            <span class="label label-success">restlet</span>
-            
-            <span class="label label-success">wave</span>
+            <span class="label label-success">package registry</span>
             
           </h4>
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              <p>Finally the voting process for this years Google Summer of Code is over
-and they <a href="https://google-opensource.blogspot.com/2010/04/this-years-google-summer-of-code.html">announced</a> the accepted students. I’m really happy that so
-many interesting proposals got trough and really looking forward to see
-the outcome of all the student projects.</p>
+              <p>You were so excited about the new <a href="https://help.github.com/en/github/managing-packages-with-github-package-registry/about-github-package-registry">Package Registry</a> that you immediately
+added it to your build and published your first package. Unfortunately,
+it is the time when you realize you had a typo in the name or the group id of your package.</p>
 
-<p><a href="https://code.google.com/soc"><img src="/blog/es/gsoc2010.jpeg" alt="" /></a></p>
+<p>Let&rsquo;s quickly delete the package and publish again. But not with GitHub. While the documentation
+states that deleting packages may be possible, it&rsquo;s not easily available. You can either go
+through GitHub Support or use the GraphQL API. How to do the latter is something I tried and
+thought it would be useful to document here for others.</p>
 
-<p>Here is the full list of the proposals that got accepted for 2010.<br />
- <strong>Improve Eclipse Git integration</strong><br />
- Student: Dariusz Luksza<br />
- Mentor(s): Matthias Sohn</p>
+<p>First off, we need to find the internal ids for the packages we want to delete. The easiest way to access
+data on GitHub using the GitHub GraphQL API is GitHubs <a href="https://developer.github.com/v4/explorer/">GraphQL API Explorer</a>.</p>
 
-<p><strong>WAR deployment for RAP/Equinox based applications</strong><br />
- Student: Holger Staudacher<br />
- Mentor(s): Ruediger Herrmann</p>
+<p>Using the following GraphQL query we can find the packages currently available in our repository. Note that you need to change <code>owner</code>, <code>name</code>, <code>version</code> to match the package you want to find. In case you have a lot of packages, you may need to adapt the <code>first</code> filter as well. In order for this to work, you need to ensure that the token used by the API explorer does have the <code>['read:packages']</code> scope.</p>
 
-<p><strong>Theme editor for RAP</strong><br />
- Student: Benjamin Muskalla (IRC: benny`work)<br />
- Mentor(s): Ruediger Herrmann</p>
+<pre><code class="language-gql">query {
+  repository(owner:&quot;bmuskalla&quot;, name:&quot;package-test&quot;) {
+    registryPackages(first:10){
+      nodes {
+        nameWithOwner
+        packageType
+        version(version:&quot;0.1.0&quot;){
+          id
+        }
+      }
+    }
+  }
+}
+</code></pre>
 
-<p><strong>Rich Editor For Wiki Markup</strong><br />
- Student: Harshana Eranga Martin<br />
- Mentor(s): David Green</p>
+<p>My current packages in that project I used for testing look like in the following screenshot. We have 2 packages using the <code>maven</code> package type.</p>
 
-<p><strong>index based model compare match engine</strong><br />
- Student: Stefan Leopold<br />
- Mentor(s): Cedric Brun</p>
+<p><img src="/blog/pkg-graphql/graphql_packages_red.png" alt="GitHub Packages" /></p>
 
-<p><strong>Restlet integration with Equinox</strong><br />
- Student: Rajeev Sampath<br />
- Mentor(s): Bryan Hunt</p>
+<p>Using the <code>query</code> above, you should see a a response similar to the following.</p>
 
-<p><strong>C++ editor enhancements</strong><br />
- Student: Tomasz Wesolowski<br />
- Mentor(s): Alena Laskavaia</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;repository&quot;: {
+      &quot;registryPackages&quot;: {
+        &quot;nodes&quot;: [
+          {
+            &quot;nameWithOwner&quot;: &quot;bmuskalla/oopsi&quot;,
+            &quot;packageType&quot;: &quot;MAVEN&quot;,
+            &quot;version&quot;: null
+          },
+          {
+            &quot;nameWithOwner&quot;: &quot;bmuskalla/oopsi.package-test&quot;,
+            &quot;packageType&quot;: &quot;MAVEN&quot;,
+            &quot;version&quot;: {
+              &quot;id&quot;: &quot;MDE0OlBhY3thZ2VWZXJzaW9uMjMzMDUx&quot;
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+</code></pre>
 
-<p><strong>DNS-SD based wide-area ECF discovery provider</strong><br />
- Student: Markus Alexander Kuppe (IRC: lemmy)<br />
- Mentor(s): Scott Lewis</p>
+<p>Above we can see the internal ids for each individual package (careful to use the version id).
+Using this identifier, we can come up with the right <code>deletePackageVersion</code> <code>mutation</code> to delete the package.</p>
 
-<p><strong>Hudson Integration for Mylyn</strong><br />
- Student: Markus Knittig<br />
- Mentor(s): Steffen Pingel</p>
+<pre><code class="language-gql">mutation {
+  deletePackageVersion(input:{packageVersionId:&quot;MDE0OlBhY3thZ2VWZXJzaW9uMjMxNDMw&quot;}) {
+    success
+  }
+}
+</code></pre>
 
-<p><strong>Google Wave ECF provider</strong><br />
- Student: Sebastian Schmidt (IRC: sebs)<br />
- Mentor(s): Mustafa Isik</p>
+<p>Given the GitHub GraphQL API Explorer does not allow <code>mutation</code> requests out-of-the-box, you need to resort to the console or your GraphQL tool of choice. Personally, I use the <a href="https://github.com/imolorhe/altair">Altair GraphQL client</a>.
+Using that, you need to setup the proper token for authenticating against the GitHub API using:</p>
 
-<p><strong>Integrate GMF runtime with Mylyn task focused UI</strong><br />
- Student: Yongming Luo<br />
- Mentor(s): Mariot Chauvin</p>
+<pre><code>Authorization: bearer &lt;YOURTOKEN&gt;
+</code></pre>
 
-<p>Congratulations to all the students and a big kudos to the organizers
-and mentors for their choice. As every year, it is pretty difficult to
-dismiss so many other good proposals but there were only 11 slots
-available this year for Eclipse. Looking forward to a great
-<a href="https://wiki.eclipse.org/Google_Summer_of_Code_2010#Projects">summer</a>!<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
-<div class="footnotes">
+<p>And to enable the developer preview for the API we&rsquo;re using, you need to use the <code>Accept</code> header:</p>
 
-<hr />
+<pre><code>Accept: application/vnd.github.package-deletes-preview+json
+</code></pre>
 
-<ol>
-<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2010/04/27/google-summer-of-code-2010-is-on/">EclipseSource Blog</a>
- <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
-</ol>
-</div>
+<p>If all worked out, you should get a confirmation that the package version got deleted.</p>
+
+<pre><code class="language-gql">{
+  &quot;data&quot;: {
+    &quot;deletePackageVersion&quot;: {
+      &quot;success&quot;: true
+    }
+  }
+}
+</code></pre>
+
+<p>If there is nothing left in the package, it should be gone from the UI as well.</p>
+
+<p><img src="/blog/pkg-graphql/packages_after.png" alt="GitHub Packages" /></p>
+
+<p>Happy Packaging!</p>
 
               <hr>
               <div class="related-posts">
                 <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        June 8, 2012
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        September 7, 2011
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2011-09-07-logical-models/">What the heck are logical models?</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        February 16, 2011
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
-                      </h6>
-                    </div>
-                  </div>
                 
               </div>
             </div>
