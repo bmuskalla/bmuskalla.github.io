@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>WHERE_TO_PUT.CONSTANTS</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.64.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -102,102 +102,76 @@ if (!doNotTrack) {
             <div class="blogpost">
               <p>When writing software, some conversations happen over and over again. Over the years, I’ve seen different solutions to the same problem that I’d like to share with you.
 One of those conversations go something like this, even though the answer might differ depending on the team or component.</p>
-
 <blockquote>
 <p><strong>Bob:</strong> Hey, I have some string literals here and I was told in the code review that I should extract those into constants. But where would I put those?</p>
-
-<p><strong>Alice:</strong> Ah, sure. Just put them into our MyModuleConstants class. We put all constants into that class so they are easy to find.</p>
 </blockquote>
+<p><strong>Alice:</strong> Ah, sure. Just put them into our MyModuleConstants class. We put all constants into that class so they are easy to find.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyConstants</span> <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">public class MyConstants {
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String V0 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;v0&#34;</span><span style="color:#f92672">;</span>
 
-  public static final String V0 = &quot;v0&quot;;
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String LABEL_STATUS_OPEN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Open&#34;</span><span style="color:#f92672">;</span>
 
-  public static final String LABEL_STATUS_OPEN = &quot;Open&quot;;
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String UNUSED <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;butNobodyWillKnow&#34;</span><span style="color:#f92672">;</span>
 
-  public static final String UNUSED = &quot;butNobodyWillKnow&quot;;
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> Long MAX_SIZE <span style="color:#f92672">=</span> 13498368L<span style="color:#f92672">;</span>
 
-  public static final Long MAX_SIZE = 13498368L;
-
-}
-</code></pre>
-
-<p>Soooo. Constant classes, eh? Let me share some of the patterns I’ve found (and used myself) over the years and see if we can somehow adapt or improve existing patterns when and how to use constants…and when not to. Take it a bit like “Refactoring away from constants”. First things first, I’m not going to talk about constant interfaces here. Please refer to <a href="https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683">Item 17: Use interfaces only to define types</a> why that’s a bad idea.</p>
-
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Soooo. Constant classes, eh? Let me share some of the patterns I’ve found (and used myself) over the years and see if we can somehow adapt or improve existing patterns when and how to use constants…and when not to. Take it a bit like “Refactoring away from constants”. First things first, I’m not going to talk about constant interfaces here. Please refer to <a href="https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683">Item 17: Use interfaces only to define types</a> why that’s a bad idea.</p>
 <p>First up, naming constants. Easy, right? Not at all. It’s as hard as naming classes and methods to make the intention really clear. Otherwise, Bad Things™ will happen. Let’s take a look at our first constant.</p>
-
-<pre><code class="language-java">public static final String V0 = &quot;v0&quot;;
-</code></pre>
-
-<p>It seems to be defining some kind of version number. Let’s assume our project is interacting with a 3rd party API, this seems to be the version number of their REST API. Now, taking a step back, why do we extract constants in the first place? Usually, it’s for two reasons:</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String V0 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;v0&#34;</span><span style="color:#f92672">;</span>
+</code></pre></div><p>It seems to be defining some kind of version number. Let’s assume our project is interacting with a 3rd party API, this seems to be the version number of their REST API. Now, taking a step back, why do we extract constants in the first place? Usually, it’s for two reasons:</p>
 <ul>
 <li>To make the intention of a value clear (<a href="https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants">magic numbers</a> as one example)</li>
 <li>To make the code easier to maintain by factoring out common constants so they can be easily changed in the future</li>
 </ul>
-
-<p><img src="http://imgs.xkcd.com/comics/int_pi.png" alt="https://xkcd.com/1275/" /></p>
-
+<p><img src="http://imgs.xkcd.com/comics/int_pi.png" alt="https://xkcd.com/1275/"></p>
 <p>For the above example, the intention is not clear at all. While we can guess it’s a version string, we don’t know how it is supposed to be used. Is it so all API calls use the same version of the REST API? Or is it to determine whether we’re working with the v0 version which requires some special handling? If we now want to upgrade to v1 of the REST API, it’s not as easy as just changing the constant as other code might rely on this exact version. Without proper naming, people tend to reuse constants for different scenarios that actually require two different constructs (which might happen to have the same value for now). Assuming we had the two scenarios above, we slightly better way would be</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String REST_API_V0 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;v0&#34;</span><span style="color:#f92672">;</span>
 
-<pre><code class="language-java">public static final String REST_API_V0 = &quot;v0&quot;;
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String REST_API_CURRENT <span style="color:#f92672">=</span> V0<span style="color:#f92672">;</span>
+</code></pre></div><p>Not really great either. We still try to group out constants together using a common prefix (REST_API). Usually when you start using common prefixes, that group usually shares some kind of responsibility (see also this <a href="http://www.cse.ohio-state.edu/~rountev/presto/pubs/icsm07.pdf">paper</a> and a <a href="https://github.com/khatchad/Constants-to-Enum-Eclipse-Plugin">research prototype</a> for an automated refactoring). Let’s try and extract these constants out into their own entity.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> RestApiVersion <span style="color:#f92672">{</span>
 
-public static final String REST_API_CURRENT = V0;
-</code></pre>
+  V0<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;v0&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>
 
-<p>Not really great either. We still try to group out constants together using a common prefix (REST_API). Usually when you start using common prefixes, that group usually shares some kind of responsibility (see also this <a href="http://www.cse.ohio-state.edu/~rountev/presto/pubs/icsm07.pdf">paper</a> and a <a href="https://github.com/khatchad/Constants-to-Enum-Eclipse-Plugin">research prototype</a> for an automated refactoring). Let’s try and extract these constants out into their own entity.</p>
+  V1<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;v1&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 
-<pre><code class="language-java">public enum RestApiVersion {
+  <span style="color:#66d9ef">private</span> String apiPath<span style="color:#f92672">;</span>
 
-  V0(&quot;v0&quot;),
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> RestApiVersion <span style="color:#a6e22e">getCurrentApiVersion</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> V1<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
 
-  V1(&quot;v1&quot;);
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">RestApiVersion</span><span style="color:#f92672">(</span>String version<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apiPath</span> <span style="color:#f92672">=</span> version<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
 
-  private String apiPath;
+  <span style="color:#66d9ef">private</span> String <span style="color:#a6e22e">getApiPath</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> apiPath<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
 
-  public static RestApiVersion getCurrentApiVersion() {
-    return V1;
-  }
-
-  private RestApiVersion(String version) {
-    this.apiPath = version;
-  }
-
-  private String getApiPath() {
-    return apiPath;
-  }
-
-}
-</code></pre>
-
-<p>I think the main takeaway from this is that people tend to mix up literals and magic numbers. While everyone is trying to follow the “Extract magic numbers into constants” refactoring, they tend to see every literal as “magic number”. Be aware of the fact that constants usually have no context and thus may form cohesion where none exists. The example doesn’t cover the full story though. One nice side-effect is that we gain compile-safety by using a proper type (be it an enum or a class with the strategy pattern). While enums are usually preferred over constants, take a step back and see if there is even a need for a “list of constant things” or if a higher abstraction actually makes more sense. For example, if there is a need to dynamically influence the current version (e.g. for testing/mocking) or if there is more to handling different versions, I recommend to check out the <a href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategy design pattern</a> which I’ll leave as an exercise for the reader.</p>
-
-<hr />
-
+<span style="color:#f92672">}</span>
+</code></pre></div><p>I think the main takeaway from this is that people tend to mix up literals and magic numbers. While everyone is trying to follow the “Extract magic numbers into constants” refactoring, they tend to see every literal as “magic number”. Be aware of the fact that constants usually have no context and thus may form cohesion where none exists. The example doesn’t cover the full story though. One nice side-effect is that we gain compile-safety by using a proper type (be it an enum or a class with the strategy pattern). While enums are usually preferred over constants, take a step back and see if there is even a need for a “list of constant things” or if a higher abstraction actually makes more sense. For example, if there is a need to dynamically influence the current version (e.g. for testing/mocking) or if there is more to handling different versions, I recommend to check out the <a href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategy design pattern</a> which I’ll leave as an exercise for the reader.</p>
+<hr>
 <p>Defining constants by constants is another pattern I’ve seen quite a few times. Take the example above of the RestApiVersion. A slightly different incarnation I’ve seen many times is the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> RestApiVersion <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">public enum RestApiVersion {
-
-  V0(MyConstants.REST_VERSION_V0), // no, no, no
-
-  ....
-}
-</code></pre>
-
-<p>This again goes back to treating every literal as a magic string. There is no additional value gained by defining <code>REST_VERSION_V0</code> as a separate constant. The opposite is actually true. How do consumers decide when to use the proper facade like <code>RestApiVersion</code> and when to use the “backdoor” by just using the <code>REST_VERSION_V0</code> constant itself. With the constant exposed as a constant value, there is also no chance for the maintainer of RestApiVersion to dynamically adapt to future needs. With the whole concept modeled with a proper API, we do have a chance to change the implementation without breaking consumers.</p>
-
-<hr />
-
-<p>Whenever you’re about to create a *Constants class, take a step back, go for a walk, or grab a coffee with a fellow engineer. Try to explain why you want to create such a class and if that is really the right abstraction or if the next engineers on your component might be able to see the patterns easier with another abstraction. There are a lot topics we haven’t touched on yet. When should we actually use constants? What about literals with placeholders (I look at you <a href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>). And are there any tools to detect unused constants? Let me know in the comments.<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
-<div class="footnotes">
-
-<hr />
-
+  V0<span style="color:#f92672">(</span>MyConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">REST_VERSION_V0</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> <span style="color:#75715e">// no, no, no
+</span><span style="color:#75715e"></span>
+  <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>This again goes back to treating every literal as a magic string. There is no additional value gained by defining <code>REST_VERSION_V0</code> as a separate constant. The opposite is actually true. How do consumers decide when to use the proper facade like <code>RestApiVersion</code> and when to use the “backdoor” by just using the <code>REST_VERSION_V0</code> constant itself. With the constant exposed as a constant value, there is also no chance for the maintainer of RestApiVersion to dynamically adapt to future needs. With the whole concept modeled with a proper API, we do have a chance to change the implementation without breaking consumers.</p>
+<hr>
+<p>Whenever you’re about to create a *Constants class, take a step back, go for a walk, or grab a coffee with a fellow engineer. Try to explain why you want to create such a class and if that is really the right abstraction or if the next engineers on your component might be able to see the patterns easier with another abstraction. There are a lot topics we haven’t touched on yet. When should we actually use constants? What about literals with placeholders (I look at you <a href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>). And are there any tools to detect unused constants? Let me know in the comments.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:footnote">Originally published on <a href="https://www.tasktop.com/blog/where_to_put-constants/">Tasktop Blog</a>
- <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>Originally published on <a href="https://www.tasktop.com/blog/where_to_put-constants/">Tasktop Blog</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
               <hr>
               <div class="related-posts">

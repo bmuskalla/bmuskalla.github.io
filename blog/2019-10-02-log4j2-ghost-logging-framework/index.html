@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Log4j 2 - The Ghost in the logging framework</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.64.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -104,29 +104,18 @@ if (!doNotTrack) {
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              
-
-<p>It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:</p>
-
-<p>Internally we use <a href="https://logging.apache.org/log4j/2.x/">Log4j2</a> as our logging solution of choice (with the various off-the-shelf adapters to handle 3rd libraries with different log frameworks). An interesting aspect about our internal test infrastructure is that we do capture all trace logs during test runs (including http requests, headers, generated test data, etc) but only for the lifetime of a test run. If a test passes, we ignore the logs. If the test fails (or is a flake), we’ll actually send the log to the next appender that is configured (usually a <code>Console</code> or <code>RollingFileAppender</code>)<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
-
+              <p>It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:</p>
+<p>Internally we use <a href="https://logging.apache.org/log4j/2.x/">Log4j2</a> as our logging solution of choice (with the various off-the-shelf adapters to handle 3rd libraries with different log frameworks). An interesting aspect about our internal test infrastructure is that we do capture all trace logs during test runs (including http requests, headers, generated test data, etc) but only for the lifetime of a test run. If a test passes, we ignore the logs. If the test fails (or is a flake), we’ll actually send the log to the next appender that is configured (usually a <code>Console</code> or <code>RollingFileAppender</code>)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>One test started failing rather consistently after we recently changed some of our logging infrastructure and configuration.</p>
-
 <p>That test was using one of our components to connect to a server, post some data, retrieve the data and assert the new data is present. In other words, it was doing some HTTP requests, parsed the data and asserted on that. This represents a rather boring yet important end-to-end test. We run a lot of similar tests against a myriad of server and even more versions of aforementioned. Under regular circumstances the test passed. The fun part started when running the test with trace logging enabled. Enabling trace logging, the tests started to fail pretty consistently &hellip; With a <code>NoHttpResponseException</code>&hellip;And always the same URI.</p>
-
-<p><img src="/blog/ghost-log4j/short-neck-reaction-guy.png" alt="What?" /></p>
-
+<p><img src="/blog/ghost-log4j/short-neck-reaction-guy.png" alt="What?"></p>
 <p>After Holger briefly described the situation, it was pretty clear to me that my coding skills are still on vacation as this analysis made absolutely no sense. Even worse, one approach to “fix it” was to limit the size of the logs to a few kilobytes (don’t ask how we got to that point). That made the test pass and the HTTP request to succeed.</p>
-
 <p>At that point, it had to be something that is logged which is causing the problems. Maybe some encoding issue? Are we somehow hitting some edge case with certain unicode characters coming from the server?</p>
-
 <blockquote>
 <p>It wouldn’t be the first time this happens to us; years back, we had fun working with an API that stalled the server for 2-3 minutes if you used any unicode character in your requests - but that’s a story for another day.</p>
 </blockquote>
-
 <p>With the knowledge that it had something to do with how large the logs are, we started digging deeper. To better isolate the problem and reduce the number of things that could possibly contribute to this, we ran the tests again and piped all requests into separate files. This allowed us to try and replay the scenario to see if those requests (which were quite large) had anything specific to them.</p>
-
-<pre><code class="language-bash">$ du -sh *.log | sort
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ du -sh *.log | sort
 2.0M	request-11.log
 2.0M	request-8.log
 384K	request-10.log
@@ -140,93 +129,65 @@ if (!doNotTrack) {
 496K	request-5.log
 496K	request-6.log
 496K	request-9.log
-</code></pre>
-
-<p>Interesting enough, we have some outliers here with 2MB for each response from the server. Taking a closer look reveals that these are mostly XML documents (or SOAP envelopes to be specific). While 2 megabytes is a lot of bandwidth, it’s not too uncommon for SOAP-based web services.</p>
-
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
-&lt;soapenv:Body&gt;
-&lt;queryWorkItemsResponse xmlns=&quot;&quot;&gt;
-&lt;ns4:queryWorkItemsReturn uri=&quot;subterra:data-service:objects:/default/ABC${WorkItem}ABC-22908&quot; unresolvable=&quot;false&quot;&gt;....
-</code></pre>
-
-<p>While digging into these things, we had one related observation. The tests in question, while usually taking some time to run, actually took a <em>lot</em> longer when running with trace logging enabled (and failed). It’s not that trace logging comes for free but Log4j2 (like most other logging frameworks noways) is designed to be extremely fast and even <a href="https://logging.apache.org/log4j/2.x/manual/garbagefree.html">garbage-free</a>.
+</code></pre></div><p>Interesting enough, we have some outliers here with 2MB for each response from the server. Taking a closer look reveals that these are mostly XML documents (or SOAP envelopes to be specific). While 2 megabytes is a lot of bandwidth, it’s not too uncommon for SOAP-based web services.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;soapenv:Envelope</span> <span style="color:#a6e22e">xmlns:soapenv=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">xmlns:xsd=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;soapenv:Body</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;queryWorkItemsResponse</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;ns4:queryWorkItemsReturn</span> <span style="color:#a6e22e">uri=</span><span style="color:#e6db74">&#34;subterra:data-service:objects:/default/ABC${WorkItem}ABC-22908&#34;</span> <span style="color:#a6e22e">unresolvable=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>....
+</code></pre></div><p>While digging into these things, we had one related observation. The tests in question, while usually taking some time to run, actually took a <em>lot</em> longer when running with trace logging enabled (and failed). It’s not that trace logging comes for free but Log4j2 (like most other logging frameworks noways) is designed to be extremely fast and even <a href="https://logging.apache.org/log4j/2.x/manual/garbagefree.html">garbage-free</a>.
 Just to put out suspicion to rest, let’s write a very simple test case. Take the responses that we just captured and log them (to simulate what we do in our real scenario).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Reproducer</span> <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">public class Reproducer {
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Logger logger <span style="color:#f92672">=</span> LogManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>Reproducer<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 
-	private final Logger logger = LogManager.getLogger(Reproducer.class);
+	<span style="color:#a6e22e">@Test</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">logCapturedServerResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+		File logFile <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">;</span>
+		String log <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>logFile<span style="color:#f92672">,</span> Charsets<span style="color:#f92672">.</span><span style="color:#a6e22e">UTF_8</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+		logger<span style="color:#f92672">.</span><span style="color:#a6e22e">trace</span><span style="color:#f92672">(</span>log<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
 
-	@Test
-	public void logCapturedServerResponse() throws Exception {
-		File logFile = ...;
-		String log = Files.toString(logFile, Charsets.UTF_8);
-		logger.trace(log);
-	}
-
-}
-</code></pre>
-
-<p>Using a 2MB http response file from above, this test runs for <strong>50s</strong> on a decent MacBook.</p>
-
-<p><img src="/blog/ghost-log4j/long-neck-reaction.jpg" alt="Whaaaaaat?" /></p>
-
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Using a 2MB http response file from above, this test runs for <strong>50s</strong> on a decent MacBook.</p>
+<p><img src="/blog/ghost-log4j/long-neck-reaction.jpg" alt="Whaaaaaat?"></p>
 <p>Time to start <a href="https://www.yourkit.com">Yourkit</a> and figure out what exactly is taking us 50s to log a large string. Running the test using the profiler reveals something very interesting.</p>
-
-<p><a href="/blog/ghost-log4j/yourkit.png"><img src="/blog/ghost-log4j/yourkit.png" alt="Whaaaaaat?" /></a></p>
-
+<p><a href="/blog/ghost-log4j/yourkit.png"><img src="/blog/ghost-log4j/yourkit.png" alt="Whaaaaaat?"></a></p>
 <p>Log4j2 is performing <em>a lot</em> of string substitutions for the pattern layout used by the logs. That is&hellip;surprising. While we use a little bit of a more verbose format, it’s nothing too controversial.
 The pattern we use is <code>%c{3} - %m%n</code>.</p>
-
 <p>As stated on the <a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout">Layouts documentation</a></p>
-
 <ul>
 <li>%c - Outputs the name of the logger that published the logging event.</li>
 <li>%m - Outputs the application supplied message associated with the logging event.</li>
 <li>%n - Outputs the platform dependent line separator character or characters.</li>
 </ul>
-
 <blockquote>
 <p><strong>Caution</strong>: There are some placeholders that actually do require expensive operations (e.g. %M to log the method name of the callee) but none of the was used in this. See <a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#LocationInformation">Location information</a> to learn about those patterns.</p>
 </blockquote>
-
 <p>So we have established that our pattern for logging is quite trivial. We even tried using just <code>%m</code> with no resolution, the test still took about 1 minute to run. While digging into the offending <code>StrSubstitutor</code> class (which is just a fork of the commons-lang <code>StrSubstitutor</code>), there was an interesting bit that caught our eye in the JavaDoc.</p>
-
 <blockquote>
 <p>Variable replacement works in a recursive way. Thus, if a variable value contains a variable then that variable will also be replaced.</p>
 </blockquote>
-
 <p>Huh. Could it be that the responses from the server may actually contain something that log4j2 would recognize as a variable? A quick look at the response gives us the shocking answer. Not only once or twice but some of those SOAP responses contain more than 3000 occurrences of <code>${Project}</code> or <code>${WorkItem}</code>.</p>
-
-<pre><code class="language-xml">&lt;ns8:queryWorkItemsReturn uri=&quot;subterra:data-service:objects:/default/ABC${WorkItem}ABC-22904&quot; unresolvable=&quot;false&quot;&gt;
-</code></pre>
-
-<p>This provoked log4j2 to parse the 2MB responses and replace the “variables” which in turn led to the server closing the connection on us in between.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;ns8:queryWorkItemsReturn</span> <span style="color:#a6e22e">uri=</span><span style="color:#e6db74">&#34;subterra:data-service:objects:/default/ABC${WorkItem}ABC-22904&#34;</span> <span style="color:#a6e22e">unresolvable=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>
+</code></pre></div><p>This provoked log4j2 to parse the 2MB responses and replace the “variables” which in turn led to the server closing the connection on us in between.</p>
 <p>To be honest, while you can argue about the format and use case, this API decided to use this format represent certain URIs. That Log4j2 is trying to actually interpret the placeholders in values passed in is the (at least to us) the surprising part.</p>
-
 <p>Good for us, log4j2 already provides a flag on the <code>%m</code> placeholder to disable recursive variable substitution. From their documentation:</p>
-
 <blockquote>
 <p>Outputs the application supplied message associated with the logging event.
-Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without using any lookups. Normally calling logger.info(&ldquo;Try ${date:YYYY-MM-dd}&ldquo;) would replace the date template ${date:YYYY-MM-dd} with an actual date. Using nolookups disables this feature and logs the message string untouched.</p>
+Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without using any lookups. Normally calling logger.info(&ldquo;Try ${date:YYYY-MM-dd}&quot;) would replace the date template ${date:YYYY-MM-dd} with an actual date. Using nolookups disables this feature and logs the message string untouched.</p>
 </blockquote>
-
 <p>Using the pattern <code>$m{nolookups}%n</code> now only takes half a second to trace log the message.</p>
-
 <h4 id="conclusion">Conclusion</h4>
-
 <p>Having recursive lookups enabled by default is an interesting choice as it may start to slow down your performance unnecessarily if you don’t make use of this feature. But more importantly, this is something to watch out for when it comes to <a href="https://www.owasp.org/index.php/Log_Injection">log forgery/log injection</a> depending on how you consume the log files. Let me know if you experienced similar behaviors and how you worked those out.</p>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:footnote">Let me know in the comments if you’d like to see this being open-sourced.
- <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>Let me know in the comments if you’d like to see this being open-sourced. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
               <hr>
               <div class="related-posts">

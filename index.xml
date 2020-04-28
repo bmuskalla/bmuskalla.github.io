@@ -56,7 +56,7 @@ Internally we use Log4j2 as our logging solution of choice (with the various off
       
       <guid>https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</guid>
       <description>When accessing 3rd party APIs with pagination, we tend to see the same pattern over and over again. Usually, a response (represented as POJO) looks something like this:
-class Result { public List&amp;lt;Item&amp;gt; getItems() { ... } }  Be it from a third party service or your own APIs, after retrieving all results of the API call, we end up with something like a List&amp;lt;Result&amp;gt;. Great. We don’t really care about the response itself, we’re actually interested in all the items of the responses.</description>
+class Result { public List&amp;lt;Item&amp;gt; getItems() { ... } } Be it from a third party service or your own APIs, after retrieving all results of the API call, we end up with something like a List&amp;lt;Result&amp;gt;. Great. We don’t really care about the response itself, we’re actually interested in all the items of the responses.</description>
     </item>
     
     <item>
@@ -212,8 +212,7 @@ At the moment, the attendee list is still pretty empty but save yourself a seat 
       
       <guid>https://bmuskalla.github.io/blog/2009-11-23-eclipsert-rap-around-the-world/</guid>
       <description>We’re all looking forward to talk about EclipseRT, Equinox and RAP at the DemoCamps around the world. In case you want to catch us and talk about Eclipse and related topics, just join one of the DemoCamps near you. Besides many other interesting talks, we’ll mostly cover EclipseRT, RAP and p2.
- Ottawa, ON, Canada – November 24 – Jeff McAffer (EclipseRT)
- Braunschweig/Hanover, Germany – November 25 – Benjamin Muskalla (RAP) Stuttgart, Germany – November 26 – Jordi Boehme Lopez (p2)</description>
+ Ottawa, ON, Canada – November 24 – Jeff McAffer (EclipseRT) Braunschweig/Hanover, Germany – November 25 – Benjamin Muskalla (RAP) Stuttgart, Germany – November 26 – Jordi Boehme Lopez (p2) Kaiserslautern, Germany – November 26 – Holger Staudacher (RAP) Frankfurt, Germany – November 26 – Benjamin Muskalla (EclipseRT,RAP) Vienna, Austria – November 30 – Chris Anisczcyk and Jeff McAffer (RAP,EclipseRT) Karlsruhe, Germany – December 3 – Markus Knauer, Benjamin Muskalla (EclipseRT) Hamburg, Germany – December 4 – Jochen Krause (RAP)  I’m really looking forward to see you at the DemoCamps, as always it tends to be a lot of fun1</description>
     </item>
     
     <item>
@@ -272,7 +271,8 @@ Together with the new fancy design, there is also a new Configuration dialog to 
       <pubDate>Fri, 03 Jul 2009 00:00:00 +0000</pubDate>
       
       <guid>https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/</guid>
-      <description>As Galileo is out in the wild and we are all already working on Helios… I thought it would be handy to give a quick overview of the New and Noteworthy features the RAP team worked on for Galileo. Besides many, many bug fixes… we still found time to provide several new features. On top of the new features, we focused on making single sourcing even easier to do.</description>
+      <description>As Galileo is out in the wild and we are all already working on Helios… I thought it would be handy to give a quick overview of the New and Noteworthy features the RAP team worked on for Galileo. Besides many, many bug fixes… we still found time to provide several new features. On top of the new features, we focused on making single sourcing even easier to do.
+New Look and Feel This is one of the biggest features of RAP released as part of the train.</description>
     </item>
     
     <item>

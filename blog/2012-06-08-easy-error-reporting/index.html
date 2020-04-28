@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Easy error reporting for your users</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.64.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -100,65 +100,53 @@ if (!doNotTrack) {
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              <p>While working on non-IDE products, one problem often approach us: If something goes wrong when a user is using the product, how do we actually get them to report the problems back to us? Searching for error logs on the harddrive and send them to support@<insert-your-name>? Actually a pretty brittle approach. From an Eclipse perspective, it’s pretty clear what to do: fire up the webbrowser, go to bugs.eclipse.org and enter a new bug report. But wait…isn’t that even more complicated? Depending on your audience, <strong>186</strong> bugzilla products with <strong>2564</strong> components offers a pretty good chance to file the bug against the wrong project.</p>
-
+              <p>While working on non-IDE products, one problem often approach us: If something goes wrong when a user is using the product, how do we actually get them to report the problems back to us? Searching for error logs on the harddrive and send them to support@<!-- raw HTML omitted -->? Actually a pretty brittle approach. From an Eclipse perspective, it’s pretty clear what to do: fire up the webbrowser, go to bugs.eclipse.org and enter a new bug report. But wait…isn’t that even more complicated? Depending on your audience, <strong>186</strong> bugzilla products with <strong>2564</strong> components offers a pretty good chance to file the bug against the wrong project.</p>
 <p>If your user is unable to choose the right component, you actually did a pretty good job of seamlessly integrating your plugin into Eclipse 😉 Some time ago, Mylyn introduced a little feature to actually help users with this problem. Whenever they see an exception in the Error Log, you just right-click it and select “Report as Bug”. Depending on the stacktrace of the problem, it can automatically map the exception to the right product and component in Eclipse.</p>
-
-<p><img src="/blog/tt/Screenshot-Report-as-Bug-.png" alt="Report as Bug" /></p>
-
+<p><img src="/blog/tt/Screenshot-Report-as-Bug-.png" alt="Report as Bug"></p>
 <p>As Mylyn provides this as a generic mechanism every project can hook into, this is an easy way to help your users and contributors to provide feedback. All you need to do is to provide the right set of mappings from your package namespace to the corresponding Bugzilla attributes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;extension</span> <span style="color:#a6e22e">point=</span><span style="color:#e6db74">&#34;org.eclipse.mylyn.tasks.bugs.support&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;product</span>
+      <span style="color:#a6e22e">featureId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span> <span style="color:#a6e22e">providerId=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span><span style="color:#f92672">/&gt;</span>
 
-<pre><code class="language-xml">&lt;extension point=&quot;org.eclipse.mylyn.tasks.bugs.support&quot;&gt;
-  &lt;product
-      featureId=&quot;org.eclipse.egit&quot; id=&quot;org.eclipse.egit&quot; providerId=&quot;org.eclipse&quot;/&gt;
+    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.ui&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;UI&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/mapping&gt;</span>
 
-    &lt;mapping namespace=&quot;org.eclipse.egit.ui&quot; productId=&quot;org.eclipse.egit&quot;&gt;
-      &lt;property name=&quot;product&quot; value=&quot;EGit&quot;/&gt;
-      &lt;property name=&quot;component&quot; value=&quot;UI&quot;/&gt;
-    &lt;/mapping&gt;
+    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.core&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;Core&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/mapping&gt;</span>
 
-    &lt;mapping namespace=&quot;org.eclipse.egit.core&quot; productId=&quot;org.eclipse.egit&quot;&gt;
-      &lt;property name=&quot;product&quot; value=&quot;EGit&quot;/&gt;
-      &lt;property name=&quot;component&quot; value=&quot;Core&quot;/&gt;
-    &lt;/mapping&gt;
-
-    &lt;mapping namespace=&quot;org.eclipse.egit.mylyn&quot; productId=&quot;org.eclipse.egit&quot;&gt;
-      &lt;property name=&quot;product&quot; value=&quot;EGit&quot;/&gt;
-      &lt;property name=&quot;component&quot; value=&quot;Mylyn&quot;/&gt;
-    &lt;/mapping&gt;
-&lt;/extension&gt; 
-</code></pre>
-
-<p><img src="/blog/tt/new_task-300x293.png" alt="New Task" />
+    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.mylyn&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;Mylyn&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/mapping&gt;</span>
+<span style="color:#f92672">&lt;/extension&gt;</span> 
+</code></pre></div><p><img src="/blog/tt/new_task-300x293.png" alt="New Task">
 As you can see in the example, we define two types of mapping. The first one is the product mapping. This essentially tells Mylyn to which task repository your project belongs. As we’re using EGit in this example, we’re using the task repository definition of the Eclipse.org Bugzilla instance (see below how to create your own repository provider definition). Once we have this definition in place, the mappings define the exact products and components the bugs should be filed against. If you look at the highlighted mapping above, we’re mapping all exceptions that occurred in the “org.eclipse.egit.core” java package namespace automatically to the EGit product and set the component to Core when the user is about to create a new task. Once you’ve done this, users will automatically get the right choice of options when opening a new Bugzilla bug.</p>
-
 <p>So you’re not an Eclipse.org project? No problem! The same works with other task repositoryes as well which is highly interesting for products based on Eclipse or if your plugin is using a bug tracker outside the Eclipse.org infrastructure (eg. GitHub).</p>
-
 <p>You can always define a new provider and point to the task repository you need and the connector to use. Below you see the extension for Eclipse.org which is contributed by Mylyn.</p>
-
-<pre><code class="language-xml">&lt;provider categoryId=&quot;org.eclipse.mylyn.tasks.bugs.openSource&quot;
-                        description=&quot;Eclipse open source community bug tracker&quot;
-                        icon=&quot;icons/branding32/eclipse.png&quot;
-                        id=&quot;org.eclipse&quot; name=&quot;Eclipse.org&quot;
-                        url=&quot;http://eclipse.org/&quot; /&gt;
-                &lt;mapping namespace=&quot;org.eclipse&quot;&gt;
-                        &lt;repository kind=&quot;bugzilla&quot;
-                          url=&quot;https://bugs.eclipse.org/bugs&quot;&gt;
-                        &lt;/repository&gt;
-                &lt;/mapping&gt;
-&lt;/provider&gt;
-</code></pre>
-
-<p>With this at hand, I’d love to hear how you encourage your community to contribute back in form of bug reports and feature enhancements?<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
-<div class="footnotes">
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;provider</span> <span style="color:#a6e22e">categoryId=</span><span style="color:#e6db74">&#34;org.eclipse.mylyn.tasks.bugs.openSource&#34;</span>
+                        <span style="color:#a6e22e">description=</span><span style="color:#e6db74">&#34;Eclipse open source community bug tracker&#34;</span>
+                        <span style="color:#a6e22e">icon=</span><span style="color:#e6db74">&#34;icons/branding32/eclipse.png&#34;</span>
+                        <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Eclipse.org&#34;</span>
+                        <span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;http://eclipse.org/&#34;</span> <span style="color:#f92672">/&gt;</span>
+                <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span><span style="color:#f92672">&gt;</span>
+                        <span style="color:#f92672">&lt;repository</span> <span style="color:#a6e22e">kind=</span><span style="color:#e6db74">&#34;bugzilla&#34;</span>
+                          <span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;https://bugs.eclipse.org/bugs&#34;</span><span style="color:#f92672">&gt;</span>
+                        <span style="color:#f92672">&lt;/repository&gt;</span>
+                <span style="color:#f92672">&lt;/mapping&gt;</span>
+<span style="color:#f92672">&lt;/provider&gt;</span>
+</code></pre></div><p>With this at hand, I’d love to hear how you encourage your community to contribute back in form of bug reports and feature enhancements?<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:footnote">Originally published on <a href="https://www.tasktop.com/blog/easy-error-reporting-your-users/">Tasktop Blog</a>
- <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>Originally published on <a href="https://www.tasktop.com/blog/easy-error-reporting-your-users/">Tasktop Blog</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
               <hr>
               <div class="related-posts">

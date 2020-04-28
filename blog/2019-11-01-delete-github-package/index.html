@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Manually deleting a package from GitHub Package Registry</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.64.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -101,53 +101,44 @@ if (!doNotTrack) {
               <p>You were so excited about the new <a href="https://help.github.com/en/github/managing-packages-with-github-package-registry/about-github-package-registry">Package Registry</a> that you immediately
 added it to your build and published your first package. Unfortunately,
 it is the time when you realize you had a typo in the name or the group id of your package.</p>
-
 <p>Let&rsquo;s quickly delete the package and publish again. But not with GitHub. While the documentation
 states that deleting packages may be possible, it&rsquo;s not easily available. You can either go
 through GitHub Support or use the GraphQL API. How to do the latter is something I tried and
 thought it would be useful to document here for others.</p>
-
 <p>First off, we need to find the internal ids for the packages we want to delete. The easiest way to access
 data on GitHub using the GitHub GraphQL API is GitHubs <a href="https://developer.github.com/v4/explorer/">GraphQL API Explorer</a>.</p>
-
 <p>Using the following GraphQL query we can find the packages currently available in our repository. Note that you need to change <code>owner</code>, <code>name</code>, <code>version</code> to match the package you want to find. In case you have a lot of packages, you may need to adapt the <code>first</code> filter as well. In order for this to work, you need to ensure that the token used by the API explorer does have the <code>['read:packages']</code> scope.</p>
-
-<pre><code class="language-gql">query {
-  repository(owner:&quot;bmuskalla&quot;, name:&quot;package-test&quot;) {
-    registryPackages(first:10){
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-gql" data-lang="gql"><span style="color:#66d9ef">query</span> {
+  <span style="color:#a6e22e">repository</span>(owner:<span style="color:#e6db74">&#34;bmuskalla&#34;</span>, <span style="color:#a6e22e">name</span>:<span style="color:#e6db74">&#34;package-test&#34;</span>) {
+    <span style="color:#a6e22e">registryPackages</span>(first:<span style="color:#a6e22e">10</span>){
       nodes {
         nameWithOwner
         packageType
-        version(version:&quot;0.1.0&quot;){
-          id
+        version(version:<span style="color:#e6db74">&#34;0.1.0&#34;</span>){
+          <span style="color:#a6e22e">id</span>
         }
       }
     }
   }
 }
-</code></pre>
-
-<p>My current packages in that project I used for testing look like in the following screenshot. We have 2 packages using the <code>maven</code> package type.</p>
-
-<p><img src="/blog/pkg-graphql/graphql_packages_red.png" alt="GitHub Packages" /></p>
-
+</code></pre></div><p>My current packages in that project I used for testing look like in the following screenshot. We have 2 packages using the <code>maven</code> package type.</p>
+<p><img src="/blog/pkg-graphql/graphql_packages_red.png" alt="GitHub Packages"></p>
 <p>Using the <code>query</code> above, you should see a a response similar to the following.</p>
-
-<pre><code class="language-json">{
-  &quot;data&quot;: {
-    &quot;repository&quot;: {
-      &quot;registryPackages&quot;: {
-        &quot;nodes&quot;: [
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;data&#34;</span>: {
+    <span style="color:#f92672">&#34;repository&#34;</span>: {
+      <span style="color:#f92672">&#34;registryPackages&#34;</span>: {
+        <span style="color:#f92672">&#34;nodes&#34;</span>: [
           {
-            &quot;nameWithOwner&quot;: &quot;bmuskalla/oopsi&quot;,
-            &quot;packageType&quot;: &quot;MAVEN&quot;,
-            &quot;version&quot;: null
+            <span style="color:#f92672">&#34;nameWithOwner&#34;</span>: <span style="color:#e6db74">&#34;bmuskalla/oopsi&#34;</span>,
+            <span style="color:#f92672">&#34;packageType&#34;</span>: <span style="color:#e6db74">&#34;MAVEN&#34;</span>,
+            <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#66d9ef">null</span>
           },
           {
-            &quot;nameWithOwner&quot;: &quot;bmuskalla/oopsi.package-test&quot;,
-            &quot;packageType&quot;: &quot;MAVEN&quot;,
-            &quot;version&quot;: {
-              &quot;id&quot;: &quot;MDE0OlBhY3thZ2VWZXJzaW9uMjMzMDUx&quot;
+            <span style="color:#f92672">&#34;nameWithOwner&#34;</span>: <span style="color:#e6db74">&#34;bmuskalla/oopsi.package-test&#34;</span>,
+            <span style="color:#f92672">&#34;packageType&#34;</span>: <span style="color:#e6db74">&#34;MAVEN&#34;</span>,
+            <span style="color:#f92672">&#34;version&#34;</span>: {
+              <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;MDE0OlBhY3thZ2VWZXJzaW9uMjMzMDUx&#34;</span>
             }
           }
         ]
@@ -155,44 +146,28 @@ data on GitHub using the GitHub GraphQL API is GitHubs <a href="https://develope
     }
   }
 }
-</code></pre>
-
-<p>Above we can see the internal ids for each individual package (careful to use the version id).
+</code></pre></div><p>Above we can see the internal ids for each individual package (careful to use the version id).
 Using this identifier, we can come up with the right <code>deletePackageVersion</code> <code>mutation</code> to delete the package.</p>
-
-<pre><code class="language-gql">mutation {
-  deletePackageVersion(input:{packageVersionId:&quot;MDE0OlBhY3thZ2VWZXJzaW9uMjMxNDMw&quot;}) {
-    success
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-gql" data-lang="gql"><span style="color:#66d9ef">mutation</span> {
+  <span style="color:#a6e22e">deletePackageVersion</span>(<span style="color:#66d9ef">input</span>:{<span style="color:#a6e22e">packageVersionId</span>:<span style="color:#e6db74">&#34;MDE0OlBhY3thZ2VWZXJzaW9uMjMxNDMw&#34;</span>}) {
+    <span style="color:#a6e22e">success</span>
   }
 }
-</code></pre>
-
-<p>Given the GitHub GraphQL API Explorer does not allow <code>mutation</code> requests out-of-the-box, you need to resort to the console or your GraphQL tool of choice. Personally, I use the <a href="https://github.com/imolorhe/altair">Altair GraphQL client</a>.
+</code></pre></div><p>Given the GitHub GraphQL API Explorer does not allow <code>mutation</code> requests out-of-the-box, you need to resort to the console or your GraphQL tool of choice. Personally, I use the <a href="https://github.com/imolorhe/altair">Altair GraphQL client</a>.
 Using that, you need to setup the proper token for authenticating against the GitHub API using:</p>
-
 <pre><code>Authorization: bearer &lt;YOURTOKEN&gt;
-</code></pre>
-
-<p>And to enable the developer preview for the API we&rsquo;re using, you need to use the <code>Accept</code> header:</p>
-
+</code></pre><p>And to enable the developer preview for the API we&rsquo;re using, you need to use the <code>Accept</code> header:</p>
 <pre><code>Accept: application/vnd.github.package-deletes-preview+json
-</code></pre>
-
-<p>If all worked out, you should get a confirmation that the package version got deleted.</p>
-
-<pre><code class="language-gql">{
-  &quot;data&quot;: {
-    &quot;deletePackageVersion&quot;: {
-      &quot;success&quot;: true
+</code></pre><p>If all worked out, you should get a confirmation that the package version got deleted.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-gql" data-lang="gql">{
+  <span style="color:#e6db74">&#34;data&#34;</span>: {
+    <span style="color:#e6db74">&#34;deletePackageVersion&#34;</span>: {
+      <span style="color:#e6db74">&#34;success&#34;</span>: <span style="color:#a6e22e">true</span>
     }
   }
 }
-</code></pre>
-
-<p>If there is nothing left in the package, it should be gone from the UI as well.</p>
-
-<p><img src="/blog/pkg-graphql/packages_after.png" alt="GitHub Packages" /></p>
-
+</code></pre></div><p>If there is nothing left in the package, it should be gone from the UI as well.</p>
+<p><img src="/blog/pkg-graphql/packages_after.png" alt="GitHub Packages"></p>
 <p>Happy Packaging!</p>
 
               <hr>

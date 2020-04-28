@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Drawing with RAP? Yup!</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.64.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -118,9 +118,7 @@ many developers to single-source their applications with even less
 exceptions. In case you want to try it out in this second without
 reading further, just fire up the RAP Examples demo and draw something
 yourself 🙂</p>
-
-<p><img src="/blog/es/rap_canvas_demo1.png" alt="RAP with Canvas" /></p>
-
+<p><img src="/blog/es/rap_canvas_demo1.png" alt="RAP with Canvas"></p>
 <p>Credits for the picture above goes to <a href="https://eclipsesource.com/blogs/author/hstaudacher/">Holger</a> with the aim to come
 up with a new RAP project logo 😉 After using the GC the first time in
 the Examples demo, I thought about other possibilities to test the new
@@ -131,9 +129,7 @@ night, I decided to just reuse some existing owner-drawn widgets like
 those we can find in the <a href="https://www.eclipse.org/nebula">Nebula</a> project. After getting the
 <a href="https://www.eclipse.org/nebula/widgets/pshelf/pshelf.php">PShelf</a> widget from CVS, it was only a matter of seconds until I
 started my first RAP application using an owner-drawn Nebula widget:</p>
-
-<p><img src="/blog/es/rebula_pshelf.png" alt="Nebula PShelf on RAP" /></p>
-
+<p><img src="/blog/es/rebula_pshelf.png" alt="Nebula PShelf on RAP"></p>
 <p>And I think I know what most of you are currently thinking – Draw2D, GEF
 and GMF on RAP? To keep it and short and simple: No! While it may be
 possible to single source Draw2D with the exisiting Canvas, I’m pretty
@@ -143,21 +139,19 @@ may be possible but not really preferable. For supporting Draw2D the
 right technology on the client-side is there. Only on the server-side we
 would need APIs that entirely hide the GC. Thus we could directly
 translate from one vector-based technology to the other.</p>
-
 <p>I’m pretty excited to see how the community can profit from the new
 Canvas implementation. Want to try it out? Either get the current RAP
 runtime from <a href="https://eclipse.org/rap/">CVS</a> or wait some days until we can publish RAP M7
 (which has several other cool <a href="https://eclipse.org/rap/">new &amp; noteworthy</a>
-items).<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
-<div class="footnotes">
-
-<hr />
-
+items).<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2010/04/20/drawing-with-rap-yup/">EclipseSource Blog</a>
- <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>Originally published on <a href="https://eclipsesource.com/blogs/2010/04/20/drawing-with-rap-yup/">EclipseSource Blog</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
               <hr>
               <div class="related-posts">

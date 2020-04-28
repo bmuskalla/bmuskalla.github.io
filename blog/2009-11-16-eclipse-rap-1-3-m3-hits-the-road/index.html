@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Eclipse RAP 1.3 M3 hits the road</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.64.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -104,49 +104,40 @@ if (!doNotTrack) {
             <div class="blogpost">
               <p>After another 6 weeks of working hard towards the <a href="https://wiki.eclipse.org/Helios">Helios</a> Release,
 we’re a step closer. RAP M3 for Eclipse 3.6 is out and can be
-<a href="https://eclipse.org/rap/downloads/">obtained</a> from the RAP project page. Besides another <a href="https://bugs.eclipse.org/bugs/buglist.cgi?query_format=advanced&amp;amp;short_desc_type=allwordssubstr&amp;amp;short_desc=&amp;amp;classification=RT&amp;amp;product=RAP&amp;amp;target_milestone=1.3+M3&amp;amp;long_desc_type=allwordssubstr&amp;amp;long_desc=&amp;amp;bug_file_loc_type=allwordssubstr&amp;amp;bug_file_loc=&amp;amp;status_whiteboard_type=allwordssubstr&amp;amp;status_whiteboard=&amp;amp;keywords_type=allwords&amp;amp;keywords=&amp;amp;bug_status=RESOLVED&amp;amp;bug_status=VERIFIED&amp;amp;bug_status=CLOSED&amp;amp;emailtype1=substring&amp;amp;email1=&amp;amp;emailtype2=substring&amp;amp;email2=&amp;amp;bugidtype=include&amp;amp;bug_id=&amp;amp;votes=&amp;amp;chfieldfrom=&amp;amp;chfieldto=Now&amp;amp;chfieldvalue=&amp;amp;cmdtype=doit&amp;amp;order=Reuse+same+sort+as+last+time&amp;amp;field0-0-0=noop&amp;amp;type0-0-0=noop&amp;amp;value0-0-0=">130
+<a href="https://eclipse.org/rap/downloads/">obtained</a> from the RAP project page. Besides another <a href="https://bugs.eclipse.org/bugs/buglist.cgi?query_format=advanced&amp;short_desc_type=allwordssubstr&amp;short_desc=&amp;classification=RT&amp;product=RAP&amp;target_milestone=1.3+M3&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;status_whiteboard_type=allwordssubstr&amp;status_whiteboard=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;bug_status=CLOSED&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">130
 bugfixes</a> and many <a href="https://eclipse.org/rap/">New and Noteworthy</a> features, here are my
 personal favorites of this milestone:</p>
-
 <p><strong>Non-shared SWT resources</strong></p>
-
 <p>Finally, we decided to provide constructors and a dispose mechanism for
 SWT resources like fonts, images, colors and cursors. While we still
 recommend to use the factory-based approach, this features helps a lot
 when single-sourcing applications that use the resource constructors in
 a verbose manner.</p>
-
-<p><a href="https://eclipsesource.com/wp-content/uploads/2009/11/color_ctor.png"><img src="/blog/es/color_ctor.png" alt="RWT Resource constructors" /></a>
+<p><a href="https://eclipsesource.com/wp-content/uploads/2009/11/color_ctor.png"><img src="/blog/es/color_ctor.png" alt="RWT Resource constructors"></a>
 Yay, it compiles!</p>
-
 <p><strong>Browser History support</strong></p>
-
 <p>You now have the possibility to interact with the client-side browser
 history. This allows you to set “bookmarks” (eg. when switching tabs or
 processing a particular workflow) and the user can jump back and
 forward. Thanks again to Ralf Zahn from ARS who <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=283291">contributed</a> this
 feature.</p>
-
 <p><strong>Dispose events on session timeout</strong></p>
-
 <p>We also introduced new Listener support on the Display so you’re now
 able to listen for Dispose events of the Display which is triggered when
 the session terminates. This way you don’t need to rely on
 servlet-specific API but rather use the same mechanism as in SWT to
 clean up your session. In addition you can queue runnables via
 Display#disposeExec that are executed once the session dies.</p>
-
 <p>I hope you all enjoy the new milestone and give as feedback as fast as
-possible, API and feature freeze  is approaching 😉<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup></p>
-<div class="footnotes">
-
-<hr />
-
+possible, API and feature freeze  is approaching 😉<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:footnote">Originally published on <a href="https://eclipsesource.com/blogs/2009/11/16/eclipse-rap-1-3-m3-hits-the-road/">EclipseSource Blog</a>
- <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>Originally published on <a href="https://eclipsesource.com/blogs/2009/11/16/eclipse-rap-1-3-m3-hits-the-road/">EclipseSource Blog</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
               <hr>
               <div class="related-posts">

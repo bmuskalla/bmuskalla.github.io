@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Refactoring towards speed reading</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.64.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -107,9 +107,7 @@ have to slow down, check that last line again or try to figure out the structure
 the code. Even though we all follow the same principles for clean code, there is
 always that gut feel which tells you that one style is better than the other. While
 not conclusive, a part of this is the way we structure code for readability.</p>
-
-<p><a href="https://unsplash.com/photos/FrGYMDjdg4U"><img src="https://images.unsplash.com/photo-1506782664677-3e16d3382641?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Photo by Fischer Twins on Unsplash" /></a></p>
-
+<p><a href="https://unsplash.com/photos/FrGYMDjdg4U"><img src="https://images.unsplash.com/photo-1506782664677-3e16d3382641?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Photo by Fischer Twins on Unsplash"></a></p>
 <p><a href="https://en.wikipedia.org/wiki/Speed_reading">Speed reading</a> is a technique many people
 have heard about. The casual reader usually reaches 150–200wpm
 (<a href="https://en.wikipedia.org/wiki/Words_per_minute">words per minute</a>) with a
@@ -120,25 +118,19 @@ to set the new world record in speed reading to learn the basic concepts
 and apply them to another area: our code. We’ll look at 3 areas that are
 particular helpful when it comes to reading code: Skimming, meta guiding
 and visual fixation.</p>
-
-<p><img src="/blog/speedfactoring/sentence_400wpm.gif" alt="Simple sentence @ 400wpm" /></p>
-
+<p><img src="/blog/speedfactoring/sentence_400wpm.gif" alt="Simple sentence @ 400wpm"></p>
 <p>So what makes speed reading that fast? One of the first steps is to
 suppress subvocalication. Subvocalization? Exactly. That voice in your head
 that just tried to properly articulate that word. And yes, you’re now aware of
 that voice again. But don’t worry, it will be gone soon :) Subvocalization
 is something that an adult should be able to learn with relative ease as a
 first step to seriously improve reading speed, not only for code.</p>
-
 <p>In this post, I’m not going into the details of learning to speed read as others
 do a way better job at that. Be it books, articles or software like
 <a href="https://www.spreeder.com/cx/">spreeder</a> or <a href="http://spritzinc.com/">spritz</a>.</p>
-
 <p>Lets get to our first example that we want to refactor to improve readability.
 Here is a simple function which takes 3 parameters.</p>
-
-<p><img src="/blog/speedfactoring/example_1.png" alt="" /></p>
-
+<p><img src="/blog/speedfactoring/example_1.png" alt=""></p>
 <p>I suspect it is not the first time for you reading code so I can safely
 assume that you didn’t even try to read it word by word. The first thing
 that happens when trying to read this code is that we try to skim over
@@ -147,15 +139,11 @@ expierence. One likely way to read the code is to follow where and how the
 input parameters are used. Using
 <a href="https://en.wikipedia.org/wiki/Eye_movement_in_reading">eye tracking</a>, what
 was likely happening when you read the code is this eye movement:</p>
-
-<p><img src="/blog/speedfactoring/example_2.png" alt="Eye movement when tracking the parameter usage" /></p>
-
+<p><img src="/blog/speedfactoring/example_2.png" alt="Eye movement when tracking the parameter usage"></p>
 <p>After locating name, we actually have to break our visual fixation and find
 the next parameter which requires us to look down and left. We can start
 with a very simple refactoring to help a bit with this:</p>
-
-<p><img src="/blog/speedfactoring/example_3.png" alt="" /></p>
-
+<p><img src="/blog/speedfactoring/example_3.png" alt=""></p>
 <p>Better. But we’re not there yet. Looking at the semantic meaning of the
 three lines of code here suggests that they’re in fact not too different.
 We do validate all three arguments, not just age as the method name suggests.
@@ -164,7 +152,6 @@ a method is usually the number of lines that can be extracted. By extracting
 methods for these cases even helps us to guide the eye, allowing future
 engineers to actually skim over the code and let them decide whether they
 need to stop here or actually go on depending on what they’re looking for.</p>
-
 <p>By the way, were you able to read the animated sentence in orange above?
 That was 400wpm. That is already very fast. The fact that we can rely on
 visual fixation to avoid additional eye movement helps us to keep up.
@@ -172,7 +159,6 @@ If you’re not used to this reading speed, comprehension usually suffers
 when reading a longer text in that speed. You can usually try it with
 speed reading apps, <a href="https://chrome.google.com/webstore/detail/sprint-reader-speed-readi/kejhpkmainjkpiablnfdppneidnkhdif?hl=en">browser extensions</a> or this <a href="https://www.spreeder.com/bookmarklet.php">bookmarklet</a>
 if you’re curious.</p>
-
 <p>Meta guiding is another principle in speed reading that is commonly
 suggested when starting to learn speed reading. Instead of trying to
 read word by word in a book, you try to capture the whole line at once.
@@ -182,9 +168,7 @@ But using a finger or another device helps us to keep moving forward
 and avoids jumping back a word or two. Funny enough, code itself can
 act as such a device as it has an inherit structure that we can
 leverage to guide our eye.</p>
-
-<p><img src="/blog/speedfactoring/example_4.png" alt="" /></p>
-
+<p><img src="/blog/speedfactoring/example_4.png" alt=""></p>
 <p>How many items are in the list? One, two, three, four! Five. Maybe more.
 Oops, missed that zeros argument, too?. The structure that should actually
 help us gets in our way. While we have allowed our “reader” to be guided
@@ -192,12 +176,9 @@ by the alignment of the add methods, we totally misguided the eye and
 missed the constructor argument. Rewriting this to match the pattern
 of the other add calls allows the reader to follow the guide easily
 without missing any important information.</p>
-
-<p><img src="/blog/speedfactoring/example_5.png" alt="Help guiding the eye of your reader" /></p>
-
+<p><img src="/blog/speedfactoring/example_5.png" alt="Help guiding the eye of your reader"></p>
 <p>Now all the methods that actually add something to the list are in
 line and easy to spot without looking back and forth.</p>
-
 <p>What are your code snippets that you broke your flow of reading in
 the past? Because most of the time, parsing the code with our eyes
 is what we do. The trick is not to become a better parser or a better
@@ -208,7 +189,6 @@ that does not add to the semantic understanding and still have a
 high comprehension. But in the end, it goes a long way to write
 code that is not only readable but can actually be digested in a
 really fast manner.</p>
-
 <p>Next time you write some piece of code, see if you can actually speed read it.</p>
 
               <hr>
