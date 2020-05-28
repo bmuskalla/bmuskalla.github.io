@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>JIT 101</title>
+    <meta name="generator" content="Hugo 0.64.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/articles/">ARTICLES</a></li>
+        
+        <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/talks/">TALKS</a></li>
+        
+        <li><a href="/vitae/">VITAE</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2020-05-28-jit-101/">JIT 101</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          May 25, 2020
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            4 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">java</span>
+            
+            <span class="label label-success">jvm</span>
+            
+            <span class="label label-success">jit</span>
+            
+            <span class="label label-success">compiler</span>
+            
+            <span class="label label-success">hotspot</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <blockquote>
+<p>JIT compilation and HotSpot are with no doubt some very complex topics. This blog is very short article touching on
+the topic in question; it was originally intended
+to be included in <a href="http://shop.oreilly.com/product/0636920048824.do">97 Things Every Java Programmer Should Know</a>.
+Contributions for the book had a limit on its length, thus a very short
+introduction into the HotSpot JIT. In the end, the book authors choose another
+piece of mine to be included but I thought it this might be interesting
+for the one or other person out there.</p>
+</blockquote>
+<p>Compared to other compilers, <code>javac</code> avoids a lot of optimizations when compiling java source code to bytecode. While “Ahead-Of-Time” (AOT) compilation
+can do more heavyweight analysis of the source code, a dynamic compiler can take into account runtime statistics like the most used paths (hotspots)
+and advanced chipset features (e.g. which CPU instruction sets are available).
+<br>
+<br>
+Enter the “Just-In-Time” (JIT) compiler. That means over time, the behaviour what and how to compile bytecode to native code changes. Initially, most
+bytecode is actually just interpreted (tier 0) which is rather slow. Once a code path is “hot” enough, C1 compiler kicks in (most of us know this by
+the <code>-client</code> flag). It is not as aggressive and allows for a faster initial startup. The C2 compiler (<code>-server</code>) uses more comprehensive analysis and is
+meant for long running processes. Since Java 7, the JVM uses a compilation mode called tiered compilation which seamlessly switches between the modes
+based on application behavior.
+<br>
+<br>
+Initially, the compilers insert profiling probes into the bytecode to determine which code paths are the hottest (e.g. by invocation count), invariants
+(which types are actually used) and branch prediction. Once enough analytics are collected, the compilers actually start to compile bytecode to native
+code once they are “hot enough” (<code>-XX:CompileThreshold</code>), replacing the existing byte code step by step (mixed mode execution).
+<br>
+<br>
+Starting with the hot path, one of the first things the compiler tries to achieve is constant folding. Using partial evaluation and escape analysis,
+the compiler will try to determine if certain constructs can be reduced to constants (e.g. the expression <code>3 * 5</code> can be replaced with <code>15</code>). Another
+rather simple optimization is to avoid method calls by inlining methods into their call sites (if they are small enough).
+<br>
+<br>
+Virtual method calls present a more complex problem. Generally, the best case is a monomorphic call, a method call that can be translated to a direct
+jump in assembly. Compare that to polymorphic calls, like an instance method whose type is not known in advance. The type invariants collected previously
+by the probes can help tremendously to identify which types are most often encountered within a code path.
+<br>
+<br>
+The compiler optimizes aggressively using heuristics as well. In case a guess was actually wrong (e.g. the seemingly unused branch was called at some
+point), the compiler will deoptimize the code again and may revisit this path later using more profiling data.
+<br>
+<br>
+Depending on the architecture the JVM is running on, the bytecode may not even be used at all. The HotSpot JVM uses a concept called &ldquo;intrinsics&rdquo;
+which is a list of well known methods that will be replaced with specific assembler instructions known to be fast. Good examples are the methods in
+<code>java.lang.Math</code>, <code>System#arraycopy</code> or <code>Object#getClass</code> (see <code>@HotSpotIntrinsicCandidate</code>).
+<br>
+<br>
+Multi-threaded applications may as well benefit from the optimizations the JIT can do with synchronization locks. Depending on the locks used, the
+compiler may merge <code>synchronized</code> blocks together (Lock Coarsening) or even remove them completely if escape analysis determines that nobody else
+can lock on those objects (Lock Elision).
+<br>
+<br>
+You can enable a lot of debug information about how the compiler decides what to do with your code using the feature flags like
+<code>-XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining</code>. If you want to dive deeper into the world of the Hotspot JIT Compiler, have a look at <a href="https://github.com/AdoptOpenJDK/jitwatch">JITWatch</a>.
+<br>
+<br>
+To have a real deep-dive into such topics, I can highly recommend <a href="https://shipilev.net/">the posts by Aleksey Shipilëv</a>.</p>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        November 25, 2019
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2019-11-25-release-scoped-properies/">Changing System Properties in Isolation</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        October 2, 2019
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2019-10-02-log4j2-ghost-logging-framework/">Log4j 2 - The Ghost in the logging framework</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 8, 2018
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2018-06-08-refactoring-towards-speed-reading/">Refactoring towards speed reading</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>
