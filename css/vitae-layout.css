@@ -1,4 +1,4 @@
-/*@import url(https://fonts.googleapis.com/css?family=Raleway:700,400);*/
+@import url(https://fonts.googleapis.com/css?family=Raleway:700,400);
 
 /*body {
     font-family: "Raleway", Helvetica, Arial, sans-serif;
@@ -8,6 +8,14 @@
     border-top: 5px solid #27a822;
     border-bottom: 5px solid #27A822;
 }*/
+body {
+    font-family: "Raleway", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+pre {
+    padding: 0;
+}
 
 .vitae-container {
     margin-top: 50px;
