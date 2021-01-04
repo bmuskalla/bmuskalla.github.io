@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Java Syntax Puzzlers</title>
+    <meta name="generator" content="Hugo 0.64.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/articles/">ARTICLES</a></li>
+        
+        <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/talks/">TALKS</a></li>
+        
+        <li><a href="/vitae/">VITAE</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          January 4, 2021
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            7 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">java</span>
+            
+            <span class="label label-success">puzzle</span>
+            
+            <span class="label label-success">syntax</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>Roughly 12 years ago, I started to contribute to the Eclipse ecosystem in various functions. One of the most interesting experiences to this date was to work on developer tooling and handling the edge cases so others don’t have to struggle. Though I stepped down as an Eclipse committer in the meantime, I’m still attached to working on productivity tooling nowadays as a member of the <a href="https://github.com/gradle/gradle">Gradle Build Tool</a>.</p>
+<p>While working on Eclipse, I fondly remember working on various parts of the Java Tooling (JDT) and while working on refactorings and quick fixes. And not surprisingly, working on language-intensive pieces turned out to have the same hiccups as other non-trivial algorithsm - the transition from “this is gonna be easy” to “why am I up at 3am reading the Java Language Specification”.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Opening a bug report with snippet to reproduce: 10min. Working on a patch: 2h. Getting pinged whether you can finish that patch, 11 years later: priceless. I do miss working on <a href="https://twitter.com/hashtag/eclipse?src=hash&amp;ref_src=twsrc%5Etfw">#eclipse</a> <a href="https://twitter.com/hashtag/jdt?src=hash&amp;ref_src=twsrc%5Etfw">#jdt</a> though <a href="https://t.co/vpLD73zOlC">https://t.co/vpLD73zOlC</a></p>&mdash; Benjamin Muskalla (@bmuskalla) <a href="https://twitter.com/bmuskalla/status/1110923346441588737?ref_src=twsrc%5Etfw">March 27, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Working on language-specific tooling exposes you to all kinds of edge cases and delicate details and language has to offer. Some of them are well known and generally seen &ldquo;unprofession&rdquo; (hello <code>goto</code>). Others are actually not know at all. And with all due respect, I quite enjoy discovering the edge cases of the language syntax - a lot of times to confuse my co-workers who think they know the Java Language Syntax ;) And given I love a good puzzle (especially the Java Puzzles), let’s try a puzzle but using the Java syntax only, without any untime behaviour.</p>
+<h3 id="using-java-for-phishing">Using Java for Phishing</h3>
+<p>Let us start off with a widely known fact about Java source files. You’re allowed to use Unicode in most places of your code. While we can’t use the full range of <a href="https://docs.oracle.com/javase/specs/jls/se7/html/jls-3.html#jls-3.8">unicode in your class names</a> (I still want to write <code>throw 🎂()</code>), you can add enough unicode to play some pranks on your co-workers.</p>
+<p>As an appetizer, in your next (remote) pairing session, just slip in a “Greek Question Mark” (<code>U+037E</code>)  into the code and watch your co-worker trying to find out what is wrong with that simple semicolon. This technique is most often used by phishing emails to make a url look like the real one but actually points <a href="https://en.wikipedia.org/wiki/IDN_homograph_attack">to a very different domain</a>.</p>
+<p><img src="/blog/syntax-puzzle/semicolon.png" alt="Greek Question Mark"></p>
+<p>As it doesn’t even compile, that’s an easy one for your co-worker to recognize and fix. Let’s start to be a little more sneaky.</p>
+<p>Guess what the following program prints?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// one down, one to go: \u000a\u007d\u007b
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1 is 2&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Yes, in the context of the post, you correctly guessed that it is printing “1 is 2”. Just&hellip;HOW? How is it possible to trick Java into thinking 1 == 2, even with unicode magic. INSIDE A COMMENT. Any guesses? It actually doesn’t change the expression. The following unicode characters were harmed in the process:</p>
+<ul>
+<li><code>\u000a</code> - the newline character <code>\n</code></li>
+<li><code>\u007d</code> - a closing curly brace <code>}</code></li>
+<li><code>\u007b</code> - an opening curly brace <code>{</code></li>
+</ul>
+<p>So the code we’re actually looking at is this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#f92672">{</span>
+       System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1 is 2&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Funny enough, most programmers would suspect something fishy with this comment when they see it. But what about indenting it so it’s not shown in your editor anymore? ;)</p>
+<h3 id="blocks-of-blocks">Blocks of Blocks</h3>
+<p>Let’s move on to the <a href="https://docs.oracle.com/javase/specs/">Java Language Specification</a> and see what interesting bits of syntax we can find in there.</p>
+<p>Looking at the possibilities we have for implementing methods, Java defines method bodys to contain <code>Block</code> elements:</p>
+<pre><code>MethodBody:
+  Block
+
+Block:
+  { [BlockStatements] }
+
+BlockStatement:
+  LocalVariableDeclarationStatement
+  ClassDeclaration
+  Statement
+
+</code></pre><p>Taking a closer look at the definition of <code>Block</code>, we learn that they can contain statements (so far so good) but also…<code>ClassDeclaration</code>s. Now it gets interesting. Let’s see how deep the rabbit hole goes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">howDeepCanWeGo</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bar</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">helloFromBar</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">// You musn&#39;t be afraid to dream a little bigger, darling.
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">}</span> 
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">new</span> Bar<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">helloFromBar</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">final</span> Foo instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    instance<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Funnily enough, while this feature seems quite useless at first sight, it’s the only one I’ve been using in actual test code in the past. While working on a framework that heavily relied on reflection, the inline class definitions came in quite handy to define classes under test and keeping them with the test. The alternative of having a bunch of nested classes scattered alongside tests was a good reason to move them closer to the test. You can read me more about the the quicks of local classes in <a href="https://docs.oracle.com/javase/specs/jls/se15/html/jls-14.html#jls-14.3">JLS 14.3</a>.</p>
+<h3 id="this-and-that">This and That</h3>
+<p>Moving away from classes and closer to the action. Let’s have a look at method parameters. As you may encounter several times yourself, you can’t name things the same as keywords. Well, let’s have a look at the following snippet.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KeywordParameter</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        KeywordParameter someObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> KeywordParameter<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        someObject<span style="color:#f92672">.</span><span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span>3<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span>KeywordParameter <span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> foo<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+        
+<span style="color:#f92672">}</span>
+</code></pre></div><p>So we’re creating a new instance of <code>KeywordParameter</code> and calling the <code>callMe</code> method on it. Passing the <code>int</code> parameter. But wait, the method has two parameters. And one is even named after a keyword. That shouldn’t even compile right? It actually does. Looking at the JLS 8.4 Method Declarations, we can find the definition for method declarations.</p>
+<pre><code>MethodDeclarator:
+  Identifier ( [ReceiverParameter ,] [FormalParameterList] ) [Dims]
+</code></pre><p>We see that the first parameter is a special, optional parameter not part of the formal parameter list. And it’s actually defined to always have the name “this:</p>
+<pre><code>ReceiverParameter:
+  {Annotation} UnannType [Identifier .] this
+</code></pre><p>The so called “receiver parameter” is a “optional syntactic device” that represents the object it is invoked on (so it’s really the same as what you’d expect from “this”). It’s sole purpose is to be available in the source code to be annotated if necessary. Let’s assume we have an <code>@Immutable</code> annotation in our project and for some reason, we want to ensure that our IDE (or other code analyzers) understand tat <code>this</code> in our current context represents an immutable data structure. With the explicit receiver parameter, we can annotate it correspondingly:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Immutable</span> KeywordParameter <span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> foo<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span> <span style="color:#f92672">}</span>
+</code></pre></div><h3 id="everywhere">@Everywhere</h3>
+<p>Talking about annotating things for the purposes of analyzing code. For the above snippets to work, the annotation needs to be targetable for <code>PARAMETER</code>. Did you ever look up what other targets an annotation can have? Going through the most common ones, there are no surprises:
+<code>TYPE</code>, <code>FIELD</code>, <code>METHOD</code>, <code>PARAMETER</code>, <code>CONSTRUCTOR</code>, <code>LOCAL_VARIABLE</code>, <code>ANNOTATION_TYPE</code>, <code>PACKAGE</code>, <code>TYPE_PARAMETER</code>, <code>MODULE</code> (since Java 9) and <code>RECORD_COMPONENT</code> (since Java 14). But there is one that’s not so obvious where to put it: <code>TYPE_USE</code>. From the name, it sounds like it can be used everywhere a type is used. Let’s try and use it in some places:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@TypeAnnotationsEverywhere.Immutable</span> <span style="color:#75715e">// ok, easy, similar to TYPE 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TypeAnnotationsEverywhere</span> <span style="color:#f92672">{</span>
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">giveMeMoreTypes</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">@Immutable</span> RuntimeException <span style="color:#f92672">{</span>  <span style="color:#75715e">// errr what?
+</span><span style="color:#75715e"></span>     Object foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">@Immutable</span> Object<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">// WHAT??????
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">@Immutable</span> Function <span style="color:#f92672">{</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span> <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Indeed, using <code>TYPE_USE</code> allows us to put the annotation in the most unusual spots. <a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.11">JLS 4.11</a> defines all the spots that are covered by a “type usage”.</p>
+<p><br>
+Which one of those syntaxes were you aware of? Got all of them? The code for the post can be found on <a href="https://github.com/bmuskalla/java-syntax-puzzlers">GitHub</a> as well. In the meantime, I’m still working on my museum of interesting cases of the language constructs, so please share anything you’ve encountered yourself. You can reach me on Twitter via <a href="https://twitter.com/bmuskalla">@bmuskalla</a>.</p>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 25, 2020
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        November 25, 2019
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2019-11-25-release-scoped-properies/">Changing System Properties in Isolation</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        October 2, 2019
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2019-10-02-log4j2-ghost-logging-framework/">Log4j 2 - The Ghost in the logging framework</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

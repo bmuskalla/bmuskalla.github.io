@@ -6,10 +6,20 @@
     <description>Recent content on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bmuskalla.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java Syntax Puzzlers</title>
+      <link>https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/</guid>
+      <description>Roughly 12 years ago, I started to contribute to the Eclipse ecosystem in various functions. One of the most interesting experiences to this date was to work on developer tooling and handling the edge cases so others don’t have to struggle. Though I stepped down as an Eclipse committer in the meantime, I’m still attached to working on productivity tooling nowadays as a member of the Gradle Build Tool.
+While working on Eclipse, I fondly remember working on various parts of the Java Tooling (JDT) and while working on refactorings and quick fixes.</description>
+    </item>
     
     <item>
       <title>JIT 101</title>
