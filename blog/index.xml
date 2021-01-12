@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bmuskalla.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git Archeology</title>
+      <link>https://bmuskalla.github.io/blog/2021-01-12-git-archeology/</link>
+      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2021-01-12-git-archeology/</guid>
+      <description>Working on a large codebase, it&amp;rsquo;s pretty normal to not remember every small or large subsystem or implementation choice. Be it whether you&amp;rsquo;re new to a codebase, or you&amp;rsquo;ve been focussed on a specific area of the codebase. When working on refactorings or bug fixes, I often end up in areas I might not be too familiar with. Generally not dramatic, it happens quite often that I&amp;rsquo;m stopping at what I&amp;rsquo;m doing because I need to decide on how to move forward.</description>
+    </item>
     
     <item>
       <title>Java Syntax Puzzlers</title>

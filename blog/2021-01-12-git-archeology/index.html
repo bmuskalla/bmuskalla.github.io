@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Git Archeology</title>
+    <meta name="generator" content="Hugo 0.64.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/articles/">ARTICLES</a></li>
+        
+        <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/talks/">TALKS</a></li>
+        
+        <li><a href="/vitae/">VITAE</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          January 12, 2021
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            6 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">java</span>
+            
+            <span class="label label-success">git</span>
+            
+            <span class="label label-success">github</span>
+            
+            <span class="label label-success">intellij</span>
+            
+            <span class="label label-success">vscode</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>Working on a large codebase, it&rsquo;s pretty normal to not remember every small or large subsystem or implementation choice. Be it whether you&rsquo;re new to a codebase, or you&rsquo;ve been focussed on a specific area of the codebase. When working on refactorings or bug fixes, I often end up in areas I might not be too familiar with. Generally not dramatic, it happens quite often that I&rsquo;m stopping at what I&rsquo;m doing because I need to decide on how to move forward.  As software engineers, we have to make so many micro-decisions every minute that we&rsquo;re pretty used to it. Depending on the code and domain knowledge, we often find ourselves in situations where we need more context to make an informed decision. Tests usually provide a pretty good context but depending on their granularity and naming, they might only tell is &ldquo;what&rdquo; is in the implementation but miss the &ldquo;why&rdquo;. And if we try to decide whether we can remove a certain check or rework a behavior, we need to understand why it was introduced in the first place. Usually, we resort to looking at the commit that introduced the change or the tickets associated with the commit.
+<br>
+<img src="/blog/git-archeology/unearth.jpg" alt="Archeology">
+<br>
+Most people will start with using git blame (or the respective functionality within their IDE/editor). But on most non-trivial projects, you usually end up with a refactoring commit, a rename, or a trivial cross-project fix like switching to another assertion library. At first glance, we only see the most recent changes, not the most important ones.
+We need to carefully remove layer by layer of sand and dirt that has been swept over the real changes to unearth them.</p>
+<h2 id="moving-backwards-in-time">Moving Backwards In Time</h2>
+<p>A simple <code>git blame</code> shows us only the most recernt changes. Assuming it&rsquo;s a simple move within the file or a whitespace fix, we can
+ignore those using the flags that <code>git blame</code> offer us:</p>
+<dl>
+  <dt>-w</dt>
+  <dd>ignores whitespace changes</dd>
+  <dt>-M</dt>
+  <dd>ignores changes if the line was just moved/copied within the same file</dd>
+  <dt>-C</dt>
+  <dd>ignores changes if the line was just moved/coped from other files</dd>
+</dl>
+<p>The above flags are already useful. Most of them are not only available on the command line though, they&rsquo;re usually available in the various editors as well
+(feel free to show how it&rsquo;s done in your editor and share <a href="https://twitter.com/bmuskalla">on Twitter</a>).</p>
+<p><img src="/blog/git-archeology/intellij_options.png" alt="IntelliJ VCS Annotation Options"></p>
+<p>Usually, this allows to hide some of the more trivial commits but requires <code>git</code> to detect them as such. More often, we (as engineers) can easily gauge
+whether a commit is relevant for our search based on commit message, author, and coding practices. Luckily, this can also easily be achieved by the various
+editors by moving backward commit-wise. Looking at the history on GitHub, you can use the &ldquo;View blame prior to this change&rdquo; feature:</p>
+<p><img src="/blog/git-archeology/github_prior.png" alt="GitHub prior commits"></p>
+<p>Similarly, IntelliJ-based IDEs allow you to do the same using &ldquo;Annotate Previous Revision&rdquo;:</p>
+<p><img src="/blog/git-archeology/annotate_previous.png" alt="IntelliJ Annotate Previous Commit"></p>
+<h2 id="moving-forward">Moving Forward</h2>
+<p>Depending on what we&rsquo;re looking for, we may not want to uncover commit by commit until we find the initial commit that introduced something. Let&rsquo;s say that we&rsquo;re working with a customer who sees a specific error message on an older version of our product. On <code>main</code>, this error message is not present anymore as somebody refactored the code already. To dig into this, we&rsquo;ll have to find out when this error message got introduced. One way to pick through the whole history in the search for the holy grail..err..the error message is to use git pickaxe. Pickaxe is part of git log can be used as follows</p>
+<pre><code>git log -S'errorMessage'
+</code></pre><p>By default, it will spit out all commits that introdcued or removed the the string <code>errorMessage</code> in any way.Especially with error messages, you may be looking for an error message template that has variables in there. Luckily, git has us covered: you can use <code>--pickaxe-regex</code> and use <code>-S&lt;regexp&gt;</code> to find matching commits. Be aware that using -S will only find commits that change the number of times a string is found (addition/deletion). If you&rsquo;re also looking for a commit that changed  the position of a string (e.g. a refactoring that moved the keyword around), you are better of using the <code>-G</code>:</p>
+<pre><code>git log -G&quot;error.*&quot;
+</code></pre><h2 id="skipping-history">Skipping History</h2>
+<p>Whether you move forward or backward through history, there will always be the &ldquo;big bang&rdquo; refactorings that get in your way.
+Be it that your team decided to agree on certain line endings, a large split of the codebase or a rename to align the codebase with
+the <a href="https://www.jamesshore.com/v2/books/aoad1/ubiquitous_language">ubiquitous language</a>. So these changes are usually
+never interesting in the context of wading through the history for a specific line and Git has some neat features that allow us to
+skip those when looking at <code>git blame</code> for a file.
+The simple approach is to pass all commit ids that we want to ignore using <code>--ignore-rev</code> as the following example shows.
+Given this history for a file, consisting of the important change as well as a commit that just refactored the file:</p>
+<pre><code>❯ git log
+commit 301b7eca0eb57737e160f5d2d16208f65c4156d6 (HEAD -&gt; master)
+Author: Benjamin Muskalla &lt;bmuskalla@gradle.com&gt;
+Date:   Tue Jan 12 11:38:40 2021 +0100
+
+    Reformat all source files
+
+commit bd3fca50ee1659e740e2f6744d95e737418f1f40
+Author: Benjamin Muskalla &lt;bmuskalla@gradle.com&gt;
+Date:   Tue Jan 12 11:38:12 2021 +0100
+
+    Important change
+</code></pre><p>As expected, regular git blame shows the most recent changes on the file. This is the commit reformatting the file which is irrelevant for us. We want to see an important change.</p>
+<pre><code>❯ git blame sourcefile.py
+301b7eca 1) import random
+301b7eca 2)
+301b7eca 3) print(random.randint(0,9))
+301b7eca 4)
+</code></pre><p>So using the &ldquo;ignore revisions&rdquo; feature allows us to explicitly ignore specific commits,  thus showing us the commit we&rsquo;re interested in:</p>
+<pre><code>git blame --ignore-rev 301b7ec sourcefile.py
+^bd3fca5 1) import random
+301b7eca 2)
+^bd3fca5 3) print(random.randint(0,9))
+301b7eca 4)
+</code></pre><p>Throughout the lifetime of a project, this approach certainly doesn&rsquo;t scale. There will always be commits that should be ignored in those
+cases. Based on the same approach, <code>git blame</code> allows you to specify a file that contains a list of commits to be ignored.
+This is not only handy as you can check it in with all your other files, but it&rsquo;s also easy to share this within your team so everybody can leverage this as well.
+In our example, let&rsquo;s call it <code>.git-blame-ignored-revs</code> and specify which commits should be ignored using their commit hash. You can use <code>#</code> to add comments to the file as well.</p>
+<pre><code># ignore pure formatting commits
+301b7eca0eb57737e160f5d2d16208f65c4156d6
+</code></pre><p>You can now manually use this file as your source of filters using <code>--ignore-revs-file</code>.</p>
+<pre><code>❯ git blame -s --ignore-revs-file=.git-blame-ignored-revs sourcefile.py
+</code></pre><p>If you want this to be the default behavior, you can either create a git alias for this or even configure git to always use this file. With this configuration, git blame will always ignore the commits in <code>.git-blame-ignored-revs</code>:</p>
+<pre><code>❯ git config blame.ignoreRevsFile .git-blame-ignored-revs
+</code></pre><h1 id="recap">Recap</h1>
+<p>Different problems require different approaches. Whether you&rsquo;re looking for an error message that is long gone from the <code>main</code> branch or try to peel back the layers for some new code, git offers a tremendous amount of tools for your needs. Sometimes it is enough to remember that certain tools or approaches exist so you can look them up if you decide which way you want to approach your search.  I hope I was able to show the one or other interesting bit that can you add to your own toolbox and would be happy <a href="https://twitter.com/bmuskalla">to hear about</a> your approach to archeology.</p>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        January 4, 2021
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 25, 2020
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        November 25, 2019
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2019-11-25-release-scoped-properies/">Changing System Properties in Isolation</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>
