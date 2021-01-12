@@ -83,7 +83,7 @@ if (!doNotTrack) {
           <h4>
           January 12, 2021
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            6 min read
+            7 min read
           </h4>
           <h4>
             
@@ -104,7 +104,7 @@ if (!doNotTrack) {
             <div class="blogpost">
               <p>Working on a large codebase, it&rsquo;s pretty normal to not remember every small or large subsystem or implementation choice. Be it whether you&rsquo;re new to a codebase, or you&rsquo;ve been focussed on a specific area of the codebase. When working on refactorings or bug fixes, I often end up in areas I might not be too familiar with. Generally not dramatic, it happens quite often that I&rsquo;m stopping at what I&rsquo;m doing because I need to decide on how to move forward.  As software engineers, we have to make so many micro-decisions every minute that we&rsquo;re pretty used to it. Depending on the code and domain knowledge, we often find ourselves in situations where we need more context to make an informed decision. Tests usually provide a pretty good context but depending on their granularity and naming, they might only tell is &ldquo;what&rdquo; is in the implementation but miss the &ldquo;why&rdquo;. And if we try to decide whether we can remove a certain check or rework a behavior, we need to understand why it was introduced in the first place. Usually, we resort to looking at the commit that introduced the change or the tickets associated with the commit.
 <br>
-<img src="/blog/git-archeology/unearth.jpg" alt="Archeology">
+<a href="https://www.sciencenewsforstudents.org/article/scientists-say-archaeology"><img src="/blog/git-archeology/unearth.jpg" alt="Archeology"></a>
 <br>
 Most people will start with using git blame (or the respective functionality within their IDE/editor). But on most non-trivial projects, you usually end up with a refactoring commit, a rename, or a trivial cross-project fix like switching to another assertion library. At first glance, we only see the most recent changes, not the most important ones.
 We need to carefully remove layer by layer of sand and dirt that has been swept over the real changes to unearth them.</p>
@@ -175,8 +175,17 @@ In our example, let&rsquo;s call it <code>.git-blame-ignored-revs</code> and spe
 <pre><code>❯ git blame -s --ignore-revs-file=.git-blame-ignored-revs sourcefile.py
 </code></pre><p>If you want this to be the default behavior, you can either create a git alias for this or even configure git to always use this file. With this configuration, git blame will always ignore the commits in <code>.git-blame-ignored-revs</code>:</p>
 <pre><code>❯ git config blame.ignoreRevsFile .git-blame-ignored-revs
-</code></pre><h1 id="recap">Recap</h1>
-<p>Different problems require different approaches. Whether you&rsquo;re looking for an error message that is long gone from the <code>main</code> branch or try to peel back the layers for some new code, git offers a tremendous amount of tools for your needs. Sometimes it is enough to remember that certain tools or approaches exist so you can look them up if you decide which way you want to approach your search.  I hope I was able to show the one or other interesting bit that can you add to your own toolbox and would be happy <a href="https://twitter.com/bmuskalla">to hear about</a> your approach to archeology.</p>
+</code></pre><p>A nice side-effect of using <code>git config</code> is that other tools and editors that rely on the command line tools behaviour just fall in line with these settings.
+For example, IntelliJ IDEA shows the &ldquo;Important Change&rdquo; when enabling annotations:</p>
+<p><img src="/blog/git-archeology/blame_ignore_intellij.png" alt="IntelliJ Ignoring Changes"></p>
+<h1 id="recap">Recap</h1>
+<p>Different problems require different approaches. Whether you&rsquo;re looking for an error message that is long gone from the <code>main</code> branch or try to peel back the layers for some new code, git offers a tremendous amount of tools for your needs. Sometimes it is enough to remember that certain tools or approaches exist so you can look them up if you decide which way you want to approach your search:</p>
+<ul>
+<li><code>git blame</code> with its various filters like <code>-M</code></li>
+<li><code>git log -S/-G</code> to look for additions/deletions for specific keywords or patterns</li>
+<li><code>git blame --ignore-rev</code> to hide known, noisy commits</li>
+</ul>
+<p>I hope I was able to show the one or other interesting bit that can you add to your own toolbox and would be happy <a href="https://twitter.com/bmuskalla">to hear about</a> your approach to software archeology.</p>
 
               <hr>
               <div class="related-posts">
