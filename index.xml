@@ -39,6 +39,8 @@ editors by moving backward commit-wise. Looking at the history on GitHub, you ca
 &lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/github_prior.png&#34; alt=&#34;GitHub prior commits&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Similarly, IntelliJ-based IDEs allow you to do the same using &amp;ldquo;Annotate Previous Revision&amp;rdquo;:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/annotate_previous.png&#34; alt=&#34;IntelliJ Annotate Previous Commit&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In case you&amp;rsquo;re using Visual Studio Code, the excellent &amp;ldquo;GitLense&amp;rdquo; extension offers similar commands:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/gitlense_previous.png&#34; alt=&#34;Visual Studio Code Show Previous Commit&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;moving-forward&#34;&gt;Moving Forward&lt;/h2&gt;
 &lt;p&gt;Depending on what we&amp;rsquo;re looking for, we may not want to uncover commit by commit until we find the initial commit that introduced something. Let&amp;rsquo;s say that we&amp;rsquo;re working with a customer who sees a specific error message on an older version of our product. On &lt;code&gt;main&lt;/code&gt;, this error message is not present anymore as somebody refactored the code already. To dig into this, we&amp;rsquo;ll have to find out when this error message got introduced. One way to pick through the whole history in the search for the holy grail..err..the error message is to use git pickaxe. Pickaxe is part of git log can be used as follows&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git log -S&#39;errorMessage&#39;

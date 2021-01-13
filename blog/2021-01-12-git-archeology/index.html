@@ -128,6 +128,8 @@ editors by moving backward commit-wise. Looking at the history on GitHub, you ca
 <p><img src="/blog/git-archeology/github_prior.png" alt="GitHub prior commits"></p>
 <p>Similarly, IntelliJ-based IDEs allow you to do the same using &ldquo;Annotate Previous Revision&rdquo;:</p>
 <p><img src="/blog/git-archeology/annotate_previous.png" alt="IntelliJ Annotate Previous Commit"></p>
+<p>In case you&rsquo;re using Visual Studio Code, the excellent &ldquo;GitLense&rdquo; extension offers similar commands:</p>
+<p><img src="/blog/git-archeology/gitlense_previous.png" alt="Visual Studio Code Show Previous Commit"></p>
 <h2 id="moving-forward">Moving Forward</h2>
 <p>Depending on what we&rsquo;re looking for, we may not want to uncover commit by commit until we find the initial commit that introduced something. Let&rsquo;s say that we&rsquo;re working with a customer who sees a specific error message on an older version of our product. On <code>main</code>, this error message is not present anymore as somebody refactored the code already. To dig into this, we&rsquo;ll have to find out when this error message got introduced. One way to pick through the whole history in the search for the holy grail..err..the error message is to use git pickaxe. Pickaxe is part of git log can be used as follows</p>
 <pre><code>git log -S'errorMessage'
