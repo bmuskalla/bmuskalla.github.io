@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>Cheating in Software Design using the Konami code</title>
+    <meta name="generator" content="Hugo 0.64.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/articles/">ARTICLES</a></li>
+        
+        <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/talks/">TALKS</a></li>
+        
+        <li><a href="/vitae/">VITAE</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/">Cheating in Software Design using the Konami code</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          March 25, 2021
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            11 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">architecture</span>
+            
+            <span class="label label-success">tdd</span>
+            
+            <span class="label label-success">design</span>
+            
+            <span class="label label-success">refactoring</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>Have you worked on a large codebase recently? A scary one, maybe? Maybe even polyglot and split across multiple services?
+It is no surprise today that software is eating the world. Which, to be honest, can be a good thing for us software craftsman but also means that software becomes more and more complex.
+Just looking at current tech stacks in various companies, they include up to 100 different technologies, tools, libraries, and frameworks.
+That combined with the fact that software is both a science as well as art, there is often no right or wrong on how to design our software. You may call in architecture, you may be influenced by clean code and other programming techniques, but
+the hard part is also in between. Implementing a feature in an existing codebase is a delicate interplay of knowledge (of the existing architecture <em>and</em> actual implementation), the test approach, technologies at play, and, not to be forgotten, how it ties into the business needs. Sprinkle some tech debt on top, and you got the perfect complexity cake.</p>
+<p>So with all this complexity at play, nobody can reasonably hold all this into their head. Some people fall back on using pair or mob programming (which is an excellent method btw), but that doesn&rsquo;t reduce the complexity. It merely distributes it.
+In the last years, I&rsquo;ve seen quite a few closed and open-source projects of varying complexities. While they&rsquo;re all different in their own regards, they all suffered from a common theme. The teams behind them were outstanding software engineers, tested their software properly and took care of their codebase. Yet, entropy doesn&rsquo;t stop the software from rotting. And this isn&rsquo;t a bad thing. It&rsquo;s just the way entropy works. And we all know too well (but may ignore it from time to time) that we need to take care of it. Having established that no codebase is perfect, how do we best approach implementing a new feature (or adding value in general) in such an environment?</p>
+<p>When designing systems - people tend to fall for one of the two traps: we try to advance a problem analytically by reading a lot of documentation (shall it exist), make assumptions about the parts that are not documented, talk it through with our peers and form a plan of attack. The alternative approach is to go in, guns blazing, start coding the feature at the most convenient place, and somehow pull through, whatever it costs.
+But there is an alternative approach that we can take: We cheat!</p>
+<p>If you&rsquo;ve played games on PC or a console in the last decade, you may remember one of the more famous cheat codes, the Konami code. It goes like this:</p>
+<p><kbd>↑</kbd>
+<kbd>↑</kbd>
+<kbd>↓</kbd>
+<kbd>↓</kbd>
+<kbd>→</kbd>
+<kbd>←</kbd>
+<kbd>→</kbd>
+<kbd>B</kbd>
+<kbd>A</kbd>
+<kbd>START</kbd></p>
+<p>Feel free to try this in your IDE. You might get lucky (actually, <a href="https://techdows.com/2014/06/use-konami-code-to-enable-power-user-settings-in-opera.html">Opera does implement the Konami code</a> to access advanced settings).
+So how can we use this to our advantage when sketching new paths through our software. For that, let&rsquo;s join Susan.</p>
+<p><a href="https://en.wikipedia.org/wiki/It%27s_dangerous_to_go_alone!"><img src="/blog/konami/It's_dangerous_to_go_alone!_Take_this..png" alt="It&rsquo;s dangerous to go alone!"></a></p>
+<p>Susan recently joined a new company as a Senior Software Engineer. She has experience with different programming languages, is an avid Practioner of test-driven development, and embraces refactorings.</p>
+<p>The codebase of the company she joined is quite complex even though well thought out. Many architectural and implementation approaches are not documented, so she has to rely on tribe knowledge.
+Her team is friendly, yet, with many new people, there are always aspects of the codebase that no one really knows how it came about. Susan and her team decided to take on a new, non-trivial feature for one of their customers, and Susan decided to take the lead.</p>
+<p>Approaching the codebase wasn&rsquo;t easy, but she remembered reading a blog post about &ldquo;Cheating in Software Design using the Konami code&rdquo;. So she gave it a try.</p>
+<h2 id="kbdkbd-identify-the-outer-most-interaction-surface"><kbd>↑</kbd> Identify the outer-most interaction surface</h2>
+<p>One of the first steps towards implementing a new feature is thinking about how an end-user would first approach it in its most minimal incarnation. This might be a single button in the UI, a single argument on the command line, or a single method within an API if you&rsquo;re developing a library.</p>
+<h2 id="kbdkbd-write-a-high-level-system-test"><kbd>↑</kbd> Write a high-level system test</h2>
+<p>Once we have identified a minimal aspect of our feature, start with a system or integration test. Feel free to ignore how you&rsquo;d actually implement the feature itself. Think about how it will be consumed by the end-user. What is the interaction pattern the user will experience? Is it a button that fills a table with data? Will it produce no observable state except for confirmation but send an event somewhere? Try your best to sketch out a test case for your feature. It doesn&rsquo;t need to compile yet, let alone run (if it runs and passes, there is no feature to implement anymore, but we&rsquo;re getting ahead of ourselves).</p>
+<h2 id="kbdkbd-build-a-mental-map"><kbd>↓</kbd> Build a mental map</h2>
+<p>With the customer-centric picture of a feature in our subconsciousness, let&rsquo;s do a quick rehearsal. Think of it like Hansel and Gretel leaving breadcrumbs behind. Try to imagine how you would implement the feature but hold off doing so. Just trace the path through the codebase and try to get familiar with your surroundings. Think it through (even better in a pairing session if you&rsquo;re up for it). Don&rsquo;t touch the code yet. Think of what you&rsquo;d need to do. Does your UI need to call a backend service?</p>
+<p>Feel free to make assumptions about things you don&rsquo;t know yet but feel free to explore those areas. Do you need to maybe change the database schema? Don&rsquo;t worry about how you&rsquo;d store the data but try and find the place where you&rsquo;d need to change the schema. Do you need to talk to a 3rd party API? Have a look at their API documentation, check how you&rsquo;d authenticate and what kind of data this offers. Is your system already capable of dealing with such data, or is it something you&rsquo;d need to do? Feel free to sprinkle in some <code>TODO</code>s in the code to remind yourself of your open questions before hitting our cheat code&rsquo;s next key.</p>
+<h2 id="kbdkbd-go-the-path-all-hacks-allowed"><kbd>↓</kbd> Go the path. All hacks allowed</h2>
+<p>Now comes the exciting part. Now we go &ldquo;down&rdquo; into the implementation. At least sort of. Before we do, one piece of advice. Forget everything you ever heard about clean code, test-driven development, or poor design patterns. The key is to get enough code cobbled together to make the high-level test pass in this step. Don&rsquo;t have API keys for a 3rd party API yet? Don&rsquo;t worry. Hardcode it to some reasonable responses from their documentation. Need to get data from one subsystem to the other in a thread-safe way? Feel free to use a static variable. Proper synchronization is nothing we need to fix at this stage. Not sure how to properly style that UI? Use a red button and a green table. Do the cheapest thing possible to getaway. But there is a catch. A single rule so to say:</p>
+<blockquote>
+<h3 id="dont-fake-anything-you-dont-know-yet">Don&rsquo;t fake anything you don&rsquo;t know yet.</h3>
+</blockquote>
+<p>What do I mean by this? Depending on your experience and the infrastructure in your code, certain parts of the implementation are &ldquo;straightforward&rdquo; yet require a decent amount of work to make them handle the complexity of the real world. A good example is calling an HTTP endpoint (easy, right?). Something that can be done with quite some ease in most languages nowadays also holds a lot of potential edge cases in how they affect your product (rate limiting, retry behavior, timeouts, &hellip;). If you know these things and have a good idea of how to do them, skip it for now. Hardcode the response. Focus on your feature&rsquo;s path, how it flows within the architecture, which submodules need to interact, what protocol/API/handoff has to happen.</p>
+<p>The same goes for algorithmic problems. If it&rsquo;s local to a particular data structure (e.g., the fastest way to walk a specific tree of data), you can skip this for now and use something that just works, performance aside. But be aware whether this is actually a local aspect or if solving this may require a different data structure and whether that changes the surrounding design for your component.</p>
+<p>Your goal is: get our system test to pass while optimizing the time spent there. And keep our single rule in mind. If you&rsquo;re not sure how to get from A to B, dig &ldquo;down&rdquo;.</p>
+<p>Got your test passing? Great! You&rsquo;re almost done with your feature. You did the hard part. You did the exploration. Yes, correct. This isn&rsquo;t your implementation. This exercise is solely to understand the complete picture, to explore the uncertain parts of our map. And by hacking it together, it is natural to stumble upon those &ldquo;oh I didn&rsquo;t see that gap how to get from A to B&rdquo;.</p>
+<p><img src="/blog/konami/spike.jpg" alt="Explore the path through the weeds using a spike!"></p>
+<h2 id="kbdkbd-identify-bottleneckshurdles"><kbd>←</kbd> Identify bottlenecks/hurdles</h2>
+<p> 
+Now that our functionality is &ldquo;somewhat&rdquo; working take a step back. You just gained a lot of experience doing this spike. You learned more about the system, you gained insights into which parts fit into the architecture and which parts stood out like a sore thumb. Using our newly acquired knowledge, we can collect two lists of things to further explore:</p>
+<ul>
+<li>Refactorings that are blocking the feature</li>
+<li>Refactorings that support us to fit the feature in more naturally</li>
+<li>Prerequisites that we need to start implementing this for real (got that API key by now?)</li>
+</ul>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">“I doubt any of these <br>are blockers, but there&#39;s a certain amount of un-fun grinding here to <br>clear out the underbrush” is so much better than “Refactoring”. Thank you <a href="https://twitter.com/BrianGoetz?ref_src=twsrc%5Etfw">@BrianGoetz</a> for this beauty <a href="https://t.co/dDdMjyZrot">https://t.co/dDdMjyZrot</a></p>&mdash; Benjamin Muskalla (@bmuskalla) <a href="https://twitter.com/bmuskalla/status/1362475714126184449?ref_src=twsrc%5Etfw">February 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="kbdkbd-reset-hard"><kbd>→</kbd> Reset Hard</h2>
+<p>And with items on the lists above, there is the only thing left for us to do. Stash your system test, mark it as <code>@Ignore</code>, or <code>@NotYetImplemented</code> if your test framework supports that. And let&rsquo;s do it for real:</p>
+<pre><code>git reset --hard HEAD
+</code></pre><h2 id="-left---do-all-refactorings">← Left - Do all refactorings</h2>
+<p>Now, this step is actually significant for you - as well as other people reviewing your code. Given we&rsquo;ve already spiked the path through the system, we know which parts are in the way and require some attention. Doing those kinds of refactorings in the middle of implementing a feature often leads to added complexity as refactoring contributes to the number of things we need to handle in parallel. Your tests for your new feature might not be green yet, and that&rsquo;s the worst time to start refactoring. By learning about the path beforehand and identifying (at least some), refactorings can help us to go faster in the long run. We can now tackle this refactoring independently, which makes them easier to do and easier to review. It also makes it easier for our feature to fit into this. Imagine we have some colossal class that handles multiple alternative implementations at once and got really messy. Refactoring that towards a strategy pattern improves the current situation and clearly indicates that we add a new strategy when we implement our lovely feature. Try to make it easy for the feature to fit in.</p>
+<blockquote>
+<p>Avoid <a href="https://refactoring.guru/smells/shotgun-surgery">Shotgun Surgery</a>.</p>
+</blockquote>
+<h2 id="kdbkbd-implement-the-steps-one-by-one"><kdb>→</kbd> Implement the steps, one by one</h2>
+<p>With the whole picture in your mind now, it&rsquo;s time to pull up the sleeves and do the work. It actually doesn&rsquo;t matter where you start, and different people have different approaches. Start with something that fits your current mood and get the first part of your implementation in place. It doesn&rsquo;t need to be connected to anything else yet, but it should be adequately implemented. The good thing is that we can actually work on pieces individually as we already know how we&rsquo;ll put them together in the end.</p>
+<blockquote>
+<p>The process of writing your second draft is the process of making it look like you knew what you were doing all along.</p>
+<p><em>—Neil Gaiman</em></p>
+</blockquote>
+<p>&ldquo;Properly&rdquo; should be defined by you and your team. Personally, it means I have unit tests for the unit in question, proper documentation if it&rsquo;s an API boundary, and maybe integration tests depending on the nature of the thing. One by one, those can also go into your main branch or go up for code review as they should be independent of the rest (maybe not connected to everything yet). If you and your team have a good track record working together, you may actually go to the next level of defining an interface between two components and implement them in parallel.</p>
+<p><img src="/blog/konami/incremental.jpg" alt="Incrementally build up the feature, properly!"></p>
+<h2 id="kbdakbd-introduce-your-system-test-again"><kbd>A</kbd> Introduce your system test (again)</h2>
+<p>Once you&rsquo;ve retraced your steps and implemented all the different aspects correctly, it&rsquo;s time to get back to our initial test and see how it works.</p>
+<h2 id="kbdbkbd-connect-the-dots"><kbd>B</kbd> Connect the dots</h2>
+<p>Your system test should pass by now. If not, you may have forgotten to integrate some of the newly added functionality. Feel free to add some more system-level tests that span the full feature to see if you have any loose ends.</p>
+<h2 id="kbdstartkbd-the-feature-is-done-done"><kbd>START</kbd> The feature is &ldquo;Done Done&rdquo;</h2>
+<p>Congratulations. You&rsquo;ve delivered a new feature. That&rsquo;s a tremendous short-term technical win. But you have accomplished a lot more. You&rsquo;ve delivered a feature. You&rsquo;ve done the refactorings to support and adequately integrate that feature and have proper test coverage on different levels. These aspects contribute significantly to the long-term goals of your projects and keep them maintainable.</p>
+<p>Interested in reading more about some of the strategies mentioned here?</p>
+<ul>
+<li>Book &ldquo;<a href="http://www.growing-object-oriented-software.com/authors.html">Growing Object-Oriented Software Guided by Tests</a>&rdquo; by Steve Freeman and Nat Pryce</li>
+<li>Definition of &ldquo;<a href="https://www.jamesshore.com/v2/books/aoad1/done_done">Done Done</a>&rdquo; in &ldquo;<a href="https://www.jamesshore.com/v2/books/aoad1/">Art of Agile Development</a>&rdquo;</li>
+<li>Look up the various articles around &ldquo;Outside-In Test Driven Development&rdquo;. A lot of them give you hints depending on your language of interest</li>
+</ul>
+<p>If you liked the the post, I&rsquo;d happy to hear your thoughts on <a href="https://twitter.com/bmuskalla">Twitter</a>.</p>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 8, 2018
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2018-06-08-refactoring-towards-speed-reading/">Refactoring towards speed reading</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        October 6, 2016
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2016-10-06-wheretoputconstants/">WHERE_TO_PUT.CONSTANTS</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = '';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

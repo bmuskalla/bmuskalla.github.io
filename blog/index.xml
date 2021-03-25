@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bmuskalla.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cheating in Software Design using the Konami code</title>
+      <link>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</link>
+      <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</guid>
+      <description>Have you worked on a large codebase recently? A scary one, maybe? Maybe even polyglot and split across multiple services? It is no surprise today that software is eating the world. Which, to be honest, can be a good thing for us software craftsman but also means that software becomes more and more complex. Just looking at current tech stacks in various companies, they include up to 100 different technologies, tools, libraries, and frameworks.</description>
+    </item>
     
     <item>
       <title>Git Archeology</title>

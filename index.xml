@@ -6,7 +6,98 @@
     <description>Recent content on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bmuskalla.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bmuskalla.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cheating in Software Design using the Konami code</title>
+      <link>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</link>
+      <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</guid>
+      <description>&lt;p&gt;Have you worked on a large codebase recently? A scary one, maybe? Maybe even polyglot and split across multiple services?
+It is no surprise today that software is eating the world. Which, to be honest, can be a good thing for us software craftsman but also means that software becomes more and more complex.
+Just looking at current tech stacks in various companies, they include up to 100 different technologies, tools, libraries, and frameworks.
+That combined with the fact that software is both a science as well as art, there is often no right or wrong on how to design our software. You may call in architecture, you may be influenced by clean code and other programming techniques, but
+the hard part is also in between. Implementing a feature in an existing codebase is a delicate interplay of knowledge (of the existing architecture &lt;em&gt;and&lt;/em&gt; actual implementation), the test approach, technologies at play, and, not to be forgotten, how it ties into the business needs. Sprinkle some tech debt on top, and you got the perfect complexity cake.&lt;/p&gt;
+&lt;p&gt;So with all this complexity at play, nobody can reasonably hold all this into their head. Some people fall back on using pair or mob programming (which is an excellent method btw), but that doesn&amp;rsquo;t reduce the complexity. It merely distributes it.
+In the last years, I&amp;rsquo;ve seen quite a few closed and open-source projects of varying complexities. While they&amp;rsquo;re all different in their own regards, they all suffered from a common theme. The teams behind them were outstanding software engineers, tested their software properly and took care of their codebase. Yet, entropy doesn&amp;rsquo;t stop the software from rotting. And this isn&amp;rsquo;t a bad thing. It&amp;rsquo;s just the way entropy works. And we all know too well (but may ignore it from time to time) that we need to take care of it. Having established that no codebase is perfect, how do we best approach implementing a new feature (or adding value in general) in such an environment?&lt;/p&gt;
+&lt;p&gt;When designing systems - people tend to fall for one of the two traps: we try to advance a problem analytically by reading a lot of documentation (shall it exist), make assumptions about the parts that are not documented, talk it through with our peers and form a plan of attack. The alternative approach is to go in, guns blazing, start coding the feature at the most convenient place, and somehow pull through, whatever it costs.
+But there is an alternative approach that we can take: We cheat!&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;ve played games on PC or a console in the last decade, you may remember one of the more famous cheat codes, the Konami code. It goes like this:&lt;/p&gt;
+&lt;p&gt;&lt;kbd&gt;↑&lt;/kbd&gt;
+&lt;kbd&gt;↑&lt;/kbd&gt;
+&lt;kbd&gt;↓&lt;/kbd&gt;
+&lt;kbd&gt;↓&lt;/kbd&gt;
+&lt;kbd&gt;→&lt;/kbd&gt;
+&lt;kbd&gt;←&lt;/kbd&gt;
+&lt;kbd&gt;→&lt;/kbd&gt;
+&lt;kbd&gt;B&lt;/kbd&gt;
+&lt;kbd&gt;A&lt;/kbd&gt;
+&lt;kbd&gt;START&lt;/kbd&gt;&lt;/p&gt;
+&lt;p&gt;Feel free to try this in your IDE. You might get lucky (actually, &lt;a href=&#34;https://techdows.com/2014/06/use-konami-code-to-enable-power-user-settings-in-opera.html&#34;&gt;Opera does implement the Konami code&lt;/a&gt; to access advanced settings).
+So how can we use this to our advantage when sketching new paths through our software. For that, let&amp;rsquo;s join Susan.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/It%27s_dangerous_to_go_alone!&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/konami/It&#39;s_dangerous_to_go_alone!_Take_this..png&#34; alt=&#34;It&amp;rsquo;s dangerous to go alone!&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Susan recently joined a new company as a Senior Software Engineer. She has experience with different programming languages, is an avid Practioner of test-driven development, and embraces refactorings.&lt;/p&gt;
+&lt;p&gt;The codebase of the company she joined is quite complex even though well thought out. Many architectural and implementation approaches are not documented, so she has to rely on tribe knowledge.
+Her team is friendly, yet, with many new people, there are always aspects of the codebase that no one really knows how it came about. Susan and her team decided to take on a new, non-trivial feature for one of their customers, and Susan decided to take the lead.&lt;/p&gt;
+&lt;p&gt;Approaching the codebase wasn&amp;rsquo;t easy, but she remembered reading a blog post about &amp;ldquo;Cheating in Software Design using the Konami code&amp;rdquo;. So she gave it a try.&lt;/p&gt;
+&lt;h2 id=&#34;kbdkbd-identify-the-outer-most-interaction-surface&#34;&gt;&lt;kbd&gt;↑&lt;/kbd&gt; Identify the outer-most interaction surface&lt;/h2&gt;
+&lt;p&gt;One of the first steps towards implementing a new feature is thinking about how an end-user would first approach it in its most minimal incarnation. This might be a single button in the UI, a single argument on the command line, or a single method within an API if you&amp;rsquo;re developing a library.&lt;/p&gt;
+&lt;h2 id=&#34;kbdkbd-write-a-high-level-system-test&#34;&gt;&lt;kbd&gt;↑&lt;/kbd&gt; Write a high-level system test&lt;/h2&gt;
+&lt;p&gt;Once we have identified a minimal aspect of our feature, start with a system or integration test. Feel free to ignore how you&amp;rsquo;d actually implement the feature itself. Think about how it will be consumed by the end-user. What is the interaction pattern the user will experience? Is it a button that fills a table with data? Will it produce no observable state except for confirmation but send an event somewhere? Try your best to sketch out a test case for your feature. It doesn&amp;rsquo;t need to compile yet, let alone run (if it runs and passes, there is no feature to implement anymore, but we&amp;rsquo;re getting ahead of ourselves).&lt;/p&gt;
+&lt;h2 id=&#34;kbdkbd-build-a-mental-map&#34;&gt;&lt;kbd&gt;↓&lt;/kbd&gt; Build a mental map&lt;/h2&gt;
+&lt;p&gt;With the customer-centric picture of a feature in our subconsciousness, let&amp;rsquo;s do a quick rehearsal. Think of it like Hansel and Gretel leaving breadcrumbs behind. Try to imagine how you would implement the feature but hold off doing so. Just trace the path through the codebase and try to get familiar with your surroundings. Think it through (even better in a pairing session if you&amp;rsquo;re up for it). Don&amp;rsquo;t touch the code yet. Think of what you&amp;rsquo;d need to do. Does your UI need to call a backend service?&lt;/p&gt;
+&lt;p&gt;Feel free to make assumptions about things you don&amp;rsquo;t know yet but feel free to explore those areas. Do you need to maybe change the database schema? Don&amp;rsquo;t worry about how you&amp;rsquo;d store the data but try and find the place where you&amp;rsquo;d need to change the schema. Do you need to talk to a 3rd party API? Have a look at their API documentation, check how you&amp;rsquo;d authenticate and what kind of data this offers. Is your system already capable of dealing with such data, or is it something you&amp;rsquo;d need to do? Feel free to sprinkle in some &lt;code&gt;TODO&lt;/code&gt;s in the code to remind yourself of your open questions before hitting our cheat code&amp;rsquo;s next key.&lt;/p&gt;
+&lt;h2 id=&#34;kbdkbd-go-the-path-all-hacks-allowed&#34;&gt;&lt;kbd&gt;↓&lt;/kbd&gt; Go the path. All hacks allowed&lt;/h2&gt;
+&lt;p&gt;Now comes the exciting part. Now we go &amp;ldquo;down&amp;rdquo; into the implementation. At least sort of. Before we do, one piece of advice. Forget everything you ever heard about clean code, test-driven development, or poor design patterns. The key is to get enough code cobbled together to make the high-level test pass in this step. Don&amp;rsquo;t have API keys for a 3rd party API yet? Don&amp;rsquo;t worry. Hardcode it to some reasonable responses from their documentation. Need to get data from one subsystem to the other in a thread-safe way? Feel free to use a static variable. Proper synchronization is nothing we need to fix at this stage. Not sure how to properly style that UI? Use a red button and a green table. Do the cheapest thing possible to getaway. But there is a catch. A single rule so to say:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;dont-fake-anything-you-dont-know-yet&#34;&gt;Don&amp;rsquo;t fake anything you don&amp;rsquo;t know yet.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What do I mean by this? Depending on your experience and the infrastructure in your code, certain parts of the implementation are &amp;ldquo;straightforward&amp;rdquo; yet require a decent amount of work to make them handle the complexity of the real world. A good example is calling an HTTP endpoint (easy, right?). Something that can be done with quite some ease in most languages nowadays also holds a lot of potential edge cases in how they affect your product (rate limiting, retry behavior, timeouts, &amp;hellip;). If you know these things and have a good idea of how to do them, skip it for now. Hardcode the response. Focus on your feature&amp;rsquo;s path, how it flows within the architecture, which submodules need to interact, what protocol/API/handoff has to happen.&lt;/p&gt;
+&lt;p&gt;The same goes for algorithmic problems. If it&amp;rsquo;s local to a particular data structure (e.g., the fastest way to walk a specific tree of data), you can skip this for now and use something that just works, performance aside. But be aware whether this is actually a local aspect or if solving this may require a different data structure and whether that changes the surrounding design for your component.&lt;/p&gt;
+&lt;p&gt;Your goal is: get our system test to pass while optimizing the time spent there. And keep our single rule in mind. If you&amp;rsquo;re not sure how to get from A to B, dig &amp;ldquo;down&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Got your test passing? Great! You&amp;rsquo;re almost done with your feature. You did the hard part. You did the exploration. Yes, correct. This isn&amp;rsquo;t your implementation. This exercise is solely to understand the complete picture, to explore the uncertain parts of our map. And by hacking it together, it is natural to stumble upon those &amp;ldquo;oh I didn&amp;rsquo;t see that gap how to get from A to B&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/konami/spike.jpg&#34; alt=&#34;Explore the path through the weeds using a spike!&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;kbdkbd-identify-bottleneckshurdles&#34;&gt;&lt;kbd&gt;←&lt;/kbd&gt; Identify bottlenecks/hurdles&lt;/h2&gt;
+&lt;p&gt; 
+Now that our functionality is &amp;ldquo;somewhat&amp;rdquo; working take a step back. You just gained a lot of experience doing this spike. You learned more about the system, you gained insights into which parts fit into the architecture and which parts stood out like a sore thumb. Using our newly acquired knowledge, we can collect two lists of things to further explore:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Refactorings that are blocking the feature&lt;/li&gt;
+&lt;li&gt;Refactorings that support us to fit the feature in more naturally&lt;/li&gt;
+&lt;li&gt;Prerequisites that we need to start implementing this for real (got that API key by now?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;“I doubt any of these &lt;br&gt;are blockers, but there&amp;#39;s a certain amount of un-fun grinding here to &lt;br&gt;clear out the underbrush” is so much better than “Refactoring”. Thank you &lt;a href=&#34;https://twitter.com/BrianGoetz?ref_src=twsrc%5Etfw&#34;&gt;@BrianGoetz&lt;/a&gt; for this beauty &lt;a href=&#34;https://t.co/dDdMjyZrot&#34;&gt;https://t.co/dDdMjyZrot&lt;/a&gt;&lt;/p&gt;&amp;mdash; Benjamin Muskalla (@bmuskalla) &lt;a href=&#34;https://twitter.com/bmuskalla/status/1362475714126184449?ref_src=twsrc%5Etfw&#34;&gt;February 18, 2021&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;h2 id=&#34;kbdkbd-reset-hard&#34;&gt;&lt;kbd&gt;→&lt;/kbd&gt; Reset Hard&lt;/h2&gt;
+&lt;p&gt;And with items on the lists above, there is the only thing left for us to do. Stash your system test, mark it as &lt;code&gt;@Ignore&lt;/code&gt;, or &lt;code&gt;@NotYetImplemented&lt;/code&gt; if your test framework supports that. And let&amp;rsquo;s do it for real:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset --hard HEAD
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;-left---do-all-refactorings&#34;&gt;← Left - Do all refactorings&lt;/h2&gt;
+&lt;p&gt;Now, this step is actually significant for you - as well as other people reviewing your code. Given we&amp;rsquo;ve already spiked the path through the system, we know which parts are in the way and require some attention. Doing those kinds of refactorings in the middle of implementing a feature often leads to added complexity as refactoring contributes to the number of things we need to handle in parallel. Your tests for your new feature might not be green yet, and that&amp;rsquo;s the worst time to start refactoring. By learning about the path beforehand and identifying (at least some), refactorings can help us to go faster in the long run. We can now tackle this refactoring independently, which makes them easier to do and easier to review. It also makes it easier for our feature to fit into this. Imagine we have some colossal class that handles multiple alternative implementations at once and got really messy. Refactoring that towards a strategy pattern improves the current situation and clearly indicates that we add a new strategy when we implement our lovely feature. Try to make it easy for the feature to fit in.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Avoid &lt;a href=&#34;https://refactoring.guru/smells/shotgun-surgery&#34;&gt;Shotgun Surgery&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;kdbkbd-implement-the-steps-one-by-one&#34;&gt;&lt;kdb&gt;→&lt;/kbd&gt; Implement the steps, one by one&lt;/h2&gt;
+&lt;p&gt;With the whole picture in your mind now, it&amp;rsquo;s time to pull up the sleeves and do the work. It actually doesn&amp;rsquo;t matter where you start, and different people have different approaches. Start with something that fits your current mood and get the first part of your implementation in place. It doesn&amp;rsquo;t need to be connected to anything else yet, but it should be adequately implemented. The good thing is that we can actually work on pieces individually as we already know how we&amp;rsquo;ll put them together in the end.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The process of writing your second draft is the process of making it look like you knew what you were doing all along.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—Neil Gaiman&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;Properly&amp;rdquo; should be defined by you and your team. Personally, it means I have unit tests for the unit in question, proper documentation if it&amp;rsquo;s an API boundary, and maybe integration tests depending on the nature of the thing. One by one, those can also go into your main branch or go up for code review as they should be independent of the rest (maybe not connected to everything yet). If you and your team have a good track record working together, you may actually go to the next level of defining an interface between two components and implement them in parallel.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/konami/incremental.jpg&#34; alt=&#34;Incrementally build up the feature, properly!&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;kbdakbd-introduce-your-system-test-again&#34;&gt;&lt;kbd&gt;A&lt;/kbd&gt; Introduce your system test (again)&lt;/h2&gt;
+&lt;p&gt;Once you&amp;rsquo;ve retraced your steps and implemented all the different aspects correctly, it&amp;rsquo;s time to get back to our initial test and see how it works.&lt;/p&gt;
+&lt;h2 id=&#34;kbdbkbd-connect-the-dots&#34;&gt;&lt;kbd&gt;B&lt;/kbd&gt; Connect the dots&lt;/h2&gt;
+&lt;p&gt;Your system test should pass by now. If not, you may have forgotten to integrate some of the newly added functionality. Feel free to add some more system-level tests that span the full feature to see if you have any loose ends.&lt;/p&gt;
+&lt;h2 id=&#34;kbdstartkbd-the-feature-is-done-done&#34;&gt;&lt;kbd&gt;START&lt;/kbd&gt; The feature is &amp;ldquo;Done Done&amp;rdquo;&lt;/h2&gt;
+&lt;p&gt;Congratulations. You&amp;rsquo;ve delivered a new feature. That&amp;rsquo;s a tremendous short-term technical win. But you have accomplished a lot more. You&amp;rsquo;ve delivered a feature. You&amp;rsquo;ve done the refactorings to support and adequately integrate that feature and have proper test coverage on different levels. These aspects contribute significantly to the long-term goals of your projects and keep them maintainable.&lt;/p&gt;
+&lt;p&gt;Interested in reading more about some of the strategies mentioned here?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Book &amp;ldquo;&lt;a href=&#34;http://www.growing-object-oriented-software.com/authors.html&#34;&gt;Growing Object-Oriented Software Guided by Tests&lt;/a&gt;&amp;rdquo; by Steve Freeman and Nat Pryce&lt;/li&gt;
+&lt;li&gt;Definition of &amp;ldquo;&lt;a href=&#34;https://www.jamesshore.com/v2/books/aoad1/done_done&#34;&gt;Done Done&lt;/a&gt;&amp;rdquo; in &amp;ldquo;&lt;a href=&#34;https://www.jamesshore.com/v2/books/aoad1/&#34;&gt;Art of Agile Development&lt;/a&gt;&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Look up the various articles around &amp;ldquo;Outside-In Test Driven Development&amp;rdquo;. A lot of them give you hints depending on your language of interest&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you liked the the post, I&amp;rsquo;d happy to hear your thoughts on &lt;a href=&#34;https://twitter.com/bmuskalla&#34;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Git Archeology</title>
       <link>https://bmuskalla.github.io/blog/2021-01-12-git-archeology/</link>
