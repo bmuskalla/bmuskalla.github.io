@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>The &#39;Simplify protocol&#39; refactoring</title>
+    <meta name="generator" content="Hugo 0.83.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/articles/">ARTICLES</a></li>
+        
+        <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/talks/">TALKS</a></li>
+        
+        <li><a href="/vitae/">VITAE</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://bmuskalla.github.io/blog/2021-06-28-simplify-protocol/">The &#39;Simplify protocol&#39; refactoring</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          June 28, 2021
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            5 min read
+          </h4>
+          <h4>
+            
+            <span class="label label-success">java</span>
+            
+            <span class="label label-success">design</span>
+            
+            <span class="label label-success">refactoring</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              <p>The other day, I went grocery shopping. While waiting in line, I thought about some struggles I had in a test I wrote earlier that day. When it was my turn, the cashier scanned my items and said what I owe him. And I just gave him my whole wallet. He stared at me blankly and gave it back. A little confused for a second, I took out my card, paid, and left the store. And at that point, it hit me what was wrong with my test.
+Let’s have a look at the test and see what it has to do with grocery shopping:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">givenAccountWithBalanceReporterShouldPrintSummary</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    Account account <span style="color:#f92672">=</span> createTestAccount<span style="color:#f92672">();</span>
+    EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PlainTextEndOfYearReporter<span style="color:#f92672">(</span>account<span style="color:#f92672">);</span>
+
+    String report <span style="color:#f92672">=</span> printer<span style="color:#f92672">.</span><span style="color:#a6e22e">produceReport</span><span style="color:#f92672">();</span>
+
+    assertThat<span style="color:#f92672">(</span>report<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny: -39 EUR&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>So far, so good. Overall, the idea of the test is pretty simple and well written. The problem is the part that I omitted. How do we set up the account?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> Account <span style="color:#a6e22e">createTestAccount</span><span style="color:#f92672">(</span>String username<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> balance<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    Account account <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Account<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+
+    HolderMetadata metadata <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HolderMetadata<span style="color:#f92672">();</span>
+    when<span style="color:#f92672">(</span>metadata<span style="color:#f92672">.</span><span style="color:#a6e22e">getFullname</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>username<span style="color:#f92672">);</span>
+    when<span style="color:#f92672">(</span>account<span style="color:#f92672">.</span><span style="color:#a6e22e">getOwner</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>metadata<span style="color:#f92672">);</span>
+
+    Subaccount subaccount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Subaccount<span style="color:#f92672">();</span>
+    subaccount<span style="color:#f92672">.</span><span style="color:#a6e22e">setBalance</span><span style="color:#f92672">(</span>balance<span style="color:#f92672">);</span>
+    when<span style="color:#f92672">(</span>account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>List<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>subaccount<span style="color:#f92672">));</span>
+    
+    <span style="color:#66d9ef">return</span> account<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Given our domain model got lost in between annotations, DI frameworks, and other funky technologies, we had to start mocking out parts of the model. In this case, we got away with only mocking a few things tightly related to what we do. More often than not, this usually turns into a nightmare of mocking (transitive) dependencies to get the object into the state you want it in. While generally, the advice is to keep your domain model independent of technology (and not mock stuff you don’t own), it’s often easier said than done. So if we can’t easily change our domain model, how do we use this model in our report generator?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String username <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getOwner</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getFullname</span><span style="color:#f92672">();</span>
+<span style="color:#66d9ef">int</span> balance <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">().</span><span style="color:#a6e22e">mapToInt</span><span style="color:#f92672">(</span>Subaccount<span style="color:#f92672">::</span>getBalance<span style="color:#f92672">).</span><span style="color:#a6e22e">sum</span><span style="color:#f92672">();</span>
+String currency <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">getCurrency</span><span style="color:#f92672">();</span>
+<span style="color:#66d9ef">return</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%s %d %s&#34;</span><span style="color:#f92672">,</span> username<span style="color:#f92672">,</span> balance<span style="color:#f92672">,</span> currency<span style="color:#f92672">);</span>
+</code></pre></div><p>To produce a simple report, we have to navigate our way through the object graph, collect all the data we need and do some processing (e.g. sum). While this is something we have to do anyway, the question becomes: is it really what the report generation should do? What if we add another report besides our plain text? That would need to replicate the same logic. What about changes to our domain model? We’ll have to go and fiddle around with the PDF reporting, which broke due to those changes (usually referred to as <a href="https://refactoring.guru/smells/shotgun-surgery">Shotgun Surgery</a>).</p>
+<p>Let’s try something. Instead of giving the cashier our whole wallet, let’s just give them what they need. Not more, not less.
+<br>
+<br>
+Introducing the “<strong>Simplify Protocol</strong>” refactoring.</p>
+<blockquote>
+<p>Given a <a href="http://xunitpatterns.com/SUT.html">unit under test</a>, look at all the inputs (constructor arguments, method parameters) and try to replace them with the most trivial type available. Try to deliberately avoid parameter objects and use the most fundamental parameter types possible.</p>
+</blockquote>
+<p>Then, just like you do in test-driven development, let’s try the most simple thing that works and refactor later. What we need for the report right now are three things: The account holder, the balance, and the currency. Let’s go with this first and see how far to get:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">givenAccountWithBalanceReporterShouldPrintSummary</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PlainTextEndOfYearReporter<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">-</span>39<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;EUR&#34;</span><span style="color:#f92672">);</span>
+
+    String report <span style="color:#f92672">=</span> printer<span style="color:#f92672">.</span><span style="color:#a6e22e">produceReport</span><span style="color:#f92672">();</span>
+
+    assertThat<span style="color:#f92672">(</span>report<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny: -39 EUR&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Hm. That’s a lot easier for our test. But that doesn’t entirely solve the problem in our production code that needs to call our reporter. And most of you will think,</p>
+<blockquote>
+<p>“Hey Benny, a stringly-typed API is not great. You should have a strongly-typed API.”</p>
+</blockquote>
+<p>And this is what I love about the “Simplify Protocol” refactoring. It’s not one of the refactorings you do in isolation. It highlights the shortcomings and helps you to work towards an appropriate pattern. What do I mean by that?
+<br>
+<br>
+Given our initial setup, we had a single parameter for our reporter. At first sight, none of the apparent patterns (e.g., Adapter, Facade, ..)  was applicable - at least not at first sight. But using the “Simplify Protocol” refactoring helped us to see our reporter&rsquo;s dependencies. Quite often, we pass arguments that are way larger than what we need. I’ve seen too much code where <a href="https://en.wikipedia.org/wiki/God_object">God classes</a> (usually called something believable like “Context”) are the inputs and require a whole mocking ceremony to be instantiated.</p>
+<p>Given the exploded set of “trivially-typed” inputs, it’s time to consider whether we want to combine them into more helpful abstractions. For example, raw amount and currency can be refactored into an “Amount” <a href="https://en.wikipedia.org/wiki/Value_object">Value Object</a>. Likewise, the &lsquo;Amount&rsquo; and &lsquo;Username&rsquo; form the inputs of our report and can be replaced by a parameter object. If you do, check whether it makes sense to make it specific for our unit under test. Too often, people strive for something reusable and, before they realize it, pass around a Map of objects called “Context”.</p>
+<p>Alternatively, as we still need to extract the values from our actual domain model, we can use the adapter as &ldquo;a view&rdquo; on the existing domain model.</p>
+<p>For the inputs to our report, we define a parameter object/view/record/bean that helps us to capture only the necessary data we need for the reporter:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> record <span style="color:#a6e22e">EndOfYearReportInput</span><span style="color:#f92672">(</span>String username<span style="color:#f92672">,</span> MoneyAmount amount<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>This makes our test a lot simpler as we can now set up different report data for the various scenarios quickly:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">MoneyAmount amount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MoneyAmount<span style="color:#f92672">(-</span>39<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;EUR&#34;</span><span style="color:#f92672">);</span>
+EndOfYearReportData reportData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EndOfYearReportData<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">);</span>
+EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EndOfYearReporter<span style="color:#f92672">(</span>reportData<span style="color:#f92672">);</span>
+</code></pre></div><p>For the production code, we still need to adapt the domain model to our new record, either using an Adapter or (as shown here) a Factory method:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> EndOfYearReportData <span style="color:#a6e22e">fromAccount</span><span style="color:#f92672">(</span>Account account<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    String username <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getOwner</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getFullname</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">int</span> balance <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">().</span><span style="color:#a6e22e">mapToInt</span><span style="color:#f92672">(</span>Subaccount<span style="color:#f92672">::</span>getBalance<span style="color:#f92672">).</span><span style="color:#a6e22e">sum</span><span style="color:#f92672">();</span>
+    String currency <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">getCurrency</span><span style="color:#f92672">();</span>
+    MoneyAmount amount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MoneyAmount<span style="color:#f92672">(</span>balance<span style="color:#f92672">,</span> currency<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> EndOfYearReportData<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> amount<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>We already have all the patterns at hand to solve these kinds of problems. <em>Sometimes, you need to make code more trivial to see the higher-level patterns that solve the issue at hand more elegantly.</em></p>
+<p>And the moral of the story? Keep your wallet to yourself; only hand out what the other side needs.</p>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        January 12, 2021
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        January 4, 2021
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        May 25, 2020
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

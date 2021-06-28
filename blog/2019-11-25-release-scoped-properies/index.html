@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Changing System Properties in Isolation</title>
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.83.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -35,7 +35,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   </head>
 
   <body>
@@ -105,12 +104,12 @@ So before calling anything in that library, you&rsquo;d have to setup the proper
 While some of them were specific to the library, the library also did depend on some generally useful system properties (e.g. <code>user.home</code> to write settings).<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>
 <br>
 Now, most engineers would nice encapsulate this behind a <a href="https://en.wikipedia.org/wiki/Facade_pattern">Facade</a> and use a <code>try/finally</code> to manage the system properties, something along the lines of this snippet:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String oldValue <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">getProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someSystemProp&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String oldValue <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">getProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someSystemProp&#34;</span><span style="color:#f92672">);</span>
 <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-    System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someSystemProp&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;customValue&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someSystemProp&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;customValue&#34;</span><span style="color:#f92672">);</span>
     <span style="color:#75715e">// ... call into 3rd party library
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
-    System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someSystemProp&#34;</span><span style="color:#f92672">,</span> oldValue<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someSystemProp&#34;</span><span style="color:#f92672">,</span> oldValue<span style="color:#f92672">);</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>While this is neat and gets the job done, it only solves the problem in a very limited way. Given the global nature of system properties, any other thread running in parallel will now see the <code>customValue</code> as there is no isolation between this code and the rest of the system. Even worse, someone else might change the value of one of the properties while we&rsquo;re calling the 3rd party library. Assuming you can control all places that use those system properties, you could introduce a lock and ensure every calling code goes through that. While that works, it has the downside of having an exclusive blocking behavior as you can never run any code dealing with the 3rd party dependency yourself.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>
 <br>
@@ -119,13 +118,13 @@ Now, most engineers would nice encapsulate this behind a <a href="https://en.wik
 <br>
 Scoped system properties solves the dilemma mentioned above by providing an isolated environment for system properties to be read and written without any other part of your application to see it. While this is what you&rsquo;d already get by refactoring towards a better abstraction, <a href="https://github.com/bmuskalla/scoped-system-properties">Scoped System Properties</a> hides this behind the regular system property API (<code>System.getProperty(key)</code>, <code>System.setProperty(key, value)</code>, &hellip;).</p>
 <p>This allows 3rd party code to run unmodified while we can provide proper isolation of said system properties. Lets take the example from above:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;global value&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-<span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>PropertyEnvironment env <span style="color:#f92672">=</span> ScopedSystemProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">newPropertyEnvironment</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    env<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;scopedValue&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;global value&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>PropertyEnvironment env <span style="color:#f92672">=</span> ScopedSystemProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">newPropertyEnvironment</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+    env<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;scopedValue&#34;</span><span style="color:#f92672">);</span>
     <span style="color:#75715e">// or using the usual Java APIs
-</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;scopedValue&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;scopedValue&#34;</span><span style="color:#f92672">);</span>
 
-    System<span style="color:#f92672">.</span><span style="color:#a6e22e">getProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">// =&gt; &#34;scopedValue&#34;
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">getProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;someKey&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">// =&gt; &#34;scopedValue&#34;
 </span><span style="color:#75715e"></span>
     <span style="color:#75715e">// another thread calling System.getProperty(&#34;someKey&#34;) =&gt; global value
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
@@ -139,10 +138,10 @@ Head over to <a href="https://github.com/bmuskalla/scoped-system-properties">Git
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>I&rsquo;m talking here about a library that is outside of our control. If we do control the library, I highly suggest to refactor it away from globals like system properties by injecting any configuration from the outside. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>I&rsquo;m talking here about a library that is outside of our control. If we do control the library, I highly suggest to refactor it away from globals like system properties by injecting any configuration from the outside.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>But to be fair, depending on your use case, this might already be enough. If you happen to have such a problem in your tests, have a look at JUnits <a href="https://junit.org/junit5/docs/current/api/org/junit/jupiter/api/parallel/ResourceLock.html">@ResourceLock</a> (see <a href="https://junit.org/junit5/docs/current/user-guide/#writing-tests-parallel-execution-synchronization">Synchronization when running Parallel Tests</a>). While this has the same effect of avoiding race conditions on the system properties, such tests cannot be run in parallel if they require mutating access to system properties. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>But to be fair, depending on your use case, this might already be enough. If you happen to have such a problem in your tests, have a look at JUnits <a href="https://junit.org/junit5/docs/current/api/org/junit/jupiter/api/parallel/ResourceLock.html">@ResourceLock</a> (see <a href="https://junit.org/junit5/docs/current/user-guide/#writing-tests-parallel-execution-synchronization">Synchronization when running Parallel Tests</a>). While this has the same effect of avoiding race conditions on the system properties, such tests cannot be run in parallel if they require mutating access to system properties.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -150,6 +149,19 @@ Head over to <a href="https://github.com/bmuskalla/scoped-system-properties">Git
               <hr>
               <div class="related-posts">
                 <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 28, 2021
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                      </h6>
+                    </div>
+                  </div>
                 
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -177,19 +189,6 @@ Head over to <a href="https://github.com/bmuskalla/scoped-system-properties">Git
                     </div>
                   </div>
                 
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        May 25, 2020
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
               </div>
             </div>
           </div>
@@ -204,7 +203,7 @@ Head over to <a href="https://github.com/bmuskalla/scoped-system-properties">Git
       if (window.location.hostname == "localhost")
         return;
 
-      var disqus_shortname = '';
+      var disqus_shortname = 'benny-github-blog';
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);

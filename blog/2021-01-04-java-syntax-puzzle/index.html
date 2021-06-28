@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Java Syntax Puzzlers</title>
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.83.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -35,7 +35,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   </head>
 
   <body>
@@ -108,9 +107,9 @@ if (!doNotTrack) {
 <p><img src="/blog/syntax-puzzle/semicolon.png" alt="Greek Question Mark"></p>
 <p>As it doesn’t even compile, that’s an easy one for your co-worker to recognize and fix. Let’s start to be a little more sneaky.</p>
 <p>Guess what the following program prints?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// one down, one to go: \u000a\u007d\u007b
-</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1 is 2&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">==</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// one down, one to go: \u000a\u007d\u007b
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1 is 2&#34;</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Yes, in the context of the post, you correctly guessed that it is printing “1 is 2”. Just&hellip;HOW? How is it possible to trick Java into thinking 1 == 2, even with unicode magic. INSIDE A COMMENT. Any guesses? It actually doesn’t change the expression. The following unicode characters were harmed in the process:</p>
@@ -120,11 +119,11 @@ if (!doNotTrack) {
 <li><code>\u007b</code> - an opening curly brace <code>{</code></li>
 </ul>
 <p>So the code we’re actually looking at is this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-   <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">==</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
    <span style="color:#f92672">}</span>
    <span style="color:#f92672">{</span>
-       System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1 is 2&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+       System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1 is 2&#34;</span><span style="color:#f92672">);</span>
    <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Funny enough, most programmers would suspect something fishy with this comment when they see it. But what about indenting it so it’s not shown in your editor anymore? ;)</p>
@@ -143,28 +142,28 @@ BlockStatement:
   Statement
 
 </code></pre><p>Taking a closer look at the definition of <code>Block</code>, we learn that they can contain statements (so far so good) but also…<code>ClassDeclaration</code>s. Now it gets interesting. Let’s see how deep the rabbit hole goes.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">howDeepCanWeGo</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">howDeepCanWeGo</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
             <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bar</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">helloFromBar</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">helloFromBar</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
                     <span style="color:#75715e">// You musn&#39;t be afraid to dream a little bigger, darling.
 </span><span style="color:#75715e"></span>                <span style="color:#f92672">}</span> 
             <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">new</span> Bar<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">helloFromBar</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">new</span> Bar<span style="color:#f92672">().</span><span style="color:#a6e22e">helloFromBar</span><span style="color:#f92672">();</span>
         <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">final</span> Foo instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    instance<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">final</span> Foo instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">();</span>
+    instance<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Funnily enough, while this feature seems quite useless at first sight, it’s the only one I’ve been using in actual test code in the past. While working on a framework that heavily relied on reflection, the inline class definitions came in quite handy to define classes under test and keeping them with the test. The alternative of having a bunch of nested classes scattered alongside tests was a good reason to move them closer to the test. You can read me more about the quicks of local classes in <a href="https://docs.oracle.com/javase/specs/jls/se15/html/jls-14.html#jls-14.3">JLS 14.3</a>.</p>
 <h3 id="this-and-that">This and That</h3>
 <p>Moving away from classes and closer to the action. Let’s have a look at method parameters. As you may encounter several times yourself, you can’t name things the same as keywords. Well, let’s have a look at the following snippet.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KeywordParameter</span> <span style="color:#f92672">{</span>
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        KeywordParameter someObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> KeywordParameter<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        someObject<span style="color:#f92672">.</span><span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span>3<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        KeywordParameter someObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> KeywordParameter<span style="color:#f92672">();</span>
+        someObject<span style="color:#f92672">.</span><span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span>KeywordParameter <span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> foo<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#75715e">// ...
@@ -178,18 +177,18 @@ BlockStatement:
 <pre><code>ReceiverParameter:
   {Annotation} UnannType [Identifier .] this
 </code></pre><p>The so called “receiver parameter” is a “optional syntactic device” that represents the object it is invoked on (so it’s really the same as what you’d expect from “this”). It’s sole purpose is to be available in the source code to be annotated if necessary. Let’s assume we have an <code>@Immutable</code> annotation in our project and for some reason, we want to ensure that our IDE (or other code analyzers) understand tat <code>this</code> in our current context represents an immutable data structure. With the explicit receiver parameter, we can annotate it correspondingly:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Immutable</span> KeywordParameter <span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> foo<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span> <span style="color:#f92672">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">callMe</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Immutable</span> KeywordParameter <span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> foo<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#f92672">...</span> <span style="color:#f92672">}</span>
 </code></pre></div><h3 id="everywhere">@Everywhere</h3>
 <p>Talking about annotating things for the purposes of analyzing code. For the above snippets to work, the annotation needs to be targetable for <code>PARAMETER</code>. Did you ever look up what other targets an annotation can have? Going through the most common ones, there are no surprises:
 <code>TYPE</code>, <code>FIELD</code>, <code>METHOD</code>, <code>PARAMETER</code>, <code>CONSTRUCTOR</code>, <code>LOCAL_VARIABLE</code>, <code>ANNOTATION_TYPE</code>, <code>PACKAGE</code>, <code>TYPE_PARAMETER</code>, <code>MODULE</code> (since Java 9) and <code>RECORD_COMPONENT</code> (since Java 14). But there is one that’s not so obvious where to put it: <code>TYPE_USE</code>. From the name, it sounds like it can be used everywhere a type is used. Let’s try and use it in some places:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@TypeAnnotationsEverywhere.Immutable</span> <span style="color:#75715e">// ok, easy, similar to TYPE 
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TypeAnnotationsEverywhere</span> <span style="color:#f92672">{</span>
 
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">giveMeMoreTypes</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">@Immutable</span> RuntimeException <span style="color:#f92672">{</span>  <span style="color:#75715e">// errr what?
-</span><span style="color:#75715e"></span>     Object foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">@Immutable</span> Object<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">// WHAT??????
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">giveMeMoreTypes</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">@Immutable</span> RuntimeException <span style="color:#f92672">{</span>  <span style="color:#75715e">// errr what?
+</span><span style="color:#75715e"></span>     Object foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">@Immutable</span> Object<span style="color:#f92672">();</span> <span style="color:#75715e">// WHAT??????
 </span><span style="color:#75715e"></span>  <span style="color:#f92672">}</span>
 
-  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">@Immutable</span> Function <span style="color:#f92672">{</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span> <span style="color:#f92672">}</span>
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">@Immutable</span> Function <span style="color:#f92672">{</span> <span style="color:#f92672">...</span> <span style="color:#f92672">}</span>
 
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Indeed, using <code>TYPE_USE</code> allows us to put the annotation in the most unusual spots. <a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.11">JLS 4.11</a> defines all the spots that are covered by a “type usage”.</p>
@@ -199,6 +198,19 @@ Which one of those syntaxes were you aware of? Got all of them? The code for the
               <hr>
               <div class="related-posts">
                 <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 28, 2021
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                      </h6>
+                    </div>
+                  </div>
                 
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -226,19 +238,6 @@ Which one of those syntaxes were you aware of? Got all of them? The code for the
                     </div>
                   </div>
                 
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        November 25, 2019
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2019-11-25-release-scoped-properies/">Changing System Properties in Isolation</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
               </div>
             </div>
           </div>
@@ -253,7 +252,7 @@ Which one of those syntaxes were you aware of? Got all of them? The code for the
       if (window.location.hostname == "localhost")
         return;
 
-      var disqus_shortname = '';
+      var disqus_shortname = 'benny-github-blog';
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);

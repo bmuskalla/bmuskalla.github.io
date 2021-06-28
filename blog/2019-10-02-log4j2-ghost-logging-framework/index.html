@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Log4j 2 - The Ghost in the logging framework</title>
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.83.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -35,7 +35,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   </head>
 
   <body>
@@ -132,20 +131,20 @@ if (!doNotTrack) {
 </code></pre></div><p>Interesting enough, we have some outliers here with 2MB for each response from the server. Taking a closer look reveals that these are mostly XML documents (or SOAP envelopes to be specific). While 2 megabytes is a lot of bandwidth, it’s not too uncommon for SOAP-based web services.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span style="color:#f92672">&lt;soapenv:Envelope</span> <span style="color:#a6e22e">xmlns:soapenv=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">xmlns:xsd=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span><span style="color:#f92672">&gt;</span>
-<span style="color:#f92672">&lt;soapenv:Body</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;soapenv:Body&gt;</span>
 <span style="color:#f92672">&lt;queryWorkItemsResponse</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">&gt;</span>
 <span style="color:#f92672">&lt;ns4:queryWorkItemsReturn</span> <span style="color:#a6e22e">uri=</span><span style="color:#e6db74">&#34;subterra:data-service:objects:/default/ABC${WorkItem}ABC-22908&#34;</span> <span style="color:#a6e22e">unresolvable=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>....
 </code></pre></div><p>While digging into these things, we had one related observation. The tests in question, while usually taking some time to run, actually took a <em>lot</em> longer when running with trace logging enabled (and failed). It’s not that trace logging comes for free but Log4j2 (like most other logging frameworks noways) is designed to be extremely fast and even <a href="https://logging.apache.org/log4j/2.x/manual/garbagefree.html">garbage-free</a>.
 Just to put out suspicion to rest, let’s write a very simple test case. Take the responses that we just captured and log them (to simulate what we do in our real scenario).</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Reproducer</span> <span style="color:#f92672">{</span>
 
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Logger logger <span style="color:#f92672">=</span> LogManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>Reproducer<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Logger logger <span style="color:#f92672">=</span> LogManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>Reproducer<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
 
 	<span style="color:#a6e22e">@Test</span>
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">logCapturedServerResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
-		File logFile <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">;</span>
-		String log <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>logFile<span style="color:#f92672">,</span> Charsets<span style="color:#f92672">.</span><span style="color:#a6e22e">UTF_8</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-		logger<span style="color:#f92672">.</span><span style="color:#a6e22e">trace</span><span style="color:#f92672">(</span>log<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">logCapturedServerResponse</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+		File logFile <span style="color:#f92672">=</span> <span style="color:#f92672">...;</span>
+		String log <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>logFile<span style="color:#f92672">,</span> Charsets<span style="color:#f92672">.</span><span style="color:#a6e22e">UTF_8</span><span style="color:#f92672">);</span>
+		logger<span style="color:#f92672">.</span><span style="color:#a6e22e">trace</span><span style="color:#f92672">(</span>log<span style="color:#f92672">);</span>
 	<span style="color:#f92672">}</span>
 
 <span style="color:#f92672">}</span>
@@ -184,7 +183,7 @@ Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without us
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>Let me know in the comments if you’d like to see this being open-sourced. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Let me know in the comments if you’d like to see this being open-sourced.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -192,6 +191,19 @@ Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without us
               <hr>
               <div class="related-posts">
                 <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 28, 2021
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                      </h6>
+                    </div>
+                  </div>
                 
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -219,19 +231,6 @@ Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without us
                     </div>
                   </div>
                 
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        May 25, 2020
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
               </div>
             </div>
           </div>
@@ -246,7 +245,7 @@ Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without us
       if (window.location.hostname == "localhost")
         return;
 
-      var disqus_shortname = '';
+      var disqus_shortname = 'benny-github-blog';
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);

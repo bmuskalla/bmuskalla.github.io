@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
     <title>Merging nested Lists or Arrays with Java 8</title>
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.83.1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
@@ -35,7 +35,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   </head>
 
   <body>
@@ -102,8 +101,8 @@ if (!doNotTrack) {
 over and over again. Usually, a response (represented as POJO) looks something
 like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Result</span> <span style="color:#f92672">{</span>
-  <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getItems</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+  <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getItems</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Be it from a third party service or your own APIs, after retrieving all results
@@ -112,44 +111,44 @@ really care about the response itself, we’re actually interested in all the
 items of the responses. Let’s say we want all the items, filter some of them out
 and transform them into a <code>TransformedItem</code>. People usually start writing
 something like the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>Result<span style="color:#f92672">&gt;</span> results <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
-List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f92672">&gt;</span> newItems <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>result <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">getItems</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>item <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> item<span style="color:#f92672">.</span><span style="color:#a6e22e">isValid</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>TransformedItem<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#66d9ef">new</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>toList<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>Result<span style="color:#f92672">&gt;</span> results <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>
+List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f92672">&gt;</span> newItems <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>result <span style="color:#f92672">-&gt;</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">getItems</span><span style="color:#f92672">())</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>item <span style="color:#f92672">-&gt;</span> item<span style="color:#f92672">.</span><span style="color:#a6e22e">isValid</span><span style="color:#f92672">())</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>TransformedItem<span style="color:#f92672">::</span><span style="color:#66d9ef">new</span><span style="color:#f92672">)</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>toList<span style="color:#f92672">());</span>
 </code></pre></div><p>Ooops, this doesn’t even compile. The problem is that the first map doesn’t
 return a <code>Stream&lt;Item&gt;</code> but actually a <code>Stream&lt;List&lt;Item&gt;&gt;</code>. In order to
 actually merge/flatten all those nested lists, you can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#flatMap-java.util.function.Function-">Stream#flatMap</a>.
 The difference is quite simple. <code>#map</code> allows you to transform an element in
 the stream into another element. On the other hand, <code>#flatMap</code> allows you to
 convert a single element to many (or no) elements.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>Result<span style="color:#f92672">&gt;</span> results <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
-List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f92672">&gt;</span> newItems <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>result <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">getItems</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>List<span style="color:#f92672">:</span><span style="color:#f92672">:</span>stream<span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>TransformedItem<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#66d9ef">new</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>toList<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>Result<span style="color:#f92672">&gt;</span> results <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>
+List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f92672">&gt;</span> newItems <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>result <span style="color:#f92672">-&gt;</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">getItems</span><span style="color:#f92672">())</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>List<span style="color:#f92672">::</span>stream<span style="color:#f92672">)</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>TransformedItem<span style="color:#f92672">::</span><span style="color:#66d9ef">new</span><span style="color:#f92672">)</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>toList<span style="color:#f92672">());</span>
 </code></pre></div><p>Just in case you’re working with a 3rd party API that returns something ugly as <code>List&lt;Item[]&gt;</code>, you can use the same pattern, just choose the corresponding the flatMap function.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QueryResponse</span> <span style="color:#f92672">{</span>
-  <span style="color:#66d9ef">public</span> Item<span style="color:#f92672">[</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">getItems</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+  <span style="color:#66d9ef">public</span> Item<span style="color:#f92672">[]</span> <span style="color:#a6e22e">getItems</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 
-<span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+<span style="color:#f92672">...</span>
 
-List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f92672">&gt;</span> newItems <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>result <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">getItems</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">:</span><span style="color:#f92672">:</span>stream<span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>TransformedItem<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#66d9ef">new</span><span style="color:#f92672">)</span>
-     <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>toList<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f92672">&gt;</span> newItems <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>result <span style="color:#f92672">-&gt;</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">getItems</span><span style="color:#f92672">())</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">::</span>stream<span style="color:#f92672">)</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>TransformedItem<span style="color:#f92672">::</span><span style="color:#66d9ef">new</span><span style="color:#f92672">)</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>toList<span style="color:#f92672">());</span>
 </code></pre></div><p>Have fun with <code>#flatMap</code> and let me know in the comments about how you used <code>#flatMap</code> in your scenarios. A great explanation of how to compose streams and some concepts behind streams can be found in Martin Fowler <a href="http://martinfowler.com/articles/collection-pipeline/">Collection Pipeline</a>.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>Originally published on <a href="https://www.tasktop.com/blog/merging-nested-lists-or-arrays-with-java-8/">Tasktop Blog</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Originally published on <a href="https://www.tasktop.com/blog/merging-nested-lists-or-arrays-with-java-8/">Tasktop Blog</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -157,6 +156,19 @@ List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f9
               <hr>
               <div class="related-posts">
                 <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        June 28, 2021
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                      </h6>
+                    </div>
+                  </div>
                 
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -184,19 +196,6 @@ List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f9
                     </div>
                   </div>
                 
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        May 25, 2020
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
               </div>
             </div>
           </div>
@@ -211,7 +210,7 @@ List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f9
       if (window.location.hostname == "localhost")
         return;
 
-      var disqus_shortname = '';
+      var disqus_shortname = 'benny-github-blog';
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
