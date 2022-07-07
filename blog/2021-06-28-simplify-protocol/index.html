@@ -37,11 +37,12 @@ if (!doNotTrack) {
 </script>
   </head>
 
-  <body>
-    <div id="wrap">
 
-      
-      <nav class="navbar navbar-default">
+<body>
+  <div id="wrap">
+
+    
+    <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
@@ -57,9 +58,9 @@ if (!doNotTrack) {
         
         <li><a href="/blog/">BLOG</a></li>
         
-        <li><a href="/articles/">ARTICLES</a></li>
-        
         <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/articles/">PRINT</a></li>
         
         <li><a href="/talks/">TALKS</a></li>
         
@@ -71,33 +72,33 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2021-06-28-simplify-protocol/">The &#39;Simplify protocol&#39; refactoring</a></strong>
-          </h3>
-        </div>
-        <div class="blog-title">
-          <h4>
+    
+    <div class="container">
+      <div class="blog-post">
+        <h3>
+          <strong><a href="https://bmuskalla.github.io/blog/2021-06-28-simplify-protocol/">The &#39;Simplify protocol&#39; refactoring</a></strong>
+        </h3>
+      </div>
+      <div class="blog-title">
+        <h4>
           June 28, 2021
-            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            5 min read
-          </h4>
-          <h4>
-            
-            <span class="label label-success">java</span>
-            
-            <span class="label label-success">design</span>
-            
-            <span class="label label-success">refactoring</span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>The other day, I went grocery shopping. While waiting in line, I thought about some struggles I had in a test I wrote earlier that day. When it was my turn, the cashier scanned my items and said what I owe him. And I just gave him my whole wallet. He stared at me blankly and gave it back. A little confused for a second, I took out my card, paid, and left the store. And at that point, it hit me what was wrong with my test.
+          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          5 min read
+        </h4>
+        <h4>
+          
+          <span class="label label-success">java</span>
+          
+          <span class="label label-success">design</span>
+          
+          <span class="label label-success">refactoring</span>
+          
+        </h4>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="blogpost">
+            <p>The other day, I went grocery shopping. While waiting in line, I thought about some struggles I had in a test I wrote earlier that day. When it was my turn, the cashier scanned my items and said what I owe him. And I just gave him my whole wallet. He stared at me blankly and gave it back. A little confused for a second, I took out my card, paid, and left the store. And at that point, it hit me what was wrong with my test.
 Let’s have a look at the test and see what it has to do with grocery shopping:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">givenAccountWithBalanceReporterShouldPrintSummary</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
@@ -173,53 +174,53 @@ EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="colo
 </code></pre></div><p>We already have all the patterns at hand to solve these kinds of problems. <em>Sometimes, you need to make code more trivial to see the higher-level patterns that solve the issue at hand more elegantly.</em></p>
 <p>And the moral of the story? Keep your wallet to yourself; only hand out what the other side needs.</p>
 
-              <hr>
-              <div class="related-posts">
-                <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        March 25, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-03-25-cheating-design-konami/">Cheating in Software Design using the Konami code</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 12, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 4, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
+            <hr>
+            <div class="related-posts">
+              <h5>Related Posts</h5>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    March 25, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-03-25-cheating-design-konami/">Cheating in Software Design using the Konami code</a></strong>
+                  </h6>
+                </div>
               </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 12, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 4, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <hr>
+        </div>
+        <hr>
         <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -239,13 +240,13 @@ EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="colo
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-        </div>
       </div>
-      
     </div>
-
     
-    <footer>
+  </div>
+
+  
+  <footer>
   <div id="footer">
     <div class="container">
       <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
@@ -268,6 +269,7 @@ EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="colo
 
 
 
-    
-  </body>
+
+</body>
+
 </html>

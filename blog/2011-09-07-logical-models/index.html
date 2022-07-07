@@ -37,11 +37,12 @@ if (!doNotTrack) {
 </script>
   </head>
 
-  <body>
-    <div id="wrap">
 
-      
-      <nav class="navbar navbar-default">
+<body>
+  <div id="wrap">
+
+    
+    <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
@@ -57,9 +58,9 @@ if (!doNotTrack) {
         
         <li><a href="/blog/">BLOG</a></li>
         
-        <li><a href="/articles/">ARTICLES</a></li>
-        
         <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/articles/">PRINT</a></li>
         
         <li><a href="/talks/">TALKS</a></li>
         
@@ -71,35 +72,35 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2011-09-07-logical-models/">What the heck are logical models?</a></strong>
-          </h3>
-        </div>
-        <div class="blog-title">
-          <h4>
+    
+    <div class="container">
+      <div class="blog-post">
+        <h3>
+          <strong><a href="https://bmuskalla.github.io/blog/2011-09-07-logical-models/">What the heck are logical models?</a></strong>
+        </h3>
+      </div>
+      <div class="blog-title">
+        <h4>
           September 7, 2011
-            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            3 min read
-          </h4>
-          <h4>
-            
-            <span class="label label-success">mylyn</span>
-            
-            <span class="label label-success">git</span>
-            
-            <span class="label label-success">egit</span>
-            
-            <span class="label label-success">emf</span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>Have you ever committed to the repository and got mail afterwards “Hey, this isn’t compiling!”? Likely you committed only some of the changes you made leaving out files required for a successful build. Let’s take a look at a simple example:</p>
+          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          3 min read
+        </h4>
+        <h4>
+          
+          <span class="label label-success">mylyn</span>
+          
+          <span class="label label-success">git</span>
+          
+          <span class="label label-success">egit</span>
+          
+          <span class="label label-success">emf</span>
+          
+        </h4>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="blogpost">
+            <p>Have you ever committed to the repository and got mail afterwards “Hey, this isn’t compiling!”? Likely you committed only some of the changes you made leaving out files required for a successful build. Let’s take a look at a simple example:</p>
 <p><img src="/blog/tt/model.png" alt="emf ecore model"></p>
 <p>In this model we have a class element <strong>Some Class</strong> in <em>my.ecore</em> which extends <strong>AnAbstractClass</strong> in <em>Your.ecore</em>. In this scenario, we essentially have a dependency from <em>My.ecore</em> to <em>Your.ecore</em>. For example, renaming the class <strong>AnAbstractClass</strong> in <em>Your.ecore</em> also forces an update of the superclass property in <em>My.ecore</em>. This means we need to handle this change atomically across both files. In Eclipse, this is a called a “Logical Model”.</p>
 <p>A logical model is not necessarily related to EMF but a general concept to represent related files. While we use EMF in this example, the same applies to resources given that there is a corresponding model provider (more on that later). In the past, using CVS or Git as your SCM of choice, committing only changes for one of these files resulted in a broken repository state. Fortunately the Eclipse Platform has had a solution build-in for exactly this problem for years. Being a platform though, Eclipse only provides the necessary hooks but not the actual implementations.</p>
@@ -117,53 +118,53 @@ if (!doNotTrack) {
 </ol>
 </section>
 
-              <hr>
-              <div class="related-posts">
-                <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 12, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        June 8, 2012
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        February 16, 2011
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
+            <hr>
+            <div class="related-posts">
+              <h5>Related Posts</h5>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 12, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+                  </h6>
+                </div>
               </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    June 8, 2012
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    February 16, 2011
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <hr>
+        </div>
+        <hr>
         <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -183,13 +184,13 @@ if (!doNotTrack) {
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-        </div>
       </div>
-      
     </div>
-
     
-    <footer>
+  </div>
+
+  
+  <footer>
   <div id="footer">
     <div class="container">
       <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
@@ -212,6 +213,7 @@ if (!doNotTrack) {
 
 
 
-    
-  </body>
+
+</body>
+
 </html>

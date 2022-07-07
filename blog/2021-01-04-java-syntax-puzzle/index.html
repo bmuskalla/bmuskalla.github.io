@@ -37,11 +37,12 @@ if (!doNotTrack) {
 </script>
   </head>
 
-  <body>
-    <div id="wrap">
 
-      
-      <nav class="navbar navbar-default">
+<body>
+  <div id="wrap">
+
+    
+    <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
@@ -57,9 +58,9 @@ if (!doNotTrack) {
         
         <li><a href="/blog/">BLOG</a></li>
         
-        <li><a href="/articles/">ARTICLES</a></li>
-        
         <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/articles/">PRINT</a></li>
         
         <li><a href="/talks/">TALKS</a></li>
         
@@ -71,33 +72,33 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
-          </h3>
-        </div>
-        <div class="blog-title">
-          <h4>
+    
+    <div class="container">
+      <div class="blog-post">
+        <h3>
+          <strong><a href="https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+        </h3>
+      </div>
+      <div class="blog-title">
+        <h4>
           January 4, 2021
-            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            7 min read
-          </h4>
-          <h4>
-            
-            <span class="label label-success">java</span>
-            
-            <span class="label label-success">puzzle</span>
-            
-            <span class="label label-success">syntax</span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>Roughly 12 years ago, I started to contribute to the Eclipse ecosystem in various functions. One of the most interesting experiences to this date was to work on developer tooling and handling the edge cases so others don’t have to struggle. Though I stepped down as an Eclipse committer in the meantime, I’m still attached to working on productivity tooling nowadays as a member of the <a href="https://github.com/gradle/gradle">Gradle Build Tool</a>.</p>
+          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          7 min read
+        </h4>
+        <h4>
+          
+          <span class="label label-success">java</span>
+          
+          <span class="label label-success">puzzle</span>
+          
+          <span class="label label-success">syntax</span>
+          
+        </h4>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="blogpost">
+            <p>Roughly 12 years ago, I started to contribute to the Eclipse ecosystem in various functions. One of the most interesting experiences to this date was to work on developer tooling and handling the edge cases so others don’t have to struggle. Though I stepped down as an Eclipse committer in the meantime, I’m still attached to working on productivity tooling nowadays as a member of the <a href="https://github.com/gradle/gradle">Gradle Build Tool</a>.</p>
 <p>While working on Eclipse, I fondly remember working on various parts of the Java Tooling (JDT) and while working on refactorings and quick fixes. And not surprisingly, working on language-intensive pieces turned out to have the same hiccups as other non-trivial algorithsm - the transition from “this is gonna be easy” to “why am I up at 3am reading the Java Language Specification”.</p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Opening a bug report with snippet to reproduce: 10min. Working on a patch: 2h. Getting pinged whether you can finish that patch, 11 years later: priceless. I do miss working on <a href="https://twitter.com/hashtag/eclipse?src=hash&amp;ref_src=twsrc%5Etfw">#eclipse</a> <a href="https://twitter.com/hashtag/jdt?src=hash&amp;ref_src=twsrc%5Etfw">#jdt</a> though <a href="https://t.co/vpLD73zOlC">https://t.co/vpLD73zOlC</a></p>&mdash; Benjamin Muskalla (@bmuskalla) <a href="https://twitter.com/bmuskalla/status/1110923346441588737?ref_src=twsrc%5Etfw">March 27, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>Working on language-specific tooling exposes you to all kinds of edge cases and delicate details and language has to offer. Some of them are well known and generally seen &ldquo;unprofession&rdquo; (hello <code>goto</code>). Others are actually not know at all. And with all due respect, I quite enjoy discovering the edge cases of the language syntax - a lot of times to confuse my co-workers who think they know the Java Language Syntax ;) And given I love a good puzzle (especially the Java Puzzles), let’s try a puzzle but using the Java syntax only, without any untime behaviour.</p>
@@ -195,53 +196,53 @@ BlockStatement:
 <p><br>
 Which one of those syntaxes were you aware of? Got all of them? The code for the post can be found on <a href="https://github.com/bmuskalla/java-syntax-puzzlers">GitHub</a> as well. In the meantime, I’m still working on my museum of interesting cases of the language constructs, so please share anything you’ve encountered yourself. You can reach me on Twitter via <a href="https://twitter.com/bmuskalla">@bmuskalla</a>.</p>
 
-              <hr>
-              <div class="related-posts">
-                <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        June 28, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 12, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        May 25, 2020
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
+            <hr>
+            <div class="related-posts">
+              <h5>Related Posts</h5>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    June 28, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                  </h6>
+                </div>
               </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 12, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    May 25, 2020
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <hr>
+        </div>
+        <hr>
         <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -261,13 +262,13 @@ Which one of those syntaxes were you aware of? Got all of them? The code for the
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-        </div>
       </div>
-      
     </div>
-
     
-    <footer>
+  </div>
+
+  
+  <footer>
   <div id="footer">
     <div class="container">
       <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
@@ -290,6 +291,7 @@ Which one of those syntaxes were you aware of? Got all of them? The code for the
 
 
 
-    
-  </body>
+
+</body>
+
 </html>

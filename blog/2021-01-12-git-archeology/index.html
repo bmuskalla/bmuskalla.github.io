@@ -37,11 +37,12 @@ if (!doNotTrack) {
 </script>
   </head>
 
-  <body>
-    <div id="wrap">
 
-      
-      <nav class="navbar navbar-default">
+<body>
+  <div id="wrap">
+
+    
+    <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
@@ -57,9 +58,9 @@ if (!doNotTrack) {
         
         <li><a href="/blog/">BLOG</a></li>
         
-        <li><a href="/articles/">ARTICLES</a></li>
-        
         <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/articles/">PRINT</a></li>
         
         <li><a href="/talks/">TALKS</a></li>
         
@@ -71,37 +72,37 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-          </h3>
-        </div>
-        <div class="blog-title">
-          <h4>
+    
+    <div class="container">
+      <div class="blog-post">
+        <h3>
+          <strong><a href="https://bmuskalla.github.io/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+        </h3>
+      </div>
+      <div class="blog-title">
+        <h4>
           January 12, 2021
-            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            7 min read
-          </h4>
-          <h4>
-            
-            <span class="label label-success">java</span>
-            
-            <span class="label label-success">git</span>
-            
-            <span class="label label-success">github</span>
-            
-            <span class="label label-success">intellij</span>
-            
-            <span class="label label-success">vscode</span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>Working on a large codebase, it&rsquo;s pretty normal to not remember every small or large subsystem or implementation choice. Be it whether you&rsquo;re new to a codebase, or you&rsquo;ve been focussed on a specific area of the codebase. When working on refactorings or bug fixes, I often end up in areas I might not be too familiar with. Generally not dramatic, it happens quite often that I&rsquo;m stopping at what I&rsquo;m doing because I need to decide on how to move forward.  As software engineers, we have to make so many micro-decisions every minute that we&rsquo;re pretty used to it. Depending on the code and domain knowledge, we often find ourselves in situations where we need more context to make an informed decision. Tests usually provide a pretty good context but depending on their granularity and naming, they might only tell is &ldquo;what&rdquo; is in the implementation but miss the &ldquo;why&rdquo;. And if we try to decide whether we can remove a certain check or rework a behavior, we need to understand why it was introduced in the first place. Usually, we resort to looking at the commit that introduced the change or the tickets associated with the commit.
+          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          7 min read
+        </h4>
+        <h4>
+          
+          <span class="label label-success">java</span>
+          
+          <span class="label label-success">git</span>
+          
+          <span class="label label-success">github</span>
+          
+          <span class="label label-success">intellij</span>
+          
+          <span class="label label-success">vscode</span>
+          
+        </h4>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="blogpost">
+            <p>Working on a large codebase, it&rsquo;s pretty normal to not remember every small or large subsystem or implementation choice. Be it whether you&rsquo;re new to a codebase, or you&rsquo;ve been focussed on a specific area of the codebase. When working on refactorings or bug fixes, I often end up in areas I might not be too familiar with. Generally not dramatic, it happens quite often that I&rsquo;m stopping at what I&rsquo;m doing because I need to decide on how to move forward.  As software engineers, we have to make so many micro-decisions every minute that we&rsquo;re pretty used to it. Depending on the code and domain knowledge, we often find ourselves in situations where we need more context to make an informed decision. Tests usually provide a pretty good context but depending on their granularity and naming, they might only tell is &ldquo;what&rdquo; is in the implementation but miss the &ldquo;why&rdquo;. And if we try to decide whether we can remove a certain check or rework a behavior, we need to understand why it was introduced in the first place. Usually, we resort to looking at the commit that introduced the change or the tickets associated with the commit.
 <br>
 <a href="https://www.instagram.com/marcos.lange77/"><img src="/blog/git-archeology/unearth.jpg" alt="Photo by Marcus Lange from Pexels"></a>
 <br>
@@ -188,53 +189,53 @@ For example, IntelliJ IDEA shows the &ldquo;Important Change&rdquo; when enablin
 </ul>
 <p>I hope I was able to show the one or other interesting bit that can you add to your own toolbox and would be happy <a href="https://twitter.com/bmuskalla">to hear about</a> your approach to software archeology.</p>
 
-              <hr>
-              <div class="related-posts">
-                <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        June 28, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 4, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        May 25, 2020
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
+            <hr>
+            <div class="related-posts">
+              <h5>Related Posts</h5>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    June 28, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                  </h6>
+                </div>
               </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 4, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    May 25, 2020
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <hr>
+        </div>
+        <hr>
         <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -254,13 +255,13 @@ For example, IntelliJ IDEA shows the &ldquo;Important Change&rdquo; when enablin
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-        </div>
       </div>
-      
     </div>
-
     
-    <footer>
+  </div>
+
+  
+  <footer>
   <div id="footer">
     <div class="container">
       <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
@@ -283,6 +284,7 @@ For example, IntelliJ IDEA shows the &ldquo;Important Change&rdquo; when enablin
 
 
 
-    
-  </body>
+
+</body>
+
 </html>

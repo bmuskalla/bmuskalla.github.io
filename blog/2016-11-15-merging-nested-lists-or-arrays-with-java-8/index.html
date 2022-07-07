@@ -37,11 +37,12 @@ if (!doNotTrack) {
 </script>
   </head>
 
-  <body>
-    <div id="wrap">
 
-      
-      <nav class="navbar navbar-default">
+<body>
+  <div id="wrap">
+
+    
+    <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
@@ -57,9 +58,9 @@ if (!doNotTrack) {
         
         <li><a href="/blog/">BLOG</a></li>
         
-        <li><a href="/articles/">ARTICLES</a></li>
-        
         <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/articles/">PRINT</a></li>
         
         <li><a href="/talks/">TALKS</a></li>
         
@@ -71,33 +72,33 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/">Merging nested Lists or Arrays with Java 8</a></strong>
-          </h3>
-        </div>
-        <div class="blog-title">
-          <h4>
+    
+    <div class="container">
+      <div class="blog-post">
+        <h3>
+          <strong><a href="https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/">Merging nested Lists or Arrays with Java 8</a></strong>
+        </h3>
+      </div>
+      <div class="blog-title">
+        <h4>
           November 15, 2016
-            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            2 min read
-          </h4>
-          <h4>
-            
-            <span class="label label-success">java</span>
-            
-            <span class="label label-success">stream</span>
-            
-            <span class="label label-success">flatmap</span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>When accessing 3rd party APIs with pagination, we tend to see the same pattern
+          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          2 min read
+        </h4>
+        <h4>
+          
+          <span class="label label-success">java</span>
+          
+          <span class="label label-success">stream</span>
+          
+          <span class="label label-success">flatmap</span>
+          
+        </h4>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="blogpost">
+            <p>When accessing 3rd party APIs with pagination, we tend to see the same pattern
 over and over again. Usually, a response (represented as POJO) looks something
 like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Result</span> <span style="color:#f92672">{</span>
@@ -153,53 +154,53 @@ List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f9
 </ol>
 </section>
 
-              <hr>
-              <div class="related-posts">
-                <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        June 28, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 12, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 4, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
+            <hr>
+            <div class="related-posts">
+              <h5>Related Posts</h5>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    June 28, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                  </h6>
+                </div>
               </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 12, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 4, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <hr>
+        </div>
+        <hr>
         <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -219,13 +220,13 @@ List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f9
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-        </div>
       </div>
-      
     </div>
-
     
-    <footer>
+  </div>
+
+  
+  <footer>
   <div id="footer">
     <div class="container">
       <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
@@ -248,6 +249,7 @@ List<span style="color:#f92672">&lt;</span>TransformedItem<span style="color:#f9
 
 
 
-    
-  </body>
+
+</body>
+
 </html>

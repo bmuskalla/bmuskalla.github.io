@@ -920,20 +920,20 @@ One of those conversations go something like this, even though the answer might 
     </item>
     
     <item>
-      <title>Articles</title>
-      <link>https://bmuskalla.github.io/articles/</link>
-      <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
-      
-      <guid>https://bmuskalla.github.io/articles/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Open Source</title>
       <link>https://bmuskalla.github.io/opensource/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
       
       <guid>https://bmuskalla.github.io/opensource/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Print</title>
+      <link>https://bmuskalla.github.io/articles/</link>
+      <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
+      
+      <guid>https://bmuskalla.github.io/articles/</guid>
       <description></description>
     </item>
     

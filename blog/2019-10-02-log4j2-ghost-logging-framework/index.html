@@ -37,11 +37,12 @@ if (!doNotTrack) {
 </script>
   </head>
 
-  <body>
-    <div id="wrap">
 
-      
-      <nav class="navbar navbar-default">
+<body>
+  <div id="wrap">
+
+    
+    <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
@@ -57,9 +58,9 @@ if (!doNotTrack) {
         
         <li><a href="/blog/">BLOG</a></li>
         
-        <li><a href="/articles/">ARTICLES</a></li>
-        
         <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/articles/">PRINT</a></li>
         
         <li><a href="/talks/">TALKS</a></li>
         
@@ -71,39 +72,39 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h3>
-            <strong><a href="https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/">Log4j 2 - The Ghost in the logging framework</a></strong>
-          </h3>
-        </div>
-        <div class="blog-title">
-          <h4>
+    
+    <div class="container">
+      <div class="blog-post">
+        <h3>
+          <strong><a href="https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/">Log4j 2 - The Ghost in the logging framework</a></strong>
+        </h3>
+      </div>
+      <div class="blog-title">
+        <h4>
           October 2, 2019
-            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-            6 min read
-          </h4>
-          <h4>
-            
-            <span class="label label-success">java</span>
-            
-            <span class="label label-success">logging</span>
-            
-            <span class="label label-success">yourkit</span>
-            
-            <span class="label label-success">performance</span>
-            
-            <span class="label label-success">strsubstitutor</span>
-            
-            <span class="label label-success">apache httpclient</span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:</p>
+          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          6 min read
+        </h4>
+        <h4>
+          
+          <span class="label label-success">java</span>
+          
+          <span class="label label-success">logging</span>
+          
+          <span class="label label-success">yourkit</span>
+          
+          <span class="label label-success">performance</span>
+          
+          <span class="label label-success">strsubstitutor</span>
+          
+          <span class="label label-success">apache httpclient</span>
+          
+        </h4>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="blogpost">
+            <p>It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:</p>
 <p>Internally we use <a href="https://logging.apache.org/log4j/2.x/">Log4j2</a> as our logging solution of choice (with the various off-the-shelf adapters to handle 3rd libraries with different log frameworks). An interesting aspect about our internal test infrastructure is that we do capture all trace logs during test runs (including http requests, headers, generated test data, etc) but only for the lifetime of a test run. If a test passes, we ignore the logs. If the test fails (or is a flake), we’ll actually send the log to the next appender that is configured (usually a <code>Console</code> or <code>RollingFileAppender</code>)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>One test started failing rather consistently after we recently changed some of our logging infrastructure and configuration.</p>
 <p>That test was using one of our components to connect to a server, post some data, retrieve the data and assert the new data is present. In other words, it was doing some HTTP requests, parsed the data and asserted on that. This represents a rather boring yet important end-to-end test. We run a lot of similar tests against a myriad of server and even more versions of aforementioned. Under regular circumstances the test passed. The fun part started when running the test with trace logging enabled. Enabling trace logging, the tests started to fail pretty consistently &hellip; With a <code>NoHttpResponseException</code>&hellip;And always the same URI.</p>
@@ -188,53 +189,53 @@ Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without us
 </ol>
 </section>
 
-              <hr>
-              <div class="related-posts">
-                <h5>Related Posts</h5>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        June 28, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 12, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
-                  <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <h6 style="text-align: right">
-                        January 4, 2021
-                      </h6>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                      <h6 style="text-align: left">
-                        <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
-                      </h6>
-                    </div>
-                  </div>
-                
+            <hr>
+            <div class="related-posts">
+              <h5>Related Posts</h5>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    June 28, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
+                  </h6>
+                </div>
               </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 12, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <h6 style="text-align: right">
+                    January 4, 2021
+                  </h6>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                  <h6 style="text-align: left">
+                    <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
+                  </h6>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <hr>
+        </div>
+        <hr>
         <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -254,13 +255,13 @@ Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without us
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-        </div>
       </div>
-      
     </div>
-
     
-    <footer>
+  </div>
+
+  
+  <footer>
   <div id="footer">
     <div class="container">
       <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
@@ -283,6 +284,7 @@ Use {nolookups} to log messages like &ldquo;${date:YYYY-MM-dd}&rdquo; without us
 
 
 
-    
-  </body>
+
+</body>
+
 </html>
