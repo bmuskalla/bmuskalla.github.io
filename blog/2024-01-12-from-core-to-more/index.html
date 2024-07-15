@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://bmuskalla.github.io/img/favicon.ico">
+    <title>From core to more: Service providers to the rescue</title>
+    <meta name="generator" content="Hugo 0.83.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.github.io/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+  </head>
+
+
+<body>
+  <div id="wrap">
+
+    
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://bmuskalla.github.io/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/opensource/">OPENSOURCE</a></li>
+        
+        <li><a href="/articles/">PRINT</a></li>
+        
+        <li><a href="/talks/">TALKS</a></li>
+        
+        <li><a href="/vitae/">VITAE</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    
+    <div class="container">
+      <div class="blog-post">
+        <h3>
+          <strong><a href="https://bmuskalla.github.io/blog/2024-01-12-from-core-to-more/">From core to more: Service providers to the rescue</a></strong>
+        </h3>
+      </div>
+      <div class="blog-title">
+        <h4>
+          January 12, 2024
+          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          9 min read
+        </h4>
+        <h4>
+          
+          <span class="label label-success">service provider interfaces</span>
+          
+          <span class="label label-success">application programming interfaces</span>
+          
+          <span class="label label-success">extensible software</span>
+          
+          <span class="label label-success">platform development</span>
+          
+          <span class="label label-success">data modeling</span>
+          
+          <span class="label label-success">domain-driven design</span>
+          
+          <span class="label label-success">ubiquitous language</span>
+          
+          <span class="label label-success">API evolution</span>
+          
+          <span class="label label-success">SPI evolution</span>
+          
+          <span class="label label-success">technology compatibility kits</span>
+          
+          <span class="label label-success">conformance testing</span>
+          
+          <span class="label label-success">test-driven development</span>
+          
+          <span class="label label-success">error handling</span>
+          
+          <span class="label label-success">fault tolerance</span>
+          
+          <span class="label label-success">capability management</span>
+          
+          <span class="label label-success">network resilience</span>
+          
+          <span class="label label-success">real-world testing</span>
+          
+          <span class="label label-success">modular architecture</span>
+          
+          <span class="label label-success">energy consumption monitoring</span>
+          
+          <span class="label label-success">provider implementation</span>
+          
+          <span class="label label-success">scalability</span>
+          
+          <span class="label label-success">maintainability</span>
+          
+        </h4>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="blogpost">
+            <p>Orbiting about 400 kilometers above Earth, the International Space Station (ISS) serves as a beacon of human ingenuity and collaboration. This modular space habitat, constructed jointly by space agencies from all around the world, including NASA, Roscosmos, ESA, JAXA and CSA. A demonstration of  the extraordinary feats possible through international partnership. This complex structure, requiring meticulous coordination and cooperation, orbits our planet every 90 minutes, symbolizing a unified effort in space exploration and scientific advancement.
+Similarly, extensible software systems possess an inherent complexity that is greater than the capabilities of a <a href="https://leaddev.com/process/stop-working-islands-engineers">single team or organization</a>. It&rsquo;s crucial to establish distinct boundaries among components, designate experts for each, and devise the willpower and strategies to discover integration points among these components.</p>
+<h2 id="apis-and-spis">APIs and SPIs</h2>
+<p><strong>An API (Application Programming Interface)</strong> is familiar terrain for us, serving as the outward-facing interfaces of system components. Whether it&rsquo;s a library we rely on or an external service we communicate with through various protocols (such as REST, Protobuf, or any RPC), APIs present our systems to the outside world, ideally through an intuitive interface.
+<br>
+<br>
+<strong>SPIs (Service Provider Interfaces)</strong>, on the other hand, are the interfaces through which functionality and data are supplied to an existing system, often through mechanisms like callbacks or provider interfaces. This is a common pattern in our daily tools like the  plugins of our preferred editor or callbacks from the frameworks we use.
+<br>
+<br>
+But what does it mean to build such a platform, building the foundational layer between the API consumers (a product) and the functionality suppliers (our providers)?
+<br>
+<br>
+In this article, we&rsquo;ll delve into the principles of extensibility in software. I&rsquo;ll share insights on crafting software systems that are not just sturdy and adaptable but also primed for evolution, potentially <a href="https://leaddev.com/scaling-software-systems/three-steps-managing-toil-you-scale">beyond the confines of your team</a> or organization.
+<br>
+<br>
+For the sake of this article, let’s say we build a platform that collects the energy consumption of various hardware components (CPU, GPU,&hellip;) as well as tracking the energy consumption of the external services our product consumes. As we can’t possibly support all different hardware components and how to track their energy consumption, nor know how much energy the external services use, we’ll build a platform that can be extended by us, other teams in our company as well as external parties. In our energy consumption platform, the API represents the overall energy consumption as a metric, while the SPIs are the conduits through which individual component data flows into our platform.</p>
+<h2 id="crafting-robust-data-models">Crafting Robust Data Model(s)</h2>
+<p>Designing an effective data model is a complex task. In building for extensibility, I&rsquo;ve learned that a single data model often isn&rsquo;t sufficient. A robust data model should represent data in a way that&rsquo;s intuitive to the consumer. This calls for a ubiquitous language within our domain, though our SPI implementations might have their own interpretations, necessitating a translation into our platform&rsquo;s domain. Furthermore, SPI providers might require support in this translation process, as they often need to pull data from various APIs, translate it, and then consolidate it before integrating it into our platform. The data model and services we expose aim to present a unified view of all SPI providers, without bias towards any particular one. While this makes sense from an API perspective, the SPI side of our platform needs to be more flexible.
+<br>
+<br>
+Consider the task of managing vast amounts of data packets for our energy consumption API, which aggregates daily usage from various providers. Each provider has unique data retrieval methods—some offer endpoints for minute-by-minute consumption, others use paginated REST endpoints for specific timeframes, and some provide a continuous stream via HTTP/2. While these methods vary, our goal is to present a unified data stream to our API consumers, masking the underlying complexity. SPI providers, therefore, must adapt their data delivery, potentially offering data in batches or continuous streams, with mechanisms for retries, pauses, or resumptions, ensuring a consistent and cohesive experience for the API consumer. But the variance in our providers as well as the fact that the provides need to construct our domain objects (creatable and potentially mutable) requires a different API than our API consumers (queryable and immutable).</p>
+<h2 id="evolving-api-and-spi-independently-yet-harmoniously">Evolving API and SPI Independently yet Harmoniously</h2>
+<p>Advancing our platform and its extensions usually can’t happen in lock-step. The evolution of such systems tends to be gradual, influenced by varying schedules and priorities across teams. It is necessary to evolve API and SPI independently as we need to keep the different work areas aligned without exposing functionality that is not yet implemented.</p>
+<h3 id="establishing-a-baseline-for-providers">Establishing a Baseline for Providers</h3>
+<p>When an API is ready to level up with new features that lean on the providers, it&rsquo;s key to figure out if that new functionality is just nice-to-haves or must-haves. If it&rsquo;s something every provider needs to implement, think about going SPI-first. This way, providers get a heads-up to weave in these features well before they hit the API stage and are exposed to the products. Getting everyone on the same page about what&rsquo;s needed and how it all works can be a bit of a tangle. How to communicate what features a provider needs to implement and how it should work is usually a huge source of toil. You can consider writing specifications which are shared across all stakeholders. Depending on the quality of the specification, this may be a reasonable approach (Design by Contract). A great example for such a, publicly available, specification for an SPI is the <a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/">Language Server Specification</a>.</p>
+<h3 id="test-driven-providers">Test-driven providers</h3>
+<p>I&rsquo;ve noticed that embracing a test-driven approach can really make a difference when it comes to growing service providers. Here&rsquo;s the gist: the platform provides a suite of automated tests, some detailed, some not so much, that use the APIs to put the providers through their paces. You might know these as Technology Compatibility Kits (TCK) or <a href="https://leaddev.com/agile-other-ways-working/demystifying-software-engineering-test-pyramid">“Conformance Testing”</a>. Whether the providers can use the tests to take advantage to build out the necessary functionality, whether with real services or working with dummy setup. I&rsquo;ve been in the trenches with a team crafting tests for more than 60 providers, all chatting with their actual backends. Found an edge case in one? Add one of the conformance tests and see how many others fail for the same edge case. Not only that, it’s also a great way to <a href="https://leaddev.com/hiring-onboarding-retention/three-steps-successfully-onboard-junior-engineers">onboard new people</a> onto the project of building out these providers.</p>
+<h3 id="working-under-real-circumstances">Working under real circumstances</h3>
+<p>What&rsquo;s great about this is getting a front-row seat to how our platform deals with what the providers throw at it. It&rsquo;s not just about checking if the data looks right; it&rsquo;s seeing if the platform can juggle all the curveballs, like timeouts and retry challenges. And you know what? There&rsquo;s this moment I can&rsquo;t shake off: a newcomer on the team came to me, wide-eyed, saying how mind-blowing it was to watch over 18,000 tests fire up on a provider they were piecing together – without them having to script a single test! That test suite was able to guide them through the various requirements at platform had for them - be it data formats, error handling or exposing their capabilities.</p>
+<h3 id="implementing-new-functionality">Implementing new functionality</h3>
+<p>In the natural progression of your platform&rsquo;s development, we’ll want to expand its feature set and solicit additional functionalities or data from your providers. Consider, for instance, the scenario where you wish your energy measurement providers to also monitor temperature. Effective communication of these new requirements to your provider teams is crucial. Moreover, achieving consensus on the updated API and SPI, coupled with providing clear guidance for implementation, is essential. Leveraging a TCK-driven methodology can greatly streamline this process, facilitating the introduction of new tests for the desired functionalities and monitoring the integration progress of each provider. A critical aspect of this phase is the management of capabilities, ensuring that providers can transparently disclose the functionalities they have successfully integrated.</p>
+<h3 id="fault-barriers">Fault barriers</h3>
+<p>In our interconnected realm, interactions with hardware or across networks inherently carry the risk of failure. Recognizing and integrating this reality into our foundational assumptions, protocols, and architectural design is vital. This principle equally applies to our providers. While constructing fault barriers around interactions with providers is feasible, simply acknowledging a vague failure is insufficient. Our platform needs to understand specific error categories exposed through providers. Is the provider currently unable to supply data? Is it struggling with a transient network error that can be retried? Or has it encountered a rate limit which requires a backoff before retrying? Parsing these error nuances is primarily the provider&rsquo;s responsibility, yet ensuring this process is robustly codified in the specifications and validated through testing enhances the system&rsquo;s resilience and clarity.</p>
+<h3 id="anecdote">Anecdote</h3>
+<p>In my years of developing extensible platforms, one particular conversation kept popping up. We were putting our providers to the test against actual endpoints, so it wasn&rsquo;t shocking when some tests failed due to various glitches. The dialogue often opened with, &ldquo;Shouldn&rsquo;t we just rerun those tests?&rdquo;. My viewpoint? A firm no. These &lsquo;flaky&rsquo; tests weren&rsquo;t pointing to issues with the tests themselves; they were shining a light on deeper bugs within our platform. It&rsquo;s not the tests that are unreliable; it&rsquo;s the services we&rsquo;re engaging with. As we&rsquo;ve touched on before, this unpredictability isn&rsquo;t just part of the testing landscape; it&rsquo;s embedded in the real-world scenario, too. Network instability isn&rsquo;t exclusive to our test runs; it&rsquo;s a reality in the live environment as well. So, rather than brushing these inconsistencies under the rug, our platform needs to handle them adeptly, ensuring a smooth operation from the backend (like intelligently retrying data fetches from providers) and maintaining a seamless facade for our API consumers.</p>
+<h3 id="opening-up-your-product">Opening up your product</h3>
+<p>When you next find yourself contemplating the adoption of various strategies for data extraction or the integration with multiple external services, it&rsquo;s worth giving thought to the potential benefits of constructing an SPI. Take into account the perspective of both the API consumer and the SPI implementers. Evaluate whether a straightforward specification suffices, or if the complexity of the integration justifies the need for a test suite resembling a TCK. Remember, the goal is to streamline and enhance the maintainability of your architecture. Although there&rsquo;s no single solution, determining the most suitable approach depends on the specifics of your environment.</p>
+
+            <hr>
+            <div class="related-posts">
+              <h5>Related Posts</h5>
+              
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://bmuskalla.github.io/js/docs.min.js"></script>
+<script src="https://bmuskalla.github.io/js/main.js"></script>
+
+<script src="https://bmuskalla.github.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+</body>
+
+</html>
