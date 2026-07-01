@@ -2,149 +2,149 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Benjamin Muskalla</title>
-    <link>https://bmuskalla.github.io/blog/</link>
+    <link>https://bmuskalla.dev/blog/</link>
     <description>Recent content in Blogs on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 12 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://bmuskalla.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://bmuskalla.dev/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From core to more: Service providers to the rescue</title>
-      <link>https://bmuskalla.github.io/blog/2024-01-12-from-core-to-more/</link>
+      <link>https://bmuskalla.dev/blog/2024-01-12-from-core-to-more/</link>
       <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2024-01-12-from-core-to-more/</guid>
+      <guid>https://bmuskalla.dev/blog/2024-01-12-from-core-to-more/</guid>
       <description>Orbiting about 400 kilometers above Earth, the International Space Station (ISS) serves as a beacon of human ingenuity and collaboration. This modular space habitat, constructed jointly by space agencies from all around the world, including NASA, Roscosmos, ESA, JAXA and CSA. A demonstration of the extraordinary feats possible through international partnership. This complex structure, requiring meticulous coordination and cooperation, orbits our planet every 90 minutes, symbolizing a unified effort in space exploration and scientific advancement.</description>
     </item>
     
     <item>
       <title>The &#39;Simplify protocol&#39; refactoring</title>
-      <link>https://bmuskalla.github.io/blog/2021-06-28-simplify-protocol/</link>
+      <link>https://bmuskalla.dev/blog/2021-06-28-simplify-protocol/</link>
       <pubDate>Mon, 28 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-06-28-simplify-protocol/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-06-28-simplify-protocol/</guid>
       <description>The other day, I went grocery shopping. While waiting in line, I thought about some struggles I had in a test I wrote earlier that day. When it was my turn, the cashier scanned my items and said what I owe him. And I just gave him my whole wallet. He stared at me blankly and gave it back. A little confused for a second, I took out my card, paid, and left the store.</description>
     </item>
     
     <item>
       <title>Cheating in Software Design using the Konami code</title>
-      <link>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</link>
+      <link>https://bmuskalla.dev/blog/2021-03-25-cheating-design-konami/</link>
       <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-03-25-cheating-design-konami/</guid>
       <description>Have you worked on a large codebase recently? A scary one, maybe? Maybe even polyglot and split across multiple services? It is no surprise today that software is eating the world. Which, to be honest, can be a good thing for us software craftsman but also means that software becomes more and more complex. Just looking at current tech stacks in various companies, they include up to 100 different technologies, tools, libraries, and frameworks.</description>
     </item>
     
     <item>
       <title>Git Archeology</title>
-      <link>https://bmuskalla.github.io/blog/2021-01-12-git-archeology/</link>
+      <link>https://bmuskalla.dev/blog/2021-01-12-git-archeology/</link>
       <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-01-12-git-archeology/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-01-12-git-archeology/</guid>
       <description>Working on a large codebase, it&amp;rsquo;s pretty normal to not remember every small or large subsystem or implementation choice. Be it whether you&amp;rsquo;re new to a codebase, or you&amp;rsquo;ve been focussed on a specific area of the codebase. When working on refactorings or bug fixes, I often end up in areas I might not be too familiar with. Generally not dramatic, it happens quite often that I&amp;rsquo;m stopping at what I&amp;rsquo;m doing because I need to decide on how to move forward.</description>
     </item>
     
     <item>
       <title>Java Syntax Puzzlers</title>
-      <link>https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/</link>
+      <link>https://bmuskalla.dev/blog/2021-01-04-java-syntax-puzzle/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-01-04-java-syntax-puzzle/</guid>
       <description>Roughly 12 years ago, I started to contribute to the Eclipse ecosystem in various functions. One of the most interesting experiences to this date was to work on developer tooling and handling the edge cases so others don’t have to struggle. Though I stepped down as an Eclipse committer in the meantime, I’m still attached to working on productivity tooling nowadays as a member of the Gradle Build Tool.
 While working on Eclipse, I fondly remember working on various parts of the Java Tooling (JDT) and while working on refactorings and quick fixes.</description>
     </item>
     
     <item>
       <title>JIT 101</title>
-      <link>https://bmuskalla.github.io/blog/2020-05-28-jit-101/</link>
+      <link>https://bmuskalla.dev/blog/2020-05-28-jit-101/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2020-05-28-jit-101/</guid>
+      <guid>https://bmuskalla.dev/blog/2020-05-28-jit-101/</guid>
       <description>JIT compilation and HotSpot are with no doubt some very complex topics. This blog is very short article touching on the topic in question; it was originally intended to be included in 97 Things Every Java Programmer Should Know. Contributions for the book had a limit on its length, thus a very short introduction into the HotSpot JIT. In the end, the book authors choose another piece of mine to be included but I thought it this might be interesting for the one or other person out there.</description>
     </item>
     
     <item>
       <title>Changing System Properties in Isolation</title>
-      <link>https://bmuskalla.github.io/blog/2019-11-25-release-scoped-properies/</link>
+      <link>https://bmuskalla.dev/blog/2019-11-25-release-scoped-properies/</link>
       <pubDate>Mon, 25 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2019-11-25-release-scoped-properies/</guid>
+      <guid>https://bmuskalla.dev/blog/2019-11-25-release-scoped-properies/</guid>
       <description>So the other day I was working with a 3rd party library which used System properties as their feature flags. So before calling anything in that library, you&amp;rsquo;d have to setup the proper system properties. While some of them were specific to the library, the library also did depend on some generally useful system properties (e.g. user.home to write settings).1 Now, most engineers would nice encapsulate this behind a Facade and use a try/finally to manage the system properties, something along the lines of this snippet:</description>
     </item>
     
     <item>
       <title>Manually deleting a package from GitHub Package Registry</title>
-      <link>https://bmuskalla.github.io/blog/2019-11-01-delete-github-package/</link>
+      <link>https://bmuskalla.dev/blog/2019-11-01-delete-github-package/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2019-11-01-delete-github-package/</guid>
+      <guid>https://bmuskalla.dev/blog/2019-11-01-delete-github-package/</guid>
       <description>You were so excited about the new Package Registry that you immediately added it to your build and published your first package. Unfortunately, it is the time when you realize you had a typo in the name or the group id of your package.
 Let&amp;rsquo;s quickly delete the package and publish again. But not with GitHub. While the documentation states that deleting packages may be possible, it&amp;rsquo;s not easily available. You can either go through GitHub Support or use the GraphQL API.</description>
     </item>
     
     <item>
       <title>Log4j 2 - The Ghost in the logging framework</title>
-      <link>https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/</link>
+      <link>https://bmuskalla.dev/blog/2019-10-02-log4j2-ghost-logging-framework/</link>
       <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/</guid>
+      <guid>https://bmuskalla.dev/blog/2019-10-02-log4j2-ghost-logging-framework/</guid>
       <description>It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:
 Internally we use Log4j2 as our logging solution of choice (with the various off-the-shelf adapters to handle 3rd libraries with different log frameworks).</description>
     </item>
     
     <item>
       <title>Refactoring towards speed reading</title>
-      <link>https://bmuskalla.github.io/blog/2018-06-08-refactoring-towards-speed-reading/</link>
+      <link>https://bmuskalla.dev/blog/2018-06-08-refactoring-towards-speed-reading/</link>
       <pubDate>Fri, 08 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2018-06-08-refactoring-towards-speed-reading/</guid>
+      <guid>https://bmuskalla.dev/blog/2018-06-08-refactoring-towards-speed-reading/</guid>
       <description>When was the last time you were in the flow while working through some code? Reading code or doing code reviews is an activity that we do often, yet we don’t often get into the zone doing it. Too many times, we have to slow down, check that last line again or try to figure out the structure of the code. Even though we all follow the same principles for clean code, there is always that gut feel which tells you that one style is better than the other.</description>
     </item>
     
     <item>
       <title>Merging nested Lists or Arrays with Java 8</title>
-      <link>https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</link>
+      <link>https://bmuskalla.dev/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</link>
       <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</guid>
+      <guid>https://bmuskalla.dev/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</guid>
       <description>When accessing 3rd party APIs with pagination, we tend to see the same pattern over and over again. Usually, a response (represented as POJO) looks something like this:
 class Result { public List&amp;lt;Item&amp;gt; getItems() { ... } } Be it from a third party service or your own APIs, after retrieving all results of the API call, we end up with something like a List&amp;lt;Result&amp;gt;. Great. We don’t really care about the response itself, we’re actually interested in all the items of the responses.</description>
     </item>
     
     <item>
       <title>WHERE_TO_PUT.CONSTANTS</title>
-      <link>https://bmuskalla.github.io/blog/2016-10-06-wheretoputconstants/</link>
+      <link>https://bmuskalla.dev/blog/2016-10-06-wheretoputconstants/</link>
       <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2016-10-06-wheretoputconstants/</guid>
+      <guid>https://bmuskalla.dev/blog/2016-10-06-wheretoputconstants/</guid>
       <description>When writing software, some conversations happen over and over again. Over the years, I’ve seen different solutions to the same problem that I’d like to share with you. One of those conversations go something like this, even though the answer might differ depending on the team or component.
  Bob: Hey, I have some string literals here and I was told in the code review that I should extract those into constants.</description>
     </item>
     
     <item>
       <title>Easy error reporting for your users</title>
-      <link>https://bmuskalla.github.io/blog/2012-06-08-easy-error-reporting/</link>
+      <link>https://bmuskalla.dev/blog/2012-06-08-easy-error-reporting/</link>
       <pubDate>Fri, 08 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2012-06-08-easy-error-reporting/</guid>
+      <guid>https://bmuskalla.dev/blog/2012-06-08-easy-error-reporting/</guid>
       <description>While working on non-IDE products, one problem often approach us: If something goes wrong when a user is using the product, how do we actually get them to report the problems back to us? Searching for error logs on the harddrive and send them to support@? Actually a pretty brittle approach. From an Eclipse perspective, it’s pretty clear what to do: fire up the webbrowser, go to bugs.eclipse.org and enter a new bug report.</description>
     </item>
     
     <item>
       <title>What the heck are logical models?</title>
-      <link>https://bmuskalla.github.io/blog/2011-09-07-logical-models/</link>
+      <link>https://bmuskalla.dev/blog/2011-09-07-logical-models/</link>
       <pubDate>Wed, 07 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2011-09-07-logical-models/</guid>
+      <guid>https://bmuskalla.dev/blog/2011-09-07-logical-models/</guid>
       <description>Have you ever committed to the repository and got mail afterwards “Hey, this isn’t compiling!”? Likely you committed only some of the changes you made leaving out files required for a successful build. Let’s take a look at a simple example:
 In this model we have a class element Some Class in my.ecore which extends AnAbstractClass in Your.ecore. In this scenario, we essentially have a dependency from My.ecore to Your.ecore. For example, renaming the class AnAbstractClass in Your.</description>
     </item>
     
     <item>
       <title>Integrating Mylyn into your Git workflow</title>
-      <link>https://bmuskalla.github.io/blog/2011-02-16-integrating-mylyn-git-workflow/</link>
+      <link>https://bmuskalla.dev/blog/2011-02-16-integrating-mylyn-git-workflow/</link>
       <pubDate>Wed, 16 Feb 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2011-02-16-integrating-mylyn-git-workflow/</guid>
+      <guid>https://bmuskalla.dev/blog/2011-02-16-integrating-mylyn-git-workflow/</guid>
       <description>In January, most of the EGit committers met at the “EGit Summit” in Walldorf, Germany. We had a blast hanging out together, planning the future direction for EGit/JGit, and implementing new features.
 Thanks again to the SAP team for hosting the event.
 As you can see on the whiteboard, there were numerous ideas suggested by the EGit committers who attended. We organized and prioritized the topics and then broke up into small teams.</description>
@@ -152,19 +152,19 @@ As you can see on the whiteboard, there were numerous ideas suggested by the EGi
     
     <item>
       <title>Using Equinox Security in RCP and RAP</title>
-      <link>https://bmuskalla.github.io/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</link>
+      <link>https://bmuskalla.dev/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</link>
       <pubDate>Thu, 13 May 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</guid>
       <description>I finally had the time to care about one of my outstanding tasks – provide a tutorial and example how to use Equinox Security. While the tutorial was initially targeted for RAP users, I also added a launch config and a target definition for RCP as the code is the same for both runtimes. The tutorial will provide some hints and pointers how to setup your login procedure, like shown below:</description>
     </item>
     
     <item>
       <title>Google Summer of Code 2010 is on!</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-27-google-summer-of-code-2010-is-on/</link>
       <pubDate>Tue, 27 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-27-google-summer-of-code-2010-is-on/</guid>
       <description>Finally the voting process for this years Google Summer of Code is over and they announced the accepted students. I’m really happy that so many interesting proposals got trough and really looking forward to see the outcome of all the student projects.
 
 Here is the full list of the proposals that got accepted for 2010.
@@ -176,66 +176,66 @@ WAR deployment for RAP/Equinox based applications</description>
     
     <item>
       <title>Sketch your UI</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-26-sketch-your-ui/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-26-sketch-your-ui/</link>
       <pubDate>Mon, 26 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-26-sketch-your-ui/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-26-sketch-your-ui/</guid>
       <description>From time to time, I’m in the situation when I want to suggest a UI change or even try to come up with a completely new UI. While I love programming, it may be easier in these situations to just “sketch” the idea instead of really getting your feet wet. As many people asked me what I use for UI sketches, I thought I should share it with you – the tool is called WireframeSketcher.</description>
     </item>
     
     <item>
       <title>Eclipse DemoCamp 2010 in Mannheim</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</link>
       <pubDate>Thu, 22 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</guid>
       <description>Ever been to Mannheim? If not – this is your chance to visit this lovely city. For the Helios release, the guys behind the majug² (Mannheimer Java user Group) invite everybody to the Helios Democamp in June. And as Ian already found out: Yes, we love our DemoCamps! It’s always great to have technical discussions over a frosty beverage!
 At the moment, the attendee list is still pretty empty but save yourself a seat while it’s not booked out – they only have 100 seats available.</description>
     </item>
     
     <item>
       <title>Drawing with RAP? Yup!</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-20-drawing-with-rap-yup/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-20-drawing-with-rap-yup/</link>
       <pubDate>Tue, 20 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-20-drawing-with-rap-yup/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-20-drawing-with-rap-yup/</guid>
       <description>I have to admit, I’m a little nervous what happens with the RAP community after this post. At least for me, the last days were pretty exciting. Some days ago, Ivan from the RAP team committed the initial support for a GC (GraphicsContext) for RAP. Currently restricted to the Canvas widget, the GC provides thousands of new use cases for RAP applications. The work by Ivan and Tim is just gorgeous and will help many developers to single-source their applications with even less exceptions.</description>
     </item>
     
     <item>
       <title>Revamping Eclipse Examples?</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-14-revamping-eclipse-examples/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-14-revamping-eclipse-examples/</link>
       <pubDate>Wed, 14 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-14-revamping-eclipse-examples/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-14-revamping-eclipse-examples/</guid>
       <description>Even though I’ve been involved in the Eclipse community for around 5 years, I’m still amazed by the projects that are hosted under the Eclipse umbrella. As an “insider”, I have a pretty good overview of many projects and at least a rough picture of all the other cool stuff. While I love working with EclipseRT technologies like Equinox, RAP, EclipseLink, ECF or &amp;lt;insert your project here&amp;gt;, I always find myself in the same situation.</description>
     </item>
     
     <item>
       <title>EMF and RAP &amp; what a lovely pair</title>
-      <link>https://bmuskalla.github.io/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</link>
+      <link>https://bmuskalla.dev/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</link>
       <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</guid>
       <description>During the last weeks, Kenn and I worked together to support EMF generated editors running on RAP. I’m always mesmerized by how effective such synergies can be used when people from different teams work together for a bigger goal. Kudos to Kenn for his great work in EMF by refactoring the EMF UI bundles (namely o.e.emf.ui.common and o.e.emf.ui.edit) in order to single-source them. But what does that mean for the community?</description>
     </item>
     
     <item>
       <title>EclipseRT &amp; RAP around the world</title>
-      <link>https://bmuskalla.github.io/blog/2009-11-23-eclipsert-rap-around-the-world/</link>
+      <link>https://bmuskalla.dev/blog/2009-11-23-eclipsert-rap-around-the-world/</link>
       <pubDate>Mon, 23 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-11-23-eclipsert-rap-around-the-world/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-11-23-eclipsert-rap-around-the-world/</guid>
       <description>We’re all looking forward to talk about EclipseRT, Equinox and RAP at the DemoCamps around the world. In case you want to catch us and talk about Eclipse and related topics, just join one of the DemoCamps near you. Besides many other interesting talks, we’ll mostly cover EclipseRT, RAP and p2.
  Ottawa, ON, Canada – November 24 – Jeff McAffer (EclipseRT) Braunschweig/Hanover, Germany – November 25 – Benjamin Muskalla (RAP) Stuttgart, Germany – November 26 – Jordi Boehme Lopez (p2) Kaiserslautern, Germany – November 26 – Holger Staudacher (RAP) Frankfurt, Germany – November 26 – Benjamin Muskalla (EclipseRT,RAP) Vienna, Austria – November 30 – Chris Anisczcyk and Jeff McAffer (RAP,EclipseRT) Karlsruhe, Germany – December 3 – Markus Knauer, Benjamin Muskalla (EclipseRT) Hamburg, Germany – December 4 – Jochen Krause (RAP)  I’m really looking forward to see you at the DemoCamps, as always it tends to be a lot of fun!</description>
     </item>
     
     <item>
       <title>Eclipse RAP 1.3 M3 hits the road</title>
-      <link>https://bmuskalla.github.io/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</link>
+      <link>https://bmuskalla.dev/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</link>
       <pubDate>Mon, 16 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</guid>
       <description>After another 6 weeks of working hard towards the Helios Release, we’re a step closer. RAP M3 for Eclipse 3.6 is out and can be obtained from the RAP project page. Besides another 130 bugfixes and many New and Noteworthy features, here are my personal favorites of this milestone:
 Non-shared SWT resources
 Finally, we decided to provide constructors and a dispose mechanism for SWT resources like fonts, images, colors and cursors.</description>
@@ -243,10 +243,10 @@ Finally, we decided to provide constructors and a dispose mechanism for SWT reso
     
     <item>
       <title>Eclipse RAP 1.3 M2 Released</title>
-      <link>https://bmuskalla.github.io/blog/2009-10-08-eclipse-rap-1-3-m2-released/</link>
+      <link>https://bmuskalla.dev/blog/2009-10-08-eclipse-rap-1-3-m2-released/</link>
       <pubDate>Thu, 08 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-10-08-eclipse-rap-1-3-m2-released/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-10-08-eclipse-rap-1-3-m2-released/</guid>
       <description>The RAP team is proud to announce the second milestone for the Helios release.
 As Holger already mentioned in his blog post, part of the milestone is a new design option for RAP applications. You can either use it as is or customize it depending on your needs.
 
@@ -255,47 +255,47 @@ Together with the new fancy design, there is also a new Configuration dialog to 
     
     <item>
       <title>Picasso paints the web with RAP</title>
-      <link>https://bmuskalla.github.io/blog/2009-09-11-picasso-paints-the-web/</link>
+      <link>https://bmuskalla.dev/blog/2009-09-11-picasso-paints-the-web/</link>
       <pubDate>Fri, 11 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-09-11-picasso-paints-the-web/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-09-11-picasso-paints-the-web/</guid>
       <description>Whenever I’m working on UI stuff, something always goes terribly wrong 😉 Sometimes it’s only a margin or padding, other times it a composite that crosses my path. I was pretty happy that Chris Aniszczyk and Simon Archer hacked together Picasso, which helps you to identify some of these layout issues. As you may know, most of the time I work on the Rich Ajax Platform (RAP) and come across the same issues.</description>
     </item>
     
     <item>
       <title>Eclipse e4 on the web</title>
-      <link>https://bmuskalla.github.io/blog/2009-08-25-e4-on-the-web/</link>
+      <link>https://bmuskalla.dev/blog/2009-08-25-e4-on-the-web/</link>
       <pubDate>Tue, 25 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-08-25-e4-on-the-web/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-08-25-e4-on-the-web/</guid>
       <description>With e4 0.9 out in the wild, we should think again about the goals e4 tries to provide. One of them was to reduce the gap between Desktop and Web – not only speaking of reusing widgets but also to enable the platform handle multi-user scenarios. While the core e4 team concentrated on eliminating bad smells like singletons, the RAP team worked on better support for single sourcing applications in general.</description>
     </item>
     
     <item>
       <title>Integrating BIRT into RAP applications</title>
-      <link>https://bmuskalla.github.io/blog/2009-07-06-integrating-birt-into-rap-applications/</link>
+      <link>https://bmuskalla.dev/blog/2009-07-06-integrating-birt-into-rap-applications/</link>
       <pubDate>Mon, 06 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-07-06-integrating-birt-into-rap-applications/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-07-06-integrating-birt-into-rap-applications/</guid>
       <description>Finally I had some time to write down some of my experiences with integrating the Business Intelligence Reporting Tools (BIRT) into a Rich Ajax Platform (RAP) application. I wrote it all down in a small tutorial that shows how you can integrate charts and reports seamlessly in your RAP application. Topics covered in the tutorial include how to setup the environment to let BIRT and RAP play well together.</description>
     </item>
     
     <item>
       <title>Eclipse Galileo and RAP</title>
-      <link>https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/</link>
+      <link>https://bmuskalla.dev/blog/2009-07-03-galileo-and-the-rap-runtime/</link>
       <pubDate>Fri, 03 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-07-03-galileo-and-the-rap-runtime/</guid>
       <description>As Galileo is out in the wild and we are all already working on Helios… I thought it would be handy to give a quick overview of the New and Noteworthy features the RAP team worked on for Galileo. Besides many, many bug fixes… we still found time to provide several new features. On top of the new features, we focused on making single sourcing even easier to do.
 New Look and Feel This is one of the biggest features of RAP released as part of the train.</description>
     </item>
     
     <item>
       <title>Tease the RAP committers!</title>
-      <link>https://bmuskalla.github.io/blog/2009-03-13-tease-the-rap-committers/</link>
+      <link>https://bmuskalla.dev/blog/2009-03-13-tease-the-rap-committers/</link>
       <pubDate>Fri, 13 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-03-13-tease-the-rap-committers/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-03-13-tease-the-rap-committers/</guid>
       <description>Ok, it’s getting tough. Only 9 days left before EclipseCon officially starts. All contributors and committers around me are already swarming around to get the demos and presentations ready – besides fixing bugs for the upcoming M6 build. But why is everybody so excited about EclipseCon? I think the numerous talks are only one side of the coin. Personally the way more interesting part is the come-together of all people you know from bug reports, mailing lists and newsgroups.</description>
     </item>
     

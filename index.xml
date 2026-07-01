@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Benjamin Muskalla</title>
-    <link>https://bmuskalla.github.io/</link>
+    <link>https://bmuskalla.dev/</link>
     <description>Recent content on Benjamin Muskalla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 12 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://bmuskalla.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://bmuskalla.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From core to more: Service providers to the rescue</title>
-      <link>https://bmuskalla.github.io/blog/2024-01-12-from-core-to-more/</link>
+      <link>https://bmuskalla.dev/blog/2024-01-12-from-core-to-more/</link>
       <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2024-01-12-from-core-to-more/</guid>
+      <guid>https://bmuskalla.dev/blog/2024-01-12-from-core-to-more/</guid>
       <description>&lt;p&gt;Orbiting about 400 kilometers above Earth, the International Space Station (ISS) serves as a beacon of human ingenuity and collaboration. This modular space habitat, constructed jointly by space agencies from all around the world, including NASA, Roscosmos, ESA, JAXA and CSA. A demonstration of  the extraordinary feats possible through international partnership. This complex structure, requiring meticulous coordination and cooperation, orbits our planet every 90 minutes, symbolizing a unified effort in space exploration and scientific advancement.
 Similarly, extensible software systems possess an inherent complexity that is greater than the capabilities of a &lt;a href=&#34;https://leaddev.com/process/stop-working-islands-engineers&#34;&gt;single team or organization&lt;/a&gt;. It&amp;rsquo;s crucial to establish distinct boundaries among components, designate experts for each, and devise the willpower and strategies to discover integration points among these components.&lt;/p&gt;
 &lt;h2 id=&#34;apis-and-spis&#34;&gt;APIs and SPIs&lt;/h2&gt;
@@ -55,10 +55,10 @@ Consider the task of managing vast amounts of data packets for our energy consum
     
     <item>
       <title>The &#39;Simplify protocol&#39; refactoring</title>
-      <link>https://bmuskalla.github.io/blog/2021-06-28-simplify-protocol/</link>
+      <link>https://bmuskalla.dev/blog/2021-06-28-simplify-protocol/</link>
       <pubDate>Mon, 28 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-06-28-simplify-protocol/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-06-28-simplify-protocol/</guid>
       <description>&lt;p&gt;The other day, I went grocery shopping. While waiting in line, I thought about some struggles I had in a test I wrote earlier that day. When it was my turn, the cashier scanned my items and said what I owe him. And I just gave him my whole wallet. He stared at me blankly and gave it back. A little confused for a second, I took out my card, paid, and left the store. And at that point, it hit me what was wrong with my test.
 Let’s have a look at the test and see what it has to do with grocery shopping:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Test&lt;/span&gt;
@@ -139,10 +139,10 @@ EndOfYearReporter printer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&g
     
     <item>
       <title>Cheating in Software Design using the Konami code</title>
-      <link>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</link>
+      <link>https://bmuskalla.dev/blog/2021-03-25-cheating-design-konami/</link>
       <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-03-25-cheating-design-konami/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-03-25-cheating-design-konami/</guid>
       <description>&lt;p&gt;Have you worked on a large codebase recently? A scary one, maybe? Maybe even polyglot and split across multiple services?
 It is no surprise today that software is eating the world. Which, to be honest, can be a good thing for us software craftsman but also means that software becomes more and more complex.
 Just looking at current tech stacks in various companies, they include up to 100 different technologies, tools, libraries, and frameworks.
@@ -165,7 +165,7 @@ But there is an alternative approach that we can take: We cheat!&lt;/p&gt;
 &lt;kbd&gt;START&lt;/kbd&gt;&lt;/p&gt;
 &lt;p&gt;Feel free to try this in your IDE. You might get lucky (actually, &lt;a href=&#34;https://techdows.com/2014/06/use-konami-code-to-enable-power-user-settings-in-opera.html&#34;&gt;Opera does implement the Konami code&lt;/a&gt; to access advanced settings).
 So how can we use this to our advantage when sketching new paths through our software. For that, let&amp;rsquo;s join Susan.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/It%27s_dangerous_to_go_alone!&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/konami/It&#39;s_dangerous_to_go_alone!_Take_this..png&#34; alt=&#34;It&amp;rsquo;s dangerous to go alone!&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/It%27s_dangerous_to_go_alone!&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/konami/It&#39;s_dangerous_to_go_alone!_Take_this..png&#34; alt=&#34;It&amp;rsquo;s dangerous to go alone!&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Susan recently joined a new company as a Senior Software Engineer. She has experience with different programming languages, is an avid Practioner of test-driven development, and embraces refactorings.&lt;/p&gt;
 &lt;p&gt;The codebase of the company she joined is quite complex even though well thought out. Many architectural and implementation approaches are not documented, so she has to rely on tribe knowledge.
 Her team is friendly, yet, with many new people, there are always aspects of the codebase that no one really knows how it came about. Susan and her team decided to take on a new, non-trivial feature for one of their customers, and Susan decided to take the lead.&lt;/p&gt;
@@ -186,7 +186,7 @@ Her team is friendly, yet, with many new people, there are always aspects of the
 &lt;p&gt;The same goes for algorithmic problems. If it&amp;rsquo;s local to a particular data structure (e.g., the fastest way to walk a specific tree of data), you can skip this for now and use something that just works, performance aside. But be aware whether this is actually a local aspect or if solving this may require a different data structure and whether that changes the surrounding design for your component.&lt;/p&gt;
 &lt;p&gt;Your goal is: get our system test to pass while optimizing the time spent there. And keep our single rule in mind. If you&amp;rsquo;re not sure how to get from A to B, dig &amp;ldquo;down&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Got your test passing? Great! You&amp;rsquo;re almost done with your feature. You did the hard part. You did the exploration. Yes, correct. This isn&amp;rsquo;t your implementation. This exercise is solely to understand the complete picture, to explore the uncertain parts of our map. And by hacking it together, it is natural to stumble upon those &amp;ldquo;oh I didn&amp;rsquo;t see that gap how to get from A to B&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/konami/spike.jpg&#34; alt=&#34;Explore the path through the weeds using a spike!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/konami/spike.jpg&#34; alt=&#34;Explore the path through the weeds using a spike!&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;kbdkbd-identify-bottleneckshurdles&#34;&gt;&lt;kbd&gt;←&lt;/kbd&gt; Identify bottlenecks/hurdles&lt;/h2&gt;
 &lt;p&gt; 
 Now that our functionality is &amp;ldquo;somewhat&amp;rdquo; working take a step back. You just gained a lot of experience doing this spike. You learned more about the system, you gained insights into which parts fit into the architecture and which parts stood out like a sore thumb. Using our newly acquired knowledge, we can collect two lists of things to further explore:&lt;/p&gt;
@@ -211,7 +211,7 @@ Now that our functionality is &amp;ldquo;somewhat&amp;rdquo; working take a step
 &lt;p&gt;&lt;em&gt;—Neil Gaiman&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&amp;ldquo;Properly&amp;rdquo; should be defined by you and your team. Personally, it means I have unit tests for the unit in question, proper documentation if it&amp;rsquo;s an API boundary, and maybe integration tests depending on the nature of the thing. One by one, those can also go into your main branch or go up for code review as they should be independent of the rest (maybe not connected to everything yet). If you and your team have a good track record working together, you may actually go to the next level of defining an interface between two components and implement them in parallel.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/konami/incremental.jpg&#34; alt=&#34;Incrementally build up the feature, properly!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/konami/incremental.jpg&#34; alt=&#34;Incrementally build up the feature, properly!&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;kbdakbd-introduce-your-system-test-again&#34;&gt;&lt;kbd&gt;A&lt;/kbd&gt; Introduce your system test (again)&lt;/h2&gt;
 &lt;p&gt;Once you&amp;rsquo;ve retraced your steps and implemented all the different aspects correctly, it&amp;rsquo;s time to get back to our initial test and see how it works.&lt;/p&gt;
 &lt;h2 id=&#34;kbdbkbd-connect-the-dots&#34;&gt;&lt;kbd&gt;B&lt;/kbd&gt; Connect the dots&lt;/h2&gt;
@@ -230,13 +230,13 @@ Now that our functionality is &amp;ldquo;somewhat&amp;rdquo; working take a step
     
     <item>
       <title>Git Archeology</title>
-      <link>https://bmuskalla.github.io/blog/2021-01-12-git-archeology/</link>
+      <link>https://bmuskalla.dev/blog/2021-01-12-git-archeology/</link>
       <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-01-12-git-archeology/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-01-12-git-archeology/</guid>
       <description>&lt;p&gt;Working on a large codebase, it&amp;rsquo;s pretty normal to not remember every small or large subsystem or implementation choice. Be it whether you&amp;rsquo;re new to a codebase, or you&amp;rsquo;ve been focussed on a specific area of the codebase. When working on refactorings or bug fixes, I often end up in areas I might not be too familiar with. Generally not dramatic, it happens quite often that I&amp;rsquo;m stopping at what I&amp;rsquo;m doing because I need to decide on how to move forward.  As software engineers, we have to make so many micro-decisions every minute that we&amp;rsquo;re pretty used to it. Depending on the code and domain knowledge, we often find ourselves in situations where we need more context to make an informed decision. Tests usually provide a pretty good context but depending on their granularity and naming, they might only tell is &amp;ldquo;what&amp;rdquo; is in the implementation but miss the &amp;ldquo;why&amp;rdquo;. And if we try to decide whether we can remove a certain check or rework a behavior, we need to understand why it was introduced in the first place. Usually, we resort to looking at the commit that introduced the change or the tickets associated with the commit.
 &lt;br&gt;
-&lt;a href=&#34;https://www.instagram.com/marcos.lange77/&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/unearth.jpg&#34; alt=&#34;Photo by Marcus Lange from Pexels&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;https://www.instagram.com/marcos.lange77/&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/git-archeology/unearth.jpg&#34; alt=&#34;Photo by Marcus Lange from Pexels&#34;&gt;&lt;/a&gt;
 &lt;br&gt;
 Most people will start with using git blame (or the respective functionality within their IDE/editor). But on most non-trivial projects, you usually end up with a refactoring commit, a rename, or a trivial cross-project fix like switching to another assertion library. At first glance, we only see the most recent changes, not the most important ones.
 We need to carefully remove layer by layer of sand and dirt that has been swept over the real changes to unearth them.&lt;/p&gt;
@@ -253,15 +253,15 @@ ignore those using the flags that &lt;code&gt;git blame&lt;/code&gt; offer us:&l
 &lt;/dl&gt;
 &lt;p&gt;The above flags are already useful. Most of them are not only available on the command line though, they&amp;rsquo;re usually available in the various editors as well
 (feel free to show how it&amp;rsquo;s done in your editor and share &lt;a href=&#34;https://twitter.com/bmuskalla&#34;&gt;on Twitter&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/intellij_options.png&#34; alt=&#34;IntelliJ VCS Annotation Options&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/git-archeology/intellij_options.png&#34; alt=&#34;IntelliJ VCS Annotation Options&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Usually, this allows to hide some of the more trivial commits but requires &lt;code&gt;git&lt;/code&gt; to detect them as such. More often, we (as engineers) can easily gauge
 whether a commit is relevant for our search based on commit message, author, and coding practices. Luckily, this can also easily be achieved by the various
 editors by moving backward commit-wise. Looking at the history on GitHub, you can use the &amp;ldquo;View blame prior to this change&amp;rdquo; feature:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/github_prior.png&#34; alt=&#34;GitHub prior commits&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/git-archeology/github_prior.png&#34; alt=&#34;GitHub prior commits&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Similarly, IntelliJ-based IDEs allow you to do the same using &amp;ldquo;Annotate Previous Revision&amp;rdquo;:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/annotate_previous.png&#34; alt=&#34;IntelliJ Annotate Previous Commit&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/git-archeology/annotate_previous.png&#34; alt=&#34;IntelliJ Annotate Previous Commit&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In case you&amp;rsquo;re using Visual Studio Code, the excellent &amp;ldquo;GitLense&amp;rdquo; extension offers similar commands:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/gitlense_previous.png&#34; alt=&#34;Visual Studio Code Show Previous Commit&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/git-archeology/gitlense_previous.png&#34; alt=&#34;Visual Studio Code Show Previous Commit&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;moving-forward&#34;&gt;Moving Forward&lt;/h2&gt;
 &lt;p&gt;Depending on what we&amp;rsquo;re looking for, we may not want to uncover commit by commit until we find the initial commit that introduced something. Let&amp;rsquo;s say that we&amp;rsquo;re working with a customer who sees a specific error message on an older version of our product. On &lt;code&gt;main&lt;/code&gt;, this error message is not present anymore as somebody refactored the code already. To dig into this, we&amp;rsquo;ll have to find out when this error message got introduced. One way to pick through the whole history in the search for the holy grail..err..the error message is to use git pickaxe. Pickaxe is part of git log can be used as follows&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git log -S&#39;errorMessage&#39;
@@ -311,7 +311,7 @@ In our example, let&amp;rsquo;s call it &lt;code&gt;.git-blame-ignored-revs&lt;/
 &lt;pre&gt;&lt;code&gt;❯ git config blame.ignoreRevsFile .git-blame-ignored-revs
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A nice side-effect of using &lt;code&gt;git config&lt;/code&gt; is that other tools and editors that rely on the command line tools behaviour just fall in line with these settings.
 For example, IntelliJ IDEA shows the &amp;ldquo;Important Change&amp;rdquo; when enabling annotations:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/git-archeology/blame_ignore_intellij.png&#34; alt=&#34;IntelliJ Ignoring Changes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/git-archeology/blame_ignore_intellij.png&#34; alt=&#34;IntelliJ Ignoring Changes&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;recap&#34;&gt;Recap&lt;/h1&gt;
 &lt;p&gt;Different problems require different approaches. Whether you&amp;rsquo;re looking for an error message that is long gone from the &lt;code&gt;main&lt;/code&gt; branch or try to peel back the layers for some new code, git offers a tremendous amount of tools for your needs. Sometimes it is enough to remember that certain tools or approaches exist so you can look them up if you decide which way you want to approach your search:&lt;/p&gt;
 &lt;ul&gt;
@@ -325,10 +325,10 @@ For example, IntelliJ IDEA shows the &amp;ldquo;Important Change&amp;rdquo; when
     
     <item>
       <title>Java Syntax Puzzlers</title>
-      <link>https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/</link>
+      <link>https://bmuskalla.dev/blog/2021-01-04-java-syntax-puzzle/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2021-01-04-java-syntax-puzzle/</guid>
+      <guid>https://bmuskalla.dev/blog/2021-01-04-java-syntax-puzzle/</guid>
       <description>&lt;p&gt;Roughly 12 years ago, I started to contribute to the Eclipse ecosystem in various functions. One of the most interesting experiences to this date was to work on developer tooling and handling the edge cases so others don’t have to struggle. Though I stepped down as an Eclipse committer in the meantime, I’m still attached to working on productivity tooling nowadays as a member of the &lt;a href=&#34;https://github.com/gradle/gradle&#34;&gt;Gradle Build Tool&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;While working on Eclipse, I fondly remember working on various parts of the Java Tooling (JDT) and while working on refactorings and quick fixes. And not surprisingly, working on language-intensive pieces turned out to have the same hiccups as other non-trivial algorithsm - the transition from “this is gonna be easy” to “why am I up at 3am reading the Java Language Specification”.&lt;/p&gt;
 &lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Opening a bug report with snippet to reproduce: 10min. Working on a patch: 2h. Getting pinged whether you can finish that patch, 11 years later: priceless. I do miss working on &lt;a href=&#34;https://twitter.com/hashtag/eclipse?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#eclipse&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/jdt?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#jdt&lt;/a&gt; though &lt;a href=&#34;https://t.co/vpLD73zOlC&#34;&gt;https://t.co/vpLD73zOlC&lt;/a&gt;&lt;/p&gt;&amp;mdash; Benjamin Muskalla (@bmuskalla) &lt;a href=&#34;https://twitter.com/bmuskalla/status/1110923346441588737?ref_src=twsrc%5Etfw&#34;&gt;March 27, 2019&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
@@ -336,7 +336,7 @@ For example, IntelliJ IDEA shows the &amp;ldquo;Important Change&amp;rdquo; when
 &lt;h3 id=&#34;using-java-for-phishing&#34;&gt;Using Java for Phishing&lt;/h3&gt;
 &lt;p&gt;Let us start off with a widely known fact about Java source files. You’re allowed to use Unicode in most places of your code. While we can’t use the full range of &lt;a href=&#34;https://docs.oracle.com/javase/specs/jls/se7/html/jls-3.html#jls-3.8&#34;&gt;unicode in your class names&lt;/a&gt; (I still want to write &lt;code&gt;throw 🎂()&lt;/code&gt;), you can add enough unicode to play some pranks on your co-workers.&lt;/p&gt;
 &lt;p&gt;As an appetizer, in your next (remote) pairing session, just slip in a “Greek Question Mark” (&lt;code&gt;U+037E&lt;/code&gt;)  into the code and watch your co-worker trying to find out what is wrong with that simple semicolon. This technique is most often used by phishing emails to make a url look like the real one but actually points &lt;a href=&#34;https://en.wikipedia.org/wiki/IDN_homograph_attack&#34;&gt;to a very different domain&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/syntax-puzzle/semicolon.png&#34; alt=&#34;Greek Question Mark&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/syntax-puzzle/semicolon.png&#34; alt=&#34;Greek Question Mark&#34;&gt;&lt;/p&gt;
 &lt;p&gt;As it doesn’t even compile, that’s an easy one for your co-worker to recognize and fix. Let’s start to be a little more sneaky.&lt;/p&gt;
 &lt;p&gt;Guess what the following program prints?&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
@@ -431,10 +431,10 @@ Which one of those syntaxes were you aware of? Got all of them? The code for the
     
     <item>
       <title>JIT 101</title>
-      <link>https://bmuskalla.github.io/blog/2020-05-28-jit-101/</link>
+      <link>https://bmuskalla.dev/blog/2020-05-28-jit-101/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2020-05-28-jit-101/</guid>
+      <guid>https://bmuskalla.dev/blog/2020-05-28-jit-101/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;JIT compilation and HotSpot are with no doubt some very complex topics. This blog is very short article touching on
 the topic in question; it was originally intended
@@ -495,10 +495,10 @@ To have a real deep-dive into such topics, I can highly recommend &lt;a href=&#3
     
     <item>
       <title>Changing System Properties in Isolation</title>
-      <link>https://bmuskalla.github.io/blog/2019-11-25-release-scoped-properies/</link>
+      <link>https://bmuskalla.dev/blog/2019-11-25-release-scoped-properies/</link>
       <pubDate>Mon, 25 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2019-11-25-release-scoped-properies/</guid>
+      <guid>https://bmuskalla.dev/blog/2019-11-25-release-scoped-properies/</guid>
       <description>&lt;p&gt;So the other day I was working with a 3rd party library which used &lt;a href=&#34;https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html&#34;&gt;System properties&lt;/a&gt; as their feature flags.
 So before calling anything in that library, you&amp;rsquo;d have to setup the proper system properties.
 While some of them were specific to the library, the library also did depend on some generally useful system properties (e.g. &lt;code&gt;user.home&lt;/code&gt; to write settings).&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
@@ -550,10 +550,10 @@ Head over to &lt;a href=&#34;https://github.com/bmuskalla/scoped-system-properti
     
     <item>
       <title>Manually deleting a package from GitHub Package Registry</title>
-      <link>https://bmuskalla.github.io/blog/2019-11-01-delete-github-package/</link>
+      <link>https://bmuskalla.dev/blog/2019-11-01-delete-github-package/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2019-11-01-delete-github-package/</guid>
+      <guid>https://bmuskalla.dev/blog/2019-11-01-delete-github-package/</guid>
       <description>&lt;p&gt;You were so excited about the new &lt;a href=&#34;https://help.github.com/en/github/managing-packages-with-github-package-registry/about-github-package-registry&#34;&gt;Package Registry&lt;/a&gt; that you immediately
 added it to your build and published your first package. Unfortunately,
 it is the time when you realize you had a typo in the name or the group id of your package.&lt;/p&gt;
@@ -578,7 +578,7 @@ data on GitHub using the GitHub GraphQL API is GitHubs &lt;a href=&#34;https://d
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;My current packages in that project I used for testing look like in the following screenshot. We have 2 packages using the &lt;code&gt;maven&lt;/code&gt; package type.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/pkg-graphql/graphql_packages_red.png&#34; alt=&#34;GitHub Packages&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/pkg-graphql/graphql_packages_red.png&#34; alt=&#34;GitHub Packages&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Using the &lt;code&gt;query&lt;/code&gt; above, you should see a a response similar to the following.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
@@ -623,22 +623,22 @@ Using that, you need to setup the proper token for authenticating against the Gi
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If there is nothing left in the package, it should be gone from the UI as well.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/pkg-graphql/packages_after.png&#34; alt=&#34;GitHub Packages&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/pkg-graphql/packages_after.png&#34; alt=&#34;GitHub Packages&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Happy Packaging!&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Log4j 2 - The Ghost in the logging framework</title>
-      <link>https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/</link>
+      <link>https://bmuskalla.dev/blog/2019-10-02-log4j2-ghost-logging-framework/</link>
       <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2019-10-02-log4j2-ghost-logging-framework/</guid>
+      <guid>https://bmuskalla.dev/blog/2019-10-02-log4j2-ghost-logging-framework/</guid>
       <description>&lt;p&gt;It was exactly one day after my vacation. Started to get back into the groove, had a quick chat with my fellow engineer Holger. He casually mentioned that he found a really confusing test failure the other day that we should pair up on. Ready to start digging into some code again, he gave me the broad picture:&lt;/p&gt;
 &lt;p&gt;Internally we use &lt;a href=&#34;https://logging.apache.org/log4j/2.x/&#34;&gt;Log4j2&lt;/a&gt; as our logging solution of choice (with the various off-the-shelf adapters to handle 3rd libraries with different log frameworks). An interesting aspect about our internal test infrastructure is that we do capture all trace logs during test runs (including http requests, headers, generated test data, etc) but only for the lifetime of a test run. If a test passes, we ignore the logs. If the test fails (or is a flake), we’ll actually send the log to the next appender that is configured (usually a &lt;code&gt;Console&lt;/code&gt; or &lt;code&gt;RollingFileAppender&lt;/code&gt;)&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;One test started failing rather consistently after we recently changed some of our logging infrastructure and configuration.&lt;/p&gt;
 &lt;p&gt;That test was using one of our components to connect to a server, post some data, retrieve the data and assert the new data is present. In other words, it was doing some HTTP requests, parsed the data and asserted on that. This represents a rather boring yet important end-to-end test. We run a lot of similar tests against a myriad of server and even more versions of aforementioned. Under regular circumstances the test passed. The fun part started when running the test with trace logging enabled. Enabling trace logging, the tests started to fail pretty consistently &amp;hellip; With a &lt;code&gt;NoHttpResponseException&lt;/code&gt;&amp;hellip;And always the same URI.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/ghost-log4j/short-neck-reaction-guy.png&#34; alt=&#34;What?&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/ghost-log4j/short-neck-reaction-guy.png&#34; alt=&#34;What?&#34;&gt;&lt;/p&gt;
 &lt;p&gt;After Holger briefly described the situation, it was pretty clear to me that my coding skills are still on vacation as this analysis made absolutely no sense. Even worse, one approach to “fix it” was to limit the size of the logs to a few kilobytes (don’t ask how we got to that point). That made the test pass and the HTTP request to succeed.&lt;/p&gt;
 &lt;p&gt;At that point, it had to be something that is logged which is causing the problems. Maybe some encoding issue? Are we somehow hitting some edge case with certain unicode characters coming from the server?&lt;/p&gt;
 &lt;blockquote&gt;
@@ -680,9 +680,9 @@ Just to put out suspicion to rest, let’s write a very simple test case. Take t
 
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Using a 2MB http response file from above, this test runs for &lt;strong&gt;50s&lt;/strong&gt; on a decent MacBook.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/ghost-log4j/long-neck-reaction.jpg&#34; alt=&#34;Whaaaaaat?&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/ghost-log4j/long-neck-reaction.jpg&#34; alt=&#34;Whaaaaaat?&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Time to start &lt;a href=&#34;https://www.yourkit.com&#34;&gt;Yourkit&lt;/a&gt; and figure out what exactly is taking us 50s to log a large string. Running the test using the profiler reveals something very interesting.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://bmuskalla.github.io/blog/ghost-log4j/yourkit.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/ghost-log4j/yourkit.png&#34; alt=&#34;Whaaaaaat?&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bmuskalla.dev/blog/ghost-log4j/yourkit.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/ghost-log4j/yourkit.png&#34; alt=&#34;Whaaaaaat?&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Log4j2 is performing &lt;em&gt;a lot&lt;/em&gt; of string substitutions for the pattern layout used by the logs. That is&amp;hellip;surprising. While we use a little bit of a more verbose format, it’s nothing too controversial.
 The pattern we use is &lt;code&gt;%c{3} - %m%n&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;As stated on the &lt;a href=&#34;https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout&#34;&gt;Layouts documentation&lt;/a&gt;&lt;/p&gt;
@@ -723,10 +723,10 @@ Use {nolookups} to log messages like &amp;ldquo;${date:YYYY-MM-dd}&amp;rdquo; wi
     
     <item>
       <title>Refactoring towards speed reading</title>
-      <link>https://bmuskalla.github.io/blog/2018-06-08-refactoring-towards-speed-reading/</link>
+      <link>https://bmuskalla.dev/blog/2018-06-08-refactoring-towards-speed-reading/</link>
       <pubDate>Fri, 08 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2018-06-08-refactoring-towards-speed-reading/</guid>
+      <guid>https://bmuskalla.dev/blog/2018-06-08-refactoring-towards-speed-reading/</guid>
       <description>&lt;p&gt;When was the last time you were in the &lt;a href=&#34;https://en.wikipedia.org/wiki/Flow_(psychology)&#34;&gt;flow&lt;/a&gt;
 while working through some code? Reading code or doing code reviews is an activity
 that we do often, yet we don’t often get into the zone doing it. Too many times, we
@@ -745,7 +745,7 @@ to set the new world record in speed reading to learn the basic concepts
 and apply them to another area: our code. We’ll look at 3 areas that are
 particular helpful when it comes to reading code: Skimming, meta guiding
 and visual fixation.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/speedfactoring/sentence_400wpm.gif&#34; alt=&#34;Simple sentence @ 400wpm&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/speedfactoring/sentence_400wpm.gif&#34; alt=&#34;Simple sentence @ 400wpm&#34;&gt;&lt;/p&gt;
 &lt;p&gt;So what makes speed reading that fast? One of the first steps is to
 suppress subvocalication. Subvocalization? Exactly. That voice in your head
 that just tried to properly articulate that word. And yes, you’re now aware of
@@ -757,7 +757,7 @@ do a way better job at that. Be it books, articles or software like
 &lt;a href=&#34;https://www.spreeder.com/cx/&#34;&gt;spreeder&lt;/a&gt; or &lt;a href=&#34;http://spritzinc.com/&#34;&gt;spritz&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Lets get to our first example that we want to refactor to improve readability.
 Here is a simple function which takes 3 parameters.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/speedfactoring/example_1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/speedfactoring/example_1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I suspect it is not the first time for you reading code so I can safely
 assume that you didn’t even try to read it word by word. The first thing
 that happens when trying to read this code is that we try to skim over
@@ -766,11 +766,11 @@ expierence. One likely way to read the code is to follow where and how the
 input parameters are used. Using
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Eye_movement_in_reading&#34;&gt;eye tracking&lt;/a&gt;, what
 was likely happening when you read the code is this eye movement:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/speedfactoring/example_2.png&#34; alt=&#34;Eye movement when tracking the parameter usage&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/speedfactoring/example_2.png&#34; alt=&#34;Eye movement when tracking the parameter usage&#34;&gt;&lt;/p&gt;
 &lt;p&gt;After locating name, we actually have to break our visual fixation and find
 the next parameter which requires us to look down and left. We can start
 with a very simple refactoring to help a bit with this:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/speedfactoring/example_3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/speedfactoring/example_3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Better. But we’re not there yet. Looking at the semantic meaning of the
 three lines of code here suggests that they’re in fact not too different.
 We do validate all three arguments, not just age as the method name suggests.
@@ -795,7 +795,7 @@ But using a finger or another device helps us to keep moving forward
 and avoids jumping back a word or two. Funny enough, code itself can
 act as such a device as it has an inherit structure that we can
 leverage to guide our eye.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/speedfactoring/example_4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/speedfactoring/example_4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;How many items are in the list? One, two, three, four! Five. Maybe more.
 Oops, missed that zeros argument, too?. The structure that should actually
 help us gets in our way. While we have allowed our “reader” to be guided
@@ -803,7 +803,7 @@ by the alignment of the add methods, we totally misguided the eye and
 missed the constructor argument. Rewriting this to match the pattern
 of the other add calls allows the reader to follow the guide easily
 without missing any important information.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/speedfactoring/example_5.png&#34; alt=&#34;Help guiding the eye of your reader&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/speedfactoring/example_5.png&#34; alt=&#34;Help guiding the eye of your reader&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now all the methods that actually add something to the list are in
 line and easy to spot without looking back and forth.&lt;/p&gt;
 &lt;p&gt;What are your code snippets that you broke your flow of reading in
@@ -822,10 +822,10 @@ really fast manner.&lt;/p&gt;
     
     <item>
       <title>Merging nested Lists or Arrays with Java 8</title>
-      <link>https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</link>
+      <link>https://bmuskalla.dev/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</link>
       <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</guid>
+      <guid>https://bmuskalla.dev/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/</guid>
       <description>&lt;p&gt;When accessing 3rd party APIs with pagination, we tend to see the same pattern
 over and over again. Usually, a response (represented as POJO) looks something
 like this:&lt;/p&gt;
@@ -886,10 +886,10 @@ List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;TransformedIt
     
     <item>
       <title>WHERE_TO_PUT.CONSTANTS</title>
-      <link>https://bmuskalla.github.io/blog/2016-10-06-wheretoputconstants/</link>
+      <link>https://bmuskalla.dev/blog/2016-10-06-wheretoputconstants/</link>
       <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2016-10-06-wheretoputconstants/</guid>
+      <guid>https://bmuskalla.dev/blog/2016-10-06-wheretoputconstants/</guid>
       <description>&lt;p&gt;When writing software, some conversations happen over and over again. Over the years, I’ve seen different solutions to the same problem that I’d like to share with you.
 One of those conversations go something like this, even though the answer might differ depending on the team or component.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -967,49 +967,49 @@ One of those conversations go something like this, even though the answer might 
     
     <item>
       <title>Open Source</title>
-      <link>https://bmuskalla.github.io/opensource/</link>
+      <link>https://bmuskalla.dev/opensource/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://bmuskalla.github.io/opensource/</guid>
+      <guid>https://bmuskalla.dev/opensource/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Print</title>
-      <link>https://bmuskalla.github.io/articles/</link>
+      <link>https://bmuskalla.dev/articles/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://bmuskalla.github.io/articles/</guid>
+      <guid>https://bmuskalla.dev/articles/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Talks</title>
-      <link>https://bmuskalla.github.io/talks/</link>
+      <link>https://bmuskalla.dev/talks/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://bmuskalla.github.io/talks/</guid>
+      <guid>https://bmuskalla.dev/talks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vitae</title>
-      <link>https://bmuskalla.github.io/vitae/</link>
+      <link>https://bmuskalla.dev/vitae/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://bmuskalla.github.io/vitae/</guid>
+      <guid>https://bmuskalla.dev/vitae/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Easy error reporting for your users</title>
-      <link>https://bmuskalla.github.io/blog/2012-06-08-easy-error-reporting/</link>
+      <link>https://bmuskalla.dev/blog/2012-06-08-easy-error-reporting/</link>
       <pubDate>Fri, 08 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2012-06-08-easy-error-reporting/</guid>
+      <guid>https://bmuskalla.dev/blog/2012-06-08-easy-error-reporting/</guid>
       <description>&lt;p&gt;While working on non-IDE products, one problem often approach us: If something goes wrong when a user is using the product, how do we actually get them to report the problems back to us? Searching for error logs on the harddrive and send them to support@&lt;insert-your-name&gt;? Actually a pretty brittle approach. From an Eclipse perspective, it’s pretty clear what to do: fire up the webbrowser, go to bugs.eclipse.org and enter a new bug report. But wait…isn’t that even more complicated? Depending on your audience, &lt;strong&gt;186&lt;/strong&gt; bugzilla products with &lt;strong&gt;2564&lt;/strong&gt; components offers a pretty good chance to file the bug against the wrong project.&lt;/p&gt;
 &lt;p&gt;If your user is unable to choose the right component, you actually did a pretty good job of seamlessly integrating your plugin into Eclipse 😉 Some time ago, Mylyn introduced a little feature to actually help users with this problem. Whenever they see an exception in the Error Log, you just right-click it and select “Report as Bug”. Depending on the stacktrace of the problem, it can automatically map the exception to the right product and component in Eclipse.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/tt/Screenshot-Report-as-Bug-.png&#34; alt=&#34;Report as Bug&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/tt/Screenshot-Report-as-Bug-.png&#34; alt=&#34;Report as Bug&#34;&gt;&lt;/p&gt;
 &lt;p&gt;As Mylyn provides this as a generic mechanism every project can hook into, this is an easy way to help your users and contributors to provide feedback. All you need to do is to provide the right set of mappings from your package namespace to the corresponding Bugzilla attributes.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;extension&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;point=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;org.eclipse.mylyn.tasks.bugs.support&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;product&lt;/span&gt;
@@ -1030,7 +1030,7 @@ One of those conversations go something like this, even though the answer might 
       &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;component&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;value=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Mylyn&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/mapping&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/extension&amp;gt;&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/tt/new_task-300x293.png&#34; alt=&#34;New Task&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/tt/new_task-300x293.png&#34; alt=&#34;New Task&#34;&gt;
 As you can see in the example, we define two types of mapping. The first one is the product mapping. This essentially tells Mylyn to which task repository your project belongs. As we’re using EGit in this example, we’re using the task repository definition of the Eclipse.org Bugzilla instance (see below how to create your own repository provider definition). Once we have this definition in place, the mappings define the exact products and components the bugs should be filed against. If you look at the highlighted mapping above, we’re mapping all exceptions that occurred in the “org.eclipse.egit.core” java package namespace automatically to the EGit product and set the component to Core when the user is about to create a new task. Once you’ve done this, users will automatically get the right choice of options when opening a new Bugzilla bug.&lt;/p&gt;
 &lt;p&gt;So you’re not an Eclipse.org project? No problem! The same works with other task repositoryes as well which is highly interesting for products based on Eclipse or if your plugin is using a bug tracker outside the Eclipse.org infrastructure (eg. GitHub).&lt;/p&gt;
 &lt;p&gt;You can always define a new provider and point to the task repository you need and the connector to use. Below you see the extension for Eclipse.org which is contributed by Mylyn.&lt;/p&gt;
@@ -1059,18 +1059,18 @@ As you can see in the example, we define two types of mapping. The first one is 
     
     <item>
       <title>What the heck are logical models?</title>
-      <link>https://bmuskalla.github.io/blog/2011-09-07-logical-models/</link>
+      <link>https://bmuskalla.dev/blog/2011-09-07-logical-models/</link>
       <pubDate>Wed, 07 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2011-09-07-logical-models/</guid>
+      <guid>https://bmuskalla.dev/blog/2011-09-07-logical-models/</guid>
       <description>&lt;p&gt;Have you ever committed to the repository and got mail afterwards “Hey, this isn’t compiling!”? Likely you committed only some of the changes you made leaving out files required for a successful build. Let’s take a look at a simple example:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/tt/model.png&#34; alt=&#34;emf ecore model&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/tt/model.png&#34; alt=&#34;emf ecore model&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In this model we have a class element &lt;strong&gt;Some Class&lt;/strong&gt; in &lt;em&gt;my.ecore&lt;/em&gt; which extends &lt;strong&gt;AnAbstractClass&lt;/strong&gt; in &lt;em&gt;Your.ecore&lt;/em&gt;. In this scenario, we essentially have a dependency from &lt;em&gt;My.ecore&lt;/em&gt; to &lt;em&gt;Your.ecore&lt;/em&gt;. For example, renaming the class &lt;strong&gt;AnAbstractClass&lt;/strong&gt; in &lt;em&gt;Your.ecore&lt;/em&gt; also forces an update of the superclass property in &lt;em&gt;My.ecore&lt;/em&gt;. This means we need to handle this change atomically across both files. In Eclipse, this is a called a “Logical Model”.&lt;/p&gt;
 &lt;p&gt;A logical model is not necessarily related to EMF but a general concept to represent related files. While we use EMF in this example, the same applies to resources given that there is a corresponding model provider (more on that later). In the past, using CVS or Git as your SCM of choice, committing only changes for one of these files resulted in a broken repository state. Fortunately the Eclipse Platform has had a solution build-in for exactly this problem for years. Being a platform though, Eclipse only provides the necessary hooks but not the actual implementations.&lt;/p&gt;
 &lt;p&gt;While the Eclipse CVS integration already supports Logical Models, the support in EGit is currently being reviewed for inclusion in the next major release. This means, whenever you’re working with files that are part of a logical model and you’re about to operate on these files, EGit will help you to include all relevant artifacts. Let’s say are about to commit My.ecore to your repository. This will trigger EGit to reach out to the associated model providers asking the question “I want to work on file X, which files are needed to have a consistent model?”. In the case of .ecore files, the corresponding model provider is &lt;a href=&#34;http://www.eclipse.org/emf/compare/&#34;&gt;EMF Compare&lt;/a&gt; which answers the question and EGit shows a dialog to widen the scope of the commit operation:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/tt/selection.png&#34; alt=&#34;selection adjustment&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/tt/selection.png&#34; alt=&#34;selection adjustment&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This not only works when committing files to the repository but also when you replace or compare files with an older version.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/tt/compare.png&#34; alt=&#34;selection adjustment&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/tt/compare.png&#34; alt=&#34;selection adjustment&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The features in EGit are only one side of the equation. We also need a tool that identifies the list of resources that are related to a given set of files. In the open source Eclipse ecosystem, EMF Compare is currently the only provider that handles the notation of logical models. With the support in CVS and EGit, I hope more plugins will contribute model providers to help users keep their repositories stable.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
@@ -1085,10 +1085,10 @@ As you can see in the example, we define two types of mapping. The first one is 
     
     <item>
       <title>Integrating Mylyn into your Git workflow</title>
-      <link>https://bmuskalla.github.io/blog/2011-02-16-integrating-mylyn-git-workflow/</link>
+      <link>https://bmuskalla.dev/blog/2011-02-16-integrating-mylyn-git-workflow/</link>
       <pubDate>Wed, 16 Feb 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2011-02-16-integrating-mylyn-git-workflow/</guid>
+      <guid>https://bmuskalla.dev/blog/2011-02-16-integrating-mylyn-git-workflow/</guid>
       <description>&lt;p&gt;In January, most of the EGit committers met at the “EGit Summit” in Walldorf, Germany. We had a blast hanging out together, planning the future direction for EGit/JGit, and implementing new features.&lt;/p&gt;
 &lt;p&gt;Thanks again to the SAP team for hosting the event.&lt;/p&gt;
 &lt;p&gt;As you can see on the whiteboard, there were numerous ideas suggested by the EGit committers who attended. We organized and prioritized the topics and then broke up into small teams. One user story that was commonly asked for was improved integration between EGit and Mylyn – Chris Aniszczyk (Red Hat), Manuel Doninger (Markant) and I (Tasktop) decided to form a team to make this improved integration real.&lt;/p&gt;
@@ -1111,25 +1111,25 @@ As you can see in the example, we define two types of mapping. The first one is 
     
     <item>
       <title>Using Equinox Security in RCP and RAP</title>
-      <link>https://bmuskalla.github.io/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</link>
+      <link>https://bmuskalla.dev/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</link>
       <pubDate>Thu, 13 May 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/</guid>
       <description>&lt;p&gt;I finally had the time to care about one of my outstanding tasks –
 &lt;strong&gt;provide a tutorial and example how to use &lt;a href=&#34;https://www.eclipse.org/equinox/security/&#34;&gt;Equinox Security&lt;/a&gt;.&lt;/strong&gt;
 While the tutorial was initially targeted for RAP users, I also added a
 launch config and a target definition for RCP as the code is the same
 for both runtimes. The tutorial will provide some hints and pointers how
 to setup your login procedure, like shown below:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2010/05/rapsec_login.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/rapsec_login.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2010/05/rapsec_login.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/rapsec_login.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After logging in (hint, hint), you’re able to inspect the currently
 active Subject. I made up this example to be as &lt;strong&gt;simple&lt;/strong&gt; as possible
 to demonstrate the key concepts of Equinox Security, and not the ones
 from RAP/RCP.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2010/05/rapsec_subject.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/rapsec_subject.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2010/05/rapsec_subject.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/rapsec_subject.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;As I said, you can either choose between RAP as runtime (above) or RCP
 (below).&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2010/05/rcpsec_subject.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/rcpsec_subject.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2010/05/rcpsec_subject.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/rcpsec_subject.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In addition to the authentication mechanism, I wrote a pretty simple
 LoginModule to show how to connect your authentication process to an
 alternative backend (eg. LDAP, Kerberos, …).&lt;/p&gt;
@@ -1150,15 +1150,15 @@ to use secure your RCP/RAP applications.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a hr
     
     <item>
       <title>Google Summer of Code 2010 is on!</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-27-google-summer-of-code-2010-is-on/</link>
       <pubDate>Tue, 27 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-27-google-summer-of-code-2010-is-on/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-27-google-summer-of-code-2010-is-on/</guid>
       <description>&lt;p&gt;Finally the voting process for this years Google Summer of Code is over
 and they &lt;a href=&#34;https://google-opensource.blogspot.com/2010/04/this-years-google-summer-of-code.html&#34;&gt;announced&lt;/a&gt; the accepted students. I’m really happy that so
 many interesting proposals got trough and really looking forward to see
 the outcome of all the student projects.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://code.google.com/soc&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/gsoc2010.jpeg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://code.google.com/soc&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/gsoc2010.jpeg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here is the full list of the proposals that got accepted for 2010.&lt;br&gt;
 &lt;strong&gt;Improve Eclipse Git integration&lt;/strong&gt;&lt;br&gt;
 Student: Dariusz Luksza&lt;br&gt;
@@ -1211,10 +1211,10 @@ available this year for Eclipse. Looking forward to a great
     
     <item>
       <title>Sketch your UI</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-26-sketch-your-ui/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-26-sketch-your-ui/</link>
       <pubDate>Mon, 26 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-26-sketch-your-ui/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-26-sketch-your-ui/</guid>
       <description>&lt;p&gt;From time to time, I’m in the situation when I want to &lt;a href=&#34;https://bugs.eclipse.org/bugs/show_bug.cgi?id=245308&#34;&gt;suggest&lt;/a&gt; a UI
 change or even try to come up with a &lt;a href=&#34;https://eclipsesource.com/blogs/2010/04/14/revamping-eclipse-examples/&#34;&gt;completely&lt;/a&gt; new UI. While I
 love programming, it may be easier in these situations to just “sketch”
@@ -1227,11 +1227,11 @@ turn an existing dialog into a sketch. Fire up any dialog, hit the magic
 “Alt+Shift+F5” and you’re done. Is it that easy? Yes – I really love it.
 Here is an example of the Import Wizard which I also used in &lt;a href=&#34;https://eclipsesource.com/blogs/2010/04/14/revamping-eclipse-examples/&#34;&gt;my latest
 blog&lt;/a&gt; post to further modify it with my ideas.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/import.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/import.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Not only is it easy to operate, it also has pretty good Eclipse
 integration and you always find the things where you expect them (eg.
 select and button and you can modify everything in the Properties View).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/button_props.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/button_props.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;As Eclipse commiter, you can get a &lt;a href=&#34;https://wireframesketcher.com/buy.html&#34;&gt;free licence&lt;/a&gt; of the plugin or
 you can buy the plugin from the author if you want to use it
 commercially. Either way, give it a try the next time you want to mock a
@@ -1249,10 +1249,10 @@ new UI prototype.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; clas
     
     <item>
       <title>Eclipse DemoCamp 2010 in Mannheim</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</link>
       <pubDate>Thu, 22 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/</guid>
       <description>&lt;p&gt;Ever been to &lt;a href=&#34;https://www.mannheim.de/&#34;&gt;Mannheim&lt;/a&gt;? If not – this is your chance to visit
 this lovely city. For the Helios release, the guys behind the
 &lt;a href=&#34;https://www.majug.de&#34;&gt;majug²&lt;/a&gt; (Mannheimer Java user Group) invite everybody to the Helios
@@ -1282,10 +1282,10 @@ Stammtisch!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34
     
     <item>
       <title>Drawing with RAP? Yup!</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-20-drawing-with-rap-yup/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-20-drawing-with-rap-yup/</link>
       <pubDate>Tue, 20 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-20-drawing-with-rap-yup/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-20-drawing-with-rap-yup/</guid>
       <description>&lt;p&gt;I have to admit, I’m a little nervous what happens with the &lt;a href=&#34;https://www.eclipse.org/rap&#34;&gt;RAP&lt;/a&gt;
 community after this post. At least for me, the last days were pretty
 exciting. Some days ago, Ivan from the RAP team committed the initial
@@ -1296,7 +1296,7 @@ many developers to single-source their applications with even less
 exceptions. In case you want to try it out in this second without
 reading further, just fire up the RAP Examples demo and draw something
 yourself 🙂&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/rap_canvas_demo1.png&#34; alt=&#34;RAP with Canvas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/rap_canvas_demo1.png&#34; alt=&#34;RAP with Canvas&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Credits for the picture above goes to &lt;a href=&#34;https://eclipsesource.com/blogs/author/hstaudacher/&#34;&gt;Holger&lt;/a&gt; with the aim to come
 up with a new RAP project logo 😉 After using the GC the first time in
 the Examples demo, I thought about other possibilities to test the new
@@ -1307,7 +1307,7 @@ night, I decided to just reuse some existing owner-drawn widgets like
 those we can find in the &lt;a href=&#34;https://www.eclipse.org/nebula&#34;&gt;Nebula&lt;/a&gt; project. After getting the
 &lt;a href=&#34;https://www.eclipse.org/nebula/widgets/pshelf/pshelf.php&#34;&gt;PShelf&lt;/a&gt; widget from CVS, it was only a matter of seconds until I
 started my first RAP application using an owner-drawn Nebula widget:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/rebula_pshelf.png&#34; alt=&#34;Nebula PShelf on RAP&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/rebula_pshelf.png&#34; alt=&#34;Nebula PShelf on RAP&#34;&gt;&lt;/p&gt;
 &lt;p&gt;And I think I know what most of you are currently thinking – Draw2D, GEF
 and GMF on RAP? To keep it and short and simple: No! While it may be
 possible to single source Draw2D with the exisiting Canvas, I’m pretty
@@ -1335,10 +1335,10 @@ items).&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;foo
     
     <item>
       <title>Revamping Eclipse Examples?</title>
-      <link>https://bmuskalla.github.io/blog/2010-04-14-revamping-eclipse-examples/</link>
+      <link>https://bmuskalla.dev/blog/2010-04-14-revamping-eclipse-examples/</link>
       <pubDate>Wed, 14 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-04-14-revamping-eclipse-examples/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-04-14-revamping-eclipse-examples/</guid>
       <description>&lt;p&gt;Even though I’ve been involved in the Eclipse community for around 5
 years, I’m still amazed by the projects that are hosted under the
 Eclipse umbrella. As an “insider”, I have a pretty good overview of many
@@ -1377,7 +1377,7 @@ provide example bundles, maybe a target definition, a launch
 configuration and a cheatsheet or something. In the end, the user should
 be able to try out another Eclipse technology within 2 clicks: New
 Example &amp;gt; That technology, run!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/examples_wizard.png&#34; alt=&#34;&#34; title=&#34;examples_wizard&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/examples_wizard.png&#34; alt=&#34;&#34; title=&#34;examples_wizard&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Basically PDE already provides many of these things but it’s not yet at
 the point I would love to see it. It’s still too complex for consumers
 to create target platforms (I know what I’m talking about), create their
@@ -1404,10 +1404,10 @@ collect ideas, wishes and requirements.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a hre
     
     <item>
       <title>EMF and RAP &amp; what a lovely pair</title>
-      <link>https://bmuskalla.github.io/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</link>
+      <link>https://bmuskalla.dev/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</link>
       <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</guid>
+      <guid>https://bmuskalla.dev/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/</guid>
       <description>&lt;p&gt;During the last weeks, &lt;a href=&#34;https://kenn-hussey.blogspot.com/&#34;&gt;Kenn&lt;/a&gt; and I worked together to support
 &lt;a href=&#34;https://www.eclipse.org/modeling/emf/&#34;&gt;EMF&lt;/a&gt; generated editors running on RAP. I’m always mesmerized by how
 effective such synergies can be used when people from different teams
@@ -1415,11 +1415,11 @@ work together for a bigger goal. Kudos to Kenn for his great work in EMF
 by refactoring the EMF UI bundles (namely o.e.emf.ui.common and
 o.e.emf.ui.edit) in order to single-source them. But what does that mean
 for the community?&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/rapemf-e1269224344251.png&#34; alt=&#34;&#34; title=&#34;rapemf&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/rapemf-e1269224344251.png&#34; alt=&#34;&#34; title=&#34;rapemf&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Go out, grab EMF &amp;amp; RAP M6 from Helios, get your model ready, fire up
 properties view and switch “Rich Ajax Platform” to true. Hit the magic
 “Generate All” button and you’re done – an EMF backed RAP application.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/emfrapapp-300x210.png&#34; alt=&#34;&#34; title=&#34;emfrapapp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/emfrapapp-300x210.png&#34; alt=&#34;&#34; title=&#34;emfrapapp&#34;&gt;&lt;/p&gt;
 &lt;p&gt;For the details, please refer to the &lt;a href=&#34;https://wiki.eclipse.org/RAP/EMF_Integration&#34;&gt;EMF/RAP integration&lt;/a&gt; wiki page.&lt;/p&gt;
 &lt;p&gt;In case you want to see what else is going on in the RAP space right
 now, I’ll be giving a &lt;a href=&#34;https://www.eclipsecon.org/2010/sessions/?page=sessions&amp;amp;id=1470&#34;&gt;RAP 1.3 N&amp;amp;N talk&lt;/a&gt; tomorrow at EclipseCon.
@@ -1437,10 +1437,10 @@ Hope to see you there!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;
     
     <item>
       <title>EclipseRT &amp; RAP around the world</title>
-      <link>https://bmuskalla.github.io/blog/2009-11-23-eclipsert-rap-around-the-world/</link>
+      <link>https://bmuskalla.dev/blog/2009-11-23-eclipsert-rap-around-the-world/</link>
       <pubDate>Mon, 23 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-11-23-eclipsert-rap-around-the-world/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-11-23-eclipsert-rap-around-the-world/</guid>
       <description>&lt;p&gt;We’re all looking forward to talk about EclipseRT, Equinox and RAP at
 the DemoCamps around the world. In case you want to catch us and talk
 about Eclipse and related topics, just join one of the DemoCamps near
@@ -1476,10 +1476,10 @@ tends to be a lot of fun!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#
     
     <item>
       <title>Eclipse RAP 1.3 M3 hits the road</title>
-      <link>https://bmuskalla.github.io/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</link>
+      <link>https://bmuskalla.dev/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</link>
       <pubDate>Mon, 16 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/</guid>
       <description>&lt;p&gt;After another 6 weeks of working hard towards the &lt;a href=&#34;https://wiki.eclipse.org/Helios&#34;&gt;Helios&lt;/a&gt; Release,
 we’re a step closer. RAP M3 for Eclipse 3.6 is out and can be
 &lt;a href=&#34;https://eclipse.org/rap/downloads/&#34;&gt;obtained&lt;/a&gt; from the RAP project page. Besides another &lt;a href=&#34;https://bugs.eclipse.org/bugs/buglist.cgi?query_format=advanced&amp;amp;short_desc_type=allwordssubstr&amp;amp;short_desc=&amp;amp;classification=RT&amp;amp;product=RAP&amp;amp;target_milestone=1.3+M3&amp;amp;long_desc_type=allwordssubstr&amp;amp;long_desc=&amp;amp;bug_file_loc_type=allwordssubstr&amp;amp;bug_file_loc=&amp;amp;status_whiteboard_type=allwordssubstr&amp;amp;status_whiteboard=&amp;amp;keywords_type=allwords&amp;amp;keywords=&amp;amp;bug_status=RESOLVED&amp;amp;bug_status=VERIFIED&amp;amp;bug_status=CLOSED&amp;amp;emailtype1=substring&amp;amp;email1=&amp;amp;emailtype2=substring&amp;amp;email2=&amp;amp;bugidtype=include&amp;amp;bug_id=&amp;amp;votes=&amp;amp;chfieldfrom=&amp;amp;chfieldto=Now&amp;amp;chfieldvalue=&amp;amp;cmdtype=doit&amp;amp;order=Reuse+same+sort+as+last+time&amp;amp;field0-0-0=noop&amp;amp;type0-0-0=noop&amp;amp;value0-0-0=&#34;&gt;130
@@ -1491,7 +1491,7 @@ SWT resources like fonts, images, colors and cursors. While we still
 recommend to use the factory-based approach, this features helps a lot
 when single-sourcing applications that use the resource constructors in
 a verbose manner.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2009/11/color_ctor.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/color_ctor.png&#34; alt=&#34;RWT Resource constructors&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2009/11/color_ctor.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/color_ctor.png&#34; alt=&#34;RWT Resource constructors&#34;&gt;&lt;/a&gt;
 Yay, it compiles!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Browser History support&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;You now have the possibility to interact with the client-side browser
@@ -1521,16 +1521,16 @@ possible, API and feature freeze  is approaching 😉&lt;sup id=&#34;fnref:1&#3
     
     <item>
       <title>Eclipse RAP 1.3 M2 Released</title>
-      <link>https://bmuskalla.github.io/blog/2009-10-08-eclipse-rap-1-3-m2-released/</link>
+      <link>https://bmuskalla.dev/blog/2009-10-08-eclipse-rap-1-3-m2-released/</link>
       <pubDate>Thu, 08 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-10-08-eclipse-rap-1-3-m2-released/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-10-08-eclipse-rap-1-3-m2-released/</guid>
       <description>&lt;p&gt;The RAP team is proud to announce the &lt;a href=&#34;https://www.eclipse.org/rap/downloads/&#34;&gt;second milestone&lt;/a&gt; for the
 Helios release.&lt;/p&gt;
 &lt;p&gt;As Holger already mentioned in &lt;a href=&#34;https://eclipsesource.com/blogs/2009/09/02/new-fancy-rich-ajax-platform-rap-theme/&#34;&gt;his blog post&lt;/a&gt;, part of the milestone
 is a new design option for RAP applications. You can either use it as is
 or customize it depending on your needs.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2009/10/fancy.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/fancy-300x194.png&#34; alt=&#34;RAP Fancy Design&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2009/10/fancy.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/fancy-300x194.png&#34; alt=&#34;RAP Fancy Design&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Together with the new fancy design, there is also a new Configuration
 dialog to enable and disable the view actions per stack. Additionally we
 added an effect called &lt;a href=&#34;https://en.wikipedia.org/wiki/Lightbox_(JavaScript)&#34;&gt;Lightbox&lt;/a&gt; which occurs when the dialog is
@@ -1564,10 +1564,10 @@ much more details we added in M2!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34
     
     <item>
       <title>Picasso paints the web with RAP</title>
-      <link>https://bmuskalla.github.io/blog/2009-09-11-picasso-paints-the-web/</link>
+      <link>https://bmuskalla.dev/blog/2009-09-11-picasso-paints-the-web/</link>
       <pubDate>Fri, 11 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-09-11-picasso-paints-the-web/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-09-11-picasso-paints-the-web/</guid>
       <description>&lt;p&gt;Whenever I’m working on UI stuff, something always goes terribly wrong 😉
 Sometimes it’s only a margin or padding, other times it a composite that
 crosses my path. I was pretty happy that Chris Aniszczyk and Simon
@@ -1576,7 +1576,7 @@ these layout issues. As you may know, most of the time I work on the
 &lt;a href=&#34;https://www.eclipse.org/rap&#34;&gt;Rich Ajax Platform&lt;/a&gt; (RAP) and come across the same issues. As
 &lt;a href=&#34;https://wiki.eclipse.org/PDE/Incubator/Picasso&#34;&gt;Picasso&lt;/a&gt; was originally intended to work for RCP, it’s not a long
 way to get it working for RAP.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2009/02/picasso_on_rap.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/picasso_on_rap-300x225.png&#34; alt=&#34;Picasso on RAP&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eclipsesource.com/wp-content/uploads/2009/02/picasso_on_rap.png&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/picasso_on_rap-300x225.png&#34; alt=&#34;Picasso on RAP&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In case you’re struggling with these issues too –  and working on RAP
 applications, please add your vote to &lt;a href=&#34;https://bugs.eclipse.org/bugs/show_bug.cgi?id=267975&#34;&gt;bug 267975&lt;/a&gt; so we can use
 Picasso on both runtimes.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -1593,10 +1593,10 @@ Picasso on both runtimes.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#
     
     <item>
       <title>Eclipse e4 on the web</title>
-      <link>https://bmuskalla.github.io/blog/2009-08-25-e4-on-the-web/</link>
+      <link>https://bmuskalla.dev/blog/2009-08-25-e4-on-the-web/</link>
       <pubDate>Tue, 25 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-08-25-e4-on-the-web/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-08-25-e4-on-the-web/</guid>
       <description>&lt;p&gt;With &lt;a href=&#34;https://eclipsesource.com/blogs/2009/08/03/eclipse-e4-0-9-alpha-release/&#34;&gt;e4 0.9&lt;/a&gt; out in the wild, we should think again about the goals
 e4 tries to provide. One of them was to reduce the gap between Desktop
 and Web – not only speaking of reusing widgets but also to enable the
@@ -1607,7 +1607,7 @@ With an experimental version of RAP which includes some features not yet
 in the current release, we were able to run the demo out of the box
 including the whole underlying infrastructure like the modeled workbench
 – without touching the e4 code.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eclipse.org/rap/demos.php&#34;&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/e4_contacts.png&#34; alt=&#34;e4\_contacts&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eclipse.org/rap/demos.php&#34;&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/e4_contacts.png&#34; alt=&#34;e4\_contacts&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If you take a look at the &lt;a href=&#34;https://eclipse.org/rap/demos.php&#34;&gt;RAP Demos&lt;/a&gt; page you’ll find the e4
 contacts demo running on RAP. If you want to try it out yourself or even
 help to contribute to this effort, take a look this &lt;a href=&#34;https://wiki.eclipse.org/E4/RAP_Integration/Experimental&#34;&gt;wiki page&lt;/a&gt;. In
@@ -1631,10 +1631,10 @@ this week. Looking forward to a great event.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;
     
     <item>
       <title>Integrating BIRT into RAP applications</title>
-      <link>https://bmuskalla.github.io/blog/2009-07-06-integrating-birt-into-rap-applications/</link>
+      <link>https://bmuskalla.dev/blog/2009-07-06-integrating-birt-into-rap-applications/</link>
       <pubDate>Mon, 06 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-07-06-integrating-birt-into-rap-applications/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-07-06-integrating-birt-into-rap-applications/</guid>
       <description>&lt;p&gt;Finally I had some time to write down some of my experiences with
 integrating the &lt;a href=&#34;https://www.eclipse.org/birt&#34;&gt;Business Intelligence Reporting Tools&lt;/a&gt; (BIRT) into a
 &lt;a href=&#34;https://www.eclipse.org/rap&#34;&gt;Rich Ajax Platform&lt;/a&gt; (RAP) application. I wrote it all down in a
@@ -1659,10 +1659,10 @@ projects working together!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&
     
     <item>
       <title>Eclipse Galileo and RAP</title>
-      <link>https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/</link>
+      <link>https://bmuskalla.dev/blog/2009-07-03-galileo-and-the-rap-runtime/</link>
       <pubDate>Fri, 03 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-07-03-galileo-and-the-rap-runtime/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-07-03-galileo-and-the-rap-runtime/</guid>
       <description>&lt;p&gt;As Galileo is out in the wild and we are all already working on Helios…
 I thought it would be handy to give a quick overview of the &lt;a href=&#34;https://eclipse.org/rap/&#34;&gt;New and
 Noteworthy&lt;/a&gt; features the RAP team worked on for Galileo. Besides
@@ -1670,7 +1670,7 @@ many, many bug fixes… we still found time to provide several new
 features. On top of the new features, we focused on making single
 sourcing even easier to do.&lt;/p&gt;
 &lt;h4 id=&#34;new-look-and-feel&#34;&gt;New Look and Feel&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/rap_addressbook_business-300x258.png&#34; alt=&#34;rap\_addressbook\_business&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/rap_addressbook_business-300x258.png&#34; alt=&#34;rap\_addressbook\_business&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This is one of the biggest features of RAP released as part of the
 train. As &lt;a href=&#34;https://eclipsesource.com/blogs/2009/06/17/eclipse-galileo-feature-top-10-list-number-8/&#34;&gt;Ian&lt;/a&gt; already pointed out correctly:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1684,7 +1684,7 @@ styling.&lt;/p&gt;
 &lt;h4 id=&#34;cell-editors&#34;&gt;Cell Editors&lt;/h4&gt;
 &lt;p&gt;It’s finally done – RAP supports cell editors in the Table. As this was
 a really long-standing issue we’re more than happy to have it in 1.2.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/celleditors-300x199.png&#34; alt=&#34;Celleditors inRAP&#34; title=&#34;Celleditors in RAP&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/celleditors-300x199.png&#34; alt=&#34;Celleditors inRAP&#34; title=&#34;Celleditors in RAP&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Ed, now it’s time to give the whole “&lt;a href=&#34;https://ed-merks.blogspot.com/2008/01/emf-and-rap-go-great-together-too.html&#34;&gt;generated EMF editor on RAP&lt;/a&gt;”
 idea a new spin! For anybody interested in this story, please CC
 yourself on &lt;a href=&#34;https://bugs.eclipse.org/bugs/show_bug.cgi?id=213988&#34;&gt;this bug&lt;/a&gt;.&lt;/p&gt;
@@ -1715,11 +1715,11 @@ small things like Display#timerExec() we also tried to complete the set
 of widgets. With 8 (yes, eight) new widgets in this release, these two
 are my personal favorites and often requested by the community.&lt;/p&gt;
 &lt;h4 id=&#34;datetime&#34;&gt;DateTime&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/RAPDateTime.png&#34; alt=&#34;RAPDateTime&#34; title=&#34;RAPDateTime&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/RAPDateTime.png&#34; alt=&#34;RAPDateTime&#34; title=&#34;RAPDateTime&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;formtext-forms&#34;&gt;FormText (Forms)&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/RAPFormText-300x148.png&#34; alt=&#34;RAPFormText&#34; title=&#34;RAPFormText&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/RAPFormText-300x148.png&#34; alt=&#34;RAPFormText&#34; title=&#34;RAPFormText&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;cursor-support&#34;&gt;Cursor Support&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://bmuskalla.github.io/blog/es/RAPCustomCursor.png&#34; alt=&#34;RAPCustomCursor&#34; title=&#34;RAPCustomCursor&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bmuskalla.dev/blog/es/RAPCustomCursor.png&#34; alt=&#34;RAPCustomCursor&#34; title=&#34;RAPCustomCursor&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
 &lt;p&gt;In case you’re not yet sure how “single sourcing” works – Ralf and
 Rüdiger would be happy to explain it to you step-by-step in their
@@ -1741,10 +1741,10 @@ a &lt;a href=&#34;https://eclipse.org/rap/&#34;&gt;note&lt;/a&gt;.&lt;sup id=&#3
     
     <item>
       <title>Tease the RAP committers!</title>
-      <link>https://bmuskalla.github.io/blog/2009-03-13-tease-the-rap-committers/</link>
+      <link>https://bmuskalla.dev/blog/2009-03-13-tease-the-rap-committers/</link>
       <pubDate>Fri, 13 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://bmuskalla.github.io/blog/2009-03-13-tease-the-rap-committers/</guid>
+      <guid>https://bmuskalla.dev/blog/2009-03-13-tease-the-rap-committers/</guid>
       <description>&lt;p&gt;Ok, it’s getting tough. Only 9 days left before EclipseCon officially
 starts. All contributors and committers around me are already swarming
 around to get the demos and presentations ready – besides fixing bugs
