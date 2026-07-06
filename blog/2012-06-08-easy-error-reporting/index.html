@@ -6,21 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Benjamin Muskalla" />
     
-    <title>Easy error reporting for your users</title>
+    <title>Easy error reporting for your users · Benjamin Muskalla</title>
     <meta name="generator" content="Hugo 0.83.1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
     
-    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-    
-    <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
     
 <script type="application/javascript">
 var doNotTrack = false;
@@ -36,70 +28,54 @@ if (!doNotTrack) {
 </script>
   </head>
 
-
 <body>
-  <div id="wrap">
+  <canvas id="bricks" aria-hidden="true"></canvas>
 
-    
-    <nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://bmuskalla.dev/"><i class="fa fa-home"></i></a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar">
-      <ul class="nav navbar-nav navbar-right">
+<div class="page">
+  <header class="site">
+    <a class="wordmark" href="https://bmuskalla.dev/">bmuskalla<span>.dev</span></a>
+    <nav class="site">
       
-        
-        <li><a href="/opensource/">OPENSOURCE</a></li>
-        
-        <li><a href="/talks/">TALKS</a></li>
-        
-        <li><a href="/blog/">BLOG</a></li>
-        
-        <li><a href="/articles/">PRINT</a></li>
-        
-        <li><a href="/vitae/">VITAE</a></li>
-        
       
-      </ul>
-    </div>
-  </div>
-</nav>
+      <a href="/opensource/">open source</a>
+      
+      
+      <a href="/talks/">talks</a>
+      
+      
+      <a href="/blog/" class="active">blog</a>
+      
+      
+      <a href="/articles/">print</a>
+      
+      
+      <a href="/vitae/">vitae</a>
+      
+    </nav>
+  </header>
 
+
+  <main class="content">
     
-    <div class="container">
-      <div class="blog-post">
-        <h3>
-          <strong><a href="https://bmuskalla.dev/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a></strong>
-        </h3>
-      </div>
-      <div class="blog-title">
-        <h4>
-          June 8, 2012
-          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          3 min read
-        </h4>
-        <h4>
+      <article class="panel">
+        <a class="backlink" href="https://bmuskalla.dev/blog/">← all posts</a>
+        <div class="page-head">
+          <p class="page-eyebrow">Blog</p>
+          <h1 class="page-title">Easy error reporting for your users</h1>
+          <div class="post-meta">
+            <span>June 8, 2012</span>
+            <span>·</span>
+            <span>3 min read</span>
+          </div>
           
-          <span class="label label-success">mylyn</span>
+          <div class="tags">
+            <span class="tag">mylyn</span><span class="tag">git</span><span class="tag">egit</span><span class="tag">bugs</span>
+          </div>
           
-          <span class="label label-success">git</span>
-          
-          <span class="label label-success">egit</span>
-          
-          <span class="label label-success">bugs</span>
-          
-        </h4>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="blogpost">
-            <p>While working on non-IDE products, one problem often approach us: If something goes wrong when a user is using the product, how do we actually get them to report the problems back to us? Searching for error logs on the harddrive and send them to support@<insert-your-name>? Actually a pretty brittle approach. From an Eclipse perspective, it’s pretty clear what to do: fire up the webbrowser, go to bugs.eclipse.org and enter a new bug report. But wait…isn’t that even more complicated? Depending on your audience, <strong>186</strong> bugzilla products with <strong>2564</strong> components offers a pretty good chance to file the bug against the wrong project.</p>
+        </div>
+
+        <div class="prose">
+          <p>While working on non-IDE products, one problem often approach us: If something goes wrong when a user is using the product, how do we actually get them to report the problems back to us? Searching for error logs on the harddrive and send them to support@<insert-your-name>? Actually a pretty brittle approach. From an Eclipse perspective, it’s pretty clear what to do: fire up the webbrowser, go to bugs.eclipse.org and enter a new bug report. But wait…isn’t that even more complicated? Depending on your audience, <strong>186</strong> bugzilla products with <strong>2564</strong> components offers a pretty good chance to file the bug against the wrong project.</p>
 <p>If your user is unable to choose the right component, you actually did a pretty good job of seamlessly integrating your plugin into Eclipse 😉 Some time ago, Mylyn introduced a little feature to actually help users with this problem. Whenever they see an exception in the Error Log, you just right-click it and select “Report as Bug”. Depending on the stacktrace of the problem, it can automatically map the exception to the right product and component in Eclipse.</p>
 <p><img src="/blog/tt/Screenshot-Report-as-Bug-.png" alt="Report as Bug"></p>
 <p>As Mylyn provides this as a generic mechanism every project can hook into, this is an easy way to help your users and contributors to provide feedback. All you need to do is to provide the right set of mappings from your package namespace to the corresponding Bugzilla attributes.</p>
@@ -147,54 +123,35 @@ As you can see in the example, we define two types of mapping. The first one is 
 </ol>
 </section>
 
-            <hr>
-            <div class="related-posts">
-              <h5>Related Posts</h5>
-              
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h6 style="text-align: right">
-                    January 12, 2021
-                  </h6>
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8">
-                  <h6 style="text-align: left">
-                    <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-                  </h6>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h6 style="text-align: right">
-                    September 7, 2011
-                  </h6>
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8">
-                  <h6 style="text-align: left">
-                    <strong><a href="/blog/2011-09-07-logical-models/">What the heck are logical models?</a></strong>
-                  </h6>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h6 style="text-align: right">
-                    February 16, 2011
-                  </h6>
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8">
-                  <h6 style="text-align: left">
-                    <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
-                  </h6>
-                </div>
-              </div>
-              
-            </div>
-          </div>
         </div>
-        <hr>
-        <div class="disqus">
+
+        
+        
+        <div class="post-after">
+          <h2 class="section-title">Related posts</h2>
+          <ul class="archive">
+            
+            <li>
+              <span class="date">Jan 12, 2021</span>
+              <a href="/blog/2021-01-12-git-archeology/">Git Archeology</a>
+            </li>
+            
+            <li>
+              <span class="date">Sep 7, 2011</span>
+              <a href="/blog/2011-09-07-logical-models/">What the heck are logical models?</a>
+            </li>
+            
+            <li>
+              <span class="date">Feb 16, 2011</span>
+              <a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="post-after">
+          <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
 
@@ -213,36 +170,19 @@ As you can see in the example, we define two types of mapping. The first one is 
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-      </div>
-    </div>
+        </div>
+      </article>
     
-  </div>
+  </main>
 
-  
-  <footer>
-  <div id="footer">
-    <div class="container">
-      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
-      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
-    </div>
-  </div>
-</footer>
-<div class="footer"></div>
+    <footer class="site">
+    <span>© Benjamin Muskalla</span>
+    <span>built by hand · watched over by small robots</span>
+  </footer>
+</div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://bmuskalla.dev/js/docs.min.js"></script>
-<script src="https://bmuskalla.dev/js/main.js"></script>
-
-<script src="https://bmuskalla.dev/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-
+<script src="https://bmuskalla.dev/js/robots.js"></script>
 
 
 </body>
-
 </html>

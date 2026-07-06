@@ -6,21 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Benjamin Muskalla" />
     
-    <title>From core to more: Service providers to the rescue</title>
+    <title>From core to more: Service providers to the rescue · Benjamin Muskalla</title>
     <meta name="generator" content="Hugo 0.83.1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-layout.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
     
-    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-    
-    <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
     
 <script type="application/javascript">
 var doNotTrack = false;
@@ -36,106 +28,54 @@ if (!doNotTrack) {
 </script>
   </head>
 
-
 <body>
-  <div id="wrap">
+  <canvas id="bricks" aria-hidden="true"></canvas>
 
-    
-    <nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://bmuskalla.dev/"><i class="fa fa-home"></i></a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar">
-      <ul class="nav navbar-nav navbar-right">
+<div class="page">
+  <header class="site">
+    <a class="wordmark" href="https://bmuskalla.dev/">bmuskalla<span>.dev</span></a>
+    <nav class="site">
       
-        
-        <li><a href="/opensource/">OPENSOURCE</a></li>
-        
-        <li><a href="/talks/">TALKS</a></li>
-        
-        <li><a href="/blog/">BLOG</a></li>
-        
-        <li><a href="/articles/">PRINT</a></li>
-        
-        <li><a href="/vitae/">VITAE</a></li>
-        
       
-      </ul>
-    </div>
-  </div>
-</nav>
+      <a href="/opensource/">open source</a>
+      
+      
+      <a href="/talks/">talks</a>
+      
+      
+      <a href="/blog/" class="active">blog</a>
+      
+      
+      <a href="/articles/">print</a>
+      
+      
+      <a href="/vitae/">vitae</a>
+      
+    </nav>
+  </header>
 
+
+  <main class="content">
     
-    <div class="container">
-      <div class="blog-post">
-        <h3>
-          <strong><a href="https://bmuskalla.dev/blog/2024-01-12-from-core-to-more/">From core to more: Service providers to the rescue</a></strong>
-        </h3>
-      </div>
-      <div class="blog-title">
-        <h4>
-          January 12, 2024
-          &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          9 min read
-        </h4>
-        <h4>
+      <article class="panel">
+        <a class="backlink" href="https://bmuskalla.dev/blog/">← all posts</a>
+        <div class="page-head">
+          <p class="page-eyebrow">Blog</p>
+          <h1 class="page-title">From core to more: Service providers to the rescue</h1>
+          <div class="post-meta">
+            <span>January 12, 2024</span>
+            <span>·</span>
+            <span>9 min read</span>
+          </div>
           
-          <span class="label label-success">service provider interfaces</span>
+          <div class="tags">
+            <span class="tag">service provider interfaces</span><span class="tag">application programming interfaces</span><span class="tag">extensible software</span><span class="tag">platform development</span><span class="tag">data modeling</span><span class="tag">domain-driven design</span><span class="tag">ubiquitous language</span><span class="tag">API evolution</span><span class="tag">SPI evolution</span><span class="tag">technology compatibility kits</span><span class="tag">conformance testing</span><span class="tag">test-driven development</span><span class="tag">error handling</span><span class="tag">fault tolerance</span><span class="tag">capability management</span><span class="tag">network resilience</span><span class="tag">real-world testing</span><span class="tag">modular architecture</span><span class="tag">energy consumption monitoring</span><span class="tag">provider implementation</span><span class="tag">scalability</span><span class="tag">maintainability</span>
+          </div>
           
-          <span class="label label-success">application programming interfaces</span>
-          
-          <span class="label label-success">extensible software</span>
-          
-          <span class="label label-success">platform development</span>
-          
-          <span class="label label-success">data modeling</span>
-          
-          <span class="label label-success">domain-driven design</span>
-          
-          <span class="label label-success">ubiquitous language</span>
-          
-          <span class="label label-success">API evolution</span>
-          
-          <span class="label label-success">SPI evolution</span>
-          
-          <span class="label label-success">technology compatibility kits</span>
-          
-          <span class="label label-success">conformance testing</span>
-          
-          <span class="label label-success">test-driven development</span>
-          
-          <span class="label label-success">error handling</span>
-          
-          <span class="label label-success">fault tolerance</span>
-          
-          <span class="label label-success">capability management</span>
-          
-          <span class="label label-success">network resilience</span>
-          
-          <span class="label label-success">real-world testing</span>
-          
-          <span class="label label-success">modular architecture</span>
-          
-          <span class="label label-success">energy consumption monitoring</span>
-          
-          <span class="label label-success">provider implementation</span>
-          
-          <span class="label label-success">scalability</span>
-          
-          <span class="label label-success">maintainability</span>
-          
-        </h4>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="blogpost">
-            <p>Orbiting about 400 kilometers above Earth, the International Space Station (ISS) serves as a beacon of human ingenuity and collaboration. This modular space habitat, constructed jointly by space agencies from all around the world, including NASA, Roscosmos, ESA, JAXA and CSA. A demonstration of  the extraordinary feats possible through international partnership. This complex structure, requiring meticulous coordination and cooperation, orbits our planet every 90 minutes, symbolizing a unified effort in space exploration and scientific advancement.
+        </div>
+
+        <div class="prose">
+          <p>Orbiting about 400 kilometers above Earth, the International Space Station (ISS) serves as a beacon of human ingenuity and collaboration. This modular space habitat, constructed jointly by space agencies from all around the world, including NASA, Roscosmos, ESA, JAXA and CSA. A demonstration of  the extraordinary feats possible through international partnership. This complex structure, requiring meticulous coordination and cooperation, orbits our planet every 90 minutes, symbolizing a unified effort in space exploration and scientific advancement.
 Similarly, extensible software systems possess an inherent complexity that is greater than the capabilities of a <a href="https://leaddev.com/process/stop-working-islands-engineers">single team or organization</a>. It&rsquo;s crucial to establish distinct boundaries among components, designate experts for each, and devise the willpower and strategies to discover integration points among these components.</p>
 <h2 id="apis-and-spis">APIs and SPIs</h2>
 <p><strong>An API (Application Programming Interface)</strong> is familiar terrain for us, serving as the outward-facing interfaces of system components. Whether it&rsquo;s a library we rely on or an external service we communicate with through various protocols (such as REST, Protobuf, or any RPC), APIs present our systems to the outside world, ideally through an intuitive interface.
@@ -173,15 +113,13 @@ Consider the task of managing vast amounts of data packets for our energy consum
 <h3 id="opening-up-your-product">Opening up your product</h3>
 <p>When you next find yourself contemplating the adoption of various strategies for data extraction or the integration with multiple external services, it&rsquo;s worth giving thought to the potential benefits of constructing an SPI. Take into account the perspective of both the API consumer and the SPI implementers. Evaluate whether a straightforward specification suffices, or if the complexity of the integration justifies the need for a test suite resembling a TCK. Remember, the goal is to streamline and enhance the maintainability of your architecture. Although there&rsquo;s no single solution, determining the most suitable approach depends on the specifics of your environment.</p>
 
-            <hr>
-            <div class="related-posts">
-              <h5>Related Posts</h5>
-              
-            </div>
-          </div>
         </div>
-        <hr>
-        <div class="disqus">
+
+        
+        
+
+        <div class="post-after">
+          <div class="disqus">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
 
@@ -200,36 +138,19 @@ Consider the task of managing vast amounts of data packets for our energy consum
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-      </div>
-    </div>
+        </div>
+      </article>
     
-  </div>
+  </main>
 
-  
-  <footer>
-  <div id="footer">
-    <div class="container">
-      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
-      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
-    </div>
-  </div>
-</footer>
-<div class="footer"></div>
+    <footer class="site">
+    <span>© Benjamin Muskalla</span>
+    <span>built by hand · watched over by small robots</span>
+  </footer>
+</div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://bmuskalla.dev/js/docs.min.js"></script>
-<script src="https://bmuskalla.dev/js/main.js"></script>
-
-<script src="https://bmuskalla.dev/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-
+<script src="https://bmuskalla.dev/js/robots.js"></script>
 
 
 </body>
-
 </html>

@@ -6,20 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Benjamin Muskalla" />
     
-    <title>Blogs</title>
+    <title>Blogs · Benjamin Muskalla</title>
     <meta name="generator" content="Hugo 0.83.1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-layout.css" />
-    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
     
-    <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
     
 <script type="application/javascript">
 var doNotTrack = false;
@@ -35,458 +28,205 @@ if (!doNotTrack) {
 </script>
   </head>
 
-  <body>
-    <div id="wrap">
+<body>
+  <canvas id="bricks" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site">
+    <a class="wordmark" href="https://bmuskalla.dev/">bmuskalla<span>.dev</span></a>
+    <nav class="site">
       
-      <nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://bmuskalla.dev/"><i class="fa fa-home"></i></a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar">
-      <ul class="nav navbar-nav navbar-right">
       
-        
-        <li><a href="/opensource/">OPENSOURCE</a></li>
-        
-        <li><a href="/talks/">TALKS</a></li>
-        
-        <li><a href="/blog/">BLOG</a></li>
-        
-        <li><a href="/articles/">PRINT</a></li>
-        
-        <li><a href="/vitae/">VITAE</a></li>
-        
+      <a href="/opensource/">open source</a>
       
+      
+      <a href="/talks/">talks</a>
+      
+      
+      <a href="/blog/" class="active">blog</a>
+      
+      
+      <a href="/articles/">print</a>
+      
+      
+      <a href="/vitae/">vitae</a>
+      
+    </nav>
+  </header>
+
+
+  <main class="content">
+    <div class="panel">
+      <div class="page-head">
+        <p class="page-eyebrow">Writing</p>
+        <h1 class="page-title">Blog</h1>
+        <p class="page-lead">Notes on software, tooling, open source, and the odd puzzle — collected over the years.</p>
+      </div>
+
+      <ul class="archive">
+        
+        <li>
+          <span class="date">Jan 12, 2024</span>
+          <a href="/blog/2024-01-12-from-core-to-more/">From core to more: Service providers to the rescue</a>
+        </li>
+        
+        <li>
+          <span class="date">Jun 28, 2021</span>
+          <a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a>
+        </li>
+        
+        <li>
+          <span class="date">Mar 25, 2021</span>
+          <a href="/blog/2021-03-25-cheating-design-konami/">Cheating in Software Design using the Konami code</a>
+        </li>
+        
+        <li>
+          <span class="date">Jan 12, 2021</span>
+          <a href="/blog/2021-01-12-git-archeology/">Git Archeology</a>
+        </li>
+        
+        <li>
+          <span class="date">Jan 4, 2021</span>
+          <a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a>
+        </li>
+        
+        <li>
+          <span class="date">May 25, 2020</span>
+          <a href="/blog/2020-05-28-jit-101/">JIT 101</a>
+        </li>
+        
+        <li>
+          <span class="date">Nov 25, 2019</span>
+          <a href="/blog/2019-11-25-release-scoped-properies/">Changing System Properties in Isolation</a>
+        </li>
+        
+        <li>
+          <span class="date">Nov 1, 2019</span>
+          <a href="/blog/2019-11-01-delete-github-package/">Manually deleting a package from GitHub Package Registry</a>
+        </li>
+        
+        <li>
+          <span class="date">Oct 2, 2019</span>
+          <a href="/blog/2019-10-02-log4j2-ghost-logging-framework/">Log4j 2 - The Ghost in the logging framework</a>
+        </li>
+        
+        <li>
+          <span class="date">Jun 8, 2018</span>
+          <a href="/blog/2018-06-08-refactoring-towards-speed-reading/">Refactoring towards speed reading</a>
+        </li>
+        
+        <li>
+          <span class="date">Nov 15, 2016</span>
+          <a href="/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/">Merging nested Lists or Arrays with Java 8</a>
+        </li>
+        
+        <li>
+          <span class="date">Oct 6, 2016</span>
+          <a href="/blog/2016-10-06-wheretoputconstants/">WHERE_TO_PUT.CONSTANTS</a>
+        </li>
+        
+        <li>
+          <span class="date">Jun 8, 2012</span>
+          <a href="/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a>
+        </li>
+        
+        <li>
+          <span class="date">Sep 7, 2011</span>
+          <a href="/blog/2011-09-07-logical-models/">What the heck are logical models?</a>
+        </li>
+        
+        <li>
+          <span class="date">Feb 16, 2011</span>
+          <a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a>
+        </li>
+        
+        <li>
+          <span class="date">May 13, 2010</span>
+          <a href="/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/">Using Equinox Security in RCP and RAP</a>
+        </li>
+        
+        <li>
+          <span class="date">Apr 27, 2010</span>
+          <a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a>
+        </li>
+        
+        <li>
+          <span class="date">Apr 26, 2010</span>
+          <a href="/blog/2010-04-26-sketch-your-ui/">Sketch your UI</a>
+        </li>
+        
+        <li>
+          <span class="date">Apr 22, 2010</span>
+          <a href="/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/">Eclipse DemoCamp 2010 in Mannheim</a>
+        </li>
+        
+        <li>
+          <span class="date">Apr 20, 2010</span>
+          <a href="/blog/2010-04-20-drawing-with-rap-yup/">Drawing with RAP? Yup!</a>
+        </li>
+        
+        <li>
+          <span class="date">Apr 14, 2010</span>
+          <a href="/blog/2010-04-14-revamping-eclipse-examples/">Revamping Eclipse Examples?</a>
+        </li>
+        
+        <li>
+          <span class="date">Mar 22, 2010</span>
+          <a href="/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/">EMF and RAP &amp; what a lovely pair</a>
+        </li>
+        
+        <li>
+          <span class="date">Nov 23, 2009</span>
+          <a href="/blog/2009-11-23-eclipsert-rap-around-the-world/">EclipseRT &amp; RAP around the world</a>
+        </li>
+        
+        <li>
+          <span class="date">Nov 16, 2009</span>
+          <a href="/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/">Eclipse RAP 1.3 M3 hits the road</a>
+        </li>
+        
+        <li>
+          <span class="date">Oct 8, 2009</span>
+          <a href="/blog/2009-10-08-eclipse-rap-1-3-m2-released/">Eclipse RAP 1.3 M2 Released</a>
+        </li>
+        
+        <li>
+          <span class="date">Sep 11, 2009</span>
+          <a href="/blog/2009-09-11-picasso-paints-the-web/">Picasso paints the web with RAP</a>
+        </li>
+        
+        <li>
+          <span class="date">Aug 25, 2009</span>
+          <a href="/blog/2009-08-25-e4-on-the-web/">Eclipse e4 on the web</a>
+        </li>
+        
+        <li>
+          <span class="date">Jul 6, 2009</span>
+          <a href="/blog/2009-07-06-integrating-birt-into-rap-applications/">Integrating BIRT into RAP applications</a>
+        </li>
+        
+        <li>
+          <span class="date">Jul 3, 2009</span>
+          <a href="/blog/2009-07-03-galileo-and-the-rap-runtime/">Eclipse Galileo and RAP</a>
+        </li>
+        
+        <li>
+          <span class="date">Mar 13, 2009</span>
+          <a href="/blog/2009-03-13-tease-the-rap-committers/">Tease the RAP committers!</a>
+        </li>
+        
       </ul>
     </div>
-  </div>
-</nav>
+  </main>
 
-      <div class="container">
-        <h3>Archive</h3>
-          <div class="panel panel-default">
-            <div class="panel-body">
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    January 12, 2024
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2024-01-12-from-core-to-more/">From core to more: Service providers to the rescue</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    June 28, 2021
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2021-06-28-simplify-protocol/">The &lsquo;Simplify protocol&rsquo; refactoring</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    March 25, 2021
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2021-03-25-cheating-design-konami/">Cheating in Software Design using the Konami code</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    January 12, 2021
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2021-01-12-git-archeology/">Git Archeology</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    January 4, 2021
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2021-01-04-java-syntax-puzzle/">Java Syntax Puzzlers</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    May 25, 2020
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2020-05-28-jit-101/">JIT 101</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    November 25, 2019
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2019-11-25-release-scoped-properies/">Changing System Properties in Isolation</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    November 1, 2019
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2019-11-01-delete-github-package/">Manually deleting a package from GitHub Package Registry</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    October 2, 2019
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2019-10-02-log4j2-ghost-logging-framework/">Log4j 2 - The Ghost in the logging framework</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    June 8, 2018
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2018-06-08-refactoring-towards-speed-reading/">Refactoring towards speed reading</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    November 15, 2016
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2016-11-15-merging-nested-lists-or-arrays-with-java-8/">Merging nested Lists or Arrays with Java 8</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    October 6, 2016
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2016-10-06-wheretoputconstants/">WHERE_TO_PUT.CONSTANTS</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    June 8, 2012
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2012-06-08-easy-error-reporting/">Easy error reporting for your users</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    September 7, 2011
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2011-09-07-logical-models/">What the heck are logical models?</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    February 16, 2011
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2011-02-16-integrating-mylyn-git-workflow/">Integrating Mylyn into your Git workflow</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    May 13, 2010
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2010-05-13-using-equinox-security-in-rcp-and-rap/">Using Equinox Security in RCP and RAP</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    April 27, 2010
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2010-04-27-google-summer-of-code-2010-is-on/">Google Summer of Code 2010 is on!</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    April 26, 2010
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2010-04-26-sketch-your-ui/">Sketch your UI</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    April 22, 2010
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2010-04-22-eclipse-democamp-2010-in-mannheim/">Eclipse DemoCamp 2010 in Mannheim</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    April 20, 2010
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2010-04-20-drawing-with-rap-yup/">Drawing with RAP? Yup!</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    April 14, 2010
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2010-04-14-revamping-eclipse-examples/">Revamping Eclipse Examples?</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    March 22, 2010
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2010-03-22-emf-and-rap-what-a-lovely-pair/">EMF and RAP &amp; what a lovely pair</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    November 23, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-11-23-eclipsert-rap-around-the-world/">EclipseRT &amp; RAP around the world</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    November 16, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-11-16-eclipse-rap-1-3-m3-hits-the-road/">Eclipse RAP 1.3 M3 hits the road</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    October 8, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-10-08-eclipse-rap-1-3-m2-released/">Eclipse RAP 1.3 M2 Released</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    September 11, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-09-11-picasso-paints-the-web/">Picasso paints the web with RAP</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    August 25, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-08-25-e4-on-the-web/">Eclipse e4 on the web</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    July 6, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-07-06-integrating-birt-into-rap-applications/">Integrating BIRT into RAP applications</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    July 3, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-07-03-galileo-and-the-rap-runtime/">Eclipse Galileo and RAP</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
-                    March 13, 2009
-                  </h5>
-                 </div>
-                 <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
-                    <strong><a href="/blog/2009-03-13-tease-the-rap-committers/">Tease the RAP committers!</a></strong>
-                  </h5>
-                </div>
-              </div>
-            
-            </div>
-          </div>
-      </div>
-    </div>
-    
-    <footer>
-  <div id="footer">
-    <div class="container">
-      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
-      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
-    </div>
-  </div>
-</footer>
-<div class="footer"></div>
+    <footer class="site">
+    <span>© Benjamin Muskalla</span>
+    <span>built by hand · watched over by small robots</span>
+  </footer>
+</div>
+
+<script src="https://bmuskalla.dev/js/robots.js"></script>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://bmuskalla.dev/js/docs.min.js"></script>
-<script src="https://bmuskalla.dev/js/main.js"></script>
-
-<script src="https://bmuskalla.dev/js/ie10-viewport-bug-workaround.js"></script>
-
-
-  </body>
+</body>
 </html>

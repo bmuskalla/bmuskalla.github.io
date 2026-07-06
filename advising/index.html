@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <title>Advising · Benjamin Muskalla</title>
+    <meta name="generator" content="Hugo 0.83.1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-147650474-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+  </head>
+
+<body>
+  <canvas id="bricks" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site">
+    <a class="wordmark" href="https://bmuskalla.dev/">bmuskalla<span>.dev</span></a>
+    <nav class="site">
+      
+      
+      <a href="/opensource/">open source</a>
+      
+      
+      <a href="/talks/">talks</a>
+      
+      
+      <a href="/blog/">blog</a>
+      
+      
+      <a href="/articles/">print</a>
+      
+      
+      <a href="/vitae/">vitae</a>
+      
+    </nav>
+  </header>
+
+
+  <main class="content">
+    
+      <div class="panel"><div class="page-head">
+  <p class="page-eyebrow">Advising · AI startups &amp; VCs</p>
+  <h1 class="page-title">The demo is easy.<br>The <em>product</em> is not.</h1>
+  <p class="page-lead">
+    I've spent the last five years building the AI products everyone else demos —
+    GitHub&nbsp;Copilot from research prototype to market leader, now the agent stack at
+    a frontier AI lab. I advise founders building with AI, and the people who fund them.
+  </p>
+</div>
+
+<section class="section">
+  <h2 class="section-title">Where I've done it</h2>
+
+  <article class="role">
+    <div class="role-head">
+      <img class="role-logo" src="/img/logos/github.png" alt="GitHub logo" loading="lazy">
+      <div class="role-headings">
+        <span class="role-title">Founding team, GitHub Copilot <span class="at">· GitHub</span></span>
+        <div class="role-time">research prototype → market leader</div>
+      </div>
+    </div>
+    <div class="role-body">
+      Built the <strong>first context engine</strong> for Copilot Chat and an intent
+      classifier that adapts context to user behavior. Ran the A/B pipeline that lifted
+      completion acceptance by <strong>15%</strong>, and cut inference cost with smarter
+      caching and debouncing — the unglamorous work that turns a great demo into a product.
+    </div>
+  </article>
+
+  <article class="role">
+    <div class="role-head">
+      <img class="role-logo" src="/img/logos/poolside.png" alt="poolside logo" loading="lazy">
+      <div class="role-headings">
+        <span class="role-title">Engineering leader <span class="at">· poolside</span></span>
+        <div class="role-time">agents · model factory · enterprise</div>
+      </div>
+    </div>
+    <div class="role-body">
+      At a frontier AI lab: I lead engineering on the <strong>agentic layer of the model
+      factory</strong> and the enterprise console for managed agents, and still ship code
+      on <a href="https://poolside.ai/blog/the-carrier-and-the-beacon">Atlas</a>,
+      poolside's inference engine — including bringing its models to AWS&nbsp;Bedrock.
+    </div>
+  </article>
+
+  <article class="role">
+    <div class="role-head">
+      <img class="role-logo" src="/img/logos/dosu.png" alt="Dosu logo" loading="lazy">
+      <div class="role-headings">
+        <span class="role-title">Advisor <span class="at">· Dosu</span></span>
+        <div class="role-time">1.5 yrs and counting</div>
+      </div>
+    </div>
+    <div class="role-body">
+      Ongoing advisory for <a href="https://dosu.dev/">Dosu</a>: scaling their agent
+      architecture and retrieval as usage grows, and turning production telemetry into
+      product and reliability decisions.
+    </div>
+  </article>
+</section>
+
+<div class="two-col">
+  <section class="section">
+    <h2 class="section-title">For founders</h2>
+    <ul class="entries">
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Agent &amp; retrieval architecture</span>
+          <span class="desc"> — context engineering, RAG, memory, tool use; designs that survive 100× the demo traffic</span>
+        </span>
+      </li>
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Evals &amp; telemetry</span>
+          <span class="desc"> — you can't improve what you don't measure; turning real usage into a roadmap</span>
+        </span>
+      </li>
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Inference economics</span>
+          <span class="desc"> — latency, caching, and cost curves, before they eat your margin</span>
+        </span>
+      </li>
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Model strategy</span>
+          <span class="desc"> — API vs. fine-tune vs. own weights, and when the answer changes</span>
+        </span>
+      </li>
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Team &amp; org</span>
+          <span class="desc"> — hiring your first AI engineers, and what not to build yourself</span>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">For VCs</h2>
+    <ul class="entries">
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Technical due diligence</span>
+          <span class="desc"> — is the moat real, is the demo a product, do the unit economics survive real users</span>
+        </span>
+      </li>
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Portfolio support</span>
+          <span class="desc"> — a senior outside eye for companies crossing from prototype to production</span>
+        </span>
+      </li>
+      <li class="entry">
+        <span class="marker">◇</span>
+        <span class="body">
+          <span class="lead">Straight answers</span>
+          <span class="desc"> — I build this stuff daily; I'll tell you what's hard, what's hype, and what's already commodity</span>
+        </span>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<section class="section">
+  <h2 class="section-title">The rest of the story</h2>
+  <ul class="entries">
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <span class="desc"><strong>20+ years of engineering</strong>, in open source the whole way — from the Eclipse platform to today's AI ecosystem</span>
+      </span>
+    </li>
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <span class="desc"><strong><a href="https://javachampions.org/">Java Champion</a></strong> · co-inventor on a <a href="https://patents.google.com/patent/US9459839B2/en">US patent</a></span>
+      </span>
+    </li>
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <span class="desc">Technical reviewer of <a href="https://www.manning.com/books/build-a-large-language-model-from-scratch"><em>Build a Large Language Model (From Scratch)</em></a> and <a href="https://www.oreilly.com/library/view/applied-natural-language/9781492062561/"><em>Applied NLP in the Enterprise</em></a></span>
+      </span>
+    </li>
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <span class="desc">Principal engineer at <strong>Tasktop</strong> as it grew from 20 to 150 people, through its acquisition by Planview</span>
+      </span>
+    </li>
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <span class="desc">And yes — <strong>founded my first company at 18</strong>: CTO of fitsein.tv GmbH (2002), building marketing, scheduling and shop software for fitness studios. Founder empathy is not theoretical.</span>
+      </span>
+    </li>
+  </ul>
+</section>
+
+<section class="section cta">
+  <h2 class="section-title">Sounds like your problem?</h2>
+  <p class="cta-lead">
+    If you're building with AI — or deciding whether to fund someone who is — tell me
+    what you're working on. Worst case, you leave with a straight answer.
+  </p>
+  <div class="links">
+    <a href="mailto:benny@bmuskalla.dev">benny@bmuskalla.dev</a>
+    <a href="https://linkedin.com/in/benjaminmuskalla">linkedin</a>
+  </div>
+</section>
+</div>
+    
+  </main>
+
+    <footer class="site">
+    <span>© Benjamin Muskalla</span>
+    <span>built by hand · watched over by small robots</span>
+  </footer>
+</div>
+
+<script src="https://bmuskalla.dev/js/robots.js"></script>
+
+
+</body>
+</html>

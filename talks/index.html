@@ -6,20 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Benjamin Muskalla" />
     
-    <title>Talks</title>
+    <title>Talks · Benjamin Muskalla</title>
     <meta name="generator" content="Hugo 0.83.1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/vitae-layout.css" />
-    <script src="https://kit.fontawesome.com/b45b231046.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
     
-    <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
     
 <script type="application/javascript">
 var doNotTrack = false;
@@ -35,308 +28,426 @@ if (!doNotTrack) {
 </script>
   </head>
 
-
 <body>
-  <div id="wrap">
+  <canvas id="bricks" aria-hidden="true"></canvas>
 
-    
-    <nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://bmuskalla.dev/"><i class="fa fa-home"></i></a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar">
-      <ul class="nav navbar-nav navbar-right">
+<div class="page">
+  <header class="site">
+    <a class="wordmark" href="https://bmuskalla.dev/">bmuskalla<span>.dev</span></a>
+    <nav class="site">
       
-        
-        <li><a href="/opensource/">OPENSOURCE</a></li>
-        
-        <li><a href="/talks/">TALKS</a></li>
-        
-        <li><a href="/blog/">BLOG</a></li>
-        
-        <li><a href="/articles/">PRINT</a></li>
-        
-        <li><a href="/vitae/">VITAE</a></li>
-        
       
-      </ul>
-    </div>
-  </div>
-</nav>
+      <a href="/opensource/">open source</a>
+      
+      
+      <a href="/talks/" class="active">talks</a>
+      
+      
+      <a href="/blog/">blog</a>
+      
+      
+      <a href="/articles/">print</a>
+      
+      
+      <a href="/vitae/">vitae</a>
+      
+    </nav>
+  </header>
 
+
+  <main class="content">
     
-    <section id="talks">
-  <div class="container">
-    <h3>Talks</h3>
-    <div class="panel panel-default">
-      <div class="panel-body">
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.xpdays.de/2022/sessions/138-the-open-source-effect.html">XP Days Germany</a>&nbsp;-&nbsp;The Open Source Effect</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.youtube.com/watch?v=NJroH1ks03o&amp;ab_channel=EclipseFoundation">EclipseCon 2022</a>&nbsp;-&nbsp;The Open Source Effect</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.youtube.com/watch?v=0_88aZq_36Q&amp;ab_channel=DevoxxUK">DevoxxUK</a>&nbsp;-&nbsp;The Open Source Effect</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.youtube.com/watch?v=0_88aZq_36Q&amp;ab_channel=DevoxxUK">Voxxed Days Bucharest</a>&nbsp;-&nbsp;The Open Source Effect</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.youtube.com/watch?v=rn7tAZytyBc&amp;ab_channel=JChampionsConf">JChampions</a>&nbsp;-&nbsp;Query your codebase using CodeQL</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://2021.jdd.org.pl/lecture_2021/#id=68569">JDD Krakow</a>&nbsp;-&nbsp;Query your codebase using CodeQL</a>
-        </h5>
-      
-        <h5>
-          <i class="far fa-calendar-alt"></i>&nbsp;&nbsp;
-          <a href="https://www.continuouslifecycle.de/programmbeirat.php?source=0">Continuous Lifecycle &amp; ContainerConf</a>&nbsp;-&nbsp;Program Committee</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.continuouslifecycle.de/lecture.php?id=9573&amp;source=0">Continuous Lifecycle</a>&nbsp;-&nbsp;Woher nehme ich nur meine Testinfrastruktur?</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://baselone.ch/speech/F8D86A30-A324-43A4-BDAE-5F078A94211E/Muskalla">BaselOne</a>&nbsp;-&nbsp;Integration ist schwer, Integrationstests umso mehr</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://entwicklertag.de/karlsruhe/2019/integration-ist-schwer">Karlsruher Entwicklertage 2019</a>&nbsp;-&nbsp;Integration ist schwer, Integrationstests umso mehr</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.continuouslifecycle.de/2018/veranstaltung-7574-integration-ist-schwer%2C-integrationstests-umso-mehr.html?source=0&amp;id=7574">Continuous Lifecycle 2018</a>&nbsp;-&nbsp;Integration ist schwer, Integrationstests umso mehr</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.continuouslifecycle.de/2015/veranstaltung-4864-shootout_-puppet%2c-chef-%26-docker-im-vergleich0b6b.html?id=4864">Continuous Lifecycle 2015</a>&nbsp;-&nbsp;Shootout: Puppet, Chef &amp; Docker im Vergleich (with <em>Steffen Pingel</em> &amp; <em>Holger Staudacher</em></a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.continuouslifecycle.de/2013/lectureff09.html?id=3309">Continuous Lifecycle 2014</a>&nbsp;-&nbsp;Effektives Konfigurations-Management mit Chef, Vagrant und Veewee (with <em>Steffen Pingel</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.continuouslifecycle.de/2013/lectureff09.html?id=3309">Continuous Lifecycle 2013</a>&nbsp;-&nbsp;Effektives Konfigurations-Management mit Chef (with <em>Steffen Pingel</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2013/node/1370.html">EclipseCon 2013 (Boston)</a>&nbsp;-&nbsp;Eclipse/OSGi Puzzlers - Traps and Pitfalls (with <em>Holger Staudacher</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.fzi.de/aktuelles/news/detail/artikel/eclipse-democamp-von-continuous-delivery-bis-smart-home/">Eclipse Democamp @ FZI</a>&nbsp;-&nbsp;Practical puppet by the example of the Mylyn project</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://docplayer.org/6292036-11-reconf-2012-requirements-engineering-tagung-2012-15-18-maerz-2010-muenchen-12-15-maerz-2012-muenchen-quo-vadis-requirements-engineering.html">11. REConf Requirements Engineering (Munich)</a>&nbsp;-&nbsp;Bringing open source collaborationto the enterprise</a>
-        </h5>
-      
-        <h5>
-          <i class="far fa-star"></i>&nbsp;&nbsp;
-          <a href="https://wiki.eclipse.org/Eclipse_Finance_Day_2012">Eclipse Finance Day (Zurich)</a>&nbsp;-&nbsp;<strong>Keynote</strong>: Gaining traceability in the world of fragmented Agile ALM stacks</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://wiki.eclipse.org/Eclipse_DemoCamps_November_2012/Bonn">Eclipse Democamp Bonn</a>&nbsp;-&nbsp;Build, Stage, Review, Merge: Task-focused Development the Eclipse Mylyn Way</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2012/sessions/build-stage-review-merge-task-focused-development-eclipse-mylyn-way">EclipseCon 2012 (Reston)</a>&nbsp;-&nbsp;Build, Stage, Review, Merge: Task-focused Development the Eclipse Mylyn Way</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2012/sites/eclipsecon.org.2012/files/The-Git-Tutorial.pdf">EclipseCon 2012 (Reston)</a>&nbsp;-&nbsp;The Git and EGit Tutorial</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eventbrite.com/e/eclipse-demo-camp-munich-2012-tickets-3296960297#">Eclipse Democamp Munich</a>&nbsp;-&nbsp;Build, Stage, Review, Merge: Task-focused Development the Eclipse Mylyn Way</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="http://www.majug.de/events/page14/">majug (Java User Group Mannheim)</a>&nbsp;-&nbsp;Git, Gerrit und Hudson mit Eclipse Mylyn effektiv einsetzen</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.heise.de/developer/artikel/Zweite-Auflage-des-Eclipse-Integrated-Development-Day-1251299.html">Eclipse Integrated Development Day (Berlin)</a>&nbsp;-&nbsp;Closing the Agile ALM loop with task-focused collaboration</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://skillsmatter.com/legacy_profile/ben-muskalla#skillscasts">skills matter (London)</a>&nbsp;-&nbsp;Mylyn: Closing the Agile ALM loop with task-focused collaboration</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://jazoon.com/history/2011/Conference/Tuesday-21-June/Benjamin-Muskalla.html">Jazoon 2011 (Zurich)</a>&nbsp;-&nbsp;Eclipse Mylyn - Redefining the &ldquo;I&rdquo; of the IDE</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-medal"></i>&nbsp;&nbsp;
-          <a href="https://jazoon.com/history/2011/Conference/Wednesday-22-June/Benjamin-Muskalla.html">Jazoon 2011 (Zurich)</a>&nbsp;-&nbsp;Tired of SVN? Pimp your productivity with Git, Gerrit, Hudson and Mylyn<br/><strong><a href="https://jazoon.com/history/2011/Conference/Jazoon-Rookie.html">Jazoon Rookie 2011 Winner</a></strong></a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2011/sessions/index835f.html?id=2068">EclipseCon 2011 (Santa Clara)</a>&nbsp;-&nbsp;Tired of CVS? Pimp your productivity with Git, Gerrit, Hudson and Mylyn (with <em>Steffen Pingel</em> )</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.bsi-software.com/en/scout-blog/article/eclipse-stammtisch-zuerich-2011.html">Eclipse Stammtisch (Zurich)</a>&nbsp;-&nbsp;Git, Gerrit, Hudson and Mylyn</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://wiki.eclipse.org/Eclipse_DemoCamps_November_2010/Karlsruhe">Eclipse Democamp Karlsruhe</a>&nbsp;-&nbsp;From Stack Trace to Scrum: Agile development with Mylyn</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-medal"></i>&nbsp;&nbsp;
-          <a href="https://jazoon.com/history/2010/Conference/Wednesday/Muskalla.html">Jazoon 2010 (Zurich)</a>&nbsp;-&nbsp;Analyze Heapdumps in a Web Browser - Single Sourcing in Practice<br/><strong><a href="https://jazoon.com/history/Portals/0/Content/downloads/Jazoon-Rookie_Gewinner.pdf">Jazoon Rookie 2010 Winner</a></strong></a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.aniszczyk.org/2010/04/13/jax-2010-eclipse-platform-day/">JAX 2010 (Mainz)</a>&nbsp;-&nbsp;Scale your RAP Application</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/summiteurope2010/sessions/sessionsce4c.html?id=1870">EclipseSummit 2010 (Ludwigsburg)</a>&nbsp;-&nbsp;A regular day as an Eclipse Committer (with <em>Wayne Beaton</em> and <em>Janet Campbell</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2010/sessions/index4ea0.html?id=1464">EclipseCon 2010 (Santa Clara)</a>&nbsp;-&nbsp;Single Sourcing RCP and RAP applications (with <em>Elias Volanakis</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2010/sessions/index8749.html?id=1470">EclipseCon 2010 (Santa Clara)</a>&nbsp;-&nbsp;What&rsquo;s new in RAP 1.3?</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://wiki.eclipse.org/Eclipse_DemoCamps_Helios_2010/Darmstadt">Eclipse DemoCamps Helios 2010 (Darmstadt)</a>&nbsp;-&nbsp;A regular day as an Eclipse Committer (with <em>Holger Staudacher</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="http://www.andrena.de/veranstaltungen/single-sourcing-in-practice-desktop-and-web-clients-from-a-single-code-base">ObjektForum 2010 (Frankfurt)</a>&nbsp;-&nbsp;Single Sourcing in practice - Desktop and web clients from a single code base</a>
-        </h5>
-      
-        <h5>
-          <i class="far fa-calendar-alt"></i>&nbsp;&nbsp;
-          <a href="http://blog.vogella.com/2010/08/30/egit-presentation/">majug (Java User Group Mannheim)</a>&nbsp;-&nbsp;Organizer together with <a href="https://www.vogella.com">Lars Vogel</a></a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://wiki.eclipse.org/Eclipse_DemoCamps_Galileo_2009/Walldorf">Eclipse Democamp Walldorf @ SAP</a>&nbsp;-&nbsp;Memory Analyzer &amp; RAP - Single Sourcing in Practice with <em>Krum Tsvetkov</em></a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://wiki.eclipse.org/Eclipse_DemoCamps_November_2009/Frankfurt">Eclipse Democamp Frankfurt</a>&nbsp;-&nbsp;RCP goes Web 2.0 - Eclipse Rich Ajax Platform</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.heise.de/developer/artikel/Eclipse-Application-Developer-Day-2009-in-Karlsruhe-849311.html">Eclipse Application Developer Day 2009 (Karlsruhe)</a>&nbsp;-&nbsp;Single Sourcing RCP and RAP</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2009/sessionsf2c2.html?id=610">EclipseCon 2009</a>&nbsp;-&nbsp;MAT - Single Sourcing in practice</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2009/sessions0e57.html?id=611">EclipseCon 2009</a>&nbsp;-&nbsp;Integrating BIRT in RAP applications (with <em>Virgil Dodson</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/2009/sessions4045.html?id=521">EclipseCon 2009</a>&nbsp;-&nbsp;Automated tests for RAP applications</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/summiteurope2009/sessions9b6b.html?id=874">Eclipse Summit Europe 2009</a>&nbsp;-&nbsp;EclipseRT tutorial (with <em>Christian Campo</em>, <em><a href="https://www.linkedin.com/in/jeffmcaffer/">Jeff McAffer</a></em>, <em>Shaun Smith</em>)</a>
-        </h5>
-      
-        <h5>
-          <i class="fas fa-child"></i>&nbsp;&nbsp;
-          <a href="https://www.eclipsecon.org/summiteurope2007/index698b.html?page=detail/&amp;id=29">Eclipse Summit Europe 2007</a>&nbsp;-&nbsp;RCP goes Web 2.0 - The Rich Ajax Platform (RAP) (with <em>Ralf Sternberg</em>)</a>
-        </h5>
-      
-      </div>
-    </div>
-  </div>
+      <div class="panel"><div class="page-head">
+  <p class="page-eyebrow">Speaking</p>
+  <h1 class="page-title">Talks &amp; <em>conferences</em>.</h1>
+  <p class="page-lead">Sessions, tutorials and keynotes on open source, developer tooling, testing and the JVM.</p>
+</div>
+
+<section class="section">
+  <ul class="entries">
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.xpdays.de/2022/sessions/138-the-open-source-effect.html">XP Days Germany</a>
+        <span class="desc"> — The Open Source Effect</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.youtube.com/watch?v=NJroH1ks03o&amp;ab_channel=EclipseFoundation">EclipseCon 2022</a>
+        <span class="desc"> — The Open Source Effect</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.youtube.com/watch?v=0_88aZq_36Q&amp;ab_channel=DevoxxUK">DevoxxUK</a>
+        <span class="desc"> — The Open Source Effect</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.youtube.com/watch?v=0_88aZq_36Q&amp;ab_channel=DevoxxUK">Voxxed Days Bucharest</a>
+        <span class="desc"> — The Open Source Effect</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.youtube.com/watch?v=rn7tAZytyBc&amp;ab_channel=JChampionsConf">JChampions</a>
+        <span class="desc"> — Query your codebase using CodeQL</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://2021.jdd.org.pl/lecture_2021/#id=68569">JDD Krakow</a>
+        <span class="desc"> — Query your codebase using CodeQL</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.continuouslifecycle.de/programmbeirat.php?source=0">Continuous Lifecycle &amp; ContainerConf</a>
+        <span class="desc"> — Program Committee</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.continuouslifecycle.de/lecture.php?id=9573&amp;source=0">Continuous Lifecycle</a>
+        <span class="desc"> — Woher nehme ich nur meine Testinfrastruktur?</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://baselone.ch/speech/F8D86A30-A324-43A4-BDAE-5F078A94211E/Muskalla">BaselOne</a>
+        <span class="desc"> — Integration ist schwer, Integrationstests umso mehr</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://entwicklertag.de/karlsruhe/2019/integration-ist-schwer">Karlsruher Entwicklertage 2019</a>
+        <span class="desc"> — Integration ist schwer, Integrationstests umso mehr</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.continuouslifecycle.de/2018/veranstaltung-7574-integration-ist-schwer%2C-integrationstests-umso-mehr.html?source=0&amp;id=7574">Continuous Lifecycle 2018</a>
+        <span class="desc"> — Integration ist schwer, Integrationstests umso mehr</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.continuouslifecycle.de/2015/veranstaltung-4864-shootout_-puppet%2c-chef-%26-docker-im-vergleich0b6b.html?id=4864">Continuous Lifecycle 2015</a>
+        <span class="desc"> — Shootout: Puppet, Chef &amp; Docker im Vergleich (with <em>Steffen Pingel</em> &amp; <em>Holger Staudacher</em></span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.continuouslifecycle.de/2013/lectureff09.html?id=3309">Continuous Lifecycle 2014</a>
+        <span class="desc"> — Effektives Konfigurations-Management mit Chef, Vagrant und Veewee (with <em>Steffen Pingel</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.continuouslifecycle.de/2013/lectureff09.html?id=3309">Continuous Lifecycle 2013</a>
+        <span class="desc"> — Effektives Konfigurations-Management mit Chef (with <em>Steffen Pingel</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2013/node/1370.html">EclipseCon 2013 (Boston)</a>
+        <span class="desc"> — Eclipse/OSGi Puzzlers - Traps and Pitfalls (with <em>Holger Staudacher</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.fzi.de/aktuelles/news/detail/artikel/eclipse-democamp-von-continuous-delivery-bis-smart-home/">Eclipse Democamp @ FZI</a>
+        <span class="desc"> — Practical puppet by the example of the Mylyn project</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://docplayer.org/6292036-11-reconf-2012-requirements-engineering-tagung-2012-15-18-maerz-2010-muenchen-12-15-maerz-2012-muenchen-quo-vadis-requirements-engineering.html">11. REConf Requirements Engineering (Munich)</a>
+        <span class="desc"> — Bringing open source collaborationto the enterprise</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://wiki.eclipse.org/Eclipse_Finance_Day_2012">Eclipse Finance Day (Zurich)</a>
+        <span class="desc"> — <strong>Keynote</strong>: Gaining traceability in the world of fragmented Agile ALM stacks</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://wiki.eclipse.org/Eclipse_DemoCamps_November_2012/Bonn">Eclipse Democamp Bonn</a>
+        <span class="desc"> — Build, Stage, Review, Merge: Task-focused Development the Eclipse Mylyn Way</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2012/sessions/build-stage-review-merge-task-focused-development-eclipse-mylyn-way">EclipseCon 2012 (Reston)</a>
+        <span class="desc"> — Build, Stage, Review, Merge: Task-focused Development the Eclipse Mylyn Way</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2012/sites/eclipsecon.org.2012/files/The-Git-Tutorial.pdf">EclipseCon 2012 (Reston)</a>
+        <span class="desc"> — The Git and EGit Tutorial</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eventbrite.com/e/eclipse-demo-camp-munich-2012-tickets-3296960297#">Eclipse Democamp Munich</a>
+        <span class="desc"> — Build, Stage, Review, Merge: Task-focused Development the Eclipse Mylyn Way</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="http://www.majug.de/events/page14/">majug (Java User Group Mannheim)</a>
+        <span class="desc"> — Git, Gerrit und Hudson mit Eclipse Mylyn effektiv einsetzen</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.heise.de/developer/artikel/Zweite-Auflage-des-Eclipse-Integrated-Development-Day-1251299.html">Eclipse Integrated Development Day (Berlin)</a>
+        <span class="desc"> — Closing the Agile ALM loop with task-focused collaboration</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://skillsmatter.com/legacy_profile/ben-muskalla#skillscasts">skills matter (London)</a>
+        <span class="desc"> — Mylyn: Closing the Agile ALM loop with task-focused collaboration</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://jazoon.com/history/2011/Conference/Tuesday-21-June/Benjamin-Muskalla.html">Jazoon 2011 (Zurich)</a>
+        <span class="desc"> — Eclipse Mylyn - Redefining the &ldquo;I&rdquo; of the IDE</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://jazoon.com/history/2011/Conference/Wednesday-22-June/Benjamin-Muskalla.html">Jazoon 2011 (Zurich)</a>
+        <span class="desc"> — Tired of SVN? Pimp your productivity with Git, Gerrit, Hudson and Mylyn<br/><strong><a href="https://jazoon.com/history/2011/Conference/Jazoon-Rookie.html">Jazoon Rookie 2011 Winner</a></strong></span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2011/sessions/index835f.html?id=2068">EclipseCon 2011 (Santa Clara)</a>
+        <span class="desc"> — Tired of CVS? Pimp your productivity with Git, Gerrit, Hudson and Mylyn (with <em>Steffen Pingel</em> )</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.bsi-software.com/en/scout-blog/article/eclipse-stammtisch-zuerich-2011.html">Eclipse Stammtisch (Zurich)</a>
+        <span class="desc"> — Git, Gerrit, Hudson and Mylyn</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://wiki.eclipse.org/Eclipse_DemoCamps_November_2010/Karlsruhe">Eclipse Democamp Karlsruhe</a>
+        <span class="desc"> — From Stack Trace to Scrum: Agile development with Mylyn</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://jazoon.com/history/2010/Conference/Wednesday/Muskalla.html">Jazoon 2010 (Zurich)</a>
+        <span class="desc"> — Analyze Heapdumps in a Web Browser - Single Sourcing in Practice<br/><strong><a href="https://jazoon.com/history/Portals/0/Content/downloads/Jazoon-Rookie_Gewinner.pdf">Jazoon Rookie 2010 Winner</a></strong></span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.aniszczyk.org/2010/04/13/jax-2010-eclipse-platform-day/">JAX 2010 (Mainz)</a>
+        <span class="desc"> — Scale your RAP Application</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/summiteurope2010/sessions/sessionsce4c.html?id=1870">EclipseSummit 2010 (Ludwigsburg)</a>
+        <span class="desc"> — A regular day as an Eclipse Committer (with <em>Wayne Beaton</em> and <em>Janet Campbell</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2010/sessions/index4ea0.html?id=1464">EclipseCon 2010 (Santa Clara)</a>
+        <span class="desc"> — Single Sourcing RCP and RAP applications (with <em>Elias Volanakis</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2010/sessions/index8749.html?id=1470">EclipseCon 2010 (Santa Clara)</a>
+        <span class="desc"> — What&rsquo;s new in RAP 1.3?</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://wiki.eclipse.org/Eclipse_DemoCamps_Helios_2010/Darmstadt">Eclipse DemoCamps Helios 2010 (Darmstadt)</a>
+        <span class="desc"> — A regular day as an Eclipse Committer (with <em>Holger Staudacher</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="http://www.andrena.de/veranstaltungen/single-sourcing-in-practice-desktop-and-web-clients-from-a-single-code-base">ObjektForum 2010 (Frankfurt)</a>
+        <span class="desc"> — Single Sourcing in practice - Desktop and web clients from a single code base</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="http://blog.vogella.com/2010/08/30/egit-presentation/">majug (Java User Group Mannheim)</a>
+        <span class="desc"> — Organizer together with <a href="https://www.vogella.com">Lars Vogel</a></span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://wiki.eclipse.org/Eclipse_DemoCamps_Galileo_2009/Walldorf">Eclipse Democamp Walldorf @ SAP</a>
+        <span class="desc"> — Memory Analyzer &amp; RAP - Single Sourcing in Practice with <em>Krum Tsvetkov</em></span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://wiki.eclipse.org/Eclipse_DemoCamps_November_2009/Frankfurt">Eclipse Democamp Frankfurt</a>
+        <span class="desc"> — RCP goes Web 2.0 - Eclipse Rich Ajax Platform</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.heise.de/developer/artikel/Eclipse-Application-Developer-Day-2009-in-Karlsruhe-849311.html">Eclipse Application Developer Day 2009 (Karlsruhe)</a>
+        <span class="desc"> — Single Sourcing RCP and RAP</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2009/sessionsf2c2.html?id=610">EclipseCon 2009</a>
+        <span class="desc"> — MAT - Single Sourcing in practice</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2009/sessions0e57.html?id=611">EclipseCon 2009</a>
+        <span class="desc"> — Integrating BIRT in RAP applications (with <em>Virgil Dodson</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/2009/sessions4045.html?id=521">EclipseCon 2009</a>
+        <span class="desc"> — Automated tests for RAP applications</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/summiteurope2009/sessions9b6b.html?id=874">Eclipse Summit Europe 2009</a>
+        <span class="desc"> — EclipseRT tutorial (with <em>Christian Campo</em>, <em><a href="https://www.linkedin.com/in/jeffmcaffer/">Jeff McAffer</a></em>, <em>Shaun Smith</em>)</span>
+      </span>
+    </li>
+    
+    <li class="entry">
+      <span class="marker">◇</span>
+      <span class="body">
+        <a class="lead-link" href="https://www.eclipsecon.org/summiteurope2007/index698b.html?page=detail/&amp;id=29">Eclipse Summit Europe 2007</a>
+        <span class="desc"> — RCP goes Web 2.0 - The Rich Ajax Platform (RAP) (with <em>Ralf Sternberg</em>)</span>
+      </span>
+    </li>
+    
+  </ul>
 </section>
-
+</div>
     
-  </div>
+  </main>
 
-  
-  <footer>
-  <div id="footer">
-    <div class="container">
-      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
-      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
-    </div>
-  </div>
-</footer>
-<div class="footer"></div>
+    <footer class="site">
+    <span>© Benjamin Muskalla</span>
+    <span>built by hand · watched over by small robots</span>
+  </footer>
+</div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://bmuskalla.dev/js/docs.min.js"></script>
-<script src="https://bmuskalla.dev/js/main.js"></script>
-
-<script src="https://bmuskalla.dev/js/ie10-viewport-bug-workaround.js"></script>
-
+<script src="https://bmuskalla.dev/js/robots.js"></script>
 
 
 </body>
-
 </html>
