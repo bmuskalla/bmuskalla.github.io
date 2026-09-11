@@ -7,25 +7,13 @@
     <meta name="author" content="Benjamin Muskalla" />
     
     <title>Easy error reporting for your users · Benjamin Muskalla</title>
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.166.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
     
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-147650474-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
   </head>
 
 <body>
@@ -79,49 +67,49 @@ if (!doNotTrack) {
 <p>If your user is unable to choose the right component, you actually did a pretty good job of seamlessly integrating your plugin into Eclipse 😉 Some time ago, Mylyn introduced a little feature to actually help users with this problem. Whenever they see an exception in the Error Log, you just right-click it and select “Report as Bug”. Depending on the stacktrace of the problem, it can automatically map the exception to the right product and component in Eclipse.</p>
 <p><img src="/blog/tt/Screenshot-Report-as-Bug-.png" alt="Report as Bug"></p>
 <p>As Mylyn provides this as a generic mechanism every project can hook into, this is an easy way to help your users and contributors to provide feedback. All you need to do is to provide the right set of mappings from your package namespace to the corresponding Bugzilla attributes.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;extension</span> <span style="color:#a6e22e">point=</span><span style="color:#e6db74">&#34;org.eclipse.mylyn.tasks.bugs.support&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;product</span>
-      <span style="color:#a6e22e">featureId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span> <span style="color:#a6e22e">providerId=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span><span style="color:#f92672">/&gt;</span>
-
-    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.ui&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
-      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
-      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;UI&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/mapping&gt;</span>
-
-    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.core&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
-      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
-      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;Core&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/mapping&gt;</span>
-
-    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.mylyn&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
-      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
-      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;Mylyn&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/mapping&gt;</span>
-<span style="color:#f92672">&lt;/extension&gt;</span> 
-</code></pre></div><p><img src="/blog/tt/new_task-300x293.png" alt="New Task">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;extension</span> <span style="color:#a6e22e">point=</span><span style="color:#e6db74">&#34;org.eclipse.mylyn.tasks.bugs.support&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;product</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">featureId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span> <span style="color:#a6e22e">providerId=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.ui&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;UI&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/mapping&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.core&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;Core&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/mapping&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse.egit.mylyn&#34;</span> <span style="color:#a6e22e">productId=</span><span style="color:#e6db74">&#34;org.eclipse.egit&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;EGit&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;component&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;Mylyn&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/mapping&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/extension&gt;</span> 
+</span></span></code></pre></div><p><img src="/blog/tt/new_task-300x293.png" alt="New Task">
 As you can see in the example, we define two types of mapping. The first one is the product mapping. This essentially tells Mylyn to which task repository your project belongs. As we’re using EGit in this example, we’re using the task repository definition of the Eclipse.org Bugzilla instance (see below how to create your own repository provider definition). Once we have this definition in place, the mappings define the exact products and components the bugs should be filed against. If you look at the highlighted mapping above, we’re mapping all exceptions that occurred in the “org.eclipse.egit.core” java package namespace automatically to the EGit product and set the component to Core when the user is about to create a new task. Once you’ve done this, users will automatically get the right choice of options when opening a new Bugzilla bug.</p>
 <p>So you’re not an Eclipse.org project? No problem! The same works with other task repositoryes as well which is highly interesting for products based on Eclipse or if your plugin is using a bug tracker outside the Eclipse.org infrastructure (eg. GitHub).</p>
 <p>You can always define a new provider and point to the task repository you need and the connector to use. Below you see the extension for Eclipse.org which is contributed by Mylyn.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;provider</span> <span style="color:#a6e22e">categoryId=</span><span style="color:#e6db74">&#34;org.eclipse.mylyn.tasks.bugs.openSource&#34;</span>
-                        <span style="color:#a6e22e">description=</span><span style="color:#e6db74">&#34;Eclipse open source community bug tracker&#34;</span>
-                        <span style="color:#a6e22e">icon=</span><span style="color:#e6db74">&#34;icons/branding32/eclipse.png&#34;</span>
-                        <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Eclipse.org&#34;</span>
-                        <span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;http://eclipse.org/&#34;</span> <span style="color:#f92672">/&gt;</span>
-                <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span><span style="color:#f92672">&gt;</span>
-                        <span style="color:#f92672">&lt;repository</span> <span style="color:#a6e22e">kind=</span><span style="color:#e6db74">&#34;bugzilla&#34;</span>
-                          <span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;https://bugs.eclipse.org/bugs&#34;</span><span style="color:#f92672">&gt;</span>
-                        <span style="color:#f92672">&lt;/repository&gt;</span>
-                <span style="color:#f92672">&lt;/mapping&gt;</span>
-<span style="color:#f92672">&lt;/provider&gt;</span>
-</code></pre></div><p>With this at hand, I’d love to hear how you encourage your community to contribute back in form of bug reports and feature enhancements?<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<section class="footnotes" role="doc-endnotes">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;provider</span> <span style="color:#a6e22e">categoryId=</span><span style="color:#e6db74">&#34;org.eclipse.mylyn.tasks.bugs.openSource&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">description=</span><span style="color:#e6db74">&#34;Eclipse open source community bug tracker&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">icon=</span><span style="color:#e6db74">&#34;icons/branding32/eclipse.png&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Eclipse.org&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;http://eclipse.org/&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;mapping</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;org.eclipse&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;repository</span> <span style="color:#a6e22e">kind=</span><span style="color:#e6db74">&#34;bugzilla&#34;</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;https://bugs.eclipse.org/bugs&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;/repository&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;/mapping&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/provider&gt;</span>
+</span></span></code></pre></div><p>With this at hand, I’d love to hear how you encourage your community to contribute back in form of bug reports and feature enhancements?<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>Originally published on <a href="https://www.tasktop.com/blog/easy-error-reporting-your-users/">Tasktop Blog</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
         </div>
 

@@ -7,25 +7,13 @@
     <meta name="author" content="Benjamin Muskalla" />
     
     <title>The &#39;Simplify protocol&#39; refactoring · Benjamin Muskalla</title>
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.166.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
     
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-147650474-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
   </head>
 
 <body>
@@ -77,35 +65,35 @@ if (!doNotTrack) {
         <div class="prose">
           <p>The other day, I went grocery shopping. While waiting in line, I thought about some struggles I had in a test I wrote earlier that day. When it was my turn, the cashier scanned my items and said what I owe him. And I just gave him my whole wallet. He stared at me blankly and gave it back. A little confused for a second, I took out my card, paid, and left the store. And at that point, it hit me what was wrong with my test.
 Let’s have a look at the test and see what it has to do with grocery shopping:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">givenAccountWithBalanceReporterShouldPrintSummary</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    Account account <span style="color:#f92672">=</span> createTestAccount<span style="color:#f92672">();</span>
-    EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PlainTextEndOfYearReporter<span style="color:#f92672">(</span>account<span style="color:#f92672">);</span>
-
-    String report <span style="color:#f92672">=</span> printer<span style="color:#f92672">.</span><span style="color:#a6e22e">produceReport</span><span style="color:#f92672">();</span>
-
-    assertThat<span style="color:#f92672">(</span>report<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny: -39 EUR&#34;</span><span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>So far, so good. Overall, the idea of the test is pretty simple and well written. The problem is the part that I omitted. How do we set up the account?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> Account <span style="color:#a6e22e">createTestAccount</span><span style="color:#f92672">(</span>String username<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> balance<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    Account account <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Account<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-
-    HolderMetadata metadata <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HolderMetadata<span style="color:#f92672">();</span>
-    when<span style="color:#f92672">(</span>metadata<span style="color:#f92672">.</span><span style="color:#a6e22e">getFullname</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>username<span style="color:#f92672">);</span>
-    when<span style="color:#f92672">(</span>account<span style="color:#f92672">.</span><span style="color:#a6e22e">getOwner</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>metadata<span style="color:#f92672">);</span>
-
-    Subaccount subaccount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Subaccount<span style="color:#f92672">();</span>
-    subaccount<span style="color:#f92672">.</span><span style="color:#a6e22e">setBalance</span><span style="color:#f92672">(</span>balance<span style="color:#f92672">);</span>
-    when<span style="color:#f92672">(</span>account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>List<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>subaccount<span style="color:#f92672">));</span>
-    
-    <span style="color:#66d9ef">return</span> account<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>Given our domain model got lost in between annotations, DI frameworks, and other funky technologies, we had to start mocking out parts of the model. In this case, we got away with only mocking a few things tightly related to what we do. More often than not, this usually turns into a nightmare of mocking (transitive) dependencies to get the object into the state you want it in. While generally, the advice is to keep your domain model independent of technology (and not mock stuff you don’t own), it’s often easier said than done. So if we can’t easily change our domain model, how do we use this model in our report generator?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String username <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getOwner</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getFullname</span><span style="color:#f92672">();</span>
-<span style="color:#66d9ef">int</span> balance <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">().</span><span style="color:#a6e22e">mapToInt</span><span style="color:#f92672">(</span>Subaccount<span style="color:#f92672">::</span>getBalance<span style="color:#f92672">).</span><span style="color:#a6e22e">sum</span><span style="color:#f92672">();</span>
-String currency <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">getCurrency</span><span style="color:#f92672">();</span>
-<span style="color:#66d9ef">return</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%s %d %s&#34;</span><span style="color:#f92672">,</span> username<span style="color:#f92672">,</span> balance<span style="color:#f92672">,</span> currency<span style="color:#f92672">);</span>
-</code></pre></div><p>To produce a simple report, we have to navigate our way through the object graph, collect all the data we need and do some processing (e.g. sum). While this is something we have to do anyway, the question becomes: is it really what the report generation should do? What if we add another report besides our plain text? That would need to replicate the same logic. What about changes to our domain model? We’ll have to go and fiddle around with the PDF reporting, which broke due to those changes (usually referred to as <a href="https://refactoring.guru/smells/shotgun-surgery">Shotgun Surgery</a>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">givenAccountWithBalanceReporterShouldPrintSummary</span>() {
+</span></span><span style="display:flex;"><span>    Account account <span style="color:#f92672">=</span> createTestAccount();
+</span></span><span style="display:flex;"><span>    EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PlainTextEndOfYearReporter(account);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    String report <span style="color:#f92672">=</span> printer.<span style="color:#a6e22e">produceReport</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    assertThat(report).<span style="color:#a6e22e">isEqualTo</span>(<span style="color:#e6db74">&#34;Benny: -39 EUR&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>So far, so good. Overall, the idea of the test is pretty simple and well written. The problem is the part that I omitted. How do we set up the account?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Account <span style="color:#a6e22e">createTestAccount</span>(String username, <span style="color:#66d9ef">int</span> balance) {
+</span></span><span style="display:flex;"><span>    Account account <span style="color:#f92672">=</span> mock(Account.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    HolderMetadata metadata <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HolderMetadata();
+</span></span><span style="display:flex;"><span>    when(metadata.<span style="color:#a6e22e">getFullname</span>()).<span style="color:#a6e22e">thenReturn</span>(username);
+</span></span><span style="display:flex;"><span>    when(account.<span style="color:#a6e22e">getOwner</span>()).<span style="color:#a6e22e">thenReturn</span>(metadata);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Subaccount subaccount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Subaccount();
+</span></span><span style="display:flex;"><span>    subaccount.<span style="color:#a6e22e">setBalance</span>(balance);
+</span></span><span style="display:flex;"><span>    when(account.<span style="color:#a6e22e">getSubaccounts</span>()).<span style="color:#a6e22e">thenReturn</span>(List.<span style="color:#a6e22e">of</span>(subaccount));
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> account;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Given our domain model got lost in between annotations, DI frameworks, and other funky technologies, we had to start mocking out parts of the model. In this case, we got away with only mocking a few things tightly related to what we do. More often than not, this usually turns into a nightmare of mocking (transitive) dependencies to get the object into the state you want it in. While generally, the advice is to keep your domain model independent of technology (and not mock stuff you don’t own), it’s often easier said than done. So if we can’t easily change our domain model, how do we use this model in our report generator?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String username <span style="color:#f92672">=</span> account.<span style="color:#a6e22e">getOwner</span>().<span style="color:#a6e22e">getFullname</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> balance <span style="color:#f92672">=</span> account.<span style="color:#a6e22e">getSubaccounts</span>().<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">mapToInt</span>(Subaccount::getBalance).<span style="color:#a6e22e">sum</span>();
+</span></span><span style="display:flex;"><span>String currency <span style="color:#f92672">=</span> account.<span style="color:#a6e22e">getSubaccounts</span>().<span style="color:#a6e22e">get</span>(0).<span style="color:#a6e22e">getCurrency</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> String.<span style="color:#a6e22e">format</span>(<span style="color:#e6db74">&#34;%s %d %s&#34;</span>, username, balance, currency);
+</span></span></code></pre></div><p>To produce a simple report, we have to navigate our way through the object graph, collect all the data we need and do some processing (e.g. sum). While this is something we have to do anyway, the question becomes: is it really what the report generation should do? What if we add another report besides our plain text? That would need to replicate the same logic. What about changes to our domain model? We’ll have to go and fiddle around with the PDF reporting, which broke due to those changes (usually referred to as <a href="https://refactoring.guru/smells/shotgun-surgery">Shotgun Surgery</a>).</p>
 <p>Let’s try something. Instead of giving the cashier our whole wallet, let’s just give them what they need. Not more, not less.
 <br>
 <br>
@@ -114,16 +102,16 @@ Introducing the “<strong>Simplify Protocol</strong>” refactoring.</p>
 <p>Given a <a href="http://xunitpatterns.com/SUT.html">unit under test</a>, look at all the inputs (constructor arguments, method parameters) and try to replace them with the most trivial type available. Try to deliberately avoid parameter objects and use the most fundamental parameter types possible.</p>
 </blockquote>
 <p>Then, just like you do in test-driven development, let’s try the most simple thing that works and refactor later. What we need for the report right now are three things: The account holder, the balance, and the currency. Let’s go with this first and see how far to get:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">givenAccountWithBalanceReporterShouldPrintSummary</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>    EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PlainTextEndOfYearReporter<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">-</span>39<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;EUR&#34;</span><span style="color:#f92672">);</span>
-
-    String report <span style="color:#f92672">=</span> printer<span style="color:#f92672">.</span><span style="color:#a6e22e">produceReport</span><span style="color:#f92672">();</span>
-
-    assertThat<span style="color:#f92672">(</span>report<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny: -39 EUR&#34;</span><span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>Hm. That’s a lot easier for our test. But that doesn’t entirely solve the problem in our production code that needs to call our reporter. And most of you will think,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">givenAccountWithBalanceReporterShouldPrintSummary</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>    EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PlainTextEndOfYearReporter(<span style="color:#e6db74">&#34;Benny&#34;</span>, <span style="color:#f92672">-</span>39, <span style="color:#e6db74">&#34;EUR&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    String report <span style="color:#f92672">=</span> printer.<span style="color:#a6e22e">produceReport</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    assertThat(report).<span style="color:#a6e22e">isEqualTo</span>(<span style="color:#e6db74">&#34;Benny: -39 EUR&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Hm. That’s a lot easier for our test. But that doesn’t entirely solve the problem in our production code that needs to call our reporter. And most of you will think,</p>
 <blockquote>
 <p>“Hey Benny, a stringly-typed API is not great. You should have a strongly-typed API.”</p>
 </blockquote>
@@ -134,21 +122,21 @@ Given our initial setup, we had a single parameter for our reporter. At first si
 <p>Given the exploded set of “trivially-typed” inputs, it’s time to consider whether we want to combine them into more helpful abstractions. For example, raw amount and currency can be refactored into an “Amount” <a href="https://en.wikipedia.org/wiki/Value_object">Value Object</a>. Likewise, the &lsquo;Amount&rsquo; and &lsquo;Username&rsquo; form the inputs of our report and can be replaced by a parameter object. If you do, check whether it makes sense to make it specific for our unit under test. Too often, people strive for something reusable and, before they realize it, pass around a Map of objects called “Context”.</p>
 <p>Alternatively, as we still need to extract the values from our actual domain model, we can use the adapter as &ldquo;a view&rdquo; on the existing domain model.</p>
 <p>For the inputs to our report, we define a parameter object/view/record/bean that helps us to capture only the necessary data we need for the reporter:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> record <span style="color:#a6e22e">EndOfYearReportInput</span><span style="color:#f92672">(</span>String username<span style="color:#f92672">,</span> MoneyAmount amount<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>This makes our test a lot simpler as we can now set up different report data for the various scenarios quickly:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">MoneyAmount amount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MoneyAmount<span style="color:#f92672">(-</span>39<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;EUR&#34;</span><span style="color:#f92672">);</span>
-EndOfYearReportData reportData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EndOfYearReportData<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Benny&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">);</span>
-EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EndOfYearReporter<span style="color:#f92672">(</span>reportData<span style="color:#f92672">);</span>
-</code></pre></div><p>For the production code, we still need to adapt the domain model to our new record, either using an Adapter or (as shown here) a Factory method:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> EndOfYearReportData <span style="color:#a6e22e">fromAccount</span><span style="color:#f92672">(</span>Account account<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    String username <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getOwner</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getFullname</span><span style="color:#f92672">();</span>
-    <span style="color:#66d9ef">int</span> balance <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">().</span><span style="color:#a6e22e">mapToInt</span><span style="color:#f92672">(</span>Subaccount<span style="color:#f92672">::</span>getBalance<span style="color:#f92672">).</span><span style="color:#a6e22e">sum</span><span style="color:#f92672">();</span>
-    String currency <span style="color:#f92672">=</span> account<span style="color:#f92672">.</span><span style="color:#a6e22e">getSubaccounts</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">getCurrency</span><span style="color:#f92672">();</span>
-    MoneyAmount amount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MoneyAmount<span style="color:#f92672">(</span>balance<span style="color:#f92672">,</span> currency<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> EndOfYearReportData<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> amount<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>We already have all the patterns at hand to solve these kinds of problems. <em>Sometimes, you need to make code more trivial to see the higher-level patterns that solve the issue at hand more elegantly.</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">EndOfYearReportInput</span>(String username, MoneyAmount amount) {
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This makes our test a lot simpler as we can now set up different report data for the various scenarios quickly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>MoneyAmount amount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MoneyAmount(<span style="color:#f92672">-</span>39, <span style="color:#e6db74">&#34;EUR&#34;</span>);
+</span></span><span style="display:flex;"><span>EndOfYearReportData reportData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EndOfYearReportData(<span style="color:#e6db74">&#34;Benny&#34;</span>, amount);
+</span></span><span style="display:flex;"><span>EndOfYearReporter printer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EndOfYearReporter(reportData);
+</span></span></code></pre></div><p>For the production code, we still need to adapt the domain model to our new record, either using an Adapter or (as shown here) a Factory method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> EndOfYearReportData <span style="color:#a6e22e">fromAccount</span>(Account account) {
+</span></span><span style="display:flex;"><span>    String username <span style="color:#f92672">=</span> account.<span style="color:#a6e22e">getOwner</span>().<span style="color:#a6e22e">getFullname</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> balance <span style="color:#f92672">=</span> account.<span style="color:#a6e22e">getSubaccounts</span>().<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">mapToInt</span>(Subaccount::getBalance).<span style="color:#a6e22e">sum</span>();
+</span></span><span style="display:flex;"><span>    String currency <span style="color:#f92672">=</span> account.<span style="color:#a6e22e">getSubaccounts</span>().<span style="color:#a6e22e">get</span>(0).<span style="color:#a6e22e">getCurrency</span>();
+</span></span><span style="display:flex;"><span>    MoneyAmount amount <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MoneyAmount(balance, currency);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> EndOfYearReportData(username, amount);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We already have all the patterns at hand to solve these kinds of problems. <em>Sometimes, you need to make code more trivial to see the higher-level patterns that solve the issue at hand more elegantly.</em></p>
 <p>And the moral of the story? Keep your wallet to yourself; only hand out what the other side needs.</p>
 
         </div>
