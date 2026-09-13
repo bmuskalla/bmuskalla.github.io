@@ -53,7 +53,7 @@
           <div class="post-meta">
             <span>September 13, 2026</span>
             <span>·</span>
-            <span>9 min read</span>
+            <span>8 min read</span>
           </div>
           
           <div class="tags">
@@ -154,53 +154,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span> <span style="color:#66d9ef">SUB</span>
 </span></span></code></pre></div><p>Every projection in every layer, and the final multiplication against the vocabulary, goes through it. SmolLM2-135M has 134.5 million weights, and one forward pass touches nearly all of them once, so a token costs about 134 million multiply-adds in a triple loop of unoptimized BASIC. QB64 compiles to C++ and I passed no optimization flags. The result is about one token per second, after four seconds of loading, in 1.1 GB of memory, because the engine holds the weights as fp32 while the checkpoint ships them as bf16 in 270 MB.</p>
 <p>The KV cache was the concept I understood least going in, and the one where the oracle earned its keep. Without it, producing the token at step <em>s</em> means running the forward pass over the whole prompt plus <em>s</em> tokens again. For a five-token prompt and eight new tokens that is 68 forward passes and 65.3 seconds. The cache rests on one fact: the key and value rows attention writes for position <em>t</em> depend only on tokens 0 to <em>t</em>, which never change, so a row once written is final. Forward the prompt once, then forward only the new token at its own position. Same rows, same bits, 12 forward passes, 11.5 seconds. Figure 1 shows the two curves side by side. The output was bit-identical to the uncached run, which is the only evidence I accept that I understood the cache and not only the speedup.</p>
-<!-- FIGURE 1: in the HTML version this is a grouped bar chart; the data is reproduced as a table here -->
-<table>
-	<thead>
-			<tr>
-					<th>Generated token</th>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-					<th>5</th>
-					<th>6</th>
-					<th>7</th>
-					<th>8</th>
-					<th>Total</th>
-					<th>Time</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Forward passes without KV cache</td>
-					<td>5</td>
-					<td>6</td>
-					<td>7</td>
-					<td>8</td>
-					<td>9</td>
-					<td>10</td>
-					<td>11</td>
-					<td>12</td>
-					<td>68</td>
-					<td>65.3 s</td>
-			</tr>
-			<tr>
-					<td>Forward passes with KV cache</td>
-					<td>5</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>12</td>
-					<td>11.5 s</td>
-			</tr>
-	</tbody>
-</table>
-<p><em>Figure 1. Forward passes per generated token for a five-token prompt, from the step 6 measurement</em></p>
+<p><img src="/blog/gotoken/kv-cache-forwards.svg" alt="Figure 1. Forward passes per generated token for a five-token prompt, with and without KV cache"></p>
 <p>That is also where the honest accounting stops. Nothing here is optimized: no batching, no SIMD, no quantization. The context length is a constant in the source, set to 1,024 tokens.</p>
 <h2 id="a-few-distractions">A Few Distractions</h2>
 <p>Reading the HuggingFace files directly, with no Python anywhere in the pipeline, meant opening three things I had used for years without looking inside.</p>
