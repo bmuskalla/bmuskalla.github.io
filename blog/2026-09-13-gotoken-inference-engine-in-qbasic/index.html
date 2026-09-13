@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Benjamin Muskalla" />
+    
+    <title>GOTOken: An Inference Engine in QBasic · Benjamin Muskalla</title>
+    <meta name="generator" content="Hugo 0.166.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://bmuskalla.dev/css/site.css" />
+    
+    
+  </head>
+
+<body>
+  <canvas id="bricks" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site">
+    <a class="wordmark" href="https://bmuskalla.dev/">bmuskalla<span>.dev</span></a>
+    <nav class="site">
+      
+      
+      <a href="/opensource/">open source</a>
+      
+      
+      <a href="/talks/">talks</a>
+      
+      
+      <a href="/blog/" class="active">blog</a>
+      
+      
+      <a href="/articles/">print</a>
+      
+      
+      <a href="/vitae/">vitae</a>
+      
+    </nav>
+  </header>
+
+
+  <main class="content">
+    
+      <article class="panel">
+        <a class="backlink" href="https://bmuskalla.dev/blog/">← all posts</a>
+        <div class="page-head">
+          <p class="page-eyebrow">Blog</p>
+          <h1 class="page-title">GOTOken: An Inference Engine in QBasic</h1>
+          <div class="post-meta">
+            <span>September 13, 2026</span>
+            <span>·</span>
+            <span>9 min read</span>
+          </div>
+          
+          <div class="tags">
+            <span class="tag">qbasic</span><span class="tag">llm</span><span class="tag">inference</span><span class="tag">from scratch</span>
+          </div>
+          
+        </div>
+
+        <div class="prose">
+          <p>Running SmolLM2-135M with an inference engine written entirely in QBasic. I wrote it to find out how much of inference I understood, in the language I fell in love with first.</p>
+<!-- IMAGE PLACEHOLDER: hero image, for example a screenshot of the GOTOken REPL running in a terminal -->
+<p><img src="TODO-hero-image.png" alt="Image placeholder"></p>
+<h2 id="why-basic">Why BASIC?</h2>
+<p>My first line of code was a cheat. My father, a civil engineer by training, was working at his PC one day when he opened QBasic for me, loaded <em>NIBBLES.BAS</em>, and let me play, mostly so he could get some work done. Nibbles is the original snake game, for anyone under 40. Somewhere in that file is a factor that makes the snake faster with every level, and the first change I ever made to a program was to turn it down so the later levels stayed playable. The next thing I remember is typing up pages of programs from books, with the delight of watching text turn into execution.</p>
+<p>Decades later I wanted to see how far QBasic can be stretched. GOTOken is an inference engine for SmolLM2-135M, a small model with the Llama architecture, written in BASIC and compiled with QB64. It reads the three HuggingFace checkpoint files directly, <em>config.json</em>, <em>model.safetensors</em>, and <em>tokenizer.json</em>, and produces the same tokens that transformers produces from the same prompt. No Python, no C, no numpy, no JSON library. About 1,500 lines of BASIC.</p>
+<p>BASIC also turned out to be a good place to find out what you understand, because it hides nothing. If a matrix gets multiplied, a loop in the source multiplies it. Every concept I thought I understood had to become a <code>FOR</code> loop, and every concept I did not understand became a loop that produced the wrong number. That sorts the two faster than any amount of reading.</p>
+<p>Two maps guided the work. Andrej Karpathy&rsquo;s llama2.c is the single C file that runs a Llama model with a for loop and a checkpoint, and the BASIC maps almost one to one onto its <em>run.c</em>, with pointers replaced by integer offsets into one flat <code>SINGLE</code> array. Sebastian Raschka&rsquo;s <a href="https://sebastianraschka.com/llms-from-scratch/"><em>Build a Large Language Model (From Scratch)</em></a> walks through the same architecture one component at a time, and is where the habit of checking each piece before adding the next came from. Every number in this post comes from the commit log of <a href="https://github.com/bmuskalla/GOTOken">the repository</a>, where the check that produced it sits next to the code.</p>
+<h2 id="eight-steps-each-checked-against-the-real-model">Eight Steps, Each Checked Against the Real Model</h2>
+<p>What made this a learning project instead of a debugging project was the order of work. I was driving to learn, and coding agents implemented a lot of the details, so the discipline had to live in the plan rather than in my typing. We did not write the engine and then see whether it worked. It grew in eight steps, and after each step a Python script asked the real model for the same numbers and compared them with the BASIC output. Call that script the <em>oracle</em>. Nothing was added until the previous piece matched. Table 1 lists the steps and what each comparison proved.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Step</th>
+					<th>Added to the engine</th>
+					<th>What the oracle compared</th>
+					<th>Result</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>Loader: all weights into one flat array</td>
+					<td>First and last five floats against the checkpoint</td>
+					<td>Byte for byte</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>Embedding row and the tied output head</td>
+					<td>Logits for one token against a float64 reference</td>
+					<td>Within 4e-6, same top five</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>RMSNorm and MatMul on layer 0</td>
+					<td>Every output against float64</td>
+					<td>Within 1e-5 relative</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>One full transformer layer over a sequence</td>
+					<td>A forward hook on the HuggingFace model</td>
+					<td>Max error 1.5e-5</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>All 30 layers and greedy decoding</td>
+					<td>Tokens from <code>model.generate</code></td>
+					<td>8 of 8 on &ldquo;The cat sat on the&rdquo;</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>KV cache</td>
+					<td>Raw fp32 bits of every chosen logit against step 5</td>
+					<td>Bit-identical</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>Byte-level BPE tokenizer</td>
+					<td>Token ids for 2,060 strings against HuggingFace</td>
+					<td>2,060 of 2,060</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>Sampler: temperature, top-k, top-p</td>
+					<td>Seeded draws against a numpy reimplementation</td>
+					<td>Same coins, 8 of 8 tokens</td>
+			</tr>
+	</tbody>
+</table>
+<p><em>Table 1. The eight steps and what the oracle compared after each one</em></p>
+<p>Step 3 taught me the thing I most needed to unlearn. I had assumed that &ldquo;correct&rdquo; meant the same bits as PyTorch. The oracle replayed my BASIC loop in fp32, with the same rounding order, and matched all 576 outputs of the query projection bit for bit. A replay using fused multiply-add matched 243 of them. PyTorch&rsquo;s own matmul, through BLAS, matched 61. Three correct implementations, three sets of bits. Bit equality across implementations is not a goal; it is an accident of rounding order.</p>
+<p>What matters instead is whether the error stays below what the next decision needs. In step 5 the oracle printed, for every generated token, the margin between the top logit and the second. The smallest margin was 0.19. The largest drift from the reference was 1.7e-5. The greedy choice had roughly ten thousand times the headroom it needed, and that ratio, not the bits, is what let me trust the tokens.</p>
+<h2 id="what-one-token-costs">What One Token Costs</h2>
+<p>The whole engine, measured in arithmetic, is this loop:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-basic" data-lang="basic"><span style="display:flex;"><span><span style="color:#75715e">&#39; xout(d) = W(d, n) * x(n), W stored row-major at w(woff).</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#39; run.c&#39;s matmul(xout, x, w, n, d), float* replaced by an offset.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SUB</span> MatMul (xout() <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">SINGLE</span>, x() <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">SINGLE</span>, woff <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">LONG</span>, _
+</span></span><span style="display:flex;"><span>            n <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">LONG</span>, d <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">LONG</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">DIM</span> i <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">LONG</span>, j <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">LONG</span>, rowStart <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">LONG</span>, acc <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">SINGLE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOR</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">TO</span> d <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        rowStart <span style="color:#f92672">=</span> woff <span style="color:#f92672">+</span> i <span style="color:#f92672">*</span> n
+</span></span><span style="display:flex;"><span>        acc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">FOR</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">TO</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            acc <span style="color:#f92672">=</span> acc <span style="color:#f92672">+</span> w(rowStart <span style="color:#f92672">+</span> j) <span style="color:#f92672">*</span> x(j)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">NEXT</span>
+</span></span><span style="display:flex;"><span>        xout(i) <span style="color:#f92672">=</span> acc
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">NEXT</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span> <span style="color:#66d9ef">SUB</span>
+</span></span></code></pre></div><p>Every projection in every layer, and the final multiplication against the vocabulary, goes through it. SmolLM2-135M has 134.5 million weights, and one forward pass touches nearly all of them once, so a token costs about 134 million multiply-adds in a triple loop of unoptimized BASIC. QB64 compiles to C++ and I passed no optimization flags. The result is about one token per second, after four seconds of loading, in 1.1 GB of memory, because the engine holds the weights as fp32 while the checkpoint ships them as bf16 in 270 MB.</p>
+<p>The KV cache was the concept I understood least going in, and the one where the oracle earned its keep. Without it, producing the token at step <em>s</em> means running the forward pass over the whole prompt plus <em>s</em> tokens again. For a five-token prompt and eight new tokens that is 68 forward passes and 65.3 seconds. The cache rests on one fact: the key and value rows attention writes for position <em>t</em> depend only on tokens 0 to <em>t</em>, which never change, so a row once written is final. Forward the prompt once, then forward only the new token at its own position. Same rows, same bits, 12 forward passes, 11.5 seconds. Figure 1 shows the two curves side by side. The output was bit-identical to the uncached run, which is the only evidence I accept that I understood the cache and not only the speedup.</p>
+<!-- FIGURE 1: in the HTML version this is a grouped bar chart; the data is reproduced as a table here -->
+<table>
+	<thead>
+			<tr>
+					<th>Generated token</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>
+					<th>Total</th>
+					<th>Time</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Forward passes without KV cache</td>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+					<td>11</td>
+					<td>12</td>
+					<td>68</td>
+					<td>65.3 s</td>
+			</tr>
+			<tr>
+					<td>Forward passes with KV cache</td>
+					<td>5</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>12</td>
+					<td>11.5 s</td>
+			</tr>
+	</tbody>
+</table>
+<p><em>Figure 1. Forward passes per generated token for a five-token prompt, from the step 6 measurement</em></p>
+<p>That is also where the honest accounting stops. Nothing here is optimized: no batching, no SIMD, no quantization. The context length is a constant in the source, set to 1,024 tokens.</p>
+<h2 id="a-few-distractions">A Few Distractions</h2>
+<p>Reading the HuggingFace files directly, with no Python anywhere in the pipeline, meant opening three things I had used for years without looking inside.</p>
+<p><strong>The checkpoint format.</strong> A safetensors file is an 8-byte header length, a JSON header mapping tensor names to offsets, then raw bytes. So the engine needed a JSON parser, which is 250 lines of BASIC and reads the 2 MB <em>tokenizer.json</em> in 70 ms. The weights are bf16, and a bf16 is the top 16 bits of an fp32, so converting one is a 16-bit shift. I had read that sentence before. Writing the shift is when I believed it.</p>
+<p><strong>The rotary convention.</strong> HuggingFace applies rotary position embeddings to the pair (<em>j</em>, <em>j</em> + head_dim/2) within a head. llama2.c rotates adjacent pairs. Rather than write a second RoPE, the loader permutes the rows of the query and key projections as it converts them, so the BASIC RoPE stays line for line with <em>run.c</em>. Attention scores are dot products per head, and a permutation applied to both sides leaves them unchanged, so every logit stays identical. A tutorial skips this detail. A checkpoint does not.</p>
+<p><strong>The tokenizer.</strong> The vocabulary in <em>tokenizer.json</em> is written in GPT-2&rsquo;s byte-level alphabet, where a space shows up as <code>Ġ</code>, so the loader has to map it back to raw bytes. QB64 has no regular expressions, so the GPT-2 pre-tokenizer pattern became a hand-written scanner with Unicode letter, digit, and whitespace tables. The result matches HuggingFace on 2,060 test strings, CJK included.</p>
+<h2 id="try-it">Try It</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it bmuskalla/gotoken
+</span></span></code></pre></div><p>The image is 370 MB, built for amd64 and arm64, and holds only the binary and the model. Type a prompt, get a continuation, one token per second. <code>/temp 0</code> makes it greedy and deterministic. At 0.7 the model tells a different story each time, and above 1.2 it falls apart. It is a base model, so it continues text rather than answering. Source and oracle are on <a href="https://github.com/bmuskalla/GOTOken">GitHub</a>.</p>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<p>An inference engine is easy in the basic form, especially when you have something to compare it to. Embedding, norm, attention, feed-forward, sampler: each is a short loop, and the oracle tells you within seconds whether the loop is right. The hard parts start when you optimize. The KV cache was the first taste of that. Batching, real kernels, and quantization are where the engineering lives, and none of them is in this repository.</p>
+<p>Do we need another inference engine? No. vLLM is great, and so are the others. But building one from scratch gave me a mental model I did not have from reading, and that model is what I will use to make better decisions about the off-the-shelf engines I run from here on. And it was a lot of fun to go back to the old days of QBasic and bring them into this era.</p>
+
+        </div>
+
+        
+        
+
+        <div class="post-after">
+          <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'benny-github-blog';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </article>
+    
+  </main>
+
+    <footer class="site">
+    <span>© Benjamin Muskalla</span>
+    <span>built by hand · watched over by small robots</span>
+  </footer>
+</div>
+
+<script src="https://bmuskalla.dev/js/robots.js"></script>
+
+
+</body>
+</html>
