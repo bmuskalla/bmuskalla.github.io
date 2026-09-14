@@ -64,8 +64,7 @@
 
         <div class="prose">
           <p>Running SmolLM2-135M with an inference engine written entirely in QBasic. I wrote it to find out how much of inference I understood, in the language I fell in love with first.</p>
-<!-- IMAGE PLACEHOLDER: hero image, for example a screenshot of the GOTOken REPL running in a terminal -->
-<p><img src="TODO-hero-image.png" alt="Image placeholder"></p>
+<p><img src="/blog/gotoken/kernels-qb64.png" alt="The QB64 editor showing kernels.bm with the MatMul subroutine: two nested FOR loops over a flat weight array"></p>
 <h2 id="why-basic">Why BASIC?</h2>
 <p>My first line of code was a cheat. My father, a civil engineer by training, was working at his PC one day when he opened QBasic for me, loaded <em>NIBBLES.BAS</em>, and let me play, mostly so he could get some work done. Nibbles is the original snake game, for anyone under 40. Somewhere in that file is a factor that makes the snake faster with every level, and the first change I ever made to a program was to turn it down so the later levels stayed playable. The next thing I remember is typing up pages of programs from books, with the delight of watching text turn into execution.</p>
 <p>Decades later I wanted to see how far QBasic can be stretched. GOTOken is an inference engine for SmolLM2-135M, a small model with the Llama architecture, written in BASIC and compiled with QB64. It reads the three HuggingFace checkpoint files directly, <em>config.json</em>, <em>model.safetensors</em>, and <em>tokenizer.json</em>, and produces the same tokens that transformers produces from the same prompt. No Python, no C, no numpy, no JSON library. About 1,500 lines of BASIC.</p>
