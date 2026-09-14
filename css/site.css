@@ -602,9 +602,10 @@ a.lead-link:focus-visible { color: var(--teal); border-bottom-color: var(--teal)
 }
 .prose th { background: var(--paper-2); }
 
-/* related posts + comments below a single post */
+/* related posts + reach-out below a single post */
 .post-after { margin-top: 40px; }
 .post-after .section-title { margin-bottom: 12px; }
+.post-after .cta-lead { margin: 0; }
 
 /* back link */
 .backlink {
