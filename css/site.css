@@ -443,6 +443,8 @@ a.lead-link:focus-visible { color: var(--teal); border-bottom-color: var(--teal)
   margin: 6px 0 4px;
 }
 .cta .links { margin-top: 20px; }
+.cta-compact { margin-top: 24px; padding: 18px 22px 20px; }
+.cta-compact .cta-lead { font-size: 0.98rem; }
 
 /* --- book covers (reviewer) --- */
 .book-covers {
