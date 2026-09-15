@@ -413,6 +413,16 @@ a.lead-link:focus-visible { color: var(--teal); border-bottom-color: var(--teal)
 .role-body li { margin: 4px 0; }
 .role-body a { color: var(--teal); }
 .role.past .role-body a { color: var(--sage); }
+.role-summary {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+.role-stack {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
 
 /* --- advising landing page --- */
 .two-col {
