@@ -413,9 +413,15 @@ a.lead-link:focus-visible { color: var(--teal); border-bottom-color: var(--teal)
 .role-body li { margin: 4px 0; }
 .role-body a { color: var(--teal); }
 .role.past .role-body a { color: var(--sage); }
+/* Bricolage is loaded at 300/400/600/800, so <strong> (700) would resolve
+   to 800, the H1 weight. Pin lead-ins to 600 and let the bullet text step
+   back so the lead-in stands out by contrast, as .entry .lead/.desc do. */
+.role-body strong { font-weight: 600; color: var(--ink); }
+.role-body li { color: var(--ink-soft); }
 .role-summary {
   margin: 0 0 6px;
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--ink);
 }
 .role-stack {
   margin: 8px 0 0;
